@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>\parsers\parser</OriginalElement>
+  <nodes>
+    <node x="213.5" y="0.0">\parsers\parser</node>
+    <node x="131.0" y="79.0">\parsers\model_parser</node>
+    <node x="383.0" y="79.0">\parsers\dto_parser</node>
+    <node x="254.0" y="79.0">\parsers\angular_parser</node>
+    <node x="0.0" y="79.0">\parsers\phpunit_parser</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\parsers\angular_parser" target="\parsers\parser">
+      <point x="0.0" y="-14.5" />
+      <point x="308.5" y="59.0" />
+      <point x="253.5" y="59.0" />
+      <point x="8.0" y="14.5" />
+    </edge>
+    <edge source="\parsers\phpunit_parser" target="\parsers\parser">
+      <point x="0.0" y="-14.5" />
+      <point x="55.5" y="49.0" />
+      <point x="221.5" y="49.0" />
+      <point x="-24.0" y="14.5" />
+    </edge>
+    <edge source="\parsers\dto_parser" target="\parsers\parser">
+      <point x="0.0" y="-14.5" />
+      <point x="426.5" y="49.0" />
+      <point x="269.5" y="49.0" />
+      <point x="24.0" y="14.5" />
+    </edge>
+    <edge source="\parsers\model_parser" target="\parsers\parser">
+      <point x="0.0" y="-14.5" />
+      <point x="182.5" y="59.0" />
+      <point x="237.5" y="59.0" />
+      <point x="-8.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="235.0" y="54.0" />
+  <SelectedNodes>
+    <node>\parsers\parser</node>
+  </SelectedNodes>
+  <Categories />
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

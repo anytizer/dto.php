@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>\setups\user_type</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">\setups\module_methods</node>
+    <node x="0.0" y="148.0">\setups\business_type</node>
+    <node x="0.0" y="74.0">\setups\business_entity</node>
+    <node x="150.0" y="148.0">\setups\user_type</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="116.0" y="88.5" />
+  <SelectedNodes>
+    <node>\setups\user_type</node>
+  </SelectedNodes>
+  <Categories />
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

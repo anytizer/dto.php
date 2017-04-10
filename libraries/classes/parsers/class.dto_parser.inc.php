@@ -1,0 +1,50 @@
+<?php
+namespace parsers;
+use setups\business_entity;
+use generators\dbaccess;
+use generators\template_reader;
+
+class dto_parser implements parser
+{
+    /**
+     * PHP Class (DTO) Body
+     *
+     * @param business_entity $business
+     * @return string
+     */
+    public function generate(business_entity $business): string
+    {
+        $template_reader = new template_reader();
+        $class_body = $template_reader->read("libraries/dtos/class.template.inc.php");
+
+        # print_r($business);
+        $table_name = $business->table_name();
+
+        $dbaccess = new dbaccess();
+        $result = $dbaccess->_get_columns($table_name);
+        #print_r($dbaccess);
+       # print_r($result); die("Count: ".count($result));
+        if(!count($result))
+        {
+            // n-columns to be listed
+            return ("# Invalid table name: [{$table_name}]");
+        }
+        //$result = array_map(array($dbaccess, "filter_columns"), $result);
+        $result = array_map(array($dbaccess, "dto_rows"), $result);
+        $result = array_filter($result);
+        $fields = implode("\r\n\t", $result);
+        #print_r($result);
+        #print_r($fields); die();
+
+        $class_name = $business->class_name();
+
+        $class_body = str_replace("#__CLASSNAME__", $class_name, $class_body);
+        $class_body = str_replace("#__TABLENAME__", $table_name, $class_body);
+        $class_body = str_replace("#__FIELDS__", $fields, $class_body);
+
+        // @todo rename to class.DTONAME_dto.inc.php
+        $template_reader->write($class_body, "libraries/dtos/class.{$business->class_name()}_dto.inc.php");
+        $template_reader->write(file_get_contents("templates/libraries/dtos/class.dto.inc.php"), "libraries/dtos/class.dto.inc.php");
+        return $class_body;
+    }
+}

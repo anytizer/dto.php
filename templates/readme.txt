@@ -1,0 +1,1 @@
+Templates to be rendered by DTOs generator.

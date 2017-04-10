@@ -1,0 +1,13 @@
+Dear __USER__,
+Thank you for registering your __COMPANY__.
+
+Now, you may set your own password and use our services.
+__PASSWORD_RESET_LINK__
+
+Once you activate your account you can:
+  - manager your users
+  - manage sub businesses
+  - manage your services
+
+Thank you,
+__ORGANIZATION__
