@@ -1,7 +1,7 @@
 <?php
 namespace parsers;
 use setups\business_entity;
-use generators\bodyfier;
+use generators\ormifier;
 use generators\template_reader;
 
 class orm_parser implements parser
@@ -24,8 +24,8 @@ class orm_parser implements parser
             "flag",
         );*/
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "databasify"), $methods);
+        $ormifier = new ormifier();
+        $methods = array_map(array($ormifier, "methodify"), $methods);
         $replaces = array(
             "#__CLASSNAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)
@@ -33,7 +33,7 @@ class orm_parser implements parser
         $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
 
         $template_reader->write($method_body, "libraries/orm/class.{$business->class_name()}_orm.inc.php");
-        $template_reader->write(file_get_contents("templates/orm/class.orm.inc.php"), "libraries/orm/class.orm.inc.php");
+        $template_reader->write(file_get_contents("templates/libraries/orm/class.orm.inc.php"), "libraries/orm/class.orm.inc.php");
         return $method_body;
     }
 }

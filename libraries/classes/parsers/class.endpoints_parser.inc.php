@@ -1,8 +1,9 @@
 <?php
 namespace parsers;
 use setups\business_entity;
-use generators\bodyfier;
 use generators\template_reader;
+use generators\endpoints;
+use setups\method_descriptor;
 
 /**
  * Class endpoints_parser
@@ -17,8 +18,8 @@ class endpoints_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("api/endpoints.php");
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "endpoints"), $business->methods_list());
+        $endpoints = new endpoints();
+        $methods = array_map(array($endpoints, "methodify"), $business->methods_list());
 
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),

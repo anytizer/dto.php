@@ -1,12 +1,6 @@
 <?php
 require_once("libraries/inc.config.php");
 
-// CRUD: Create, Read, Update, Delete
-// MADS: Modify, Add, Delete, Show
-// BREAD: Browse, Read, Edit, Add, Delete
-// DAVE: Delete, Add, View, Edit
-// CRAP: Create, Retrieve, Alter, Purge
-
 use parsers\dto_parser;
 use parsers\business_parser;
 use parsers\phpunit_parser;
@@ -14,6 +8,12 @@ use parsers\angular_parser;
 use parsers\html_parser;
 use parsers\endpoints_parser;
 use parsers\orm_parser;
+
+// CRUD: Create, Read, Update, Delete
+// MADS: Modify, Add, Delete, Show
+// BREAD: Browse, Read, Edit, Add, Delete
+// DAVE: Delete, Add, View, Edit
+// CRAP: Create, Retrieve, Alter, Purge
 
 # for each entities, define business rules (methods)
 // business = entity, model
@@ -25,11 +25,11 @@ $entities = array();
 $setups = glob("definitions/define.*.php");
 foreach($setups as $setup)
 {
-    #require_once($setup);
+    require_once($setup);
 }
 #print_r($setups);
-#print_r($entities);
-require_once("definitions/define.bills.php");
+#print_r($entities); #die();
+#require_once("definitions/define.offers.php");
 
 // who came in?
 // who treated?
@@ -66,7 +66,7 @@ foreach($entities as $business) {
 
     $dto_parser = new dto_parser();
     $dto_body = $dto_parser->generate($business);
-    #echo $dto_body; die();
+    #echo $dto_body;
 
     $business_parser = new business_parser();
     $business_body = $business_parser->generate($business);
@@ -82,10 +82,12 @@ foreach($entities as $business) {
 
     $orm_parser = new orm_parser();
     $orm_body = $orm_parser->generate($business);
-    echo $orm_body; die();
+    #echo $orm_body; die();
 
     $angular_parser = new angular_parser();
     $app_js = $angular_parser->angular_app_js($business);
+    echo $app_js; die();
+
     $routes_js = $angular_parser->angular_routes_js($business);
     $controller = $angular_parser->angular_controller_js($business);
     $service_js = $angular_parser->angular_service_js($business);

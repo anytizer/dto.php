@@ -1,20 +1,26 @@
 <?php
 namespace parsers;
+use generators\businessifier;
 use setups\business_entity;
-use generators\bodyfier;
 use generators\template_reader;
 
 class business_parser implements parser
 {
-    public function generate(business_entity $business)
+    public function generate(business_entity $business): string
+    {
+        return $this->businessify($business);
+    }
+
+    private function businessify(business_entity $business)
     {
         $template_reader = new template_reader();
         $method_body = $template_reader->read("libraries/business/class.template_business.inc.php"); // @todo replace with orm
 
         $methods = $business->methods_list();
+        //print_r($methods); die();
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "businessify"), $methods);
+        $businessifier = new businessifier();
+        $methods = array_map(array($businessifier, "generate"), $methods);
         $replaces = array(
             "#__CLASSNAME__" => $business->class_name(),
             "#__MODEL_NAME__" => $business->table_name(),

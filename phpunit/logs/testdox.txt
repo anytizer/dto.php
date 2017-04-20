@@ -1,0 +1,16 @@
+tests\caser
+ [x] Snake case
+ [x] Psr 4
+ [x] Wordify
+
+tests\namify
+ [x] Namify 1
+ [x] Namify 2
+ [x] Namify 3
+ [x] Namify 4
+ [x] Namify 5 remove prefix
+
+tests\some
+ [x] Namify
+ [ ] Module name
+

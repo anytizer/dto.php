@@ -1,12 +1,8 @@
-php -f business.php
-php -f generate.php
-generate.cmd
+# DTO Generator
 
-
-dto table_name
-
-
-
+ - php -f business.php
+ - php -f generate.php
+ - dto table_name
 
 Generates DTO Classes from SQL Database
 
@@ -21,8 +17,7 @@ File name: class.classname_dto.inc.php
 
 From sql to connection
 from connection to
-	- dtos
+ - DTOs
 
 dto thing_things things
-	- things.sql
-	- 
+  - things.sql

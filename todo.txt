@@ -1,0 +1,54 @@
+OF
+	- entire writeup can be grouped inside the application
+	- bunches of dtos grouped together
+	- eg. treat one defined as a unit
+
+Generate
+	- HTML Menu
+	- HTML Linking
+
+Function return ype support
+	- get last crawled on: date
+
+
+Should read from database rows for the models and htmls.
+
+Use of "global" variables to be discouraged.
+Produce PHP Unit Tests scripts as well.
+non-repeating replacement management for templates and units
+produce html files
+write api endpoints
+do not continue for models without table names.
+do not allow repeated table names
+do not allow repeated model names (managed)
+
+not all models require full crud
+	crud = add, edit, delete, details, lists, flag
+		write only: eg logs
+		read only: eg configs
+		flags: delete, flag, activate, suspended
+
+parameterize
+	add(,,) - to take 2 arguments
+
+do not include flag columns in dto
+synchronized test case and method names - via PSR/Snake Case
+controller file write js has php tags
+
+
+produce all fiels
+produce all fields
+run phpunit tests to pass
+produce endpoint handlers
+see records in the database
+attach the angular js files in the htmls
+add crud into the menus somewhere elese
+do the acl for user groups
+in business assigne, read list of users only from available list
+
+acl, model ==
+https://code.tutsplus.com/tutorials/a-better-login-system--net-3461
+http://stackoverflow.com/questions/32060581/simple-php-mysql-acl-system
+http://www.developer.com/lang/php/creating-a-custom-acl-in-php.html
+for all module, public functions
+	- allow a group?

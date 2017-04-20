@@ -35,10 +35,10 @@ class writer
 
         $file_contents = str_replace("#__CLASSNAME__",      $replacement["__CLASSNAME__"], $file_contents);
         $file_contents = str_replace("#__DETAILS_FIELDS__", implode("\r\n", $replacement["__DETAILS_FIELDS__"]), $file_contents);
-        $file_contents = str_replace("#__ADD_FIELDS__",     implode("\r\n", $replacement["__ADD_FIELDS__"]), $file_contents);
-        $file_contents = str_replace("#__LISTED_ROWS__",    implode("\r\n", $replacement["__LISTED_ROWS__"]), $file_contents);
-        $file_contents = str_replace("#__FLAG_FIELDS__",    implode("\r\n", $replacement["__FLAG_FIELDS__"]), $file_contents);
-        $file_contents = str_replace("#__EDIT_FIELDS__",    implode("\r\n", $replacement["__EDIT_FIELDS__"]), $file_contents);
+        $file_contents = str_replace("#__ADD_FIELDS__",     implode("\r\n", $replacement["__ADD_FIELDS__"]),   $file_contents);
+        $file_contents = str_replace("#__LISTED_ROWS__",    implode("\r\n", $replacement["__LISTED_ROWS__"]),  $file_contents);
+        $file_contents = str_replace("#__FLAG_FIELDS__",    implode("\r\n", $replacement["__FLAG_FIELDS__"]),  $file_contents);
+        $file_contents = str_replace("#__EDIT_FIELDS__",    implode("\r\n", $replacement["__EDIT_FIELDS__"]),  $file_contents);
         $file_contents = str_replace("#__COLUMN_NAMES__",   implode("\r\n", $replacement["__COLUMN_NAMES__"]), $file_contents);
         $file_contents = str_replace("#_COLUMN_HEADS__",    implode("\r\n", $replacement["__COLUMN_HEADS__"]), $file_contents);
 

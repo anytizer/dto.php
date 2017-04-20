@@ -1,16 +1,15 @@
 // routes.js
 "use strict";
 
-var template = function _template(path)
-{
-	var TEMPLATES_URL = "http://localhost/angular/libraries/dto.php/dev/output/public_html/entities";
-	return TEMPLATES_URL+"/"+path+".html";
-};
-
 // #__CLASSNAME__
 #__CLASSNAME__App.config(function($stateProvider, $urlRouterProvider){
 	
-	//
+	var template = function _template(path)
+	{
+		var TEMPLATES_URL = "http://localhost/angular/libraries/dto.php/dev/output/public_html/entities";
+		return TEMPLATES_URL+"/"+path+".html";
+	};
+
 	$urlRouterProvider.otherwise("/");
 
 	$stateProvider

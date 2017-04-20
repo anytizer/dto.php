@@ -11,7 +11,10 @@ namespace generators;
 class caser
 {
     /**
+	 * All lower case, joined with underscore
+	 *
      * eg. zend_mail()
+     * @example a_quick_brown_fox
      *
      * @param string $descriptive_name
      * @return string
@@ -25,7 +28,10 @@ class caser
     }
 
     /**
-     * eg ZendMail()
+	 * All capitals, joined together
+	 *
+     * @example ZendMail()
+     * @example AQuickBrownFox
      *
      * @param string $descriptive_name
      * @return string
@@ -42,6 +48,7 @@ class caser
     }
 
     /**
+     * @example A_Quick_Brown_Fox
      * @todo psr0
      * @todo Underscore separated, eg. Zend_Mail()
      *
@@ -51,9 +58,22 @@ class caser
      */
     public function psr0(string $descriptive_name): string
     {
-        throw new \Exception("Not implemented");
+		throw new \Exception("PSR0 Not implemented properly.");
+		
+		$name = $this->wordify($descriptive_name);
+		$words = explode(" ");
+		$name = implode("_", $words);
+		
+		return $name;
+        
     }
 
+    /**
+     * @example A Quick Brown Fox
+     *
+     * @param string $title
+     * @return string
+     */
     public function wordify($title="")
     {
         $words = preg_split("/[^a-z0-9]/is", $title);
@@ -61,5 +81,35 @@ class caser
         $words = array_map("ucfirst", $words);
 
         return implode(" ", $words);
+    }
+
+    /**
+     * Converts a word into a property name for PHP Class
+	 * @todo Remove the usage and replace with one of the method earlier.
+     *
+     * @param string $name
+     * @param bool $remove_prefix
+     * @param bool $ucfirst
+     * @param string $glue
+     * @return string
+     */
+    public function namify(string $name, bool $remove_prefix, bool $ucfirst, string $glue): string
+    {
+        $words = preg_split("/[\s|\_]/is", strtolower($name));
+        if(count($words) >= 2)
+        {
+            if($remove_prefix===true)
+            {
+                unset($words[0]);
+            }
+
+            if($ucfirst===true)
+            {
+                $words = array_map("ucfirst", $words); // UpperCasedName
+            }
+        }
+
+        $name = implode($glue, $words);
+        return $name;
     }
 }

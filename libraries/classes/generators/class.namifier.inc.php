@@ -14,6 +14,14 @@ class namifier
     {
         $this->caser = new caser();
     }
+
+    public function package_name(string $name): string
+    {
+        # eg. Tailing: measurements ==> Tailoring
+        $name = preg_replace("/\\:.*?$/", "", $name);
+        return $this->caser->wordify($name);
+    }
+
     /**
      * Module name parsing
      *
@@ -23,7 +31,6 @@ class namifier
     public function module_name(string $name): string
     {
         $module_name = ucfirst(strtolower($name));
-
         return $module_name;
     }
 
@@ -35,6 +42,10 @@ class namifier
      */
     public function class_name(string $class_name): string
     {
+        // eg. "water bills: payment" becomes "payment"
+        $class_name = preg_replace("/^(.*?\\:)/is", "", $class_name);
+        $class_name = trim($class_name);
+
         // one
         $class_name = $this->caser->snake_case($class_name);
         //$class_name = $this->caser->psr4($class_name);
@@ -47,6 +58,20 @@ class namifier
         //$class_name = strtolower($class_name);
 
         return $class_name;
+    }
+
+    /**
+     * Gets a column name
+     *
+     * @param string $dto_name
+     * @return string
+     */
+    public function dto_name(string $dto_name): string
+    {
+        $caser = new caser();
+        $dto_name = $caser->wordify($dto_name);
+
+        return $dto_name;
     }
 
     /**
@@ -153,8 +178,8 @@ class namifier
         // date long table
         // define single row
         // return null;
-        $bodyfier = new bodyfier();
-        $column_name = $bodyfier->namify($column_name, false, false, "_");
+        $caser = new caser();
+        $column_name = $caser->snake_case($column_name);
 
         return $column_name;
     }

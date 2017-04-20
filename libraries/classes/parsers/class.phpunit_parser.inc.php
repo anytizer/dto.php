@@ -1,8 +1,8 @@
 <?php
 namespace parsers;
 use setups\business_entity;
-use generators\bodyfier;
 use generators\template_reader;
+use generators\phpunitifier;
 
 class phpunit_parser implements  parser
 {
@@ -16,8 +16,8 @@ class phpunit_parser implements  parser
          *   build body and comments
          *   define return types
          */
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "phpunitTestify"), $business->methods_list());
+        $phpunitifier = new phpunitifier();
+        $methods = array_map(array($phpunitifier, "methodify"), $business->methods_list());
 
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),

@@ -1,4 +1,6 @@
 <?php
+namespace generators;
+
 /**
  * @todo Uses \generators\FIELDS within PDO
  */

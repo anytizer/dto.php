@@ -58,7 +58,7 @@ class spl_include
 		{
 			require_once($file);
 		}
-		#echo "\r\n", $file;
+		#echo "\r\nSeeking: ", $file;
 		
 		/**
 		 * Continue to other handlers in case of failures

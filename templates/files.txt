@@ -1,0 +1,15 @@
+business\class.signup_business.inc.php
+dtos\class.signup_dto.inc.php
+html\js\signup\signup-app.js
+html\js\signup\signup-controller.js
+html\js\signup\signup-routes.js
+html\js\signup\signup-services.js
+html\signup\add.html
+html\signup\details.html
+html\signup\edit.html
+html\signup\flag.html
+html\signup\index.html
+html\signup\list.html
+html\signup\welcome.html
+models\class.signup_model.inc.php
+tests\class.signupTest.inc.php

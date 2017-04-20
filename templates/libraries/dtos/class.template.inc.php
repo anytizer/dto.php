@@ -3,7 +3,8 @@ namespace dtos;
 use dto;
 
 /**
- * DTO #__CLASSNAME__
+ * DTO: #__DTONAME__
+ * Package: #__MODULENAME__
  * From table: #__TABLENAME__
  */
 class #__CLASSNAME___dto extends dto

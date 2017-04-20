@@ -53,6 +53,11 @@ public $ALL = 8;
         return $this;
     }
 
+    public function STAFF(): roles
+    {
+        return $this;
+    }
+
     public function MEMBER(): roles
     {
         return $this;

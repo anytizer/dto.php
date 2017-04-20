@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace tests;
 
-define("__ROOT__", realpath(dirname(__FILE__)."/..")); // self dir
-require_once(__ROOT__."/libraries/classes/backend/class.spl_include.inc.php");
+require_once("../libraries/inc.config.php");
 
 use backend\spl_include;
-use common\validation_rules;
+//use common\validation_rules;
 
-spl_autoload_register(array(new spl_include(__ROOT__."/libraries/classes"), "namespaced_inc_dot"));
+spl_autoload_register(array(new spl_include(__LIBRARIES_DIR__."/classes"), "namespaced_inc_dot"));

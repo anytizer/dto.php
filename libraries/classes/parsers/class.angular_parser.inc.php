@@ -1,8 +1,8 @@
 <?php
 namespace parsers;
-use generators\template_reader;
 use setups\business_entity;
-use generators\bodyfier;
+use generators\template_reader;
+use generators\angularifier;
 
 class angular_parser implements parser
 {
@@ -26,10 +26,10 @@ class angular_parser implements parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/js/app.js");
 
-        $bodyfier = new bodyfier();
-        #$methods = array_map(array($bodyfier, "angular_controller"), $methods);
+        $angularifier = new angularifier();
+        $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
-        # $method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
+        $method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
         $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/app.js");
         return $method_body;

@@ -37,14 +37,16 @@ class dto_parser implements parser
         #print_r($fields); die();
 
         $class_name = $business->class_name();
+        $dto_name = $business->dto_name($class_name);
 
+        $class_body = str_replace("#__DTONAME__",   $dto_name, $class_body);
         $class_body = str_replace("#__CLASSNAME__", $class_name, $class_body);
         $class_body = str_replace("#__TABLENAME__", $table_name, $class_body);
-        $class_body = str_replace("#__FIELDS__", $fields, $class_body);
+        $class_body = str_replace("#__FIELDS__",    $fields, $class_body);
 
         // @todo rename to class.DTONAME_dto.inc.php
-        $template_reader->write($class_body, "libraries/dtos/class.{$business->class_name()}_dto.inc.php");
-        $template_reader->write(file_get_contents("templates/libraries/dtos/class.dto.inc.php"), "libraries/dtos/class.dto.inc.php");
+        #$template_reader->write($class_body, "libraries/dtos/class.{$business->class_name()}_dto.inc.php");
+        #$template_reader->write(file_get_contents("templates/libraries/dtos/class.dto.inc.php"), "libraries/dtos/class.dto.inc.php");
         return $class_body;
     }
 }

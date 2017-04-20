@@ -4,6 +4,7 @@ namespace generators;
 class template_reader
 {
     private $current_template;
+
     /**
      * Reads a template content
      *
@@ -14,7 +15,7 @@ class template_reader
     {
         $this->current_template = $filename;
 
-        $lookup_dir = __LIBRARIES__."/../templates";
+        $lookup_dir = __LIBRARIES_DIR__."/../templates";
         $filename = $lookup_dir."/".$filename; // @todo clean file name patterns
 
         $template = "<?php /** invalid file was read: {$filename} */";
@@ -26,7 +27,13 @@ class template_reader
         return $template;
     }
 
-    // copy to elsewhere
+    /**
+     * Copy source code to elsewhere
+     * Replace source
+     *
+     * @param string $body
+     * @param string $target_file
+     */
     public function write(string $body, string $target_file)
     {
         $writer = new writer();
