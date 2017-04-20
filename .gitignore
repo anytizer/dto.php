@@ -1,8 +1,6 @@
-#
 /dtos/*.php
 /.idea
 /output/
-/*.phar
 /vendor
 docs-output/
-/templates/phpunit/phpunit.phar
+/**/*.phar
