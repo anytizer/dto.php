@@ -19,11 +19,13 @@ class someTest extends TestCase
 
     public function testModuleName()
     {
+		$this->markTestIncomplete();
+
         $module_name = "water bills: payment";
         $expect = "payment";
 
-        #$be = (new business_entity())->business($module_name, "");
-        #$name = $be->class_name();
+        $be = (new business_entity())->business($module_name, "");
+        $name = $be->class_name();
 
         #$this->assertEquals($expect, $name);
     }
