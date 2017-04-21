@@ -1,9 +1,9 @@
 business\class.signup_business.inc.php
 dtos\class.signup_dto.inc.php
-html\js\signup\signup-app.js
-html\js\signup\signup-controller.js
-html\js\signup\signup-routes.js
-html\js\signup\signup-services.js
+html\js\signup\signup-app.js.ts
+html\js\signup\signup-controller.js.ts
+html\js\signup\signup-routes.js.ts
+html\js\signup\signup-services.js.ts
 html\signup\add.html
 html\signup\details.html
 html\signup\edit.html

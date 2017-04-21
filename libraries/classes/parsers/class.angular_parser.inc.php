@@ -10,14 +10,14 @@ class angular_parser implements parser
     public function generate(business_entity $business)
     {
         // controller
-        // app.js
+        // app.js.ts
         // routes
         // service
         // api end point
     }
 
     /**
-     * Append to app.js
+     * Append to app.js.ts
      *
      * @param business_entity $business
      * @return string
@@ -25,19 +25,19 @@ class angular_parser implements parser
     public function angular_app_js(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/app.js");
+        $method_body = $template_reader->read("public_html/entities/js/app.js.ts");
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         $method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/app.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/app.js.ts");
         return $method_body;
     }
 
     /**
-     * Append to routes.js
+     * Append to routes.js.ts
      *
      * @param business_entity $business
      * @return string
@@ -45,14 +45,14 @@ class angular_parser implements parser
     public function angular_routes_js(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/routes.js");
+        $method_body = $template_reader->read("public_html/entities/js/routes.js.ts");
 
         $angularifier = new angularifier();
         #$methods = array_map(array($angularifier, "angular_router"), $methods);
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         #$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/routes.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/routes.js.ts");
         return $method_body;
     }
 
@@ -65,19 +65,19 @@ class angular_parser implements parser
     public function angular_controller_js(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/controller.js");
+        $method_body = $template_reader->read("public_html/entities/js/controller.js.ts");
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_controller"), $methods);
 
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
-        //$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
+        $method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/controller.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/controller.js.ts");
         return $method_body;
     }
     /**
-     * Append to routes.js
+     * Append to routes.js.ts
      *
      * @param business_entity $business
      * @return string
@@ -85,14 +85,14 @@ class angular_parser implements parser
     public function angular_service_js(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/services.js");
+        $method_body = $template_reader->read("public_html/entities/js/services.js.ts");
 
         $angularifier = new angularifier();
         $methods = array_map(array($bodyfier, "angular_service"), $methods);
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         #$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/services.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/services.js.ts");
         return $method_body;
     }
 }

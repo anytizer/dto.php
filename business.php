@@ -57,10 +57,10 @@ foreach($entities as $business) {
     # CLI Options
     # business dto user
     # business business user -- entity
-    # business app.js user
-    # business routes.js user
-    # business controller.js user
-    # business services.js user
+    # business app.js.ts user
+    # business routes.js.ts user
+    # business controller.js.ts user
+    # business services.js.ts user
     # business endpoints user
     # business orm user -- business
 
@@ -89,7 +89,7 @@ foreach($entities as $business) {
     #echo $app_js; die();
 
     $routes_js = $angular_parser->angular_routes_js($business);
-	echo $routes_js; die();
+	#echo $routes_js; die();
 	
     $controller_js = $angular_parser->angular_controller_js($business);
     echo $controller_js; die();
