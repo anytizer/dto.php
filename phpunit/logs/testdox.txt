@@ -1,6 +1,7 @@
 tests\caser
  [x] Snake case
  [x] Psr 4
+ [x] Psr 0
  [x] Wordify
 
 tests\namify

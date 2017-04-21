@@ -1,5 +1,6 @@
 <?php
 namespace parsers;
+use generators\bodyfier;
 use setups\business_entity;
 use generators\template_reader;
 use generators\angularifier;
@@ -46,8 +47,8 @@ class angular_parser implements parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/js/routes.js");
 
-        $bodyfier = new bodyfier();
-        #$methods = array_map(array($bodyfier, "angular_controller"), $methods);
+        $angularifier = new angularifier();
+        #$methods = array_map(array($angularifier, "angular_router"), $methods);
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         #$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
@@ -66,8 +67,8 @@ class angular_parser implements parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/js/controller.js");
 
-        #$bodyfier = new bodyfier();
-        #$methods = array_map(array($bodyfier, "angular_controller"), $methods);
+        $angularifier = new angularifier();
+        $methods = array_map(array($angularifier, "angular_controller"), $methods);
 
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         //$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
@@ -86,8 +87,8 @@ class angular_parser implements parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/js/services.js");
 
-        $bodyfier = new bodyfier();
-        #$methods = array_map(array($bodyfier, "angular_controller"), $methods);
+        $angularifier = new angularifier();
+        $methods = array_map(array($bodyfier, "angular_service"), $methods);
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         #$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 

@@ -58,14 +58,11 @@ class caser
      */
     public function psr0(string $descriptive_name): string
     {
-		throw new \Exception("PSR0 Not implemented properly.");
-		
-		$name = $this->wordify($descriptive_name);
-		$words = explode(" ");
-		$name = implode("_", $words);
-		
+        $name = $this->wordify($descriptive_name); // works
+        $words = explode(" ", $name); // works
+
+        $name = implode("_", $words);
 		return $name;
-        
     }
 
     /**
@@ -76,11 +73,15 @@ class caser
      */
     public function wordify($title="")
     {
+        $title = strtolower($title);
+
         $words = preg_split("/[^a-z0-9]/is", $title);
         $words = array_map("trim", $words);
         $words = array_map("ucfirst", $words);
+        $words = array_filter($words);
 
-        return implode(" ", $words);
+        $name = implode(" ", $words);
+        return $name;
     }
 
     /**
@@ -95,7 +96,7 @@ class caser
      */
     public function namify(string $name, bool $remove_prefix, bool $ucfirst, string $glue): string
     {
-        $words = preg_split("/[\s|\_]/is", strtolower($name));
+        $words = preg_split("/[\\s|\\_]/is", strtolower($name));
         if(count($words) >= 2)
         {
             if($remove_prefix===true)

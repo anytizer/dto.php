@@ -86,11 +86,16 @@ foreach($entities as $business) {
 
     $angular_parser = new angular_parser();
     $app_js = $angular_parser->angular_app_js($business);
-    echo $app_js; die();
+    #echo $app_js; die();
 
     $routes_js = $angular_parser->angular_routes_js($business);
-    $controller = $angular_parser->angular_controller_js($business);
+	echo $routes_js; die();
+	
+    $controller_js = $angular_parser->angular_controller_js($business);
+    echo $controller_js; die();
+
     $service_js = $angular_parser->angular_service_js($business);
+    echo $service_js; die();
     #echo $app_js;
     #echo $routes_js;
     # echo $controller;
