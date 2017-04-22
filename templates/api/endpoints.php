@@ -12,6 +12,9 @@ class endpoints extends endpoint
     public function __construct()
     {
         $this->#__CLASSNAME__ = new #__CLASSNAME__();
+
+        $this->role = new role();
+        $this->APIUser = new APIUser();
     }
 
     #__PUBLIC_METHODS__

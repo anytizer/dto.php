@@ -9,16 +9,12 @@ $entities[] = (new business_entity())
     ->methods(array(
         "donate (amount)",
         "my donations (project)",
-        "total donations (project)",
+        "donors",
+        "projects",
+        "clause",
+        "signup",
+        "login",
+        "show",
+        "view balance",
+        "view total collected",
     ));
-// donors
-// projects
-// clause
-// fees
-// show public
-
-// signup
-// login
-// donate
-// view balance
-// view total collected

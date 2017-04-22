@@ -24,10 +24,7 @@ class endpoints extends generator implements bodyfier
      */
     private function {$method->method_name}(): bool
     {
-        \$role = new role();
-        \$APIUser = new APIUser();
-        
-        if(\$user->can(\$role->method(\"{$method->method_name}\")))
+        if(\$this->APIUser->can(\$this->role->method(\"{$method->method_name}\")))
         {
             \$this->#__CLASSNAME__->{$method->method_name}($method->parameters);
         }

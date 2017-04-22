@@ -9,11 +9,11 @@ $entities[] = (new business_entity())
     ->methods(array(
         "browse projects",
         "search projects(parameters)",
-        #"reserve offer(user, offer)",
-        #"delete reserved(offer)",
-        #"modify reserved(offer)",
-        #"#buy offer",
-        #"commit offer",
-        #"modify committed offer",
-        #"cancel committed offer",
+        "reserve offer(user, offer)",
+        "delete reserved(offer)",
+        "modify reserved(offer)",
+        "#buy offer",
+        "commit offer",
+        "modify committed offer",
+        "cancel committed offer",
     ));
