@@ -1,18 +1,18 @@
 <?php
 namespace generators;
+use setups\method_descriptor;
 
 class htmlifier implements bodyfier
 {
     public function generate(): string
     {
-        $method = new method_descriptor();
-
-        $this->htmlListify($method);
-        $this->htmlDetails($method);
-        $this->htmlEdit($method);
-        $this->htmlFlag($method);
-        $this->htmlDelete($method);
-        $this->htmlAdd($method);
+        //$method = new method_descriptor();
+        //$this->htmlListify($method);
+        //$this->htmlDetails($method);
+        //$this->htmlEdit($method);
+        //$this->htmlFlag($method);
+        //$this->htmlDelete($method);
+        //$this->htmlAdd($method);
 
         return "";
     }
@@ -23,7 +23,7 @@ class htmlifier implements bodyfier
      * @param method_descriptor $method
      * @return string
      */
-    private function htmlListify(method_descriptor $method): string
+    public function htmlListify(method_descriptor $method): string
     {
         // #__LISTED_ROWS__
         $method_body = "
@@ -41,7 +41,7 @@ class htmlifier implements bodyfier
      * @param method_descriptor $method
      * @return string
      */
-    private function htmlDetails(method_descriptor $method): string
+    public function htmlDetails(method_descriptor $method): string
     {
         $method_body = "
 <div>
@@ -58,7 +58,7 @@ class htmlifier implements bodyfier
      * @param method_descriptor $method
      * @return string
      */
-    private function htmlEdit(method_descriptor $method): string
+    public function htmlEdit(method_descriptor $method): string
     {
         $method_body = "
 <div>
@@ -75,7 +75,7 @@ class htmlifier implements bodyfier
      * @param method_descriptor $method
      * @return string
      */
-    private function htmlFlag(method_descriptor $method): string
+    public function htmlFlag(method_descriptor $method): string
     {
         $method_body = "
 Flagged
@@ -89,7 +89,7 @@ Flagged
      * @param method_descriptor $method
      * @return string
      */
-    private function htmlDelete(method_descriptor $method): string
+    public function htmlDelete(method_descriptor $method): string
     {
         $method_body = "
 Deleted
@@ -103,7 +103,7 @@ Deleted
      * @param method_descriptor $method
      * @return string
      */
-    private function htmlAdd(method_descriptor $method): string
+    public function htmlAdd(method_descriptor $method): string
     {
         $method_body = "";
         return $method_body;

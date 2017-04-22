@@ -1,6 +1,5 @@
 <?php
 namespace parsers;
-use generators\bodyfier;
 use setups\business_entity;
 use generators\template_reader;
 use generators\angularifier;

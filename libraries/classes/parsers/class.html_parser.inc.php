@@ -1,7 +1,7 @@
 <?php
 namespace parsers;
 use setups\business_entity;
-use generators\bodyfier;
+use generators\htmlifier;
 use generators\template_reader;
 
 class html_parser implements  parser
@@ -15,8 +15,8 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/list.html");
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "htmlListify"), $business->methods_list());
+        $htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlListify"), $business->methods_list());
 
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),
@@ -41,8 +41,8 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/details.html");
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "htmlDetails"), $business->methods_list());
+        $htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlDetails"), $business->methods_list());
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
@@ -61,8 +61,8 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/edit.html");
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "htmlEdit"), $business->methods_list());
+        $htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlEdit"), $business->methods_list());
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
@@ -81,8 +81,8 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/flag.html");
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "htmlFlag"), $business->methods_list());
+        $htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlFlag"), $business->methods_list());
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
@@ -101,8 +101,8 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/delete.html");
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "htmlDelete"), $business->methods_list());
+        $htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlDelete"), $business->methods_list());
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
@@ -121,8 +121,8 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/add.html");
 
-        $bodyfier = new bodyfier();
-        $methods = array_map(array($bodyfier, "htmlAdd"), $business->methods_list());
+        $htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlAdd"), $business->methods_list());
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),
             "#__ADD_FIELDS__" => implode("\r\n\t", $methods),

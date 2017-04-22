@@ -2,6 +2,7 @@
 namespace business;
 use setups\business_entity;
 use setups\roles;
+
 $entities[] = (new business_entity())
     ->business("Users", "Token Manager", "tokens")
     ->user((new roles())->ALL())

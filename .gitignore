@@ -1,6 +1,7 @@
-/dtos/*.php
+src/dtos/*.php
+src/.idea
+src/output/
+src/vendor
+src/docs-output/
+src/**/*.phar
 /.idea
-/output/
-/vendor
-docs-output/
-/**/*.phar

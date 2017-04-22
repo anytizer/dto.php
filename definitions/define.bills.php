@@ -17,6 +17,15 @@ $entities[] = (new business_entity())
     ));
 
 $entities[] = (new business_entity())
+    ->business("Water Bills", "Customer", "water_customers")
+    ->user((new roles())->ALL())
+    ->methods(array(
+        "create customer",
+        "create bill",
+        "verify bill",
+    ));
+
+$entities[] = (new business_entity())
     ->business("Water bills", "calculator", "water_bills")
     ->user((new roles())->ALL())
     ->methods(array(

@@ -95,7 +95,7 @@ foreach($entities as $business) {
     #echo $controller_js; die();
 
     $service_js = $angular_parser->angular_service_js($business);
-    # echo $service_js; die();
+    #echo $service_js; die();
     # echo $app_js;
     # echo $routes_js;
     # echo $controller;
@@ -103,11 +103,23 @@ foreach($entities as $business) {
 
     $html_parser = new html_parser();
     $html_list = $html_parser->generate_list($business);
+    #echo $html_list; die();
+
     $html_details = $html_parser->generate_details($business);
+    #echo $html_details; die();
+
     $html_edit = $html_parser->generate_edit($business);
+    #echo $html_edit; die();
+
     $html_flag = $html_parser->generate_flag($business);
+    #echo $html_edit; die();
+
     $html_delete = $html_parser->generate_delete($business);
+    #echo $html_edit; die();
+
     $html_add = $html_parser->generate_add($business);
+    echo $html_edit; die();
+
     #echo $html_list;
     #echo $html_details;
     #echo $html_edit;
