@@ -21,6 +21,7 @@ class phpunit_parser implements  parser
 
         $replace = array(
             "#__CLASSNAME__" => $business->class_name(),
+            "#__MODULENAME__" => $business->module_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);
@@ -37,12 +38,20 @@ class phpunit_parser implements  parser
         // write endpoint tests
 
         # Copy other flat files
+        # @todo Repeated in each loops
         copy("templates/phpunit/bootstrap.php", "output/phpunit/bootstrap.php");
         copy("templates/phpunit/phpunit.cmd", "output/phpunit/phpunit.cmd");
         copy("templates/phpunit/phpunit.xml", "output/phpunit/phpunit.xml");
         copy("templates/phpunit/readme.txt", "output/phpunit/readme.txt");
 
+        /**
+         * Create target path
+         */
         !is_dir("output/libraries/backend/") && mkdir("output/libraries/backend/", true, 0777);
+
+        /**
+         * Copy template file
+         */
         copy("templates/libraries/backend/class.spl_include.inc.php", "output/libraries/backend/class.spl_include.inc.php");
 
         return $method_body;

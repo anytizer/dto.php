@@ -2,6 +2,7 @@
 namespace setups;
 use generators\namifier;
 use generators\caser;
+use generators\caser;
 
 class business_entity
 {
@@ -126,6 +127,12 @@ class business_entity
     public function class_name(): string
     {
         return $this->class_name;
+    }
+
+    public function module_name(): string
+    {
+        $caser = new caser();
+        return $caser->psr4();
     }
 
     /**

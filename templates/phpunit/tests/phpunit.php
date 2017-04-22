@@ -5,6 +5,7 @@ use \PHPUnit\Framework\TestCase;
 
 /**
  * PHPUnit test case for business model: #__CLASSNAME___business
+ * Testing Module: #__MODULENAME__
  */
 class #__CLASSNAME__Test extends TestCase
 {
