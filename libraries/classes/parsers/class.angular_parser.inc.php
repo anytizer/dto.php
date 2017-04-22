@@ -48,7 +48,7 @@ class angular_parser implements parser
         $method_body = $template_reader->read("public_html/entities/js/routes.js.ts");
 
         $angularifier = new angularifier();
-        #$methods = array_map(array($angularifier, "angular_router"), $methods);
+        $methods = array_map(array($angularifier, "angular_router"), $business->methods_list());
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         #$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
@@ -68,7 +68,7 @@ class angular_parser implements parser
         $method_body = $template_reader->read("public_html/entities/js/controller.js.ts");
 
         $angularifier = new angularifier();
-        $methods = array_map(array($angularifier, "angular_controller"), $methods);
+        $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
 
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         $method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
@@ -88,7 +88,7 @@ class angular_parser implements parser
         $method_body = $template_reader->read("public_html/entities/js/services.js.ts");
 
         $angularifier = new angularifier();
-        $methods = array_map(array($bodyfier, "angular_service"), $methods);
+        $methods = array_map(array($angularifier, "angular_service"), $business->methods_list());
         $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
         #$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 

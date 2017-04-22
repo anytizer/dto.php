@@ -13,7 +13,7 @@ class #__CLASSNAME___business extends business
     public function __construct()
     {
         parent::__construct();
-        //$this->__CLASSNAME__ = new #__CLASSNAME___orm();
+        //$this->#__CLASSNAME__ = new #__CLASSNAME___orm();
     }
 
     #__PUBLIC_METHODS__

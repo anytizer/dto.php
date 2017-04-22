@@ -92,12 +92,12 @@ foreach($entities as $business) {
 	#echo $routes_js; die();
 	
     $controller_js = $angular_parser->angular_controller_js($business);
-    echo $controller_js; die();
+    #echo $controller_js; die();
 
     $service_js = $angular_parser->angular_service_js($business);
-    echo $service_js; die();
-    #echo $app_js;
-    #echo $routes_js;
+    # echo $service_js; die();
+    # echo $app_js;
+    # echo $routes_js;
     # echo $controller;
     # echo $service_js;
 

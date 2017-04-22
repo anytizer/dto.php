@@ -13,6 +13,16 @@ class angularifier implements  bodyfier {
         //$this->angular_controller();
     }
 
+    public function angular_router(method_descriptor $method): string
+    {
+        return "";
+    }
+
+    public function angular_service(method_descriptor $method): string
+    {
+        return "";
+    }
+
     public function angular_controller(method_descriptor $method): string
     {
         #$method = $this->caser->snake_case($method);
