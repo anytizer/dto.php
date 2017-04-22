@@ -1,4 +1,4 @@
 @echo off
-cd output
+cd output/phpunit
 call phpunit
 pause

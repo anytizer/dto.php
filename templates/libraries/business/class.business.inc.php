@@ -1,9 +1,7 @@
 <?php
 namespace business;
 
-class business
+abstract class business
 {
-    public function __construct()
-    {
-    }
+    // interface
 }

@@ -34,7 +34,7 @@ foreach($setups as $setup)
 // who came in?
 // who treated?
 // why came in?
-// payble item, payble amount, pay now
+// payable item, payable amount, pay now
 // notify
 
 // api server side
@@ -89,8 +89,8 @@ foreach($entities as $business) {
     #echo $app_js; die();
 
     $routes_js = $angular_parser->angular_routes_js($business);
-	#echo $routes_js; die();
-	
+    #echo $routes_js; die();
+
     $controller_js = $angular_parser->angular_controller_js($business);
     #echo $controller_js; die();
 
@@ -118,7 +118,7 @@ foreach($entities as $business) {
     #echo $html_edit; die();
 
     $html_add = $html_parser->generate_add($business);
-    echo $html_edit; die();
+    #echo $html_edit; die();
 
     #echo $html_list;
     #echo $html_details;

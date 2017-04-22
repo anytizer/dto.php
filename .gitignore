@@ -5,3 +5,5 @@ src/vendor
 src/docs-output/
 src/**/*.phar
 /.idea
+/output
+/docs-output

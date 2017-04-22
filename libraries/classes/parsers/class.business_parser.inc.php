@@ -20,7 +20,7 @@ class business_parser implements parser
         //print_r($methods); die();
 
         $businessifier = new businessifier();
-        $methods = array_map(array($businessifier, "generate"), $methods);
+        $methods = array_map(array($businessifier, "businessify"), $methods);
         $replaces = array(
             "#__CLASSNAME__" => $business->class_name(),
             "#__MODEL_NAME__" => $business->table_name(),
@@ -32,6 +32,7 @@ class business_parser implements parser
         // @todo rename patches with entity controller and business
         $template_reader->write($method_body, "libraries/business/class.{$business->class_name()}_business.inc.php");
         $template_reader->write(file_get_contents("templates/libraries/business/class.business.inc.php"), "libraries/business/class.business.inc.php");
+
         return $method_body;
     }
 }

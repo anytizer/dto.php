@@ -15,7 +15,8 @@ class #__CLASSNAME__Test extends TestCase
 
 	public function setup()
 	{
-		$this->#__CLASSNAME___business = new #__CLASSNAME___business();
+	    $this->markTestIncomplete();
+		//$this->#__CLASSNAME___business = new #__CLASSNAME___business();
 	}
 
 	#__PUBLIC_METHODS__
