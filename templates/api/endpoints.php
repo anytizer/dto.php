@@ -6,7 +6,7 @@ use models\#__CLASS_NAME__;
 /**
  * Endponints for landing #__CLASS_NAME__
  */
-class #__CLASS_NAME__endpoints extends endpoint
+class #__CLASS_NAME__Endpoints extends endpoint
 {
     private $#__CLASS_NAME__;
     public function __construct()

@@ -134,4 +134,31 @@ class html_parser implements  parser
         $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/add.html");
         return $method_body;
     }
+
+    /**
+     * Embed HTML pieces
+     *
+     * @param business_entity $business
+     * @return string
+     */
+    public function generate_html(business_entity $business)
+    {
+        $class = $business->class_name();
+        $method_body = '
+<script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-app.js"></script>
+<script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-routes.js"></script>
+<script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-services.js"></script>
+<script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-controllers.js"></script>
+';
+        $replace = array(
+            "#__CLASS_NAME__" => $business->class_name(),
+        );
+        $from = array_keys($replace);
+        $to = array_values($replace);
+        $method_body = str_replace($from, $to, $method_body);
+
+        $template_reader = new template_reader();
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/welcome.html");
+        return $method_body;
+    }
 }

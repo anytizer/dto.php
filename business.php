@@ -9,6 +9,8 @@ use parsers\html_parser;
 use parsers\endpoints_parser;
 use parsers\orm_parser;
 
+define("__OUTPUT__", "d:/htdocs/output");
+
 // CRUD: Create, Read, Update, Delete
 // MADS: Modify, Add, Delete, Show
 // BREAD: Browse, Read, Edit, Add, Delete
@@ -120,6 +122,9 @@ foreach($entities as $business) {
     #echo $html_edit; die();
 
     $html_add = $html_parser->generate_add($business);
+    #echo $html_edit; die();
+
+    $html_add = $html_parser->generate_html($business);
     #echo $html_edit; die();
 
     #echo $html_list;

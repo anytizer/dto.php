@@ -80,6 +80,12 @@ class business_entity
     {
         $this->users[] = $role;
 
+        # Register this
+        $guid = \backend\guid::NewGuid();
+        $sql="INSERT IGNORE INTO acl_objects VALUES ('{$guid}', '{$this->package}');\r\n";
+        file_put_contents("d:/acl.log", $sql, FILE_APPEND);
+        # SELECT UUID();
+
         return $this;
     }
 
@@ -91,6 +97,13 @@ class business_entity
     {
         $namifier = new namifier();
         $this->methods = array_map(array($namifier, "method"), $methods);
+
+        # save acl
+        foreach($methods as $method)
+        {
+            $sql="INSERT IGNORE INTO acl_objects_methods VALUES (UUID(), '', '{$method}');\r\n";
+            file_put_contents("d:/acl.log", $sql, FILE_APPEND);
+        }
 
         return $this;
     }

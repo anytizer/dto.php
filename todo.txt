@@ -1,3 +1,6 @@
+Common output folder from all write template calls
+
+Register role, method to the database at the time of generation
 Generate endpoints inside proper namespace
 Geberate test units inside proper namespace
 Generate API Classes inside proper namespace

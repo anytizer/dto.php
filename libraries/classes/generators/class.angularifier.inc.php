@@ -20,7 +20,7 @@ class angularifier implements  bodyfier {
 
         return "
         .state(\"#__CLASS_NAME__.{$method}\", {
-			url: \"/.{$method}\",
+			url: \"/{$method}\",
 			templateUrl: template(\"queue/templates/{$method}\"),
 			controller: \"#__CLASS_NAME__{$method}Controller\",
 		})

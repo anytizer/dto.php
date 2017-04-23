@@ -39,6 +39,7 @@ class template_reader
         $writer = new writer();
         // output/{$this->current_template}
         // $target_file = "output/".str_replace("entity", $this->class, $this->current_template);
-        $writer->write_scripts($body, "output/{$target_file}");
+        #$writer->write_scripts($body, "D:/htdocs/o/{$target_file}"); // works
+        $writer->write_scripts(__OUTPUT__."/{$target_file}", $body); // works
     }
 }

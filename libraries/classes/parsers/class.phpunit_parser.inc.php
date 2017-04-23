@@ -53,20 +53,20 @@ class phpunit_parser implements  parser
 
         # Copy other flat files
         # @todo Repeated in each loops
-        copy("templates/phpunit/bootstrap.php", "output/phpunit/bootstrap.php");
-        copy("templates/phpunit/phpunit.cmd", "output/phpunit/phpunit.cmd");
-        copy("templates/phpunit/phpunit.xml", "output/phpunit/phpunit.xml");
-        copy("templates/phpunit/readme.txt", "output/phpunit/readme.txt");
+        $template_reader->write($template_reader->read("templates/phpunit/bootstrap.php"), "phpunit/bootstrap.php");
+        $template_reader->write($template_reader->read("templates/phpunit/phpunit.cmd"), "phpunit/phpunit.cmd");
+        $template_reader->write($template_reader->read("templates/phpunit/phpunit.xml"), "phpunit/phpunit.xml");
+        $template_reader->write($template_reader->read("templates/phpunit/readme.txt"), "phpunit/readme.txt");
 
         /**
          * Create target path
          */
-        !is_dir("output/libraries/backend/") && mkdir("output/libraries/backend/", true, 0777);
+        !is_dir("output/libraries/backend/") && mkdir("libraries/backend/", true, 0777);
 
         /**
          * Copy template file
          */
-        copy("templates/libraries/backend/class.spl_include.inc.php", "output/libraries/backend/class.spl_include.inc.php");
+        $template_reader->write(file_get_contents("templates/libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
 
         return $method_body;
     }

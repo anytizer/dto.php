@@ -54,16 +54,15 @@ class writer
      * @param $dir_path
      * @return bool
      */
-    function write_scripts($body, $dir_path): bool
+    function write_scripts($dir_path, $body): bool
     {
         $dir = dirname($dir_path);
         $file = basename($dir_path);
         $this->mkdir_target($dir);
 
-        file_put_contents("{$dir}/{$file}", $body);
+        $total = file_put_contents("{$dir}/{$file}", $body);
         #echo $body;
-        echo "\r\n", $dir_path;
-
-        return true;
+        #echo "\r\n", $dir_path;
+        return $total > 0;
     }
 }
