@@ -118,6 +118,7 @@ class namifier
         if(preg_match("/\\((.*?)\\)/", $name, $matches))
         {
             $parameters = preg_split("/,/", $matches[1]);
+            $parameters = array_map("trim", $parameters);
             $parameters = array_map(array($this, "variable"), $parameters);
         }
 

@@ -5,15 +5,25 @@ use generators\caser;
 
 class business_entity
 {
+    /**
+     * @var string
+     */
     private $package;
-    #private $module;
-    private $table_name;
+
+    /**
+     * @var string
+     */
     private $class_name;
 
     /**
      * @var method_descriptor[]
      */
     private $methods;
+
+    /**
+     * @var string
+     */
+    private $table_name;
 
     /**
      * @var array User roles permitted
