@@ -32,7 +32,7 @@ class orm_parser implements parser
         );
         $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
 
-        $template_reader->write($method_body, "libraries/orm/class.{$business->class_name()}_orm.inc.php");
+        $template_reader->write($method_body, "libraries/orm/{$business->package_name()}/class.{$business->class_name()}_orm.inc.php");
         $template_reader->write(file_get_contents("templates/libraries/orm/class.orm.inc.php"), "libraries/orm/class.orm.inc.php");
         return $method_body;
     }

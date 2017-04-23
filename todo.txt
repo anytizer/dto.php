@@ -1,3 +1,6 @@
+Generate endpoints inside proper namespace
+Geberate test units inside proper namespace
+Generate API Classes inside proper namespace
 Break into packages, modules, functions for Unit Tests
 Unit tests can repeat by their class names.
 PHPUnit methods and class methods appear as interfaces only

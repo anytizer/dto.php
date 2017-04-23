@@ -30,7 +30,7 @@ class business_parser implements parser
         $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
 
         // @todo rename patches with entity controller and business
-        $template_reader->write($method_body, "libraries/business/class.{$business->class_name()}_business.inc.php");
+        $template_reader->write($method_body, "libraries/business/{$business->package_name()}/class.{$business->class_name()}_business.inc.php");
         $template_reader->write(file_get_contents("templates/libraries/business/class.business.inc.php"), "libraries/business/class.business.inc.php");
 
         return $method_body;

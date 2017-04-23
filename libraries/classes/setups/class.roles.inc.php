@@ -71,6 +71,9 @@ public $ALL = 8;
 
     public function ALL(): roles
     {
+        // publlic
+        // visitor
+        // non-logged in user
         return $this;
     }
 }

@@ -32,7 +32,7 @@ class endpoints_parser implements  parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "api/endpoints/class.{$business->class_name()}.inc.php");
+        $template_reader->write($method_body, "api/endpoints/{$business->package_name()}/class.{$business->class_name()}.inc.php");
         return $method_body;
     }
 }
