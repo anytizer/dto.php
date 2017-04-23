@@ -21,7 +21,7 @@ class phpunit_parser implements  parser
 
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__MODULE_NAME__" => $business->module_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);
@@ -32,10 +32,21 @@ class phpunit_parser implements  parser
         #print_r($replace); die();
         #die($method_body);
 
-        $template_reader->write($method_body, "phpunit/tests/business/{$business->class_name()}Test.php");
+        /**
+         * @todo Create API Tests
+         */
+        // {$business->class_name()}/
+        $template_reader->write($method_body, "phpunit/tests/{$business->package_name()}/{$business->class_name()}/{$business->class_name()}Test.php");
+        # $template_reader->write($method_body, "phpunit/tests/{$business->class_name()/{$business->class_name()}/{$business->class_name()}APITest.php");
         // write: business test
         // write: api unit tests
         // write endpoint tests
+
+        foreach($methods as $method)
+        {
+            // Individual function call on a different file
+            #$template_reader->write($method_body, "phpunit/tests/{$business->package_name()}/{$business->class_name()}/{$business->class_name()}/{$function}Test.php");
+        }
 
         # Copy other flat files
         # @todo Repeated in each loops

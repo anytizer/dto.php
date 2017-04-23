@@ -21,10 +21,10 @@ class someTest extends TestCase
     {
 		$this->markTestIncomplete();
 
-        $module_name = "water bills: payment";
+        $class_name = "water bills: payment";
         $expect = "payment";
 
-        $be = (new business_entity())->business($module_name, "");
+        $be = (new business_entity())->business($class_name, "");
         $name = $be->class_name();
 
         #$this->assertEquals($expect, $name);

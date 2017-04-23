@@ -26,12 +26,12 @@ $setups = glob("definitions/define.*.php");
 #$setups = array("definitions/define.messagequeue.php");
 foreach($setups as $setup)
 {
-#    require_once($setup);
+    require_once($setup);
 }
 #print_r($setups);
 #print_r($entities); #die();
 #require_once("definitions/define.offers.php");
-require_once("definitions/define.messagequeue.php");
+#require_once("definitions/define.messagequeue.php");
 
 // who came in?
 // who treated?
@@ -68,7 +68,7 @@ foreach($entities as $business) {
 
     $dto_parser = new dto_parser();
     $dto_body = $dto_parser->generate($business);
-    #echo $dto_body;
+    #echo $dto_body; die();
 
     $business_parser = new business_parser();
     $business_body = $business_parser->generate($business);

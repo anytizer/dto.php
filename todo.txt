@@ -1,3 +1,7 @@
+Break into packages, modules, functions for Unit Tests
+Unit tests can repeat by their class names.
+
+
 OF
 	- entire writeup can be grouped inside the application
 	- bunches of dtos grouped together

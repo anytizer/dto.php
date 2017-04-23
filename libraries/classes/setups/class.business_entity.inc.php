@@ -6,7 +6,7 @@ use generators\caser;
 class business_entity
 {
     private $package;
-    private $module;
+    #private $module;
     private $table_name;
     private $class_name;
 
@@ -23,7 +23,7 @@ class business_entity
     public function __construct()
     {
         $this->package = "";
-        $this->module = "";
+       # $this->module = "";
         $this->table_name = "";
         $this->class_name = "";
         $this->methods = array();
@@ -37,16 +37,17 @@ class business_entity
     /**
      * @todo The added business has to be unique
      *
-     * @param string $module_name
+     * @param string $package_name
+     * @param string $class_name
      * @param string $table_name
      * @return business_entity
      */
-    public function business(string $package_name, string $module_name, string $table_name): business_entity
+    public function business(string $package_name, string $class_name, string $table_name): business_entity
     {
         $namifier = new namifier();
         $this->package = $namifier->package_name($package_name);
-        $this->module = $namifier->module_name($module_name);
-        $this->class_name = $namifier->class_name($module_name);
+        #$this->module = $namifier->class_name($class_name);
+        $this->class_name = $namifier->class_name($class_name);
 
         /**
          * Check validity for table existing
@@ -128,12 +129,21 @@ class business_entity
         return $this->class_name;
     }
 
-    public function module_name(): string
+    /*
+    public function class_name(): string
     {
         $caser = new caser();
         $module = $caser->psr4($this->class_name);
 
         return $module;
+    }*/
+
+    public function package_name(): string
+    {
+        $caser = new caser();
+        $package = $caser->psr4($this->package);
+
+        return $package;
     }
 
     /**

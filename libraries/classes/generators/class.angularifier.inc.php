@@ -19,10 +19,10 @@ class angularifier implements  bodyfier {
         $method = $caser->psr4($method->method_name);
 
         return "
-        .state(\"#__MODULE_NAME__.{$method}\", {
-			url: \"/edit\",
+        .state(\"#__CLASS_NAME__.{$method}\", {
+			url: \"/.{$method}\",
 			templateUrl: template(\"queue/templates/{$method}\"),
-			controller: \"#__MODULE_NAME__{$method}Controller\",
+			controller: \"#__CLASS_NAME__{$method}Controller\",
 		})
 ";
     }
@@ -33,7 +33,7 @@ class angularifier implements  bodyfier {
         $method = $caser->psr4($method->method_name);
         return "
                 \"{$method}\": function (record) {
-                    return fetch(\"#__MODULE_NAME__/{$method}\", record);
+                    return fetch(\"#__CLASS_NAME__/{$method}\", record);
                 },
 ";
     }

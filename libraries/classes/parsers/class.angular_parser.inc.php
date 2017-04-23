@@ -37,7 +37,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/app.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/{$business->class_name()}-app.js");
         return $method_body;
     }
 
@@ -57,7 +57,7 @@ class angular_parser implements parser
 
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__MODULE_NAME__" => $business->module_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);
@@ -65,7 +65,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/routes.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/{$business->class_name()}-routes.js");
         return $method_body;
     }
 
@@ -85,7 +85,7 @@ class angular_parser implements parser
 
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__MODULE_NAME__" => $business->module_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);
@@ -93,7 +93,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/controller.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/{$business->class_name()}-controller.js");
         return $method_body;
     }
 
@@ -115,7 +115,7 @@ class angular_parser implements parser
 
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__MODULE_NAME__" => $business->module_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);
@@ -123,7 +123,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/services.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/{$business->class_name()}-services.js");
         return $method_body;
     }
 }

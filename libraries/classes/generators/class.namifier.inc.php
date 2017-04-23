@@ -15,23 +15,17 @@ class namifier
         $this->caser = new caser();
     }
 
+    /**
+     * Single word package name
+     *
+     * @param string $name
+     * @return string
+     */
     public function package_name(string $name): string
     {
         # eg. Tailing: measurements ==> Tailoring
         $name = preg_replace("/\\:.*?$/", "", $name);
         return $this->caser->wordify($name);
-    }
-
-    /**
-     * Module name parsing
-     *
-     * @param string $name
-     * @return string
-     */
-    public function module_name(string $name): string
-    {
-        $module_name = ucfirst(strtolower($name));
-        return $module_name;
     }
 
     /**
@@ -42,20 +36,14 @@ class namifier
      */
     public function class_name(string $class_name): string
     {
+        /**
+         * Trim if separated by : as "Module: Class"
+         */
         // eg. "water bills: payment" becomes "payment"
         $class_name = preg_replace("/^(.*?\\:)/is", "", $class_name);
-        $class_name = trim($class_name);
 
-        // one
-        $class_name = $this->caser->snake_case($class_name);
-        //$class_name = $this->caser->psr4($class_name);
-
-        // two
-        //$class_name = ucfirst(strtolower($name));
-
-        // three
-        //$class_name = preg_replace("/[^a-zA-Z0-9]+/is", "_", $class_name);
-        //$class_name = strtolower($class_name);
+        #$class_name = $this->caser->snake_case($class_name);
+        $class_name = $this->caser->psr4($class_name);
 
         return $class_name;
     }
