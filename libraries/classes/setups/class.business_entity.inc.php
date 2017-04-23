@@ -30,6 +30,11 @@ class business_entity
      */
     private $users;
 
+    /**
+     * @var array User defined tests
+     */
+    private $features_to_test = array();
+
     public function __construct()
     {
         $this->package = "";
@@ -87,6 +92,18 @@ class business_entity
         $namifier = new namifier();
         $this->methods = array_map(array($namifier, "method"), $methods);
 
+        return $this;
+    }
+
+    /**
+     * @todo Additional tests not covered in function calls
+     *
+     * @param string $feature
+     * @return $this
+     */
+    public function feature(string $feature)
+    {
+        $this->features_to_test[] = $feature;
         return $this;
     }
 
@@ -162,5 +179,15 @@ class business_entity
     public function methods_list(): array
     {
         return $this->methods;
+    }
+
+    /**
+     * Use defined features to test
+     * Additional features descibed in one line each
+     * @return array
+     */
+    public function features_list(): array
+    {
+        return $this->features_to_test;
     }
 }

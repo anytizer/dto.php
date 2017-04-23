@@ -1,10 +1,21 @@
 Break into packages, modules, functions for Unit Tests
 Unit tests can repeat by their class names.
+PHPUnit methods and class methods appear as interfaces only
+
+Buzz words
+	Account
+	Profile
+	Users
+	Credentials
+	Access control list
+	Permissions
+	Management
+	Login
 
 
 OF
 	- entire writeup can be grouped inside the application
-	- bunches of dtos grouped together
+	- bunches of DTOs grouped together
 	- eg. treat one defined as a unit
 
 Generate
@@ -15,7 +26,7 @@ Function return ype support
 	- get last crawled on: date
 
 
-Should read from database rows for the models and htmls.
+Should read from database rows for the models and HTMLs.
 
 Use of "global" variables to be discouraged.
 Produce PHP Unit Tests scripts as well.
@@ -40,15 +51,15 @@ synchronized test case and method names - via PSR/Snake Case
 controller file write js has php tags
 
 
-produce all fiels
+produce all fields
 produce all fields
 run phpunit tests to pass
 produce endpoint handlers
 see records in the database
-attach the angular js files in the htmls
-add crud into the menus somewhere elese
+attach the angular js files in the HTMLs
+add crud into the menus somewhere else
 do the acl for user groups
-in business assigne, read list of users only from available list
+in business assign, read list of users only from available list
 
 acl, model ==
 https://code.tutsplus.com/tutorials/a-better-login-system--net-3461

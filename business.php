@@ -138,5 +138,5 @@ foreach($entities as $business) {
     # endpoint, business
 }
 
-echo sprintf("%s items generated.", count($entities));
+echo sprintf("%sItems generated: %s.", "\r\n", count($entities));
 #print_r($entities);

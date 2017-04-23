@@ -68,4 +68,24 @@ class phpunitifier extends generator implements bodyfier
 ";
         return $method_body;
     }
+
+    /**
+     * @param string $feature
+     * @return string
+     */
+    public function feature_test(string $feature): string
+    {
+        $caser = new caser();
+        $feature_name = $caser->psr4($feature);
+        $method_body = "
+    /**
+     * Feature: {$feature}
+     */
+    public function test{$feature_name}()
+    {
+        \$this->markTestIncomplete();
+    }
+";
+        return $method_body;
+    }
 }

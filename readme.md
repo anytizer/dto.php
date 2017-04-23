@@ -3,6 +3,9 @@
  - php -f business.php
  - php -f generate.php
  - dto table_name
+ - Define features first
+ - Write tests
+ - Write codes
 
 Generates DTO Classes from SQL Database
 

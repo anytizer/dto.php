@@ -18,6 +18,8 @@ class phpunit_parser implements  parser
          */
         $phpunitifier = new phpunitifier();
         $methods = array_map(array($phpunitifier, "methodify"), $business->methods_list());
+        $features = array_map(array($phpunitifier, "feature_test"), $business->features_list());
+        $methods = array_merge($methods, $features);
 
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
@@ -34,6 +36,7 @@ class phpunit_parser implements  parser
 
         /**
          * @todo Create API Tests
+         * @todo Cover additional tests also, as requested as feature
          */
         // {$business->class_name()}/
         $template_reader->write($method_body, "phpunit/tests/{$business->package_name()}/{$business->class_name()}/{$business->class_name()}Test.php");

@@ -2,6 +2,7 @@
 namespace setups;
 
 // SELECT CONCAT('public $', UPPER(role_name), ' = ', role_id, ';') roles FROM account_roles;
+// SELECT CONCAT('public $', UPPER(REPLACE(role_name, ' ', '_')), ' = ', role_id, ';') roles FROM account_roles;
 
 // roles are organization dependent; let organization create their own roles for their users
 // eg, at school:
@@ -14,10 +15,10 @@ class roles
     private $active;
 
 /*
-public $SUPERADMIN = 1;
+public $SUPER_ADMIN = 1;
 public $ADMIN = 2;
 public $ACCOUNTS = 3;
-public $HUMANRESOURCE = 4;
+public $HUMAN_RESOURCE = 4;
 public $FINANCE = 5;
 public $MEMBER = 6;
 public $VISITOR = 7;
