@@ -1,6 +1,8 @@
 Break into packages, modules, functions for Unit Tests
 Unit tests can repeat by their class names.
 PHPUnit methods and class methods appear as interfaces only
+Verify that
+	- table name passed exists - business()
 
 Buzz words
 	Account

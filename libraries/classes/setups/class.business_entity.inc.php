@@ -97,17 +97,26 @@ class business_entity
 
     /**
      * @todo Additional tests not covered in function calls
+     * These features are NOT available for programming API calls but only for test purpose
      *
      * @param string $feature
      * @return $this
      */
     public function feature(string $feature)
     {
-        $this->features_to_test[] = $feature;
+        /**
+         * Do NOT accept blank names
+         */
+        if($feature)
+        {
+            $this->features_to_test[] = $feature;
+        }
+
         return $this;
     }
 
     /**
+     * Dependency management
      * @todo Import feature
      *
      * @param $module
