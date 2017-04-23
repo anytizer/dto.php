@@ -27,7 +27,7 @@ class orm_parser implements parser
         $ormifier = new ormifier();
         $methods = array_map(array($ormifier, "methodify"), $methods);
         $replaces = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)
         );
         $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);

@@ -1,23 +1,23 @@
 <?php
 namespace tests;
-use business\#__CLASSNAME___business;
+use business\#__CLASS_NAME___business;
 use \PHPUnit\Framework\TestCase;
 
 /**
- * PHPUnit test case for business model: #__CLASSNAME___business
- * Testing Module: #__MODULENAME__
+ * PHPUnit test case for business model: #__CLASS_NAME___business
+ * Testing Module: #__MODULE_NAME__
  */
-class #__CLASSNAME__Test extends TestCase
+class #__CLASS_NAME__Test extends TestCase
 {
     /**
-     * @var #__CLASSNAME___business
+     * @var #__CLASS_NAME___business
      */
-	private $#__CLASSNAME___business;
+	private $#__CLASS_NAME___business;
 
 	public function setup()
 	{
 	    $this->markTestIncomplete();
-		//$this->#__CLASSNAME___business = new #__CLASSNAME___business();
+		//$this->#__CLASS_NAME___business = new #__CLASS_NAME___business();
 	}
 
 	#__PUBLIC_METHODS__

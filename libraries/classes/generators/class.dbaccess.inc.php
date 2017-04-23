@@ -188,7 +188,7 @@ ORDER BY
 
         $methods = array_map(array($bodyfier, "methodify"), $methods);
         $replaces = array(
-            "#__CLASSNAME__" => $entity,
+            "#__CLASS_NAME__" => $entity,
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)
         );
         $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);

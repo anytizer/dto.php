@@ -1,5 +1,7 @@
-// app.js
+/**
+ * app.js
+ * #__CLASS_NAME__
+ */
 "use strict";
 
-var #__CLASSNAME__App = angular.module("#__CLASSNAME__App", ["ngRoute", "ui.router"]);
-
+var #__CLASS_NAME__App = angular.module("#__CLASS_NAME__App", ["ngRoute", "ui.router"]);

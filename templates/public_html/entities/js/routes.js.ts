@@ -1,52 +1,54 @@
-// routes.js
+/**
+ * routes.js __CLASS_NAME__
+ */
 "use strict";
-
-// #__CLASSNAME__
-#__CLASSNAME__App.config(function($stateProvider, $urlRouterProvider){
-	
+#__CLASS_NAME__App.config(function($stateProvider, $urlRouterProvider)
+{
 	var template = function _template(path)
 	{
 		var TEMPLATES_URL = "http://localhost/angular/libraries/dto.php/dev/output/public_html/entities";
 		return TEMPLATES_URL+"/"+path+".html";
 	};
 
-	$urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise("/welcome");
 
 	$stateProvider
-		.state("#__CLASSNAME__", {
-			url: "/",
-			templateUrl: template("#__CLASSNAME__/templates/welcome"),
-			controller: "#__CLASSNAME__Controller",
+		.state("#__CLASS_NAME__", {
+			url: "/welcome",
+			templateUrl: template("#__CLASS_NAME__/templates/welcome"),
+			controller: "#__CLASS_NAME__WelcomeController",
 		})
-		.state("#__CLASSNAME__.list", {
+		.state("#__CLASS_NAME__.list", {
 			url: "/list",
-			templateUrl: template("#__CLASSNAME__/templates/list"),
-			controller: "#__CLASSNAME__ListController",
+			templateUrl: template("#__CLASS_NAME__/templates/list"),
+			controller: "#__CLASS_NAME__ListController",
 		})
-		.state("#__CLASSNAME__.details", {
+		.state("#__CLASS_NAME__.details", {
 			url: "/details",
-			templateUrl: template("#__CLASSNAME__/templates/details"),
-			controller: "#__CLASSNAME__DetailsController",
+			templateUrl: template("#__CLASS_NAME__/templates/details"),
+			controller: "#__CLASS_NAME__DetailsController",
 		})
-		.state("#__CLASSNAME__.add", {
+		.state("#__CLASS_NAME__.add", {
 			url: "/add",
-			templateUrl: template("#__CLASSNAME__/templates/add"),
-			controller: "#__CLASSNAME__AddController",
+			templateUrl: template("#__CLASS_NAME__/templates/add"),
+			controller: "#__CLASS_NAME__AddController",
 		})
-		.state("#__CLASSNAME__.edit", {
+		.state("#__CLASS_NAME__.edit", {
 			url: "/edit",
-			templateUrl: template("#__CLASSNAME__/templates/edit"),
-			controller: "#__CLASSNAME__EditController",
+			templateUrl: template("#__CLASS_NAME__/templates/edit"),
+			controller: "#__CLASS_NAME__EditController",
 		})
-		.state("#__CLASSNAME__.delete", {
+		.state("#__CLASS_NAME__.delete", {
 			url: "/delete",
-			templateUrl: template("#__CLASSNAME__/templates/delete"),
-			controller: "#__CLASSNAME__DeleteController",
+			templateUrl: template("#__CLASS_NAME__/templates/delete"),
+			controller: "#__CLASS_NAME__DeleteController",
 		})
-		.state("#__CLASSNAME__.flag", {
+		.state("#__CLASS_NAME__.flag", {
 			url: "/flag",
-			templateUrl: template("#__CLASSNAME__/templates/flag"),
-			controller: "#__CLASSNAME__FlagController",
+			templateUrl: template("#__CLASS_NAME__/templates/flag"),
+			controller: "#__CLASS_NAME__FlagController",
 		})
+
+        #__PUBLIC_METHODS__
 	;
 });

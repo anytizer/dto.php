@@ -33,7 +33,7 @@ class writer
         #die($file_contents);
         print_r($replacement["__ADD_FIELDS__"]); #die("dd");
 
-        $file_contents = str_replace("#__CLASSNAME__",      $replacement["__CLASSNAME__"], $file_contents);
+        $file_contents = str_replace("#__CLASS_NAME__",      $replacement["__CLASS_NAME__"], $file_contents);
         $file_contents = str_replace("#__DETAILS_FIELDS__", implode("\r\n", $replacement["__DETAILS_FIELDS__"]), $file_contents);
         $file_contents = str_replace("#__ADD_FIELDS__",     implode("\r\n", $replacement["__ADD_FIELDS__"]),   $file_contents);
         $file_contents = str_replace("#__LISTED_ROWS__",    implode("\r\n", $replacement["__LISTED_ROWS__"]),  $file_contents);

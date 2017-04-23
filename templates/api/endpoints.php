@@ -1,17 +1,17 @@
 <?php
 namespace endpoints;
-use dtos\#__CLASSNAME___dto;
-use models\#__CLASSNAME__;
+use dtos\#__CLASS_NAME___dto;
+use models\#__CLASS_NAME__;
 
 /**
- * Endponints for #__CLASSNAME__
+ * Endponints for #__CLASS_NAME__
  */
 class endpoints extends endpoint
 {
-    private $#__CLASSNAME__;
+    private $#__CLASS_NAME__;
     public function __construct()
     {
-        $this->#__CLASSNAME__ = new #__CLASSNAME__();
+        $this->#__CLASS_NAME__ = new #__CLASS_NAME__();
 
         $this->role = new role();
         $this->APIUser = new APIUser();

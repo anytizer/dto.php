@@ -19,7 +19,7 @@ class html_parser implements  parser
         $methods = array_map(array($htmlifier, "htmlListify"), $business->methods_list());
 
         $replace = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__COLUMN_NAMES__" => implode("\r\n\t", $methods),
             "#__LISTED_ROWS__" => implode("\r\n\t", $methods),
@@ -44,7 +44,7 @@ class html_parser implements  parser
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlDetails"), $business->methods_list());
         $replace = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__DETAILS_FIELDS__" => implode("\r\n\t", $methods),
         );
@@ -64,7 +64,7 @@ class html_parser implements  parser
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlEdit"), $business->methods_list());
         $replace = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__EDIT_FIELDS__" => implode("\r\n\t", $methods),
         );
@@ -84,7 +84,7 @@ class html_parser implements  parser
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlFlag"), $business->methods_list());
         $replace = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
         );
@@ -104,7 +104,7 @@ class html_parser implements  parser
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlDelete"), $business->methods_list());
         $replace = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__DELETE_FIELDS__" => implode("\r\n\t", $methods),
         );
@@ -124,7 +124,7 @@ class html_parser implements  parser
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlAdd"), $business->methods_list());
         $replace = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__ADD_FIELDS__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);

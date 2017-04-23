@@ -20,13 +20,13 @@ class endpoints extends generator implements bodyfier
     /**
      * {$method->description}
      *
-     * @url http://api.example.com:9090/v0.0.1/api/#__CLASSNAME__/{$url_snippet}
+     * @url http://api.example.com:9090/v0.0.1/api/#__CLASS_NAME__/{$url_snippet}
      */
     private function {$method->method_name}(): bool
     {
         if(\$this->APIUser->can(\$this->role->method(\"{$method->method_name}\")))
         {
-            \$this->#__CLASSNAME__->{$method->method_name}($method->parameters);
+            \$this->#__CLASS_NAME__->{$method->method_name}($method->parameters);
         }
         
         return true;

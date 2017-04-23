@@ -60,7 +60,7 @@ class phpunitifier extends generator implements bodyfier
      */
     public function test{$testMethodName}()
     {   {$parameters_initialization}
-        \$output = \$this->#__CLASSNAME___business->{$method_name}($parameters);
+        \$output = \$this->#__CLASS_NAME___business->{$method_name}($parameters);
 
         \$this->assertEquals(false, \$output);
         # \$this->markTestIncomplete();

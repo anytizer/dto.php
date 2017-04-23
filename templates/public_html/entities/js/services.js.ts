@@ -1,7 +1,11 @@
+/**
+ * Services
+ */
+
 "use strict";
 
-#__CLASSNAME__App
-    .service("#__CLASSNAME__Service", ["$http", function($http)
+#__CLASS_NAME__App
+    .service("#__CLASS_NAME__Service", ["$http", function($http)
     {
         var fetch = function(urlpart, dataJSON)
         {
@@ -21,33 +25,33 @@
         };
 
         return {
-            "#__CLASSNAME__": {
+            "#__CLASS_NAME__": {
                 "search": function (record) {
-                    return fetch("#__CLASSNAME__/search", record);
+                    return fetch("#__CLASS_NAME__/search", record);
                 },
 
                 "list": function (record) {
-                    return fetch("#__CLASSNAME__/list", record);
+                    return fetch("#__CLASS_NAME__/list", record);
                 },
 
                 "details": function (record) {
-                    return fetch("#__CLASSNAME__/details", record);
+                    return fetch("#__CLASS_NAME__/details", record);
                 },
 
                 "add": function (record) {
-                    return fetch("#__CLASSNAME__/add", record);
+                    return fetch("#__CLASS_NAME__/add", record);
                 },
 
                 "edit": function (record) {
-                    return fetch("#__CLASSNAME__/edit", record);
+                    return fetch("#__CLASS_NAME__/edit", record);
                 },
 
                 "delete": function (record) {
-                    return fetch("#__CLASSNAME__/delete", record);
+                    return fetch("#__CLASS_NAME__/delete", record);
                 },
 
                 "flag": function (record) {
-                    return fetch("#__CLASSNAME__/flag", record);
+                    return fetch("#__CLASS_NAME__/flag", record);
                 },
 
                 // #__PUBLIC_METHODS__

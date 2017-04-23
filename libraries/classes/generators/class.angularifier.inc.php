@@ -15,32 +15,43 @@ class angularifier implements  bodyfier {
 
     public function angular_router(method_descriptor $method): string
     {
-        return "";
+        $caser = new caser();
+        $method = $caser->psr4($method->method_name);
+
+        return "
+        .state(\"#__MODULE_NAME__.{$method}\", {
+			url: \"/edit\",
+			templateUrl: template(\"queue/templates/{$method}\"),
+			controller: \"#__MODULE_NAME__{$method}Controller\",
+		})
+";
     }
 
     public function angular_service(method_descriptor $method): string
     {
-        return "";
+        $caser = new caser();
+        $method = $caser->psr4($method->method_name);
+        return "
+                \"{$method}\": function (record) {
+                    return fetch(\"#__MODULE_NAME__/{$method}\", record);
+                },
+";
     }
 
     public function angular_controller(method_descriptor $method): string
     {
-        #$method = $this->caser->snake_case($method);
-        #$method = $this->caser->psr4($method); // MUST
-
+        $caser = new caser();
+        $method = $caser->psr4($method->method_name);
         $method_body = "
-{#__CLASSNAME__}App.controller(
-    function()
-    {
-        //
-        \$scope.data = {
-            'init': function(){
-            },
-        }
-        
-        \$scope.data.init();
+#__CLASS_NAME__App.controller(\"{$method}Controller\", [\"\$scope\", function(\$scope)
+{
+    \$scope.data = {
+        \"init\": function(){
+        },
     }
-);
+
+    \$scope.data.init();
+}]);
 ";
         return $method_body;
     }

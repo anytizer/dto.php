@@ -20,8 +20,8 @@ class phpunit_parser implements  parser
         $methods = array_map(array($phpunitifier, "methodify"), $business->methods_list());
 
         $replace = array(
-            "#__CLASSNAME__" => $business->class_name(),
-            "#__MODULENAME__" => $business->module_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
+            "#__MODULE_NAME__" => $business->module_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);

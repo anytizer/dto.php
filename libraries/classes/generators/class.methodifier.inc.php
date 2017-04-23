@@ -48,7 +48,7 @@ class methodifier implements  bodyfier {
      */
     {$accessor} function {$method}(): bool
     {
-        // \$this->#__CLASSNAME__->{$method}();
+        // \$this->#__CLASS_NAME__->{$method}();
         
         return true;
     }

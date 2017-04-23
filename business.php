@@ -23,13 +23,15 @@ use parsers\orm_parser;
 // table name
 $entities = array();
 $setups = glob("definitions/define.*.php");
+#$setups = array("definitions/define.messagequeue.php");
 foreach($setups as $setup)
 {
-    require_once($setup);
+#    require_once($setup);
 }
 #print_r($setups);
 #print_r($entities); #die();
 #require_once("definitions/define.offers.php");
+require_once("definitions/define.messagequeue.php");
 
 // who came in?
 // who treated?

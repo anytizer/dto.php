@@ -15,7 +15,7 @@
 				<h1>{{config.appname}}</h1>
 				<div class="w3-deep-purple w3-padding">
 					<a class="w3-btn w3-hover-orange w3-red" href="#!/welcome">Welcome</a>
-					<a class="w3-btn w3-hover-orange w3-red" href="#!/#__CLASSNAME__/list">#__CLASSNAME__</a>
+					<a class="w3-btn w3-hover-orange w3-red" href="#!/#__CLASS_NAME__/list">#__CLASS_NAME__</a>
 				</div>
 			</div>
 			
@@ -28,9 +28,9 @@
 	<script src="http://media.example.com:9090/js/angular-ui-router.min.js"></script>
 	<script src="http://media.example.com:9090/js/angular-cookies.min.js"></script>
 
-    <script src="entities/#__CLASSNAME__/js/app.js"></script>
-    <script src="entities/#__CLASSNAME__/js/routes.js"></script>
-    <script src="entities/#__CLASSNAME__/js/services.js"></script>
-    <script src="entities/#__CLASSNAME__/js/controller.js"></script>
+    <script src="entities/#__CLASS_NAME__/js/app.js"></script>
+    <script src="entities/#__CLASS_NAME__/js/routes.js"></script>
+    <script src="entities/#__CLASS_NAME__/js/services.js"></script>
+    <script src="entities/#__CLASS_NAME__/js/controller.js"></script>
 </body>
 </html>

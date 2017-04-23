@@ -30,10 +30,10 @@ class ormifier // implements bodyfier
         // do other query things()
         
         #\$order = Order::first();
-        #\$#__CLASSNAME___orm = new #__CLASSNAME___orm();
-        #\$#__CLASSNAME___orm->name = \$parameters->name;
-        #\$#__CLASSNAME___orm->value = \$parameters->value;
-        #\$#__CLASSNAME___orm->save();
+        #\$#__CLASS_NAME___orm = new #__CLASS_NAME___orm();
+        #\$#__CLASS_NAME___orm->name = \$parameters->name;
+        #\$#__CLASS_NAME___orm->value = \$parameters->value;
+        #\$#__CLASS_NAME___orm->save();
         
         \$order->title = \"New title\";
         \$order->save();

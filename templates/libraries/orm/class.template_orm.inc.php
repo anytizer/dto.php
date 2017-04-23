@@ -1,11 +1,11 @@
 <?php
 namespace database;
-use dtos\#__CLASSNAME___dto;
+use dtos\#__CLASS_NAME___dto;
 
 /**
- * Model: #__CLASSNAME__
+ * Model: #__CLASS_NAME__
  */
-class #__CLASSNAME___orm extends orm
+class #__CLASS_NAME___orm extends orm
 {
     //private $database;
 

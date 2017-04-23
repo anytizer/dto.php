@@ -22,7 +22,7 @@ class endpoints_parser implements  parser
         $methods = array_map(array($endpoints, "methodify"), $business->methods_list());
 
         $replace = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
         );

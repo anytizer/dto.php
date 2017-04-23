@@ -22,7 +22,7 @@ class business_parser implements parser
         $businessifier = new businessifier();
         $methods = array_map(array($businessifier, "businessify"), $methods);
         $replaces = array(
-            "#__CLASSNAME__" => $business->class_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
             "#__MODEL_NAME__" => $business->table_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)
         );

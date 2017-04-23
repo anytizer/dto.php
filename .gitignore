@@ -7,3 +7,4 @@ src/**/*.phar
 /.idea
 /output
 /docs-output
+/definitions

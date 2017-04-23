@@ -28,10 +28,16 @@ class angular_parser implements parser
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
-        $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
-        $method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
+        $replace = array(
+            "#__CLASS_NAME__" => $business->class_name(),
+            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+        );
+        $from = array_keys($replace);
+        $to = array_values($replace);
+        $method_body = str_replace($from, $to, $method_body);
+        $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/app.js.ts");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/app.js");
         return $method_body;
     }
 
@@ -48,10 +54,18 @@ class angular_parser implements parser
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_router"), $business->methods_list());
-        $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
-        #$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/routes.js.ts");
+        $replace = array(
+            "#__CLASS_NAME__" => $business->class_name(),
+            "#__MODULE_NAME__" => $business->module_name(),
+            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+        );
+        $from = array_keys($replace);
+        $to = array_values($replace);
+        $method_body = str_replace($from, $to, $method_body);
+        $method_body = str_replace($from, $to, $method_body);
+
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/routes.js");
         return $method_body;
     }
 
@@ -69,12 +83,20 @@ class angular_parser implements parser
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
 
-        $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
-        $method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
+        $replace = array(
+            "#__CLASS_NAME__" => $business->class_name(),
+            "#__MODULE_NAME__" => $business->module_name(),
+            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+        );
+        $from = array_keys($replace);
+        $to = array_values($replace);
+        $method_body = str_replace($from, $to, $method_body);
+        $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/controller.js.ts");
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/controller.js");
         return $method_body;
     }
+
     /**
      * Append to routes.js.ts
      *
@@ -88,10 +110,20 @@ class angular_parser implements parser
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_service"), $business->methods_list());
-        $method_body = str_replace("#__CLASSNAME__", $business->class_name(), $method_body);
-        #$method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
+        $method_body = str_replace("#__CLASS_NAME__", $business->class_name(), $method_body);
+        $method_body = str_replace("#__PUBLIC_METHODS__", implode("\r\n\t", $methods), $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/services.js.ts");
+        $replace = array(
+            "#__CLASS_NAME__" => $business->class_name(),
+            "#__MODULE_NAME__" => $business->module_name(),
+            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+        );
+        $from = array_keys($replace);
+        $to = array_values($replace);
+        $method_body = str_replace($from, $to, $method_body);
+        $method_body = str_replace($from, $to, $method_body);
+
+        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/services.js");
         return $method_body;
     }
 }
