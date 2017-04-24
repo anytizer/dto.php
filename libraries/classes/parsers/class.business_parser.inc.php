@@ -14,7 +14,7 @@ class business_parser implements parser
     private function businessify(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("libraries/business/class.template_business.inc.php"); // @todo replace with orm
+        $method_body = $template_reader->read("libraries/business/class.template_business.inc.php.ts"); // @todo replace with orm
 
         $methods = $business->methods_list();
         //print_r($methods); die();
@@ -31,7 +31,7 @@ class business_parser implements parser
 
         // @todo rename patches with entity controller and business
         $template_reader->write($method_body, "libraries/business/{$business->package_name()}/class.{$business->class_name()}_business.inc.php");
-        $template_reader->write($template_reader->read("libraries/business/class.business.inc.php"), "libraries/business/class.business.inc.php");
+        $template_reader->write($template_reader->read("libraries/business/class.business.inc.php.ts"), "libraries/business/class.business.inc.php");
 
         return $method_body;
     }

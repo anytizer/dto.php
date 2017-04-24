@@ -10,7 +10,7 @@ class phpunit_parser implements  parser
     public function generate(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("phpunit/tests/phpunit.php");
+        $method_body = $template_reader->read("phpunit/tests/phpunit.php.ts");
         /**
          * For each methods
          *   get method name

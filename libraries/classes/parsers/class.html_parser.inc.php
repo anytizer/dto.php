@@ -13,7 +13,7 @@ class html_parser implements  parser
     public function generate_list(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/templates/list.html");
+        $method_body = $template_reader->read("public_html/entities/templates/list.html.ts");
 
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlListify"), $business->methods_list());
@@ -39,7 +39,7 @@ class html_parser implements  parser
     public function generate_details(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/templates/details.html");
+        $method_body = $template_reader->read("public_html/entities/templates/details.html.ts");
 
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlDetails"), $business->methods_list());
@@ -59,7 +59,7 @@ class html_parser implements  parser
     public function generate_edit(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/templates/edit.html");
+        $method_body = $template_reader->read("public_html/entities/templates/edit.html.ts");
 
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlEdit"), $business->methods_list());
@@ -79,7 +79,7 @@ class html_parser implements  parser
     public function generate_flag(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/templates/flag.html");
+        $method_body = $template_reader->read("public_html/entities/templates/flag.html.ts");
 
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlFlag"), $business->methods_list());
@@ -99,7 +99,7 @@ class html_parser implements  parser
     public function generate_delete(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/templates/delete.html");
+        $method_body = $template_reader->read("public_html/entities/templates/delete.html.ts");
 
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlDelete"), $business->methods_list());
@@ -119,7 +119,7 @@ class html_parser implements  parser
     public function generate_add(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/templates/add.html");
+        $method_body = $template_reader->read("public_html/entities/templates/add.html.ts");
 
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlAdd"), $business->methods_list());

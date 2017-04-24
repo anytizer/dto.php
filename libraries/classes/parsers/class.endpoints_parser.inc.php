@@ -16,7 +16,7 @@ class endpoints_parser implements  parser
     public function generate(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("api/endpoints.php");
+        $method_body = $template_reader->read("api/endpoints.php.ts");
 
         $endpoints = new endpoints();
         $methods = array_map(array($endpoints, "methodify"), $business->methods_list());

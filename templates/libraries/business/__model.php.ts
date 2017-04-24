@@ -18,4 +18,3 @@ class #__CLASS_NAME___model extends business_model
 
     #__PUBLIC_METHODS__
 }
-*/

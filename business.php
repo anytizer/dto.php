@@ -61,9 +61,9 @@ foreach($setups as $setup)
 // query something with wrong token
 
 $template_reader = new template_reader();
-$template_reader->write($template_reader->read("phpunit/bootstrap.php"), "phpunit/bootstrap.php");
-$template_reader->write($template_reader->read("phpunit/phpunit.cmd"), "phpunit/phpunit.cmd");
-$template_reader->write($template_reader->read("phpunit/phpunit.xml"), "phpunit/phpunit.xml");
+$template_reader->write($template_reader->read("phpunit/bootstrap.php.ts"), "phpunit/bootstrap.php");
+$template_reader->write($template_reader->read("phpunit/phpunit.cmd.ts"), "phpunit/phpunit.cmd");
+$template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpunit/phpunit.xml");
 $template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
 $template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
 

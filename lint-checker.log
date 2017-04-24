@@ -1,0 +1,150 @@
+No syntax errors detected in business.php
+No syntax errors detected in php-linter.php
+No syntax errors detected in test.php
+No syntax errors detected in definitions\define.accounts.php
+No syntax errors detected in definitions\define.acl.php
+No syntax errors detected in definitions\define.membership.php
+No syntax errors detected in definitions\later\define.apis.php
+No syntax errors detected in definitions\later\define.appointments.php
+No syntax errors detected in definitions\later\define.bills.php
+No syntax errors detected in definitions\later\define.camein.php
+No syntax errors detected in definitions\later\define.documents.php
+No syntax errors detected in definitions\later\define.downloads.php
+No syntax errors detected in definitions\later\define.forex.php
+No syntax errors detected in definitions\later\define.funder.php
+No syntax errors detected in definitions\later\define.kpi.php
+No syntax errors detected in definitions\later\define.library.php
+No syntax errors detected in definitions\later\define.messagequeue.php
+No syntax errors detected in definitions\later\define.offers.php
+No syntax errors detected in definitions\later\define.projects.php
+No syntax errors detected in definitions\later\define.reports.php
+No syntax errors detected in definitions\later\define.sample.php
+No syntax errors detected in definitions\later\define.tailoring.php
+No syntax errors detected in definitions\later\define.tenancy.php
+No syntax errors detected in definitions\later\define.todos.php
+No syntax errors detected in libraries\inc.config.php
+No syntax errors detected in libraries\classes\backend\class.guid.inc.php
+No syntax errors detected in libraries\classes\backend\class.spl_include.inc.php
+No syntax errors detected in libraries\classes\generators\class.angularifier.inc.php
+No syntax errors detected in libraries\classes\generators\class.bodyfier.inc.php
+No syntax errors detected in libraries\classes\generators\class.businessifier.inc.php
+No syntax errors detected in libraries\classes\generators\class.caser.inc.php
+No syntax errors detected in libraries\classes\generators\class.databasifier.inc.php
+No syntax errors detected in libraries\classes\generators\class.dbaccess.inc.php
+No syntax errors detected in libraries\classes\generators\class.endpoints.inc.php
+No syntax errors detected in libraries\classes\generators\class.finalized.inc.php
+No syntax errors detected in libraries\classes\generators\class.generator.inc.php
+No syntax errors detected in libraries\classes\generators\class.htmlifier.inc.php
+No syntax errors detected in libraries\classes\generators\class.methodifier.inc.php
+No syntax errors detected in libraries\classes\generators\class.namifier.inc.php
+No syntax errors detected in libraries\classes\generators\class.ormifier.inc.php
+No syntax errors detected in libraries\classes\generators\class.phpunitifier.inc.php
+No syntax errors detected in libraries\classes\generators\class.sees.inc.php
+No syntax errors detected in libraries\classes\generators\class.template_reader.inc.php
+No syntax errors detected in libraries\classes\generators\class.writer.inc.php
+No syntax errors detected in libraries\classes\parsers\class.angular_parser.inc.php
+No syntax errors detected in libraries\classes\parsers\class.business_parser.inc.php
+No syntax errors detected in libraries\classes\parsers\class.dto_parser.inc.php
+No syntax errors detected in libraries\classes\parsers\class.endpoints_parser.inc.php
+No syntax errors detected in libraries\classes\parsers\class.html_parser.inc.php
+No syntax errors detected in libraries\classes\parsers\class.orm_parser.inc.php
+No syntax errors detected in libraries\classes\parsers\class.parser.inc.php
+No syntax errors detected in libraries\classes\parsers\class.phpunit_parser.inc.php
+No syntax errors detected in libraries\classes\setups\class.business_entity.inc.php
+No syntax errors detected in libraries\classes\setups\class.business_type.inc.php
+No syntax errors detected in libraries\classes\setups\class.method_descriptor.inc.php
+No syntax errors detected in libraries\classes\setups\class.module_methods.inc.php
+No syntax errors detected in libraries\classes\setups\class.roles.inc.php
+No syntax errors detected in libraries\classes\setups\class.user_type.inc.php
+No syntax errors detected in libraries\classes\structures\class.field.inc.php
+No syntax errors detected in libraries\classes\structures\class.fields.inc.php
+No syntax errors detected in output\api\endpoints\AccessControlList\class.PermissionsChecker.inc.php
+No syntax errors detected in output\api\endpoints\AccessControlList\class.RoleManager.inc.php
+No syntax errors detected in output\api\endpoints\AccessControlList\class.UserImpersonation.inc.php
+No syntax errors detected in output\api\endpoints\Accounts\class.Credentials.inc.php
+No syntax errors detected in output\api\endpoints\Accounts\class.HandleSignups.inc.php
+No syntax errors detected in output\api\endpoints\Accounts\class.Hints.inc.php
+No syntax errors detected in output\api\endpoints\Accounts\class.SignupsMigrator.inc.php
+No syntax errors detected in output\api\endpoints\Accounts\class.UserManager.inc.php
+No syntax errors detected in output\api\endpoints\Membership\class.Memberships.inc.php
+No syntax errors detected in output\api\endpoints\Membership\class.Subscriptions.inc.php
+No syntax errors detected in output\api\endpoints\Users\class.TokenManager.inc.php
+No syntax errors detected in output\libraries\backend\class.spl_include.inc.php
+No syntax errors detected in output\libraries\business\class.business.inc.php
+No syntax errors detected in output\libraries\business\AccessControlList\class.PermissionsChecker_business.inc.php
+No syntax errors detected in output\libraries\business\AccessControlList\class.RoleManager_business.inc.php
+No syntax errors detected in output\libraries\business\AccessControlList\class.UserImpersonation_business.inc.php
+No syntax errors detected in output\libraries\business\Accounts\class.Credentials_business.inc.php
+No syntax errors detected in output\libraries\business\Accounts\class.HandleSignups_business.inc.php
+No syntax errors detected in output\libraries\business\Accounts\class.Hints_business.inc.php
+No syntax errors detected in output\libraries\business\Accounts\class.SignupsMigrator_business.inc.php
+No syntax errors detected in output\libraries\business\Accounts\class.UserManager_business.inc.php
+No syntax errors detected in output\libraries\business\Membership\class.Memberships_business.inc.php
+No syntax errors detected in output\libraries\business\Membership\class.Subscriptions_business.inc.php
+No syntax errors detected in output\libraries\business\Users\class.TokenManager_business.inc.php
+No syntax errors detected in output\libraries\dtos\class.dto.inc.php
+No syntax errors detected in output\libraries\dtos\AccessControlList\class.RoleManager_dto.inc.php
+No syntax errors detected in output\libraries\dtos\AccessControlList\class.UserImpersonation_dto.inc.php
+No syntax errors detected in output\libraries\dtos\Accounts\class.Credentials_dto.inc.php
+No syntax errors detected in output\libraries\dtos\Accounts\class.HandleSignups_dto.inc.php
+No syntax errors detected in output\libraries\dtos\Accounts\class.Hints_dto.inc.php
+No syntax errors detected in output\libraries\dtos\Accounts\class.SignupsMigrator_dto.inc.php
+No syntax errors detected in output\libraries\dtos\Accounts\class.UserManager_dto.inc.php
+No syntax errors detected in output\libraries\orm\class.orm.inc.php
+No syntax errors detected in output\libraries\orm\AccessControlList\class.PermissionsChecker_orm.inc.php
+No syntax errors detected in output\libraries\orm\AccessControlList\class.RoleManager_orm.inc.php
+No syntax errors detected in output\libraries\orm\AccessControlList\class.UserImpersonation_orm.inc.php
+No syntax errors detected in output\libraries\orm\Accounts\class.Credentials_orm.inc.php
+No syntax errors detected in output\libraries\orm\Accounts\class.HandleSignups_orm.inc.php
+No syntax errors detected in output\libraries\orm\Accounts\class.Hints_orm.inc.php
+No syntax errors detected in output\libraries\orm\Accounts\class.SignupsMigrator_orm.inc.php
+No syntax errors detected in output\libraries\orm\Accounts\class.UserManager_orm.inc.php
+No syntax errors detected in output\libraries\orm\Membership\class.Memberships_orm.inc.php
+No syntax errors detected in output\libraries\orm\Membership\class.Subscriptions_orm.inc.php
+No syntax errors detected in output\libraries\orm\Users\class.TokenManager_orm.inc.php
+No syntax errors detected in output\phpunit\bootstrap.php
+No syntax errors detected in output\phpunit\tests\AccessControlList\PermissionsChecker\PermissionsCheckerTest.php
+No syntax errors detected in output\phpunit\tests\AccessControlList\RoleManager\RoleManagerTest.php
+No syntax errors detected in output\phpunit\tests\AccessControlList\UserImpersonation\UserImpersonationTest.php
+No syntax errors detected in output\phpunit\tests\Accounts\Credentials\CredentialsTest.php
+No syntax errors detected in output\phpunit\tests\Accounts\HandleSignups\HandleSignupsTest.php
+No syntax errors detected in output\phpunit\tests\Accounts\Hints\HintsTest.php
+No syntax errors detected in output\phpunit\tests\Accounts\SignupsMigrator\SignupsMigratorTest.php
+No syntax errors detected in output\phpunit\tests\Accounts\UserManager\UserManagerTest.php
+No syntax errors detected in output\phpunit\tests\Membership\Memberships\MembershipsTest.php
+No syntax errors detected in output\phpunit\tests\Membership\Subscriptions\SubscriptionsTest.php
+No syntax errors detected in output\phpunit\tests\Users\TokenManager\TokenManagerTest.php
+No syntax errors detected in phpunit\bootstrap.php
+No syntax errors detected in phpunit\tests\caserTest.php
+No syntax errors detected in phpunit\tests\namifyTest.php
+No syntax errors detected in phpunit\tests\someTest.php
+No syntax errors detected in public_html\index.php
+
+Parse error: syntax error, unexpected 'use' (T_USE), expecting identifier (T_STRING) or '{' in templates\api\endpoints.php on line 4
+
+Errors parsing templates\api\endpoints.php
+No syntax errors detected in templates\libraries\backend\class.spl_include.inc.php
+No syntax errors detected in templates\libraries\business\class.business.inc.php
+
+Parse error: syntax error, unexpected 'use' (T_USE), expecting identifier (T_STRING) or '{' in templates\libraries\business\class.template_business.inc.php on line 5
+
+Errors parsing templates\libraries\business\class.template_business.inc.php
+
+Parse error: syntax error, unexpected 'use' (T_USE), expecting identifier (T_STRING) or '{' in templates\libraries\business\__model.php on line 4
+
+Errors parsing templates\libraries\business\__model.php
+No syntax errors detected in templates\libraries\dtos\class.dto.inc.php
+
+Parse error: syntax error, unexpected '{', expecting identifier (T_STRING) in templates\libraries\dtos\class.template.inc.php on line 11
+
+Errors parsing templates\libraries\dtos\class.template.inc.php
+No syntax errors detected in templates\libraries\orm\class.orm.inc.php
+
+Parse error: syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or '{' in templates\libraries\orm\class.template_orm.inc.php on line 8
+
+Errors parsing templates\libraries\orm\class.template_orm.inc.php
+No syntax errors detected in templates\phpunit\bootstrap.php
+
+Parse error: syntax error, unexpected 'use' (T_USE), expecting identifier (T_STRING) or '{' in templates\phpunit\tests\phpunit.php on line 5
+
+Errors parsing templates\phpunit\tests\phpunit.php
