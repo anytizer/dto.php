@@ -62,7 +62,7 @@ class writer
 
         $total = file_put_contents("{$dir}/{$file}", $body);
         #echo $body;
-        #echo "\r\n", $dir_path;
+        echo "\r\n", $dir_path;
         return $total > 0;
     }
 }

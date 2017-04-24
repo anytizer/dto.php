@@ -1,4 +1,5 @@
 Common output folder from all write template calls
+Writing template file is a separate logic
 
 Register role, method to the database at the time of generation
 Generate endpoints inside proper namespace

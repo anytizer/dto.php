@@ -1,6 +1,7 @@
 <?php
 $configs = [
-	"write_to" => "/htdocs/angular/libraries/dto.php/dev/output",
+	#"write_to" => "/htdocs/angular/libraries/dto.php/dev/output",
+	"write_to" => "/htdocs/angular/application/test",
 	"dto" => "libraries/dto",
 ];
 

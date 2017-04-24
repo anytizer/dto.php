@@ -15,13 +15,18 @@ class template_reader
     {
         $this->current_template = $filename;
 
-        $lookup_dir = __LIBRARIES_DIR__."/../templates";
-        $filename = $lookup_dir."/".$filename; // @todo clean file name patterns
+        $lookup_dir = realpath(__LIBRARIES_DIR__."/../templates");
+        $filename = "{$lookup_dir}/{$filename}"; // @todo clean file name patterns
 
         $template = "<?php /** invalid file was read: {$filename} */";
         if(is_file($filename))
         {
             $template = file_get_contents($filename);
+        }
+        else
+        {
+            echo "\r\nInvalid read: {$filename}";
+            die();
         }
 
         return $template;

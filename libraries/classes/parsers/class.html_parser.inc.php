@@ -157,8 +157,6 @@ class html_parser implements  parser
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader = new template_reader();
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/welcome.html");
         return $method_body;
     }
 }

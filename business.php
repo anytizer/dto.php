@@ -1,7 +1,8 @@
 <?php
 require_once("libraries/inc.config.php");
 
-use parsers\dto_parser;
+
+use generators\template_reader;use parsers\dto_parser;
 use parsers\business_parser;
 use parsers\phpunit_parser;
 use parsers\angular_parser;
@@ -9,7 +10,9 @@ use parsers\html_parser;
 use parsers\endpoints_parser;
 use parsers\orm_parser;
 
-define("__OUTPUT__", "d:/htdocs/output");
+#define("__OUTPUT__", "d:/htdocs/output");
+#define("__OUTPUT__", "D:/htdocs/angular/application/test");
+ define("__OUTPUT__", "D:/htdocs/angular/libraries/dto.php/dto.php/output");
 
 // CRUD: Create, Read, Update, Delete
 // MADS: Modify, Add, Delete, Show
@@ -57,6 +60,13 @@ foreach($setups as $setup)
 // query something
 // query something with wrong token
 
+$template_reader = new template_reader();
+$template_reader->write($template_reader->read("phpunit/bootstrap.php"), "phpunit/bootstrap.php");
+$template_reader->write($template_reader->read("phpunit/phpunit.cmd"), "phpunit/phpunit.cmd");
+$template_reader->write($template_reader->read("phpunit/phpunit.xml"), "phpunit/phpunit.xml");
+$template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
+$template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
+
 foreach($entities as $business) {
     # CLI Options
     # business dto user
@@ -78,6 +88,7 @@ foreach($entities as $business) {
 
     $phpunit_parser = new phpunit_parser();
     $phpunit_body = $phpunit_parser->generate($business);
+
     #echo $phpunit_body; die();
 
     $endpoints_parser = new endpoints_parser();

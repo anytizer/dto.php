@@ -1,5 +1,6 @@
 <?php
 namespace parsers;
+use generators\caser;
 use setups\business_entity;
 use generators\template_reader;
 use generators\phpunitifier;
@@ -44,30 +45,6 @@ class phpunit_parser implements  parser
         // write: business test
         // write: api unit tests
         // write endpoint tests
-
-        foreach($methods as $method)
-        {
-            // Individual function call on a different file
-            #$template_reader->write($method_body, "phpunit/tests/{$business->package_name()}/{$business->class_name()}/{$business->class_name()}/{$function}Test.php");
-        }
-
-        # Copy other flat files
-        # @todo Repeated in each loops
-        $template_reader->write($template_reader->read("templates/phpunit/bootstrap.php"), "phpunit/bootstrap.php");
-        $template_reader->write($template_reader->read("templates/phpunit/phpunit.cmd"), "phpunit/phpunit.cmd");
-        $template_reader->write($template_reader->read("templates/phpunit/phpunit.xml"), "phpunit/phpunit.xml");
-        $template_reader->write($template_reader->read("templates/phpunit/readme.txt"), "phpunit/readme.txt");
-
-        /**
-         * Create target path
-         */
-        !is_dir("output/libraries/backend/") && mkdir("libraries/backend/", true, 0777);
-
-        /**
-         * Copy template file
-         */
-        $template_reader->write(file_get_contents("templates/libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
-
         return $method_body;
     }
 }
