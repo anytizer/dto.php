@@ -105,7 +105,14 @@ Deleted
      */
     public function htmlAdd(method_descriptor $method): string
     {
-        $method_body = "";
+        // get fields and loop through
+        $method_body = "
+        <div>
+            <div>Field Name</div>
+            <div>Value: </div>
+            <div>Message</div>
+        </div>
+        ";
         return $method_body;
     }
 }

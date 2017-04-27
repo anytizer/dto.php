@@ -51,18 +51,41 @@ class writer
 
     /**
      * @param $body
-     * @param $dir_path
+     * @param $dirpath
      * @return bool
      */
-    function write_scripts($dir_path, $body): bool
+    function write_scripts($dirpath, $body): bool
     {
-        $dir = dirname($dir_path);
-        $file = basename($dir_path);
+        $dir = dirname($dirpath);
+        $file = basename($dirpath);
+        $filepath = "{$dir}/{$file}";
+
         $this->mkdir_target($dir);
 
-        $total = file_put_contents("{$dir}/{$file}", $body);
-        #echo $body;
-        echo "\r\n", $dir_path;
+        $total = 0;
+
+        /**
+         * Save the file if the user modified it
+         */
+        $save_user_modified_files = false; // only good if the phpunit methods were produced in different files
+        if(is_file($filepath))
+        {
+            if(!$save_user_modified_files)
+            {
+                $total = file_put_contents($filepath, $body);
+                echo "\r\nSuccess: ", $filepath;
+            }
+            else
+            {
+                # Do NOT write
+                echo "\r\nDid not overwrite: ", $filepath;
+            }
+        }
+        else
+        {
+            $total = file_put_contents($filepath, $body);
+        }
+
         return $total > 0;
     }
 }

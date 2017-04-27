@@ -25,7 +25,7 @@ class template_reader
         }
         else
         {
-            echo "\r\nInvalid read: {$filename}";
+            echo "\r\nInvalid template file to read: {$filename}";
             die();
         }
 
@@ -42,9 +42,6 @@ class template_reader
     public function write(string $body, string $target_file)
     {
         $writer = new writer();
-        // output/{$this->current_template}
-        // $target_file = "output/".str_replace("entity", $this->class, $this->current_template);
-        #$writer->write_scripts($body, "D:/htdocs/o/{$target_file}"); // works
         $writer->write_scripts(__OUTPUT__."/{$target_file}", $body); // works
     }
 }

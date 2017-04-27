@@ -98,7 +98,7 @@ class business_entity
         $namifier = new namifier();
         $this->methods = array_map(array($namifier, "method"), $methods);
 
-        # save acl
+        # Pre-register ACL into the database at the time of creation
         foreach($methods as $method)
         {
             $sql="INSERT IGNORE INTO acl_objects_methods VALUES (UUID(), '', '{$method}');\r\n";
