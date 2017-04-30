@@ -2,6 +2,7 @@
 namespace setups;
 use generators\namifier;
 use generators\caser;
+use backend\guid;
 
 class business_entity
 {
@@ -81,7 +82,7 @@ class business_entity
         $this->users[] = $role;
 
         # Register this
-        $guid = \backend\guid::NewGuid();
+        $guid = guid::NewGuid();
         $sql="INSERT IGNORE INTO acl_objects VALUES ('{$guid}', '{$this->package}');\r\n";
         file_put_contents("d:/acl.log", $sql, FILE_APPEND);
         # SELECT UUID();
