@@ -69,7 +69,7 @@ class htmlifier implements bodyfier
         <div>
             <div>{$column->COLUMN_COMMENT}</div>
             <div><input type='text' ng-model='record.{$column->COLUMN_NAME}'></div>
-            <div class='hints'>{$column->COLUMN_COMMENT}/div>
+            <div class='hints'>{$column->COLUMN_COMMENT}</div>
         </div>
         ";
         
@@ -115,7 +115,7 @@ Deleted
         <div>
             <div>{$column->COLUMN_COMMENT}</div>
             <div><input type='text' ng-model='record.{$column->COLUMN_NAME}'></div>
-            <div class='hints'>{$column->COLUMN_COMMENT}/div>
+            <div class='hints'>{$column->COLUMN_COMMENT}</div>
         </div>
         ";
         
