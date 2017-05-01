@@ -1,7 +1,7 @@
 <?php
 namespace tests;
 
-use business\#__CLASS_NAME___business;
+use business\#__PACKAGE_NAME__\#__CLASS_NAME___business;
 use \PHPUnit\Framework\TestCase;
 
 /**

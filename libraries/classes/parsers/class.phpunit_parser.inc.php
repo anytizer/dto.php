@@ -23,7 +23,7 @@ class phpunit_parser implements  parser
         $methods = array_merge($methods, $features);
 
         $replace = array(
-            "#__CLASS_NAME__" => $business->class_name(),
+            "#__PACKAGE_NAME__" => $business->class_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );

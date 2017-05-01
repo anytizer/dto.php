@@ -12,7 +12,7 @@ use parsers\orm_parser;
 
 #define("__OUTPUT__", "d:/htdocs/output");
 #define("__OUTPUT__", "D:/htdocs/angular/application/test");
- define("__OUTPUT__", "D:/htdocs/angular/libraries/dto.php/dto.php/output");
+define("__OUTPUT__", "D:/htdocs/angular/libraries/dto.php/dto.php/output");
 
 // CRUD: Create, Read, Update, Delete
 // MADS: Modify, Add, Delete, Show
@@ -28,6 +28,7 @@ use parsers\orm_parser;
 // table name
 $entities = array();
 $setups = glob("definitions/define.*.php");
+print_r($setups);
 #$setups = array("definitions/define.messagequeue.php");
 foreach($setups as $setup)
 {

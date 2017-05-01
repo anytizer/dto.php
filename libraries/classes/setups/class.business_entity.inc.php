@@ -39,7 +39,6 @@ class business_entity
     public function __construct()
     {
         $this->package = "";
-        #$this->module = "";
         $this->table_name = "";
         $this->class_name = "";
         $this->methods = array();
@@ -62,8 +61,7 @@ class business_entity
     {
         $namifier = new namifier();
         
-		$this->package = $namifier->package_name($package_name);
-        #$this->module = $namifier->class_name($class_name);
+        $this->package = $namifier->package_name($package_name);
         $this->class_name = $namifier->class_name($class_name);
 
         /**
@@ -134,10 +132,10 @@ class business_entity
      * Dependency management
      * @todo Import feature
      *
-     * @param $module
+     * @param $package
      * @return business_entity
      */
-    public function import($module): business_entity
+    public function import($package): business_entity
     {
         // setup with other modules
         return $this;
@@ -179,15 +177,6 @@ class business_entity
     {
         return $this->class_name;
     }
-
-    /*
-    public function class_name(): string
-    {
-        $caser = new caser();
-        $module = $caser->psr4($this->class_name);
-
-        return $module;
-    }*/
 
     public function package_name(): string
     {

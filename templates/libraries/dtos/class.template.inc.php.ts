@@ -1,5 +1,5 @@
 <?php
-namespace dtos;
+namespace dtos\#__PACKAGE_NAME__;
 use dto;
 
 /**

@@ -1,10 +1,10 @@
 <?php
 namespace endpoints;
-use dtos\#__CLASS_NAME___dto;
-use models\#__CLASS_NAME__;
+use dtos\#__PACKAGE_NAME__\#__CLASS_NAME___dto;
+use models\#__PACKAGE_NAME__\#__CLASS_NAME__;
 
 /**
- * Endponints for landing #__CLASS_NAME__
+ * Endpoints for landing #__CLASS_NAME__
  */
 class #__CLASS_NAME__Endpoints extends endpoint
 {
