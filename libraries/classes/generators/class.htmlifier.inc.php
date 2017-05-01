@@ -1,6 +1,7 @@
 <?php
 namespace generators;
 use setups\method_descriptor;
+use structures\fields;
 
 class htmlifier implements bodyfier
 {
@@ -16,71 +17,75 @@ class htmlifier implements bodyfier
 
         return "";
     }
+    
+	/**
+     * HTML List
+     */
+    public function htmlColumnify(fields $column): string
+    {
+		$caser = new caser();
+		$name = $caser->wordify($column->COLUMN_NAME);
 
+		#print_r($column); die();
+		$field_body = "\t\t<th>{$name}</th>";
+		return $field_body;
+    }
+	
     /**
      * HTML List
-     *
-     * @param method_descriptor $method
-     * @return string
      */
-    public function htmlListify(method_descriptor $method): string
+    public function htmlListify(fields $column): string
     {
+		// <div>{$column->COLUMN_NAME}</div>
+		#print_r($column); die();
         // #__LISTED_ROWS__
-        $method_body = "
-<div>
-    <div>Field</div>
-    <div>Value {{\$entity.{$method->method_name}}}</div>
-</div>
-        ";
-        return $method_body;
+        $field_body = "\t\t<td>{{record.{$column->COLUMN_NAME}}}</td>";
+		return $field_body;
     }
 
     /**
      * HTML Details
-     *
-     * @param method_descriptor $method
-     * @return string
      */
-    public function htmlDetails(method_descriptor $method): string
+    public function htmlDetails(fields $column): string
     {
-        $method_body = "
+		$caser = new caser();
+		$COLUMN_NAME = $caser->wordify($column->COLUMN_NAME);
+        $field_body = "
 <div>
-    <div>Field</div>
-    <div>Value {{\$entity.{$method->method_name}}}</div>
+    <div>{$COLUMN_NAME}</div>
+    <div>{{record.{$column->COLUMN_NAME}}}</div>
 </div>
         ";
-        return $method_body;
+        
+		return $field_body;
     }
 
     /**
      * HTML Edit
-     *
-     * @param method_descriptor $method
-     * @return string
      */
-    public function htmlEdit(method_descriptor $method): string
+    public function htmlEdit(fields $column): string
     {
-        $method_body = "
-<div>
-<div>Field</div>
-<div>Value {{\$entity.{$method->method_name}}}</div>
-</div>
+		$field_body = "
+        <div>
+            <div>{$column->COLUMN_COMMENT}</div>
+            <div><input type='text' ng-model='record.{$column->COLUMN_NAME}'></div>
+            <div class='hints'>{$column->COLUMN_COMMENT}/div>
+        </div>
         ";
-        return $method_body;
+        
+		return $field_body;
     }
 
     /**
      * HTML Flag
-     *
-     * @param method_descriptor $method
-     * @return string
      */
-    public function htmlFlag(method_descriptor $method): string
+    public function htmlFlag(fields $column): string
     {
-        $method_body = "
+        $field_body = "
 Flagged
         ";
-        return $method_body;
+        
+		return $field_body;
     }
 
     /**
@@ -89,12 +94,13 @@ Flagged
      * @param method_descriptor $method
      * @return string
      */
-    public function htmlDelete(method_descriptor $method): string
+    public function htmlDelete(fields $column): string
     {
-        $method_body = "
+        $field_body = "
 Deleted
 ";
-        return $method_body;
+		
+		return $field_body;
     }
 
     /**
@@ -103,16 +109,16 @@ Deleted
      * @param method_descriptor $method
      * @return string
      */
-    public function htmlAdd(method_descriptor $method): string
+    public function htmlAdd(fields $column): string
     {
-        // get fields and loop through
-        $method_body = "
+        $field_body = "
         <div>
-            <div>Field Name</div>
-            <div>Value: </div>
-            <div>Message</div>
+            <div>{$column->COLUMN_COMMENT}</div>
+            <div><input type='text' ng-model='record.{$column->COLUMN_NAME}'></div>
+            <div class='hints'>{$column->COLUMN_COMMENT}/div>
         </div>
         ";
-        return $method_body;
+        
+		return $field_body;
     }
 }

@@ -3,6 +3,7 @@ namespace parsers;
 use setups\business_entity;
 use generators\htmlifier;
 use generators\template_reader;
+use generators\dbaccess;
 
 class html_parser implements  parser
 {
@@ -15,14 +16,21 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/list.html.ts");
 
-        $htmlifier = new htmlifier();
-        $methods = array_map(array($htmlifier, "htmlListify"), $business->methods_list());
+        # print_r($business);
+        $table_name = $business->table_name();
+        $dbaccess = new dbaccess();
+        $columns = $dbaccess->_get_columns($table_name);
+		#print_r($columns);
+		
+		$htmlifier = new htmlifier();
+        $column_heads = array_map(array($htmlifier, "htmlColumnify"), $columns);
+        $records = array_map(array($htmlifier, "htmlListify"), $columns);
 
+		# "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
-            "#__COLUMN_NAMES__" => implode("\r\n\t", $methods),
-            "#__LISTED_ROWS__" => implode("\r\n\t", $methods),
+            "#__COLUMN_NAMES__" => implode("\r\n\t", $column_heads),
+            "#__LISTED_ROWS__" => implode("\r\n\t", $records),
         );
         $from = array_keys($replace);
         $to = array_values($replace);
@@ -41,8 +49,14 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/details.html.ts");
 
-        $htmlifier = new htmlifier();
-        $methods = array_map(array($htmlifier, "htmlDetails"), $business->methods_list());
+        # print_r($business);
+        $table_name = $business->table_name();
+        $dbaccess = new dbaccess();
+        $columns = $dbaccess->_get_columns($table_name);
+		#print_r($columns);
+		
+		$htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlDetails"), $columns);
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
@@ -60,9 +74,16 @@ class html_parser implements  parser
     {
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/edit.html.ts");
+		
+		# print_r($business);
+        $table_name = $business->table_name();
+        $dbaccess = new dbaccess();
+        $columns = $dbaccess->_get_columns($table_name);
+		#print_r($columns);
 
         $htmlifier = new htmlifier();
-        $methods = array_map(array($htmlifier, "htmlEdit"), $business->methods_list());
+        //$methods = array_map(array($htmlifier, "htmlEdit"), $business->methods_list());
+        $methods = array_map(array($htmlifier, "htmlEdit"), $columns);
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
@@ -81,8 +102,14 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/flag.html.ts");
 
-        $htmlifier = new htmlifier();
-        $methods = array_map(array($htmlifier, "htmlFlag"), $business->methods_list());
+        # print_r($business);
+        $table_name = $business->table_name();
+        $dbaccess = new dbaccess();
+        $columns = $dbaccess->_get_columns($table_name);
+		#print_r($columns);
+		
+		$htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlFlag"), $columns);
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
@@ -101,8 +128,14 @@ class html_parser implements  parser
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/delete.html.ts");
 
-        $htmlifier = new htmlifier();
-        $methods = array_map(array($htmlifier, "htmlDelete"), $business->methods_list());
+        # print_r($business);
+        $table_name = $business->table_name();
+        $dbaccess = new dbaccess();
+        $columns = $dbaccess->_get_columns($table_name);
+		#print_r($columns);
+		
+		$htmlifier = new htmlifier();
+        $methods = array_map(array($htmlifier, "htmlDelete"), $columns);
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
@@ -120,9 +153,16 @@ class html_parser implements  parser
     {
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/templates/add.html.ts");
+		
+		# print_r($business);
+        $table_name = $business->table_name();
+        $dbaccess = new dbaccess();
+        $columns = $dbaccess->_get_columns($table_name);
+		#print_r($columns);
 
         $htmlifier = new htmlifier();
-        $methods = array_map(array($htmlifier, "htmlAdd"), $business->methods_list());
+        #$methods = array_map(array($htmlifier, "htmlAdd"), $business->methods_list());
+        $methods = array_map(array($htmlifier, "htmlAdd"), $columns);
         $replace = array(
             "#__CLASS_NAME__" => $business->class_name(),
             "#__ADD_FIELDS__" => implode("\r\n\t", $methods),

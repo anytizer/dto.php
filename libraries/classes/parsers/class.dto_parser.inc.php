@@ -1,5 +1,6 @@
 <?php
 namespace parsers;
+
 use setups\business_entity;
 use generators\dbaccess;
 use generators\template_reader;
@@ -27,7 +28,7 @@ class dto_parser implements parser
         if(!count($result))
         {
             // n-columns to be listed
-            return ("# Invalid table name: [{$table_name}]");
+            return "# Invalid table name: [{$table_name}]";
         }
 
         //$result = array_map(array($dbaccess, "filter_columns"), $result);
@@ -48,6 +49,7 @@ class dto_parser implements parser
         // @todo rename to class.DTONAME_dto.inc.php
         $template_reader->write($class_body, "libraries/dtos/{$business->package_name()}/class.{$business->class_name()}_dto.inc.php");
         $template_reader->write($template_reader->read("libraries/dtos/class.dto.inc.php.ts"), "libraries/dtos/class.dto.inc.php");
-        return $class_body;
+        
+		return $class_body;
     }
 }

@@ -127,13 +127,13 @@ foreach($entities as $business) {
     #echo $html_edit; die();
 
     $html_flag = $html_parser->generate_flag($business);
-    #echo $html_edit; die();
+    #echo $html_flag; die();
 
     $html_delete = $html_parser->generate_delete($business);
-    #echo $html_edit; die();
+    #echo $html_delete; die();
 
     $html_add = $html_parser->generate_add($business);
-    #echo $html_edit; die();
+    #echo $html_add; die();
 
     $html_add = $html_parser->generate_html($business);
     #echo $html_edit; die();

@@ -33,11 +33,11 @@
 
 http://localhost/angular/application/libraries/dto.php/dev/output/public_html/
 
-<script type="text/javascript" src="http://localhost/angular/application/libraries/dto.php/dev/output/public_html/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-app.js"></script>
-<script type="text/javascript" src="http://localhost/angular/application/libraries/dto.php/dev/output/public_html/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-routes.js"></script>
-<script type="text/javascript" src="http://localhost/angular/application/libraries/dto.php/dev/output/public_html/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-directives.js"></script>
-<script type="text/javascript" src="http://localhost/angular/application/libraries/dto.php/dev/output/public_html/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-services.js"></script>
-<script type="text/javascript" src="http://localhost/angular/application/libraries/dto.php/dev/output/public_html/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-controller.js"></script>
+<script type="text/javascript" src="entities/#__CLASS_NAME__/js/#__CLASS_NAME__-app.js"></script>
+<script type="text/javascript" src="entities/#__CLASS_NAME__/js/#__CLASS_NAME__-routes.js"></script>
+<script type="text/javascript" src="entities/#__CLASS_NAME__/js/#__CLASS_NAME__-directives.js"></script>
+<script type="text/javascript" src="entities/#__CLASS_NAME__/js/#__CLASS_NAME__-services.js"></script>
+<script type="text/javascript" src="entities/#__CLASS_NAME__/js/#__CLASS_NAME__-controller.js"></script>
 
 </body>
 </html>

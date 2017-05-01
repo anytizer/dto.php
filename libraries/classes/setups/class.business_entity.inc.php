@@ -39,7 +39,7 @@ class business_entity
     public function __construct()
     {
         $this->package = "";
-       # $this->module = "";
+        #$this->module = "";
         $this->table_name = "";
         $this->class_name = "";
         $this->methods = array();
@@ -61,7 +61,8 @@ class business_entity
     public function business(string $package_name, string $class_name, string $table_name): business_entity
     {
         $namifier = new namifier();
-        $this->package = $namifier->package_name($package_name);
+        
+		$this->package = $namifier->package_name($package_name);
         #$this->module = $namifier->class_name($class_name);
         $this->class_name = $namifier->class_name($class_name);
 
