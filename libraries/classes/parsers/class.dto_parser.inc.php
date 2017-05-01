@@ -42,6 +42,7 @@ class dto_parser implements parser
         $dto_name = $business->dto_name($class_name);
 
         $class_body = str_replace("#__DTONAME__",   $dto_name, $class_body);
+        $class_body = str_replace("#__PACKAGE_NAME__", $business->package_name(), $class_body);
         $class_body = str_replace("#__CLASS_NAME__", $class_name, $class_body);
         $class_body = str_replace("#__TABLENAME__", $table_name, $class_body);
         $class_body = str_replace("#__FIELDS__",    $fields, $class_body);

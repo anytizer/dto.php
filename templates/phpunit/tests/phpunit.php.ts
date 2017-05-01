@@ -1,5 +1,5 @@
 <?php
-namespace tests;
+namespace tests\#__PACKAGE_NAME__;
 
 use business\#__PACKAGE_NAME__\#__CLASS_NAME___business;
 use \PHPUnit\Framework\TestCase;

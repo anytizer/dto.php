@@ -20,12 +20,12 @@ class phpunit_parser implements  parser
         $phpunitifier = new phpunitifier();
         $methods = array_map(array($phpunitifier, "methodify"), $business->methods_list());
         $features = array_map(array($phpunitifier, "feature_test"), $business->features_list());
-        $methods = array_merge($methods, $features);
+        #$methods = array_merge($methods, $features);
 
         $replace = array(
-            "#__PACKAGE_NAME__" => $business->class_name(),
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+            "#__PUBLIC_METHODS__" => implode("\r\n\t", array_merge($methods, $features)),
         );
         $from = array_keys($replace);
         $to = array_values($replace);
