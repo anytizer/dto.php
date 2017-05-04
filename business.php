@@ -1,8 +1,10 @@
 <?php
+header("Content-Type: text/plain");
+
 require_once("libraries/inc.config.php");
 
-
-use generators\template_reader;use parsers\dto_parser;
+use generators\template_reader;
+use parsers\dto_parser;
 use parsers\business_parser;
 use parsers\phpunit_parser;
 use parsers\angular_parser;
@@ -19,7 +21,6 @@ define("__OUTPUT__", "D:/htdocs/angular/libraries/dto.php/dto.php/output");
 // BREAD: Browse, Read, Edit, Add, Delete
 // DAVE: Delete, Add, View, Edit
 // CRAP: Create, Retrieve, Alter, Purge
-
 # for each entities, define business rules (methods)
 // business = entity, model
 // database = orm
@@ -30,31 +31,26 @@ $entities = array();
 $setups = glob("definitions/define.*.php");
 print_r($setups);
 #$setups = array("definitions/define.messagequeue.php");
-foreach($setups as $setup)
-{
+foreach ($setups as $setup) {
     require_once($setup);
 }
 #print_r($setups);
 #print_r($entities); #die();
 #require_once("definitions/define.offers.php");
 #require_once("definitions/define.messagequeue.php");
-
 // who came in?
 // who treated?
 // why came in?
 // payable item, payable amount, pay now
 // notify
-
 // api server side
 // create user
 // create token
 // validate token back
 // serve some contents
 // log access
-
 // c# software identify
 // login user
-
 // api login in with wrong username, password
 // api access
 // get an access token
@@ -68,7 +64,7 @@ $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpun
 $template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
 $template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
 
-foreach($entities as $business) {
+foreach ($entities as $business) {
     # CLI Options
     # business dto user
     # business business user -- entity
@@ -118,6 +114,7 @@ foreach($entities as $business) {
     # echo $service_js;
 
     $html_parser = new html_parser();
+
     $html_list = $html_parser->generate_list($business);
     #echo $html_list; die();
 
@@ -135,10 +132,6 @@ foreach($entities as $business) {
 
     $html_add = $html_parser->generate_add($business);
     #echo $html_add; die();
-
-    $html_add = $html_parser->generate_html($business);
-    #echo $html_edit; die();
-
     #echo $html_list;
     #echo $html_details;
     #echo $html_edit;
@@ -146,7 +139,6 @@ foreach($entities as $business) {
     #echo $html_delete;
     #echo $html_add;
     #die(); continue;
-
     # dto, business
     # phunit
     # angular: app, route, controller, service
@@ -154,6 +146,5 @@ foreach($entities as $business) {
     # orm: wrapper, orm
     # endpoint, business
 }
-
 echo sprintf("%sItems generated: %s.", "\r\n", count($entities));
 #print_r($entities);

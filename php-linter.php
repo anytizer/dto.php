@@ -1,6 +1,6 @@
 <?php
 /**
- * Checks for PHP Syntaxes for all *.php files
+ * Checks for PHP Syntax for all *.php files
  */
 $log_sh_file = "lint-checker.bat";
 

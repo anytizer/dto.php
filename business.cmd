@@ -1,3 +1,3 @@
-@echo off
-cls
-@php -f business.php %*
+@ECHO OFF
+CLS
+php -f business.php %*

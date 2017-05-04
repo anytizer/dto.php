@@ -60,7 +60,7 @@ class business_entity
     public function business(string $package_name, string $class_name, string $table_name): business_entity
     {
         $namifier = new namifier();
-        
+
         $this->package = $namifier->package_name($package_name);
         $this->class_name = $namifier->class_name($class_name);
 
@@ -196,7 +196,7 @@ class business_entity
 
     /**
      * Use defined features to test
-     * Additional features descibed in one line each
+     * Additional features described in one line each
      * @return array
      */
     public function features_list(): array

@@ -1,2 +1,2 @@
-@echo off
-call business.cmd
+@ECHO OFF
+CALL business.cmd

@@ -2,20 +2,16 @@
 namespace backend;
 
 /**
- * Class guid
+ * GUID Generator
  * @package backend
  *
  * @see http://guid.us/GUID/PHP
  */
 class guid
 {
-    public static function NewGuid()
+    public static function NewGuid(): string
     {
-        /**
-         * Optional for php 4.2.0 and up.
-         */
         mt_srand((double)microtime()*10000);
-
         $characters = strtoupper(md5(uniqid(rand(), true).date("HisYmd")));
 
         $guid = implode("-", array(

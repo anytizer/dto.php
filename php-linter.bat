@@ -1,7 +1,7 @@
 @ECHO OFF
 
 REM Create the list of PHP Files
-dir /s/a/b *.php > lint-checker.bat
+DIR /s/a/b *.php > lint-checker.bat
 
 REM Build PHP Lint checker script
 php -f php-linter.php
