@@ -4,16 +4,14 @@ header("Content-Type: text/plain");
 require_once("libraries/inc.config.php");
 
 use generators\template_reader;
-use parsers\dto_parser;
-use parsers\business_parser;
-use parsers\phpunit_parser;
 use parsers\angular_parser;
-use parsers\html_parser;
+use parsers\business_parser;
+use parsers\dto_parser;
 use parsers\endpoints_parser;
+use parsers\html_parser;
 use parsers\orm_parser;
+use parsers\phpunit_parser;
 
-#define("__OUTPUT__", "d:/htdocs/output");
-#define("__OUTPUT__", "D:/htdocs/angular/application/test");
 define("__OUTPUT__", "D:/htdocs/angular/libraries/dto.php/dto.php/output");
 
 // CRUD: Create, Read, Update, Delete
@@ -28,34 +26,13 @@ define("__OUTPUT__", "D:/htdocs/angular/libraries/dto.php/dto.php/output");
 // method
 // table name
 $entities = array();
-$setups = glob("definitions/define.*.php");
+$setups = glob("../definitions/define.*.php");
 print_r($setups);
 #$setups = array("definitions/define.messagequeue.php");
 foreach ($setups as $setup) {
     require_once($setup);
 }
-#print_r($setups);
-#print_r($entities); #die();
-#require_once("definitions/define.offers.php");
-#require_once("definitions/define.messagequeue.php");
-// who came in?
-// who treated?
-// why came in?
-// payable item, payable amount, pay now
-// notify
-// api server side
-// create user
-// create token
-// validate token back
-// serve some contents
-// log access
-// c# software identify
-// login user
-// api login in with wrong username, password
-// api access
-// get an access token
-// query something
-// query something with wrong token
+#print_r($entities); die();
 
 $template_reader = new template_reader();
 $template_reader->write($template_reader->read("phpunit/bootstrap.php.ts"), "phpunit/bootstrap.php");
@@ -140,7 +117,7 @@ foreach ($entities as $business) {
     #echo $html_add;
     #die(); continue;
     # dto, business
-    # phunit
+    # phpunit
     # angular: app, route, controller, service
     # html: list, details, edit, add, flag, delete
     # orm: wrapper, orm

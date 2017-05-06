@@ -12,10 +12,10 @@ class #__CLASS_NAME__Test extends TestCase
      */
 	private $#__CLASS_NAME___business;
 
-        public function setup()
-        {
-            $this->#__CLASS_NAME___business = new #__CLASS_NAME___business();
-        }
+	public function setup()
+	{
+		$this->#__CLASS_NAME___business = new #__CLASS_NAME___business();
+	}
 
 	#__PUBLIC_METHODS__
 }

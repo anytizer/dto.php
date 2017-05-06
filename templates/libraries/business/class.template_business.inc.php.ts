@@ -1,7 +1,7 @@
 <?php
 namespace business;
+use dtos\#__PACKAGE_NAME__\#__CLASS_NAME___dto;
 use business\business;
-use dtos\#__CLASS_NAME___dto;
 use business\#__CLASS_NAME__;
 
 /**

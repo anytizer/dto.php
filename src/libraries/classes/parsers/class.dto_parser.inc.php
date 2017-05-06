@@ -50,7 +50,7 @@ class dto_parser implements parser
         // @todo rename to class.DTONAME_dto.inc.php
         $template_reader->write($class_body, "libraries/dtos/{$business->package_name()}/class.{$business->class_name()}_dto.inc.php");
         $template_reader->write($template_reader->read("libraries/dtos/class.dto.inc.php.ts"), "libraries/dtos/class.dto.inc.php");
-        
+
 		return $class_body;
     }
 }

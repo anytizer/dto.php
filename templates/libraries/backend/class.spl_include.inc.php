@@ -56,7 +56,10 @@ class spl_include {
         if (is_file($file)) {
             require_once($file);
         }
-        #echo "\r\n", $file;
+        else
+		{
+			echo "\r\nNot found: ** ** ** ", $file;
+		}
 
         /**
          * Continue to other handlers in case of failures
@@ -86,7 +89,6 @@ class spl_include {
     }
 
     /**
-     * @todo PSR-0
      * @todo PSR-4
      */
 }
