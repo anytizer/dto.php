@@ -132,10 +132,10 @@ class business_entity
      * Dependency management
      * @todo Import feature
      *
-     * @param $package
+     * @param $package_name
      * @return business_entity
      */
-    public function import($package): business_entity
+    public function import(string $package_name): business_entity
     {
         // setup with other modules
         return $this;
@@ -160,9 +160,6 @@ class business_entity
      */
     public function dto_name(): string
     {
-        //$namifier = new namifier();
-        //$dto_name = $namifier->dto_name($this->class_name);
-
         $namifier = new namifier();
         $dto_name = $namifier->dto_name($this->class_name);
         return $dto_name;

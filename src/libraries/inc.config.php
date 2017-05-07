@@ -11,6 +11,8 @@ $password = "";
 $orm_name="users";
 $connection = new \PDO("mysql:host={$host};dbname={$orm_name}", $user, $password);
 
+define("__OUTPUT__", "D:/htdocs/angular/libraries/dto.php/dto.php/output");
+
 define("__LIBRARIES_DIR__", realpath(dirname(__FILE__)));
 require_once(__LIBRARIES_DIR__."/classes/backend/class.spl_include.inc.php");
 spl_autoload_register(array(new \backend\spl_include(__LIBRARIES_DIR__."/classes"), "namespaced_inc_dot"));

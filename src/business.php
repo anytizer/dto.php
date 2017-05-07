@@ -12,8 +12,6 @@ use parsers\html_parser;
 use parsers\orm_parser;
 use parsers\phpunit_parser;
 
-define("__OUTPUT__", "D:/htdocs/angular/libraries/dto.php/dto.php/output");
-
 // CRUD: Create, Read, Update, Delete
 // MADS: Modify, Add, Delete, Show
 // BREAD: Browse, Read, Edit, Add, Delete
@@ -41,7 +39,8 @@ $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpun
 $template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
 $template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
 
-foreach ($entities as $business) {
+foreach ($entities as $business)
+{
     # CLI Options
     # business dto user
     # business business user -- entity
