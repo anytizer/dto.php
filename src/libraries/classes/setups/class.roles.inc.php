@@ -12,6 +12,9 @@ namespace setups;
 
 class roles
 {
+    /**
+     * @var bool
+     */
     private $active;
 
 /*
