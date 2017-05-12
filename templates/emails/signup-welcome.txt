@@ -1,7 +1,7 @@
-Welcome to __COMPANY__.
+Welcome to #__COMPANY__.
 
 Please use the below link to confirm your application.
-__CONFIRMATION_LINK__
+#__CONFIRMATION_LINK__
 
 Thank you,
-__ORGANIZATION__
+#__ORGANIZATION__

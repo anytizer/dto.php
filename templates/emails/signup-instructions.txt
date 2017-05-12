@@ -1,8 +1,8 @@
-Dear __USER__,
-Thank you for registering your __COMPANY__.
+Dear #__USER__,
+Thank you for registering your #__COMPANY__.
 
 Now, you may set your own password and use our services.
-__PASSWORD_RESET_LINK__
+#__PASSWORD_RESET_LINK__
 
 Once you activate your account you can:
   - manager your users
@@ -10,4 +10,4 @@ Once you activate your account you can:
   - manage your services
 
 Thank you,
-__ORGANIZATION__
+#__ORGANIZATION__
