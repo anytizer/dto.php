@@ -20,7 +20,7 @@ class dbaccess
 {
     /**
      * Identifies good and bad field names to be filtered
-     * @tod unused
+     * @todo unused
      *
      * @param fields $field
      * @return string
@@ -141,10 +141,23 @@ ORDER BY
     }
 
     /**
+     * Get a filtered list of columns
+     *
      * @param string $TABLE_NAME
      * @return array
      */
     public function _get_columns(string $TABLE_NAME)
+    {
+        $result = $this->_get_all_columns($TABLE_NAME);
+        return $result;
+    }
+
+    /**
+     * Get all columns
+     * @param string $TABLE_NAME
+     * @return array
+     */
+    public function _get_all_columns(string $TABLE_NAME)
     {
         global $connection;
         global $orm_name;

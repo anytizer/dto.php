@@ -7,12 +7,20 @@ use setups\method_descriptor;
  * AngularJS Templates
  * @todo Update for Angular 4.0
  */
-class angularifier implements  bodyfier {
+class angularifier implements  bodyfier
+{
+    /**
+     * @return string
+     */
     public function generate(): string
     {
         //$this->angular_controller();
     }
 
+    /**
+     * @param method_descriptor $method
+     * @return string
+     */
     public function angular_router(method_descriptor $method): string
     {
         $caser = new caser();
@@ -27,6 +35,10 @@ class angularifier implements  bodyfier {
 ";
     }
 
+    /**
+     * @param method_descriptor $method
+     * @return string
+     */
     public function angular_service(method_descriptor $method): string
     {
         $caser = new caser();
@@ -38,6 +50,10 @@ class angularifier implements  bodyfier {
 ";
     }
 
+    /**
+     * @param method_descriptor $method
+     * @return string
+     */
     public function angular_controller(method_descriptor $method): string
     {
         $caser = new caser();

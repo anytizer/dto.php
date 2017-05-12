@@ -6,6 +6,5 @@ namespace tests;
 require_once("../libraries/inc.config.php");
 
 use backend\spl_include;
-//use common\validation_rules;
 
 spl_autoload_register(array(new spl_include(__LIBRARIES_DIR__."/classes"), "namespaced_inc_dot"));

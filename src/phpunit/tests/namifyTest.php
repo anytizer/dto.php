@@ -4,7 +4,6 @@ use generators\caser;
 use setups\business_entity;
 use PHPUnit\Framework\TestCase;
 
-
 class namifyTest extends TestCase
 {
     public function setup()

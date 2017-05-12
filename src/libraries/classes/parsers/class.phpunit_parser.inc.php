@@ -42,9 +42,9 @@ class phpunit_parser implements  parser
         // {$business->class_name()}/
         $template_reader->write($method_body, "phpunit/tests/{$business->package_name()}/{$business->class_name()}/{$business->class_name()}Test.php");
         # $template_reader->write($method_body, "phpunit/tests/{$business->class_name()/{$business->class_name()}/{$business->class_name()}APITest.php");
-        // write: business test
-        // write: api unit tests
-        // write endpoint tests
+        # write: business test
+        # write: api unit tests
+        # write endpoint tests
         return $method_body;
     }
 }

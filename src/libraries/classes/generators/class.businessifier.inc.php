@@ -21,10 +21,6 @@ class businessifier implements  bodyfier
         $method_name = $method->method_name;
         $parameters = $method->parameters;
 
-        # Get all fields
-        # write all fields with write
-        # save
-
         $method_body = "
     /**
      * {$description}

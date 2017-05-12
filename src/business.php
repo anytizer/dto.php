@@ -24,7 +24,7 @@ use parsers\phpunit_parser;
 // method
 // table name
 $entities = array();
-$setups = glob("../definitions/define.*.php");
+$setups = glob(__BUSINESS_DEFINITIONS__."/define.*.php");
 print_r($setups);
 #$setups = array("definitions/define.messagequeue.php");
 foreach ($setups as $setup) {
@@ -53,6 +53,7 @@ foreach ($entities as $business)
 
     $dto_parser = new dto_parser();
     $dto_body = $dto_parser->generate($business);
+    #$dto_body = $dto_parser->asis($business);
     #echo $dto_body; die();
 
     $business_parser = new business_parser();
@@ -61,7 +62,6 @@ foreach ($entities as $business)
 
     $phpunit_parser = new phpunit_parser();
     $phpunit_body = $phpunit_parser->generate($business);
-
     #echo $phpunit_body; die();
 
     $endpoints_parser = new endpoints_parser();
