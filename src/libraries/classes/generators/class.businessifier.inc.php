@@ -21,21 +21,23 @@ class businessifier implements  bodyfier
         $method_name = $method->method_name;
         $parameters = $method->parameters;
 
+        /**
+         * @todo Load ORM fields dynamically
+         */
         $method_body = "
     /**
      * {$description}
      */
     public function {$method_name}({$parameters}): bool
     {
-        // add, edit, delete, details, list, flag
-        // do other query things()
+        \$#__ORM_NAME__ = new #__ORM_NAME__();
         
-        #\$#__CLASS_NAME___orm = new #__CLASS_NAME___orm();
-        #\$#__CLASS_NAME___orm->name = \$parameters->name;
-        #\$#__CLASS_NAME___orm->value = \$parameters->value;
-        #\$#__CLASS_NAME___orm->save();
+        #\$#__ORM_NAME__->name = \$parameters->name;
+        #\$#__ORM_NAME__->value = \$parameters->value;
+        #\$#__ORM_NAME__->others = \$parameters->others;
         
-        return true;
+        \$success = \$#__ORM_NAME__->save();
+        return \$success;
     }
 ";
         return $method_body;

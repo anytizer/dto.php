@@ -63,6 +63,7 @@ class business_entity
 
         $this->package = $namifier->package_name($package_name);
         $this->class_name = $namifier->class_name($class_name);
+        $this->business_name = $namifier->business_name($class_name);
 
         /**
          * Check validity for table existing
@@ -145,6 +146,14 @@ class business_entity
      * Public interactions
      */
 
+    public function package_name(): string
+    {
+        $caser = new caser();
+        $package = $caser->psr4($this->package);
+
+        return $package;
+    }
+
     /**
      * @return string
      */
@@ -171,18 +180,32 @@ class business_entity
      * Class name as appears inside php scripts
      * @return mixed
      */
+    public function business_name(): string
+    {
+        $business_name = $this->class_name();
+        $business_name .= "Business";
+
+        return $business_name;
+    }
+
+    /**
+     * Also used in producing file names
+     * Class name as appears inside php scripts
+     * @return mixed
+     */
     public function class_name(): string
     {
         return $this->class_name;
     }
 
-    public function package_name(): string
+    public function orm_name(): string
     {
-        $caser = new caser();
-        $package = $caser->psr4($this->package);
+        $orn_name = $this->class_name();
+        $orn_name  .= "ORM";
 
-        return $package;
+        return $orn_name;
     }
+
 
     /**
      * @return method_descriptor[]

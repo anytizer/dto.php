@@ -27,12 +27,14 @@ class orm_parser implements parser
         $ormifier = new ormifier();
         $methods = array_map(array($ormifier, "methodify"), $methods);
         $replaces = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
+            "#__ORM_NAME__" => $business->orm_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)
         );
         $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
 
-        $template_reader->write($method_body, "libraries/orm/{$business->package_name()}/class.{$business->class_name()}_orm.inc.php");
+        $template_reader->write($method_body, "libraries/orm/{$business->package_name()}/class.{$business->orm_name()}.inc.php");
         return $method_body;
     }
 }

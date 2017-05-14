@@ -49,6 +49,21 @@ class namifier
     }
 
     /**
+     * Gets a class name
+     *
+     * @param $class_name
+     * @return string
+     */
+    public function business_name(string $class_name): string
+    {
+        $class_name = preg_replace("/^(.*?\\:)/is", "", $class_name);
+        $class_name = $this->caser->psr4($class_name);
+        $class_name .= "Business";
+
+        return $class_name;
+    }
+
+    /**
      * Gets a column name
      *
      * @param string $dto_name

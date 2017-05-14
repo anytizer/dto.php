@@ -29,16 +29,13 @@ class ormifier // implements bodyfier
         // add, edit, delete, details, list, flag
         // do other query things()
         
-        #\$order = Order::first();
-        #\$#__CLASS_NAME___orm = new #__CLASS_NAME___orm();
-        #\$#__CLASS_NAME___orm->name = \$parameters->name;
-        #\$#__CLASS_NAME___orm->value = \$parameters->value;
-        #\$#__CLASS_NAME___orm->save();
+        #\$#__ORM_NAME__= new #__ORM_NAME__();
+        #\$#__ORM_NAME__->name = \$parameters->name;
+        #\$#__ORM_NAME__->value = \$parameters->value;
         
-        \$order->title = \"New title\";
-        \$order->save();
+        \$success = #\$#__ORM_NAME__->save();
         
-        return true;
+        return \$success;
     }
 ";
         return $method_body;

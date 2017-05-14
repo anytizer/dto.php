@@ -39,7 +39,8 @@ $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpun
 $template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
 $template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
 $template_reader->write($template_reader->read("libraries/dtos/class.dto.inc.php.ts"), "libraries/dtos/class.dto.inc.php"); // @todo Write once only
-$template_reader->write($template_reader->read("libraries/orm/class.orm.inc.php"), "libraries/orm/class.orm.inc.php");
+$template_reader->write($template_reader->read("libraries/orm/class.orm.inc.php.ts"), "libraries/orm/class.orm.inc.php");
+$template_reader->write($template_reader->read("libraries/business/class.business.inc.php.ts"), "libraries/business/class.business.inc.php");
 
 print_r($entities); #die();
 foreach ($entities as $business)
@@ -60,9 +61,9 @@ foreach ($entities as $business)
     #$dto_body = $dto_parser->asis($business);
     #echo $dto_body; die();
 
-    #$business_parser = new business_parser();
-    #$business_body = $business_parser->generate($business);
-    #echo $business_body; die();
+    $business_parser = new business_parser();
+    $business_body = $business_parser->generate($business);
+    echo $business_body; die();
 
     #$phpunit_parser = new phpunit_parser();
     #$phpunit_body = $phpunit_parser->generate($business);
@@ -72,8 +73,8 @@ foreach ($entities as $business)
     #$endpoints_body = $endpoints_parser->generate($business);
     #echo $endpoints_body; die();
 
-    #$orm_parser = new orm_parser();
-    #$orm_body = $orm_parser->generate($business);
+    $orm_parser = new orm_parser();
+    $orm_body = $orm_parser->generate($business);
     #echo $orm_body; die();
 
     $angular_parser = new angular_parser();
