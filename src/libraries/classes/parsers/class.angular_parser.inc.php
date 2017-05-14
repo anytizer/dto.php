@@ -56,7 +56,7 @@ class angular_parser implements parser
         $methods = array_map(array($angularifier, "angular_router"), $business->methods_list());
 
         $replace = array(
-            "#__CLASS_NAME__" => $business->class_name(),
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );
@@ -84,7 +84,6 @@ class angular_parser implements parser
         $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
 
         $replace = array(
-            "#__CLASS_NAME__" => $business->class_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         );

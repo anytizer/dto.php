@@ -15,6 +15,9 @@ Name must have DTO prepended.
 Classes cannot read or write anything extra.
 
 ## Examples
+
+    php -f business.php
+
 Class name: classname_dto
 File name: class.classname_dto.inc.php
 

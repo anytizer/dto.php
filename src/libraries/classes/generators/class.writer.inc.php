@@ -50,8 +50,8 @@ class writer
     }
 
     /**
-     * @param $body
      * @param $dirpath
+     * @param $body
      * @return bool
      */
     function write_scripts($dirpath, $body): bool
@@ -67,13 +67,13 @@ class writer
         /**
          * Save the file if the user modified it
          */
-        $save_user_modified_files = false; // only good if the phpunit methods were produced in different files
+        $DO_NOT_OVERWRITE = false; // only good if the phpunit methods were produced in different files
         if(is_file($filepath))
         {
-            if(!$save_user_modified_files)
+            if(!$DO_NOT_OVERWRITE)
             {
                 $total = file_put_contents($filepath, $body);
-                echo "\r\nSuccess: ", $filepath;
+                echo "\r\nWriting: ", $filepath;
             }
             else
             {
@@ -83,7 +83,9 @@ class writer
         }
         else
         {
+            // Copied first block above
             $total = file_put_contents($filepath, $body);
+            echo "\r\nWriting: ", $filepath;
         }
 
         return $total > 0;

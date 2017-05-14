@@ -162,6 +162,7 @@ class business_entity
     {
         $namifier = new namifier();
         $dto_name = $namifier->dto_name($this->class_name);
+
         return $dto_name;
     }
 

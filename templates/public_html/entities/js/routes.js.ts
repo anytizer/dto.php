@@ -1,5 +1,5 @@
 /**
- * routes.js __CLASS_NAME__
+ * routes.js #__CLASS_NAME__
  */
 "use strict";
 #__CLASS_NAME__App.config(function($stateProvider, $urlRouterProvider)

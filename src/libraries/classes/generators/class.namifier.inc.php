@@ -57,7 +57,9 @@ class namifier
     public function dto_name(string $dto_name): string
     {
         $caser = new caser();
+
         $dto_name = $caser->wordify($dto_name);
+        $dto_name .= "DTO";
 
         return $dto_name;
     }

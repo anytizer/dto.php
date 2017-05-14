@@ -199,4 +199,9 @@ class html_parser implements  parser
 
         return $method_body;
     }
+
+    public function generate_selenium(business_entity $business)
+    {
+        return "";
+    }
 }
