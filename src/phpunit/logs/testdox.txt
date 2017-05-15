@@ -6,8 +6,10 @@ tests\caser
 
 tests\module
  [x] Namify
- [x] Module name
  [x] Package name
+ [x] Dto name
+ [x] Orm name
+ [x] Module name
 
 tests\namify
  [x] Namify

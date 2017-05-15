@@ -38,7 +38,7 @@ $template_reader->write($template_reader->read("phpunit/phpunit.cmd.ts"), "phpun
 $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpunit/phpunit.xml");
 $template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
 $template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
-$template_reader->write($template_reader->read("libraries/dtos/class.dto.inc.php.ts"), "libraries/dtos/class.dto.inc.php"); // @todo Write once only
+$template_reader->write($template_reader->read("libraries/dtos/class.dto.inc.php.ts"), "libraries/dtos/class.dto.inc.php");
 $template_reader->write($template_reader->read("libraries/orm/class.orm.inc.php.ts"), "libraries/orm/class.orm.inc.php");
 $template_reader->write($template_reader->read("libraries/business/class.business.inc.php.ts"), "libraries/business/class.business.inc.php");
 
@@ -57,17 +57,17 @@ foreach ($entities as $business)
     echo sprintf("\r\nProcessing: Package [%s] at Class [%s].", $business->package_name(), $business->class_name());
 
     $dto_parser = new dto_parser();
-    $dto_body = $dto_parser->generate($business);
+    #$dto_body = $dto_parser->generate($business);
     #$dto_body = $dto_parser->asis($business);
     #echo $dto_body; die();
 
     $business_parser = new business_parser();
-    $business_body = $business_parser->generate($business);
-    echo $business_body; die();
+    #$business_body = $business_parser->generate($business);
+    #echo $business_body; die();
 
-    #$phpunit_parser = new phpunit_parser();
-    #$phpunit_body = $phpunit_parser->generate($business);
-    #echo $phpunit_body; die();
+    $phpunit_parser = new phpunit_parser();
+    $phpunit_body = $phpunit_parser->generate($business);
+    echo $phpunit_body; die();
 
     #$endpoints_parser = new endpoints_parser();
     #$endpoints_body = $endpoints_parser->generate($business);

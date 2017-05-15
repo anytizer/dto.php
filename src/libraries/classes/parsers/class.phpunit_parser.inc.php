@@ -25,6 +25,7 @@ class phpunit_parser implements  parser
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
+            "#__BUSINESS_NAME__" => $business->business_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", array_merge($methods, $features)),
         );
         $from = array_keys($replace);

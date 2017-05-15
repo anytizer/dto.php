@@ -9,7 +9,7 @@ class orm_parser implements parser
     public function generate(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("libraries/orm/class.template_orm.inc.php");
+        $method_body = $template_reader->read("libraries/orm/class.orm.inc.php.ts");
 
         // reset
         $methods = $business->methods_list();

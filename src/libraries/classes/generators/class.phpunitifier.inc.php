@@ -75,6 +75,9 @@ class phpunitifier extends generator implements bodyfier
      */
     public function feature_test(string $feature): string
     {
+        $method_name = "do_something";
+        $parameters = "";
+
         $caser = new caser();
         $feature_name = $caser->psr4($feature);
         $method_body = "
@@ -83,6 +86,11 @@ class phpunitifier extends generator implements bodyfier
      */
     public function test{$feature_name}()
     {
+        /**
+         * @todo Implement - {$feature}
+         */
+        #\$output = \$this->#__BUSINESS_NAME__->{$method_name}($parameters);
+
         \$this->markTestIncomplete();
     }
 ";
