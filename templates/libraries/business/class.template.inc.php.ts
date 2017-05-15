@@ -2,6 +2,7 @@
 namespace business;
 
 use dtos\#__PACKAGE_NAME__\#__DTO_NAME__;
+use orm\#__PACKAGE_NAME__\#__ORM_NAME__;
 use business\business;
 
 /**

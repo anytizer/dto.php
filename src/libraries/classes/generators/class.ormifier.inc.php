@@ -26,15 +26,12 @@ class ormifier // implements bodyfier
      */
     public function {$method_name}({$parameters}): bool
     {
-        // add, edit, delete, details, list, flag
-        // do other query things()
+        \$#__ORM_NAME__= new #__ORM_NAME__();
         
-        #\$#__ORM_NAME__= new #__ORM_NAME__();
         #\$#__ORM_NAME__->name = \$parameters->name;
         #\$#__ORM_NAME__->value = \$parameters->value;
         
-        \$success = #\$#__ORM_NAME__->save();
-        
+        \$success = \$#__ORM_NAME__->save();
         return \$success;
     }
 ";

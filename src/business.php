@@ -57,25 +57,25 @@ foreach ($entities as $business)
     echo sprintf("\r\nProcessing: Package [%s] at Class [%s].", $business->package_name(), $business->class_name());
 
     $dto_parser = new dto_parser();
-    #$dto_body = $dto_parser->generate($business);
+    $dto_body = $dto_parser->generate($business);
     #$dto_body = $dto_parser->asis($business);
     #echo $dto_body; die();
 
+    $orm_parser = new orm_parser();
+    $orm_body = $orm_parser->generate($business);
+    echo $orm_body; die();
+
     $business_parser = new business_parser();
-    #$business_body = $business_parser->generate($business);
+    $business_body = $business_parser->generate($business);
     #echo $business_body; die();
 
     $phpunit_parser = new phpunit_parser();
     $phpunit_body = $phpunit_parser->generate($business);
-    echo $phpunit_body; die();
+    #echo $phpunit_body; die();
 
-    #$endpoints_parser = new endpoints_parser();
-    #$endpoints_body = $endpoints_parser->generate($business);
+    $endpoints_parser = new endpoints_parser();
+    $endpoints_body = $endpoints_parser->generate($business);
     #echo $endpoints_body; die();
-
-    $orm_parser = new orm_parser();
-    $orm_body = $orm_parser->generate($business);
-    #echo $orm_body; die();
 
     $angular_parser = new angular_parser();
 
