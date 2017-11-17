@@ -1,5 +1,6 @@
 <?php
 namespace dtos\dto;
+use \Exception;
 
 /**
  * Unless otherwise defined, do not allow to read or write non-existing members

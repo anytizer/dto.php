@@ -59,7 +59,7 @@ class angular_parser implements parser
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+            "#__ANGULAR_ROUTES__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);
         $to = array_values($replace);
@@ -87,7 +87,7 @@ class angular_parser implements parser
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+            "#__ANGULAR_CONTROLLERS__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);
         $to = array_values($replace);
@@ -117,7 +117,7 @@ class angular_parser implements parser
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+            "#__ANGULAR_SERVICES__" => implode("\r\n\t", $methods),
         );
         $from = array_keys($replace);
         $to = array_values($replace);

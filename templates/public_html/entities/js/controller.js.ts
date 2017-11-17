@@ -115,4 +115,5 @@
 	};
 }]);
 
-// #__PUBLIC_METHODS__
+
+#__ANGULAR_CONTROLLERS__

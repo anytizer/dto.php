@@ -37,4 +37,27 @@ class business_parser implements parser
         $template_reader->write($method_body, "libraries/business/{$business->package_name()}/class.{$business->business_name()}.inc.php");
         return $method_body;
     }
+
+    public function copy_files(business_entity $business)
+    {
+        $template_reader = new template_reader();
+        $method_body = $template_reader->read("libraries/business/class.business.inc.php.ts");
+
+        $methods = $business->methods_list();
+
+        $businessifier = new businessifier();
+        $methods = array_map(array($businessifier, "businessify"), $methods);
+        #print_r($methods); die();
+        $replaces = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
+            "#__ORM_NAME__" => $business->orm_name(),
+            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)
+        );
+        $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
+        $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
+
+        $template_reader->write($method_body, "libraries/business/class.business.inc.php");
+        return $method_body;
+    }
 }

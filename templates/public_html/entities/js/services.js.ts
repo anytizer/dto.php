@@ -54,7 +54,7 @@
                     return fetch("#__CLASS_NAME__/flag", record);
                 },
 
-                // #__PUBLIC_METHODS__
+                #__ANGULAR_SERVICES__
             },
         }
     }]);

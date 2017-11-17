@@ -64,7 +64,7 @@ class angularifier implements  bodyfier
     \$scope.data = {
         \"init\": function(){
         },
-    }
+    };
 
     \$scope.data.init();
 }]);

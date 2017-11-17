@@ -49,6 +49,6 @@
 			controller: "#__CLASS_NAME__FlagController",
 		})
 
-        #__PUBLIC_METHODS__
+        #__ANGULAR_ROUTES__
 	;
 });
