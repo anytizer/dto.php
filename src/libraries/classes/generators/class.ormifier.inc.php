@@ -13,8 +13,10 @@ class ormifier // implements bodyfier
     public function methodify(method_descriptor $method): string
     {
         $description = $method->description;
+        $accessor = $method->accessor;
         $method_name = $method->method_name;
         $parameters = $method->parameters;
+        $return_type = $method->return_type;
 
         # Get all fields
         # write all fields with write
@@ -24,7 +26,7 @@ class ormifier // implements bodyfier
     /**
      * {$description}
      */
-    public function {$method_name}({$parameters}): bool
+    {$accessor} function {$method_name}({$parameters}): {$return_type}
     {
         \$#__ORM_NAME__= new #__ORM_NAME__();
         

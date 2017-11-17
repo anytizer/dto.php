@@ -38,7 +38,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/{$business->class_name()}-app.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-app.js");
         return $method_body;
     }
 
@@ -66,7 +66,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/{$business->class_name()}-routes.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-routes.js");
         return $method_body;
     }
 
@@ -94,7 +94,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/{$business->class_name()}-controller.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-controller.js");
         return $method_body;
     }
 
@@ -124,7 +124,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/js/{$business->class_name()}-services.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-services.js");
         return $method_body;
     }
 }

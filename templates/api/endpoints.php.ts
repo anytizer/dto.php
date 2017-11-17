@@ -3,6 +3,7 @@ namespace endpoints;
 
 use dtos\#__PACKAGE_NAME__\#__CLASS_NAME__DTO;
 use models\#__PACKAGE_NAME__\#__CLASS_NAME__;
+use endpoints\endpoint as endpoint;
 
 /**
  * Endpoints for landing #__CLASS_NAME__

@@ -20,6 +20,9 @@ class htmlifier implements bodyfier
     
 	/**
      * HTML List
+     *
+     * @param fields $column
+     * @return string
      */
     public function htmlColumnify(fields $column): string
     {
@@ -33,6 +36,9 @@ class htmlifier implements bodyfier
 	
     /**
      * HTML List
+     *
+     * @param fields $column
+     * @return string
      */
     public function htmlListify(fields $column): string
     {
@@ -45,6 +51,9 @@ class htmlifier implements bodyfier
 
     /**
      * HTML Details
+     *
+     * @param fields $column
+     * @return string
      */
     public function htmlDetails(fields $column): string
     {
@@ -62,14 +71,17 @@ class htmlifier implements bodyfier
 
     /**
      * HTML Edit
+     *
+     * @param fields $column
+     * @return string
      */
     public function htmlEdit(fields $column): string
     {
 		$field_body = "
         <div>
             <div>{$column->COLUMN_COMMENT}</div>
-            <div><input type='text' ng-model='record.{$column->COLUMN_NAME}'></div>
-            <div class='hints'>{$column->COLUMN_COMMENT}</div>
+            <div><input type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\"></div>
+            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
         ";
         
@@ -78,11 +90,14 @@ class htmlifier implements bodyfier
 
     /**
      * HTML Flag
+     *
+     * @param fields $column
+     * @return string
      */
     public function htmlFlag(fields $column): string
     {
         $field_body = "
-Flagged
+<!-- Flagged -->
         ";
         
 		return $field_body;
@@ -91,7 +106,7 @@ Flagged
     /**
      * HTML Delete
      *
-     * @param method_descriptor $method
+     * @param fields $column
      * @return string
      */
     public function htmlDelete(fields $column): string
@@ -106,7 +121,7 @@ Deleted
     /**
      * HTML Add
      *
-     * @param method_descriptor $method
+     * @param fields $column
      * @return string
      */
     public function htmlAdd(fields $column): string
@@ -114,8 +129,8 @@ Deleted
         $field_body = "
         <div>
             <div>{$column->COLUMN_COMMENT}</div>
-            <div><input type='text' ng-model='record.{$column->COLUMN_NAME}'></div>
-            <div class='hints'>{$column->COLUMN_COMMENT}</div>
+            <div><input type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\"></div>
+            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
         ";
         

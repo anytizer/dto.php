@@ -16,13 +16,17 @@ class endpoints extends generator implements bodyfier
         // URLs fix
         $url_snippet = preg_replace("/\\_/is", "-", $method->method_name);
 
+        $accessor = $method->accessor;
+        $parameters = $method->parameters;
+        $return_type = $method->return_type;
+
         $method_body = "
     /**
      * {$method->description}
      *
-     * @url http://api.example.com:9090/v0.0.1/api/#__CLASS_NAME__/{$url_snippet}
+     * @url http://api.example.com:9090/api-v0.0.1/#__PACKAGE_NAME__/#__CLASS_NAME__/{$url_snippet}
      */
-    private function {$method->method_name}(): bool
+    {$accessor} function {$method->method_name}({$parameters}): {$return_type}
     {
         if(\$this->APIUser->can(\$this->role->method(\"{$method->method_name}\")))
         {
