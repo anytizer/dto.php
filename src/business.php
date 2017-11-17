@@ -12,11 +12,15 @@ use parsers\html_parser;
 use parsers\orm_parser;
 use parsers\phpunit_parser;
 
-// CRUD: Create, Read, Update, Delete
-// MADS: Modify, Add, Delete, Show
-// BREAD: Browse, Read, Edit, Add, Delete
-// DAVE: Delete, Add, View, Edit
-// CRAP: Create, Retrieve, Alter, Purge
+/**
+ * Common names
+ * CRUD: Create, Read, Update, Delete
+ * MADS: Modify, Add, Delete, Show
+ * BREAD: Browse, Read, Edit, Add, Delete
+ * DAVE: Delete, z * Add, View, Edit
+ * CRAP: Create, Retrieve, Alter, Purge
+ */
+
 # for each entities, define business rules (methods)
 // business = entity, model
 // database = orm
@@ -26,7 +30,8 @@ use parsers\phpunit_parser;
 $entities = array();
 $setups = glob(__BUSINESS_DEFINITIONS__."/define.*.php");
 print_r($setups);
-#$setups = array("definitions/define.messagequeue.php");
+// die();
+#$setups = array("definitions/define.accounts.php"); // overwrite
 foreach ($setups as $setup) {
     require_once($setup);
 }
@@ -38,9 +43,13 @@ $template_reader->write($template_reader->read("phpunit/phpunit.cmd.ts"), "phpun
 $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpunit/phpunit.xml");
 $template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
 $template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
+// @todo Package name to be replaced
 $template_reader->write($template_reader->read("libraries/dtos/class.dto.inc.php.ts"), "libraries/dtos/class.dto.inc.php");
-$template_reader->write($template_reader->read("libraries/orm/class.orm.inc.php.ts"), "libraries/orm/class.orm.inc.php");
+//$template_reader->write($template_reader->read("libraries/orm/class.orm.inc.php.ts"), "libraries/orm/class.orm.inc.php");
 $template_reader->write($template_reader->read("libraries/business/class.business.inc.php.ts"), "libraries/business/class.business.inc.php");
+
+// D:\htdocs\angular\libraries\dto.php\dto.php\templates\phpunit\tests
+// D:/htdocs/angular/libraries/dto.php/dto.php/templates/phpunit/tests/apiunit.php.ts
 
 print_r($entities); #die();
 foreach ($entities as $business)
@@ -56,27 +65,50 @@ foreach ($entities as $business)
     # business orm user -- business
     echo sprintf("\r\nProcessing: Package [%s] at Class [%s].", $business->package_name(), $business->class_name());
 
+    /**
+     * Data Transfer Objects
+     */
     $dto_parser = new dto_parser();
     $dto_body = $dto_parser->generate($business);
     #$dto_body = $dto_parser->asis($business);
     #echo $dto_body; die();
 
+    /**
+     * ORM/Database Layer
+     */
     $orm_parser = new orm_parser();
     $orm_body = $orm_parser->generate($business);
-    echo $orm_body; die();
+    $orm_body = $orm_parser->generate_orm($business);
+    $orm_body = $orm_parser->generate_database($business);
+    #echo $orm_body; die();
 
+    /**
+     * Business Logic Layer
+     */
     $business_parser = new business_parser();
     $business_body = $business_parser->generate($business);
     #echo $business_body; die();
 
+    /**
+     * PHPUnit Templates
+     */
     $phpunit_parser = new phpunit_parser();
     $phpunit_body = $phpunit_parser->generate($business);
+    $phpunit_body = $phpunit_parser->apiunit($business); // GET/POST
+    $phpunit_body = $phpunit_parser->api_business($business); // GET/POST
     #echo $phpunit_body; die();
 
+    /**
+     * API Endpoints
+     */
     $endpoints_parser = new endpoints_parser();
-    $endpoints_body = $endpoints_parser->generate($business);
+    $endpoints_body = $endpoints_parser->generate($business); // actual api
+    //$endpoints_body = $endpoints_parser->relay($business);
     #echo $endpoints_body; die();
 
+    /**
+     * AngularJS Resources
+     */
     $angular_parser = new angular_parser();
 
     ##$app_js = $angular_parser->angular_app_js($business);
@@ -130,5 +162,5 @@ foreach ($entities as $business)
 
     ##$html_add = $html_parser->generate_selenium($business);
 }
-echo sprintf("%sItems generated: %s.", "\r\n", count($entities));
+echo "\r\n", sprintf("[%s] Items generated: %s.", "\r\n", count($entities));
 #print_r($entities);

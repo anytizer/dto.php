@@ -1,6 +1,8 @@
 <?php
-namespace database;
-use dtos\#__DTO_NAME__;
+namespace orm\#__PACKAGE_NAME__;
+use orm\orm as orm;
+use orm\database as database;
+//use dtos\#__DTO_NAME__;
 
 /**
  * Model: #__ORM_NAME__

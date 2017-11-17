@@ -1,7 +1,9 @@
 <?php
-
 namespace backend;
 
+/**
+ * AutoLoaded defined
+ */
 class spl_include {
 
     /**
@@ -33,6 +35,7 @@ class spl_include {
 
     /**
      * For namespace based class names access
+	 * Class name is: \namespace\class.name.inc.php
      *
      * @param string $class_name
      */

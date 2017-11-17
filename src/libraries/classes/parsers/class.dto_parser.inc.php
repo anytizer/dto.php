@@ -16,7 +16,7 @@ class dto_parser implements parser
     public function generate(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $class_body = $template_reader->read("libraries/dtos/class.template.inc.php.ts");
+        $class_body = $template_reader->read("libraries/dtos/package/class.template.inc.php.ts");
 
         # print_r($business);
         $table_name = $business->table_name();

@@ -1,0 +1,1 @@
+Email templates used to create emails.

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace tests;
+//namespace tests;
 
 require_once("../libraries/inc.config.php");
 

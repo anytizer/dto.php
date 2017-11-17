@@ -1,5 +1,5 @@
 <?php
-namespace business;
+namespace business\#__PACKAGE_NAME__;
 
 use dtos\#__PACKAGE_NAME__\#__DTO_NAME__;
 use orm\#__PACKAGE_NAME__\#__ORM_NAME__;

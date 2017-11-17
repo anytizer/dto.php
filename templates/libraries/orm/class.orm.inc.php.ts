@@ -1,9 +1,14 @@
 <?php
-namespace database;
+namespace orm;
 
-class orm
+abstract class orm
 {
     public function __construct()
     {
+    }
+	
+	public function save(): bool
+    {
+		return true;
     }
 }

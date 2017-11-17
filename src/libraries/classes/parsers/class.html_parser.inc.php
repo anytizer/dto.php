@@ -28,6 +28,7 @@ class html_parser implements  parser
 
 		# "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__COLUMN_NAMES__" => implode("\r\n\t", $column_heads),
             "#__LISTED_ROWS__" => implode("\r\n\t", $records),
@@ -58,6 +59,7 @@ class html_parser implements  parser
 		$htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlDetails"), $columns);
         $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__DETAILS_FIELDS__" => implode("\r\n\t", $methods),
@@ -85,6 +87,7 @@ class html_parser implements  parser
         //$methods = array_map(array($htmlifier, "htmlEdit"), $business->methods_list());
         $methods = array_map(array($htmlifier, "htmlEdit"), $columns);
         $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__EDIT_FIELDS__" => implode("\r\n\t", $methods),
@@ -111,6 +114,7 @@ class html_parser implements  parser
 		$htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlFlag"), $columns);
         $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
@@ -137,6 +141,7 @@ class html_parser implements  parser
 		$htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlDelete"), $columns);
         $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__DELETE_FIELDS__" => implode("\r\n\t", $methods),
@@ -164,6 +169,7 @@ class html_parser implements  parser
         #$methods = array_map(array($htmlifier, "htmlAdd"), $business->methods_list());
         $methods = array_map(array($htmlifier, "htmlAdd"), $columns);
         $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__ADD_FIELDS__" => implode("\r\n\t", $methods),
         );
@@ -191,6 +197,7 @@ class html_parser implements  parser
 <script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-controllers.js"></script>
 ';
         $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
         );
         $from = array_keys($replace);
