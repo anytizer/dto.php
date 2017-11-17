@@ -20,7 +20,7 @@ class dto_parser implements parser
 
         # print_r($business);
         $table_name = $business->table_name();
-        echo sprintf("\r\nDTO from table [%s]", $table_name);
+        #echo sprintf("\r\nDTO from table [%s]", $table_name);
 
         $dbaccess = new dbaccess();
         $result = $dbaccess->_get_columns($table_name);

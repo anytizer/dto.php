@@ -38,7 +38,7 @@ class dbaccess
      */
     public function dto_rows(fields $field): string
     {
-        $produce_comments = false; // for live modes
+        $produce_comments = true; // false: for live modes
 
         $namifier = new namifier();
         $field_definition = "";
@@ -48,7 +48,7 @@ class dbaccess
             if($produce_comments) {
                 $field_definition = "
     /**
-     * @var {$field->DATA_TYPE}
+     * @datatype {$field->DATA_TYPE}
      */
     public \${$column_name};
 ";

@@ -28,9 +28,9 @@
 	<script src="http://media.example.com:9090/js/angular-ui-router.min.js"></script>
 	<script src="http://media.example.com:9090/js/angular-cookies.min.js"></script>
 
-    <script src="entities/#__CLASS_NAME__/js/app.js"></script>
-    <script src="entities/#__CLASS_NAME__/js/routes.js"></script>
-    <script src="entities/#__CLASS_NAME__/js/services.js"></script>
-    <script src="entities/#__CLASS_NAME__/js/controller.js"></script>
+    <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/app.js"></script>
+    <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/routes.js"></script>
+    <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/services.js"></script>
+    <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/controller.js"></script>
 </body>
 </html>
