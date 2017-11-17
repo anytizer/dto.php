@@ -44,7 +44,7 @@ $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpun
 $template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
 $template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php"), "libraries/backend/class.spl_include.inc.php");
 // @todo Package name to be replaced
-$template_reader->write($template_reader->read("libraries/dtos/class.dto.inc.php.ts"), "libraries/dtos/class.dto.inc.php");
+//$template_reader->write($template_reader->read("libraries/dtos/class.dto.inc.php.ts"), "libraries/dtos/class.dto.inc.php");
 //$template_reader->write($template_reader->read("libraries/orm/class.orm.inc.php.ts"), "libraries/orm/class.orm.inc.php");
 $template_reader->write($template_reader->read("libraries/business/class.business.inc.php.ts"), "libraries/business/class.business.inc.php");
 
@@ -70,6 +70,7 @@ foreach ($entities as $business)
      */
     $dto_parser = new dto_parser();
     $dto_body = $dto_parser->generate($business);
+    $dto_body = $dto_parser->dto_file($business);
     #$dto_body = $dto_parser->asis($business);
     #echo $dto_body; die();
 

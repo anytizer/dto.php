@@ -5,7 +5,7 @@ use business\#__PACKAGE_NAME__\#__CLASS_NAME__Business;
 use \PHPUnit\Framework\TestCase;
 use api\#__PACKAGE_NAME__\#__CLASS_NAME__API;
 
-class #__CLASS_NAME__API_Test extends TestCase
+class #__CLASS_NAME__APITest extends TestCase
 {
     /**
      * @var #__CLASS_NAME__API
