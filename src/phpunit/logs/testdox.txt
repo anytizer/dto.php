@@ -4,6 +4,11 @@ tests\caser
  [x] Psr 0
  [x] Wordify
 
+tests\methodify
+ [x] Accessor is private 1
+ [x] Accessor is private 2
+ [ ] Methodify private function
+
 tests\module
  [x] Namify
  [x] Package name
@@ -18,4 +23,10 @@ tests\namify
  [x] Namify 3 remove prefix
  [x] Namify 4 remove prefix
  [x] Namify 5 remove prefix
+
+tests\returnType
+ [x] Return type 1
+ [x] Return type 2
+ [x] Return type 3
+ [x] Return type 4
 

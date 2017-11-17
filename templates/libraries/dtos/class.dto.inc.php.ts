@@ -1,7 +1,7 @@
 <?php
 namespace dtos\dto;
 
-class dto
+abstract class dto
 {
     public function __construct()
     {

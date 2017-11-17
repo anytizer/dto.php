@@ -21,22 +21,25 @@ class businessifier implements  bodyfier
         $method_name = $method->method_name;
         $parameters = $method->parameters;
 
+        $methodifier = new methodifier();
+        $accessor = $methodifier->accessor($description);
+        $return_type = $methodifier->return_type($description);
+
         /**
          * @todo Load ORM fields dynamically
          */
         $method_body = "
     /**
      * {$description}
+     * @return {$return_type}
      */
-    public function {$method_name}({$parameters}): bool
+    {$accessor} function {$method_name}({$parameters}): {$return_type}
     {
-        \$#__ORM_NAME__ = new #__ORM_NAME__();
+        #\$this->#__ORM_NAME__->name = \$parameters->name;
+        #\$this->#__ORM_NAME__->value = \$parameters->value;
+        #\$this->#__ORM_NAME__->others = \$parameters->others;
         
-        #\$#__ORM_NAME__->name = \$parameters->name;
-        #\$#__ORM_NAME__->value = \$parameters->value;
-        #\$#__ORM_NAME__->others = \$parameters->others;
-        
-        \$success = \$#__ORM_NAME__->save();
+        \$success = \$this->#__ORM_NAME__->save();
         return \$success;
     }
 ";
