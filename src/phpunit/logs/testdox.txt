@@ -11,10 +11,10 @@ tests\methodify
 
 tests\module
  [x] Namify
- [ ] Package name
- [ ] Dto name
- [ ] Orm name
- [ ] Module name
+ [x] Package name
+ [x] Dto name
+ [x] Orm name
+ [x] Module name
 
 tests\namify
  [x] Namify

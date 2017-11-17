@@ -116,7 +116,7 @@ class namifier
     }
 
     /**
-     * Parameters
+     * Extract parameters from method definition
      *
      * @see $this->method()
      * @param $name

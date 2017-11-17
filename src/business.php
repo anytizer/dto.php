@@ -96,7 +96,7 @@ foreach ($entities as $business)
     $phpunit_parser = new phpunit_parser();
     $phpunit_body = $phpunit_parser->generate($business);
     $phpunit_body = $phpunit_parser->apiunit($business); // GET/POST
-    $phpunit_body = $phpunit_parser->api_business($business); // GET/POST
+    $apiunit_body = $phpunit_parser->api_business($business); // GET/POST
     #echo $phpunit_body; die();
 
     /**
@@ -112,16 +112,16 @@ foreach ($entities as $business)
      */
     $angular_parser = new angular_parser();
 
-    ##$app_js = $angular_parser->angular_app_js($business);
+    $app_js = $angular_parser->angular_app_js($business);
     #echo $app_js; die();
 
-    ##$routes_js = $angular_parser->angular_routes_js($business);
+    #$routes_js = $angular_parser->angular_routes_js($business);
     #echo $routes_js; die();
 
-    ##$controller_js = $angular_parser->angular_controller_js($business);
+    $controller_js = $angular_parser->angular_controller_js($business);
     #echo $controller_js; die();
 
-    ##$service_js = $angular_parser->angular_service_js($business);
+    $service_js = $angular_parser->angular_service_js($business);
     #echo $service_js; die();
     # echo $app_js;
     # echo $routes_js;
@@ -130,22 +130,22 @@ foreach ($entities as $business)
 
     $html_parser = new html_parser();
 
-    ##$html_list = $html_parser->generate_list($business);
+    $html_list = $html_parser->generate_list($business);
     #echo $html_list; die();
 
-    ##$html_details = $html_parser->generate_details($business);
+    $html_details = $html_parser->generate_details($business);
     #echo $html_details; die();
 
-    ##$html_edit = $html_parser->generate_edit($business);
+    $html_edit = $html_parser->generate_edit($business);
     #echo $html_edit; die();
 
-    ##$html_flag = $html_parser->generate_flag($business);
+    $html_flag = $html_parser->generate_flag($business);
     #echo $html_flag; die();
 
-    ##$html_delete = $html_parser->generate_delete($business);
+    $html_delete = $html_parser->generate_delete($business);
     #echo $html_delete; die();
 
-    ##$html_add = $html_parser->generate_add($business);
+    $html_add = $html_parser->generate_add($business);
     #echo $html_add; die();
     #echo $html_list;
     #echo $html_details;

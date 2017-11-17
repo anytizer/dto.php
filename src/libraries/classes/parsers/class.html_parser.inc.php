@@ -41,7 +41,7 @@ class html_parser implements  parser
         #print_r($replace); die();
         #die($method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/list.html");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/templates/list.html");
         return $method_body;
     }
 
@@ -68,7 +68,7 @@ class html_parser implements  parser
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/details.html");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/templates/details.html");
         return $method_body;
     }
 
@@ -96,7 +96,7 @@ class html_parser implements  parser
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/edit.html");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/templates/edit.html");
         return $method_body;
     }
 
@@ -123,7 +123,7 @@ class html_parser implements  parser
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/flag.html");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/templates/flag.html");
         return $method_body;
     }
 
@@ -150,7 +150,7 @@ class html_parser implements  parser
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/delete.html");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/templates/delete.html");
         return $method_body;
     }
 
@@ -177,7 +177,7 @@ class html_parser implements  parser
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->class_name()}/templates/add.html");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/templates/add.html");
         return $method_body;
     }
 
@@ -191,10 +191,10 @@ class html_parser implements  parser
     {
         $class = $business->class_name();
         $method_body = '
-<script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-app.js"></script>
-<script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-routes.js"></script>
-<script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-services.js"></script>
-<script type="text/javascript" src="/entities/#__CLASS_NAME__/js/#__CLASS_NAME__-controllers.js"></script>
+<script type="text/javascript" src="/entities/{$business->package_name()}/#__CLASS_NAME__/js/#__CLASS_NAME__-app.js"></script>
+<script type="text/javascript" src="/entities/{$business->package_name()}/#__CLASS_NAME__/js/#__CLASS_NAME__-routes.js"></script>
+<script type="text/javascript" src="/entities/{$business->package_name()}/#__CLASS_NAME__/js/#__CLASS_NAME__-services.js"></script>
+<script type="text/javascript" src="/entities/{$business->package_name()}/#__CLASS_NAME__/js/#__CLASS_NAME__-controllers.js"></script>
 ';
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),

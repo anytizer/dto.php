@@ -200,10 +200,10 @@ class business_entity
 
     public function orm_name(): string
     {
-        $orn_name = $this->class_name();
-        $orn_name  .= "ORM";
+        $name = $this->class_name();
+        $name  .= "ORM";
 
-        return $orn_name;
+        return $name;
     }
 
 
