@@ -11,7 +11,7 @@ use structures\field;
 use structures\fields;
 
 /**
- * Class dtoparser
+ * Class dbaccess
  *
  * @package generators
  */
@@ -197,9 +197,9 @@ ORDER BY
         $template_reader = new template_reader();
         $method_body = $template_reader->read("libraries/business/others.php");
 
-        $bodyfier = new bodyfier();
+        $methodifier = new methodifier();
 
-        $methods = array_map(array($bodyfier, "methodify"), $methods);
+        $methods = array_map(array($methodifier, "methodify"), $methods);
         $replaces = array(
             "#__CLASS_NAME__" => $entity,
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)

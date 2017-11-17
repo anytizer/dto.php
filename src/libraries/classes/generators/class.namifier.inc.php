@@ -148,10 +148,15 @@ class namifier
      */
     public function method(string $name): method_descriptor
     {
+        $methodifier = new methodifier();
+
         $descriptor = new method_descriptor();
         $descriptor->method_name =  $this->php_method_name($name);
         $descriptor->description = $this->title($name);
         $descriptor->parameters = implode(", ", $this->parameters($name));
+        $descriptor->accessor = $methodifier->accessor($name);
+        $descriptor->return_type =$methodifier->return_type($name);
+        $descriptor->raw_name = $name;
 
         return $descriptor;
     }

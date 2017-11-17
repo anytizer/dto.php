@@ -7,14 +7,14 @@ tests\caser
 tests\methodify
  [x] Accessor is private 1
  [x] Accessor is private 2
- [ ] Methodify private function
+ [x] Methodify private function
 
 tests\module
  [x] Namify
- [x] Package name
- [x] Dto name
- [x] Orm name
- [x] Module name
+ [ ] Package name
+ [ ] Dto name
+ [ ] Orm name
+ [ ] Module name
 
 tests\namify
  [x] Namify
@@ -29,4 +29,5 @@ tests\returnType
  [x] Return type 2
  [x] Return type 3
  [x] Return type 4
+ [x] Return type 5
 

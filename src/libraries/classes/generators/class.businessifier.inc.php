@@ -21,9 +21,9 @@ class businessifier implements  bodyfier
         $method_name = $method->method_name;
         $parameters = $method->parameters;
 
-        $methodifier = new methodifier();
-        $accessor = $methodifier->accessor($description);
-        $return_type = $methodifier->return_type($description);
+        //$methodifier = new methodifier();
+        $accessor = $method->accessor; // ->accessor($description);
+        $return_type = $method->return_type; // $methodifier->return_type($description);
 
         /**
          * @todo Load ORM fields dynamically

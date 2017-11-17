@@ -41,11 +41,21 @@ class returnTypeTest extends TestCase
 
     public function testReturnType4()
     {
-        $method_descriptive = "valid(): user";
+        $method_descriptive = "valid():user";
 
         $methodifier = new methodifier();
         $return_type = $methodifier->return_type($method_descriptive);
 
         $this->assertEquals("user", $return_type);
+    }
+
+    public function testReturnType5()
+    {
+        $method_descriptive = "_add(a, b): int ";
+
+        $methodifier = new methodifier();
+        $return_type = $methodifier->return_type($method_descriptive);
+
+        $this->assertEquals("int", $return_type);
     }
 }

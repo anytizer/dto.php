@@ -25,9 +25,18 @@ class methodifier implements  bodyfier {
 
     public function return_type(string $method_descriptive): string
     {
-        $return_type = preg_replace("/^.*?\:\s?+/", "", $method_descriptive);
-        $return_type = trim($return_type);
-        $return_type = $return_type?$return_type:"bool";
+        /**
+         * If return type is defined, grab it
+         */
+        if(preg_match("/\:\s?\w/is", $method_descriptive))
+        {
+            $return_type = preg_replace("/^.*?\:\s?+/", "", $method_descriptive);
+            $return_type = trim($return_type);
+        }
+        else
+        {
+            $return_type = "bool";
+        }
 
         return $return_type;
     }

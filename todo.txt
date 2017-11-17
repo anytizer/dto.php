@@ -1,3 +1,4 @@
+Featured test does not need API, phpunit test only
 DTO to support multi words
 Common output folder from all write template calls
 Writing template file is a separate logic

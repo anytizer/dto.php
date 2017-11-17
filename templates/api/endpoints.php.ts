@@ -1,7 +1,7 @@
 <?php
 namespace endpoints;
 
-use dtos\#__PACKAGE_NAME__\#__CLASS_NAME___dto;
+use dtos\#__PACKAGE_NAME__\#__CLASS_NAME__DTO;
 use models\#__PACKAGE_NAME__\#__CLASS_NAME__;
 
 /**
