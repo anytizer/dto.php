@@ -17,11 +17,11 @@
 		"record": {},
 		"list": function () {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.list()
-				.then(function (response) {
-					$scope.record = response.data;
-				}, function (response) {
-					// error
-				});
+			.then(function (response) {
+				$scope.record = response.data;
+			}, function (response) {
+				// error
+			});
 		},
 		"init": function()
 		{
@@ -40,11 +40,11 @@
 		"record": {},
 		"details": function(id){
 			#__CLASS_NAME__Service.#__CLASS_NAME__.details(id)
-				.then(function(response){
-					$scope.record = response.data;
-				}, function(response){
-					// error
-				});
+			.then(function(response){
+				$scope.record = response.data;
+			}, function(response){
+				// error
+			});
 		},
 		"init": function()
 		{
@@ -61,11 +61,11 @@
 		"record": {},
 		"add": function(record){
 			#__CLASS_NAME__Service.#__CLASS_NAME__.add(record)
-				.then(function(response){
-					$scope.record = response.data;
-				}, function(response){
-					// error
-				});
+			.then(function(response){
+				$scope.record = response.data;
+			}, function(response){
+				// error
+			});
 		},
 	};
 }]);
@@ -77,12 +77,12 @@
 		"record": {},
 		"edit": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.edit(record)
-				.then(function (response) {
-					$scope.record = response.data;
-				},
-				function (response) {
-					// error
-				});
+			.then(function (response) {
+				$scope.record = response.data;
+			},
+			function (response) {
+				// error
+			});
 		},
 	};
 }]);
@@ -94,11 +94,11 @@
 		"record": {},
 		"delete": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.delete(record)
-				.then(function (response) {
-					$scope.record = response.data;
-				}, function (response) {
-					// error
-				});
+			.then(function (response) {
+				$scope.record = response.data;
+			}, function (response) {
+				// error
+			});
 		},
 	};
 }]);
@@ -110,11 +110,11 @@
 		"record": {},
 		"flag": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.flag(record)
-				.then(function (response) {
-					$scope.record = response.data;
-				}, function (response) {
-					// error
-				});
+			.then(function (response) {
+				$scope.record = response.data;
+			}, function (response) {
+				// error
+			});
 		},
 	};
 }]);

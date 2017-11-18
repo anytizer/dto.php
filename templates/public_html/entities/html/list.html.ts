@@ -14,7 +14,7 @@
 				{{r+1}}
 			</td>
 			#__LISTED_ROWS__
-			<td><a href="#!{{#__CLASS_NAME__}}/edit/:{{record.id}}">Edit</a></td>
+			<td><a href="#!{{#__CLASS_NAME__}}/edit/:{{record.id}}" ng-click="#__CLASS_NAME__.edit(record)">Edit</a></td>
 		</tr>
     </tbody>
 </table>

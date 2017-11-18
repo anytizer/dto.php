@@ -5,7 +5,7 @@
 
 	#__ADD_FIELDS__
 
-	<a href="#" class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.add(form)">Add</a>
+	<a href="#" class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.add(record)">Add</a>
 </form>
 </div>
 
