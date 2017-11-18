@@ -45,7 +45,7 @@ class htmlifier implements bodyfier
 		// <div>{$column->COLUMN_NAME}</div>
 		#print_r($column); die();
         // #__LISTED_ROWS__
-        $field_body = "\t\t<td>{{record.{$column->COLUMN_NAME}}}</td>";
+        $field_body = "\t\t<td>{{record.{$column->COLUMN_DISPLAY}}}</td>";
 		return $field_body;
     }
 

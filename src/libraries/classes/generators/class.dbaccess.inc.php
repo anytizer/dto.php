@@ -42,7 +42,7 @@ class dbaccess
 
         $namifier = new namifier();
         $field_definition = "";
-        if(!$this->is_flag($field->COLUMN_NAME)) // @todo Column Name is null
+        //if(!$this->is_flag($field->COLUMN_NAME)) // @todo Column Name is null
         {
             $column_name = $namifier->column_name($field->COLUMN_NAME);
             if($produce_comments) {
@@ -53,10 +53,10 @@ class dbaccess
     public \${$column_name};
 ";
             }
-            else
-            {
-                $field_definition = "public \${$column_name};";
-            }
+            //else
+            //{
+            //    $field_definition = "public \${$column_name};";
+            //}
         }
 
         // define single row
@@ -64,14 +64,37 @@ class dbaccess
     }
 
     /**
+     * Checks if a column name is for a flag purpose.
      * @param string $column_name
      * @return bool
      */
     private function is_flag(string $column_name): bool
     {
-        $is_flag = preg_match("/_(on|by)$/is", $column_name);
-        //$is_flag = preg_match("/_[on|by]$/is", $column_name) || preg_match("/^(is)_/is", $column_name);
-        return $is_flag == 1;
+        /**
+         * Flag starting as is_...
+         */
+        $is_flag = preg_match("/^is_/is", $column_name);
+
+        /**
+         * Flag ending with on, by, ...
+         */
+        $others_flag = preg_match("/_(on|by)$/is", $column_name);
+
+        return $is_flag||$others_flag;
+    }
+
+    /**
+     * Determines if the field is too long text
+     * @todo Use field types as well
+     *
+     * @param fields $column
+     * @return bool
+     */
+    private function is_long(fields $column): bool
+    {
+        $long_flag = preg_match("/_(description|text|body|html)$/is", $column->COLUMN_NAME);
+
+        return $long_flag;
     }
 
     /**
@@ -153,15 +176,29 @@ ORDER BY
         return $result;
     }
 
+    /**
+     * Convert a column name into display text
+     * @param fields $column
+     * @return fields
+     */
     private function column_display(fields $column)
     {
         $names = preg_split("/\_/is", $column->COLUMN_NAME);
         $names = array_map("strtolower", $names);
         $names = array_map("ucfirst", $names);
 
+        /**
+         * Capitalise special names like ID, etc...
+         */
         //$caser = new caser();
         //$COLUMN_NAME = $caser->wordify($column->COLUMN_NAME);
         $column->COLUMN_DISPLAY = implode(" ", $names);
+
+        // @todo Patch properly
+        $column->isPrivate = $column->COLUMN_KEY == "MUL" || $column->COLUMN_KEY == "PRI";
+
+        // @todo Patch properly
+        $column->isLong = $this->is_long($column);
 
         return $column;
     }
@@ -182,7 +219,8 @@ SELECT
 	c.COLUMN_NAME,
 	c.DATA_TYPE,
 	c.COLUMN_COMMENT,
-	c.COLUMN_DEFAULT
+	c.COLUMN_DEFAULT,
+	c.COLUMN_KEY
 FROM INFORMATION_SCHEMA.COLUMNS c
 WHERE
 	c.TABLE_SCHEMA=:orm_name

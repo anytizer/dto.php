@@ -28,7 +28,7 @@
 				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/details">Details</a></li>
 			</ul>
 		</div>
-		<div ui-view="" class="w3-white w3-padding w3-round"></div>
+		<div ui-view="" class="w3-white w3-padding w3-round" style="min-height: 300px;"></div>
 	</div>
 </div>
 
