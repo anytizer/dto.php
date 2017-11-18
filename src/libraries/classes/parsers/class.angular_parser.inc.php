@@ -8,11 +8,25 @@ class angular_parser implements parser
 {
     public function generate(business_entity $business)
     {
-        // controller
-        // app.js.ts
-        // routes
-        // service
-        // api end point
+        $app_js = $this->angular_app_js($business);
+        #echo $app_js; die();
+
+        $routes_js = $this->angular_routes_js($business);
+        #echo $routes_js; die();
+
+        $directives_js = $this->angular_directives($business);
+        #echo $directives_js; die();
+
+        $service_js = $this->angular_service_js($business);
+        #echo $service_js; die();
+
+        $controller_js = $this->angular_controller_js($business);
+        #echo $controller_js; die();
+
+        # echo $app_js;
+        # echo $routes_js;
+        # echo $controller;
+        # echo $service_js;
     }
 
     /**
@@ -21,10 +35,10 @@ class angular_parser implements parser
      * @param business_entity $business
      * @return string
      */
-    public function angular_app_js(business_entity $business): string
+    private function angular_app_js(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/app.js.ts");
+        $method_body = $template_reader->read("public_html/entities/js/angularjs/app.js.ts");
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
@@ -32,6 +46,8 @@ class angular_parser implements parser
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
+            "#__MEDIA_URL__" => __MEDIA_URL__,
+            "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
         );
         $from = array_keys($replace);
         $to = array_values($replace);
@@ -48,10 +64,10 @@ class angular_parser implements parser
      * @param business_entity $business
      * @return string
      */
-    public function angular_routes_js(business_entity $business): string
+    private function angular_routes_js(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/routes.js.ts");
+        $method_body = $template_reader->read("public_html/entities/js/angularjs/routes.js.ts");
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_router"), $business->methods_list());
@@ -60,6 +76,9 @@ class angular_parser implements parser
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__ANGULAR_ROUTES__" => implode("\r\n\t", $methods),
+            "#__MEDIA_URL__" => __MEDIA_URL__,
+            "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
+            "#__PUBLIC_URL__" => __PUBLIC_URL__,
         );
         $from = array_keys($replace);
         $to = array_values($replace);
@@ -71,30 +90,32 @@ class angular_parser implements parser
     }
 
     /**
-     * AngularJS Controllers
+     * Append to directives.js.ts
      *
      * @param business_entity $business
      * @return string
      */
-    public function angular_controller_js(business_entity $business): string
+    private function angular_directives(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/controller.js.ts");
+        $method_body = $template_reader->read("public_html/entities/js/angularjs/directives.js.ts");
 
         $angularifier = new angularifier();
-        $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
+        $methods = array_map(array($angularifier, "angular_router"), $business->methods_list());
 
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__ANGULAR_CONTROLLERS__" => implode("\r\n\t", $methods),
+            "#__ANGULAR_ROUTES__" => implode("\r\n\t", $methods),
+            "#__MEDIA_URL__" => __MEDIA_URL__,
+            "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
         );
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-controller.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-directives.js");
         return $method_body;
     }
 
@@ -104,10 +125,10 @@ class angular_parser implements parser
      * @param business_entity $business
      * @return string
      */
-    public function angular_service_js(business_entity $business): string
+    private function angular_service_js(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/services.js.ts");
+        $method_body = $template_reader->read("public_html/entities/js/angularjs/services.js.ts");
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_service"), $business->methods_list());
@@ -118,6 +139,8 @@ class angular_parser implements parser
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
             "#__ANGULAR_SERVICES__" => implode("\r\n\t", $methods),
+            "#__MEDIA_URL__" => __MEDIA_URL__,
+            "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
         );
         $from = array_keys($replace);
         $to = array_values($replace);
@@ -125,6 +148,36 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
 
         $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-services.js");
+        return $method_body;
+    }
+
+    /**
+     * AngularJS Controllers
+     *
+     * @param business_entity $business
+     * @return string
+     */
+    private function angular_controller_js(business_entity $business): string
+    {
+        $template_reader = new template_reader();
+        $method_body = $template_reader->read("public_html/entities/js/angularjs/controller.js.ts");
+
+        $angularifier = new angularifier();
+        $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
+
+        $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
+            "#__ANGULAR_CONTROLLERS__" => implode("\r\n\t", $methods),
+            "#__MEDIA_URL__" => __MEDIA_URL__,
+            "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
+        );
+        $from = array_keys($replace);
+        $to = array_values($replace);
+        $method_body = str_replace($from, $to, $method_body);
+        $method_body = str_replace($from, $to, $method_body);
+
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-controller.js");
         return $method_body;
     }
 }

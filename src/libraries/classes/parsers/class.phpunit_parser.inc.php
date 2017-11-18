@@ -9,6 +9,15 @@ class phpunit_parser implements  parser
 {
     public function generate(business_entity $business)
     {
+
+        $this->generate_phpunits($business);
+        $this->apiunit($business); // GET/POST
+        $this->api_business($business); // GET/POST
+        #echo $phpunit_body; die();
+    }
+
+    private function generate_phpunits(business_entity $business)
+    {
         $template_reader = new template_reader();
         $method_body = $template_reader->read("phpunit/tests/phpunit.php.ts");
         /**
@@ -48,7 +57,7 @@ class phpunit_parser implements  parser
         return $method_body;
     }
 
-    public function apiunit(business_entity $business)
+    private function apiunit(business_entity $business)
     {
         $template_reader = new template_reader();
         $method_body = $template_reader->read("phpunit/tests/apiunit.php.ts");
@@ -83,7 +92,7 @@ class phpunit_parser implements  parser
         return $method_body;
     }
 
-    public function api_business(business_entity $business)
+    private function api_business(business_entity $business)
     {
         $template_reader = new template_reader();
         $method_body = $template_reader->read("libraries/api/package/class.BusinessAPI.php.ts");

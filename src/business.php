@@ -12,6 +12,9 @@ use parsers\html_parser;
 use parsers\orm_parser;
 use parsers\phpunit_parser;
 
+define("__MEDIA_URL__", "http://localhost/angular/libraries/dto.php/output/public_html/js/angularjs");
+define("__PUBLIC_URL__", "http://localhost/angular/libraries/dto.php/output/public_html");
+
 /**
  * Common names
  * CRUD: Create, Read, Update, Delete
@@ -39,6 +42,7 @@ foreach ($setups as $setup) {
 
 echo sprintf("\r\nProcessing standard file copy.");
 $template_reader = new template_reader();
+$template_reader->write($template_reader->read("public_html/css/w3.css"), "public_html/css/w3.css");
 $template_reader->write($template_reader->read("phpunit/bootstrap.php.ts"), "phpunit/bootstrap.php");
 $template_reader->write($template_reader->read("phpunit/phpunit.cmd.ts"), "phpunit/phpunit.cmd");
 $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpunit/phpunit.xml");
@@ -95,10 +99,7 @@ foreach ($entities as $business)
      * PHPUnit Templates
      */
     $phpunit_parser = new phpunit_parser();
-    $phpunit_body = $phpunit_parser->generate($business);
-    $phpunit_body = $phpunit_parser->apiunit($business); // GET/POST
-    $apiunit_body = $phpunit_parser->api_business($business); // GET/POST
-    #echo $phpunit_body; die();
+    $phpunit_parser->generate($business);
 
     /**
      * API Endpoints
@@ -112,57 +113,14 @@ foreach ($entities as $business)
      * AngularJS Resources
      */
     $angular_parser = new angular_parser();
+    $angular_parser->generate($business);
 
-    $app_js = $angular_parser->angular_app_js($business);
-    #echo $app_js; die();
-
-    #$routes_js = $angular_parser->angular_routes_js($business);
-    #echo $routes_js; die();
-
-    $controller_js = $angular_parser->angular_controller_js($business);
-    #echo $controller_js; die();
-
-    $service_js = $angular_parser->angular_service_js($business);
-    #echo $service_js; die();
-    # echo $app_js;
-    # echo $routes_js;
-    # echo $controller;
-    # echo $service_js;
-
+    /**
+     * HTML Resources
+     * Selenium Resources
+     */
     $html_parser = new html_parser();
-
-    $html_list = $html_parser->generate_list($business);
-    #echo $html_list; die();
-
-    $html_details = $html_parser->generate_details($business);
-    #echo $html_details; die();
-
-    $html_edit = $html_parser->generate_edit($business);
-    #echo $html_edit; die();
-
-    $html_flag = $html_parser->generate_flag($business);
-    #echo $html_flag; die();
-
-    $html_delete = $html_parser->generate_delete($business);
-    #echo $html_delete; die();
-
-    $html_add = $html_parser->generate_add($business);
-    #echo $html_add; die();
-    #echo $html_list;
-    #echo $html_details;
-    #echo $html_edit;
-    #echo $html_flag;
-    #echo $html_delete;
-    #echo $html_add;
-    #die(); continue;
-    # dto, business
-    # phpunit
-    # angular: app, route, controller, service
-    # html: list, details, edit, add, flag, delete
-    # orm: wrapper, orm
-    # endpoint, business
-
-    ##$html_add = $html_parser->generate_selenium($business);
+    $html_parser->generate($business);
 }
 echo "\r\n", sprintf("%sItems generated: #%s.", "\r\n", count($entities));
 #print_r($entities);

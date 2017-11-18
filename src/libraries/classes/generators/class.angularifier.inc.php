@@ -44,8 +44,8 @@ class angularifier implements  bodyfier
         $caser = new caser();
         $method = $caser->psr4($method->method_name);
         return "
-                \"{$method}\": function (record) {
-                    return fetch(\"#__CLASS_NAME__/{$method}\", record);
+                \"{$method}\": function (data) {
+                    return fetch(\"{$method}\", data);
                 },
 ";
     }

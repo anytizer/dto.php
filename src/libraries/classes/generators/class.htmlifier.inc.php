@@ -60,10 +60,10 @@ class htmlifier implements bodyfier
 		$caser = new caser();
 		$COLUMN_NAME = $caser->wordify($column->COLUMN_NAME);
         $field_body = "
-<div>
-    <div>{$COLUMN_NAME}</div>
-    <div>{{record.{$column->COLUMN_NAME}}}</div>
-</div>
+    <div>
+        <div>{$COLUMN_NAME}</div>
+        <div>{{record.{$column->COLUMN_NAME}}}</div>
+    </div>
         ";
         
 		return $field_body;
@@ -78,11 +78,11 @@ class htmlifier implements bodyfier
     public function htmlEdit(fields $column): string
     {
 		$field_body = "
-        <div>
-            <div>{$column->COLUMN_COMMENT}</div>
-            <div><input type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\"></div>
-            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
-        </div>
+    <div>
+        <div>{$column->COLUMN_COMMENT}</div>
+        <div><input type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\"></div>
+        <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+    </div>
         ";
         
 		return $field_body;
@@ -127,11 +127,11 @@ Deleted
     public function htmlAdd(fields $column): string
     {
         $field_body = "
-        <div>
-            <div>{$column->COLUMN_COMMENT}</div>
-            <div><input type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\"></div>
-            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
-        </div>
+    <div>
+        <div>{$column->COLUMN_COMMENT}</div>
+        <div><input type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\"></div>
+        <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+    </div>
         ";
         
 		return $field_body;

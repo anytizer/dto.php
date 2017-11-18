@@ -3,7 +3,6 @@ namespace parsers;
 use setups\business_entity;
 use generators\template_reader;
 use generators\endpoints;
-use setups\method_descriptor;
 
 /**
  * Class endpoints_parser
@@ -14,6 +13,15 @@ use setups\method_descriptor;
 class endpoints_parser implements  parser
 {
     public function generate(business_entity $business)
+    {
+       $this->generate_endpoints($business);
+    }
+
+    /**
+     * @param $business
+     * @return mixed|string
+     */
+    private function generate_endpoints(business_entity $business)
     {
         $template_reader = new template_reader();
         $method_body = $template_reader->read("api/endpoints.php.ts");
