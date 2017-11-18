@@ -3,7 +3,7 @@
 <div class="details">
 	#__DETAILS_FIELDS__
 	
-	<div>
+	<div class="w3-right">
 		<a class="w3-btn w3-purple" href="#!/#__CLASS_NAME__/edit" ng-click="#__CLASS_NAME__.edit(record)">Edit</a>
 		<a class="w3-btn w3-purple" href="#!/#__CLASS_NAME__/delete" ng-click="#__CLASS_NAME__.delete(record)">Delete</a>
 	</div>

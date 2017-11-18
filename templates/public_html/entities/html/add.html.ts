@@ -1,7 +1,7 @@
 <h1>Add #__CLASS_NAME__</h1>
 
 <div>
-<form name="add add-#__CLASS_NAME__">
+<form name="add-#__CLASS_NAME__" class="add add-#__CLASS_NAME__">
 
 	#__ADD_FIELDS__
 
