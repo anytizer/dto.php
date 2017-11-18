@@ -173,6 +173,8 @@ ORDER BY
     {
         $result = $this->_get_all_columns($TABLE_NAME);
         $result = array_map(array($this, "column_display"), $result);
+        #print_r($result); die();
+
         return $result;
     }
 

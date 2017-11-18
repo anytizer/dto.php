@@ -77,8 +77,11 @@ class html_parser implements  parser
         #print_r($columns);
 
         $htmlifier = new htmlifier();
-        $column_heads = array_map(array($htmlifier, "htmlColumnify"), $columns);
-        $records = array_map(array($htmlifier, "htmlListify"), $columns);
+        $column_heads = array_filter(array_map(array($htmlifier, "htmlColumnify"), $columns));
+        $records = array_filter(array_map(array($htmlifier, "htmlListify"), $columns));
+
+        #print_r($column_heads); die("Listify");
+        #print_r($records); die("Listify");
 
         # "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         $replace = array(

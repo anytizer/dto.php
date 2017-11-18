@@ -26,7 +26,12 @@ class htmlifier implements bodyfier
      */
     public function htmlColumnify(fields $column): string
     {
-		$caser = new caser();
+        if($column->isLong || $column->isPrivate)
+        {
+            return "";
+        }
+
+        $caser = new caser();
 		$name = $caser->wordify($column->COLUMN_NAME);
 
 		#print_r($column); die();
@@ -42,6 +47,11 @@ class htmlifier implements bodyfier
      */
     public function htmlListify(fields $column): string
     {
+        if($column->isLong || $column->isPrivate)
+        {
+            return "";
+        }
+
 		// <div>{$column->COLUMN_NAME}</div>
 		#print_r($column); die();
         // #__LISTED_ROWS__
@@ -57,6 +67,11 @@ class htmlifier implements bodyfier
      */
     public function htmlDetails(fields $column): string
     {
+        if($column->isLong)
+        {
+            return "";
+        }
+
         $field_body = "
     <div>
         <div>{$column->COLUMN_DISPLAY}</div>
@@ -75,6 +90,11 @@ class htmlifier implements bodyfier
      */
     public function htmlEdit(fields $column): string
     {
+        if($column->isPrivate)
+        {
+            return "";
+        }
+
 		$field_body = "
     <div class='field'>
         <label>{$column->COLUMN_DISPLAY}</label>
@@ -124,6 +144,11 @@ Deleted
      */
     public function htmlAdd(fields $column): string
     {
+        if($column->isPrivate)
+        {
+            return "";
+        }
+
         $field_body = "
     <div class='field'>
         <label>{$column->COLUMN_DISPLAY}</label>
