@@ -9,25 +9,26 @@
 	<meta name="theme-color" content="#DB5945" />
 	<link rel="icon" sizes="192x192" href="logo.png" />
 	<link rel=stylesheet href="css/w3.css" type="text/css" media="screen, print" />
+	<link rel=stylesheet href="css/general.css" type="text/css" media="screen, print" />
 	<link rel=stylesheet href="#__CSS_URL__/style.css" type="text/css" media="screen, print" />
 </head>
-<body>
+<body class="w3-teal">
 
 <div class="wrapper">
 	<div ng-app="#__CLASS_NAME__App">
 		<h1 class="application-name">#__CLASS_NAME__</h1>
-		<div ng-controller="#__CLASS_NAME__WelcomeController">
+		<div>
 			<ul class="entity-menus">
-				<li><a href="#!/#__CLASS_NAME__">Welcome</a></li>
-				<li><a href="#!/#__CLASS_NAME__/list">List</a></li>
-				<li><a href="#!/#__CLASS_NAME__/add">Add</a></li>
-				<li><a href="#!/#__CLASS_NAME__/edit">Edit</a></li>
-				<li><a href="#!/#__CLASS_NAME__/delete">Delete</a></li>
-				<li><a href="#!/#__CLASS_NAME__/flag">Flag</a></li>
-				<li><a href="#!/#__CLASS_NAME__/details">Details</a></li>
+				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__">Welcome</a></li>
+				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/list">List</a></li>
+				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/add">Add</a></li>
+				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/edit">Edit</a></li>
+				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/delete">Delete</a></li>
+				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/flag">Flag</a></li>
+				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/details">Details</a></li>
 			</ul>
 		</div>
-		<div ui-view=""></div>
+		<div ui-view="" class="w3-white w3-padding w3-round"></div>
 	</div>
 </div>
 

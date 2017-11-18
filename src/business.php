@@ -43,6 +43,7 @@ foreach ($setups as $setup) {
 echo sprintf("\r\nProcessing standard file copy.");
 $template_reader = new template_reader();
 $template_reader->write($template_reader->read("public_html/css/w3.css"), "public_html/css/w3.css");
+$template_reader->write($template_reader->read("public_html/css/general.css"), "public_html/css/general.css");
 $template_reader->write($template_reader->read("phpunit/bootstrap.php.ts"), "phpunit/bootstrap.php");
 $template_reader->write($template_reader->read("phpunit/phpunit.cmd.ts"), "phpunit/phpunit.cmd");
 $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpunit/phpunit.xml");

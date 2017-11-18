@@ -149,7 +149,21 @@ ORDER BY
     public function _get_columns(string $TABLE_NAME)
     {
         $result = $this->_get_all_columns($TABLE_NAME);
+        $result = array_map(array($this, "column_display"), $result);
         return $result;
+    }
+
+    private function column_display(fields $column)
+    {
+        $names = preg_split("/\_/is", $column->COLUMN_NAME);
+        $names = array_map("strtolower", $names);
+        $names = array_map("ucfirst", $names);
+
+        //$caser = new caser();
+        //$COLUMN_NAME = $caser->wordify($column->COLUMN_NAME);
+        $column->COLUMN_DISPLAY = implode(" ", $names);
+
+        return $column;
     }
 
     /**
@@ -157,7 +171,7 @@ ORDER BY
      * @param string $TABLE_NAME
      * @return array
      */
-    public function _get_all_columns(string $TABLE_NAME)
+    private function _get_all_columns(string $TABLE_NAME)
     {
         global $connection;
         global $orm_name;

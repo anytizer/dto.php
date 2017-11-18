@@ -13,4 +13,10 @@ class fields
 	public $DATA_TYPE;
 	public $COLUMN_COMMENT;
 	public $COLUMN_DEFAULT;
+
+	public $COLUMN_DISPLAY;
+
+	// @todo Is Primary Key?
+    // @todo Display in list?
+    // @todo Display in forms?
 }
