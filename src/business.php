@@ -43,7 +43,9 @@ foreach ($setups as $setup) {
 echo sprintf("\r\nProcessing standard file copy.");
 $template_reader = new template_reader();
 $template_reader->write($template_reader->read("public_html/css/w3.css"), "public_html/css/w3.css");
-$template_reader->write($template_reader->read("public_html/css/general.css"), "public_html/css/general.css");
+$template_reader->write($template_reader->read("public_html/css/general.css"), "public_html/css/general.css"); // from scss
+$template_reader->write($template_reader->read("public_html/js/jquery-3.2.1.min.js"), "public_html/js/jquery-3.2.1.min.js");
+$template_reader->write($template_reader->read("public_html/js/general.js"), "public_html/js/general.js");
 $template_reader->write($template_reader->read("phpunit/bootstrap.php.ts"), "phpunit/bootstrap.php");
 $template_reader->write($template_reader->read("phpunit/phpunit.cmd.ts"), "phpunit/phpunit.cmd");
 $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpunit/phpunit.xml");
@@ -52,9 +54,6 @@ $template_reader->write($template_reader->read("libraries/backend/class.spl_incl
 // @todo Package name to be replaced
 # .htaccess
 # .htpassw
-
-// D:\htdocs\angular\libraries\dto.php\dto.php\templates\phpunit\tests
-// D:/htdocs/angular/libraries/dto.php/dto.php/templates/phpunit/tests/apiunit.php.ts
 
 #print_r($entities); #die();
 foreach ($entities as $business)
@@ -77,7 +76,6 @@ foreach ($entities as $business)
     $dto_body = $dto_parser->generate($business);
     $dto_body = $dto_parser->dto_file($business);
     #$dto_body = $dto_parser->asis($business);
-    #echo $dto_body; die();
 
     /**
      * ORM/Database Layer
@@ -94,7 +92,6 @@ foreach ($entities as $business)
     $business_parser = new business_parser();
     $business_body = $business_parser->copy_files($business);
     $business_body = $business_parser->generate($business);
-    #echo $business_body; die();
 
     /**
      * PHPUnit Templates
@@ -108,7 +105,6 @@ foreach ($entities as $business)
     $endpoints_parser = new endpoints_parser();
     $endpoints_body = $endpoints_parser->generate($business); // actual api
     //$endpoints_body = $endpoints_parser->relay($business);
-    #echo $endpoints_body; die();
 
     /**
      * AngularJS Resources
@@ -117,7 +113,7 @@ foreach ($entities as $business)
     $angular_parser->generate($business);
 
     /**
-     * HTML Resources
+     * HTML, CSS and static javascripts Resources
      * Selenium Resources
      */
     $html_parser = new html_parser();

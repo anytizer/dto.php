@@ -146,6 +146,18 @@ ORDER BY
     }
 
     /**
+     * If a field is of date/time, may need to install a date picker
+     * @param fields $field
+     * @return bool
+     */
+    private function is_date(fields $field): bool
+    {
+        $is_date = (boolean)preg_match("/\_(on|date)$/is", $field->COLUMN_NAME);
+        $this->isDate = $is_date;
+        return $is_date;
+    }
+
+    /**
      * Replace method
      *
      * @param string $body
@@ -198,6 +210,7 @@ ORDER BY
 
         // @todo Patch properly
         $column->isPrivate = $column->COLUMN_KEY == "MUL" || $column->COLUMN_KEY == "PRI";
+        $column->isDate = $this->is_date($column);
 
         // @todo Patch properly
         $column->isLong = $this->is_long($column);

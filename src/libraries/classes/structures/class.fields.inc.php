@@ -2,7 +2,7 @@
 namespace structures;
 
 /**
- * Class fields - Rendered as PDO Object
+ * Class fields - To be rendered as PDO Object
  *
  * @package generators
  */
@@ -18,9 +18,10 @@ class fields
     /**
      * Filled after generating info from the database
      */
-	public $COLUMN_DISPLAY;
-	public $isLong; // do not appear in listing
-	public $isPrivate; // do not appear in anywhere
+	public $COLUMN_DISPLAY = "";
+	public $isLong = false; // do not appear in listing
+	public $isPrivate = false; // do not appear in anywhere, PRI, MUL keys
+    public $isDate = false;
 
 	// @todo Is Primary Key?
     // @todo Display in list?

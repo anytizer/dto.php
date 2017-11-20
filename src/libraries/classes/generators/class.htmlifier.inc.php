@@ -17,6 +17,23 @@ class htmlifier implements bodyfier
 
         return "";
     }
+
+    /**
+     * Determines which CSS to apply in the selected field
+     *
+     * @param fields $fields
+     * @return string
+     */
+    private function field_class(fields $fields)
+    {
+        $classes = array();
+        if($fields->isDate)
+        {
+            $classes[] = "datepicker";
+        }
+
+        return implode(" ", $classes);
+    }
     
 	/**
      * HTML List
@@ -51,6 +68,10 @@ class htmlifier implements bodyfier
         {
             return "";
         }
+
+        /**
+         * @todo Hide flag dates but show other dates
+         */
 
 		// <div>{$column->COLUMN_NAME}</div>
 		#print_r($column); die();
@@ -95,10 +116,12 @@ class htmlifier implements bodyfier
             return "";
         }
 
+        $class = $this->field_class($column);
+
 		$field_body = "
     <div class='field'>
         <label>{$column->COLUMN_DISPLAY}</label>
-        <div><input class=\"w3-input\"  type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\"></div>
+        <div><input class=\"w3-input {$class}\"  type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder='' /></div>
         <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
     </div>
         ";
@@ -149,10 +172,12 @@ Deleted
             return "";
         }
 
+        $class = $this->field_class($column);
+
         $field_body = "
     <div class='field'>
         <label>{$column->COLUMN_DISPLAY}</label>
-        <div><input type=\"text\" class='w3-input' ng-model=\"record.{$column->COLUMN_NAME}\"></div>
+        <div><input type=\"text\" class=\"w3-input {$class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder='' /></div>
         <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
     </div>
         ";
