@@ -19,7 +19,7 @@
                 data: dataJSON,
                 headers: {
                     "X-Protection-Token": "",
-                    "Content-Type": "account/x-www-form-urlencoded",
+                    "Content-Type": "application/x-www-form-urlencoded",
                 }
             });
         };
