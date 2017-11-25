@@ -14,12 +14,12 @@
 #__CLASS_NAME__App.controller("#__CLASS_NAME__ListController", ["$scope", "$state", "#__CLASS_NAME__Service", function($scope, $state, #__CLASS_NAME__Service)
 {
 	$scope.#__CLASS_NAME__ = {
-		"record": {},
+		"records": {},
 		"list": function () {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.list()
 			.then(function (response) {
-				$scope.record = response.data;
-			}, function (response) {
+				$scope.#__CLASS_NAME__.records = response.data;
+			}, function (error) {
 				// error
 			});
 		},
@@ -42,7 +42,7 @@
 			#__CLASS_NAME__Service.#__CLASS_NAME__.details(id)
 			.then(function(response){
 				$scope.record = response.data;
-			}, function(response){
+			}, function(error){
 				// error
 			});
 		},
@@ -63,7 +63,7 @@
 			#__CLASS_NAME__Service.#__CLASS_NAME__.add(record)
 			.then(function(response){
 				$scope.record = response.data;
-			}, function(response){
+			}, function(error){
 				// error
 			});
 		},
@@ -80,7 +80,7 @@
 			.then(function (response) {
 				$scope.record = response.data;
 			},
-			function (response) {
+			function (error) {
 				// error
 			});
 		},
@@ -96,7 +96,7 @@
 			#__CLASS_NAME__Service.#__CLASS_NAME__.delete(record)
 			.then(function (response) {
 				$scope.record = response.data;
-			}, function (response) {
+			}, function (error) {
 				// error
 			});
 		},
@@ -112,14 +112,11 @@
 			#__CLASS_NAME__Service.#__CLASS_NAME__.flag(record)
 			.then(function (response) {
 				$scope.record = response.data;
-			}, function (response) {
+			}, function (error) {
 				// error
 			});
 		},
 	};
 }]);
-
-
-
 
 #__ANGULAR_CONTROLLERS__

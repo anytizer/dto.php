@@ -51,4 +51,6 @@
 
         #__ANGULAR_ROUTES__
 	;
+	
+	// $locationProvider.html5Mode(true); //Remove the '#' from URL.
 });

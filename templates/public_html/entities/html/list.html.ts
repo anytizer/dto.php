@@ -9,7 +9,7 @@
 		</tr>
     </thead>
     <tbody>
-		<tr ng-repeat="(r, record) in records">
+		<tr ng-repeat="(r, record) in #__CLASS_NAME__.records">
 			<td>
 				{{r+1}}
 			</td>
