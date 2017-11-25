@@ -1,5 +1,6 @@
 <?php
 namespace generators;
+use backend\capitalizer;
 use setups\method_descriptor;
 use structures\fields;
 
@@ -48,11 +49,8 @@ class htmlifier implements bodyfier
             return "";
         }
 
-        $caser = new caser();
-		$name = $caser->wordify($column->COLUMN_NAME);
-
 		#print_r($column); die();
-		$field_body = "\t\t<th>{$name}</th>";
+		$field_body = "\t\t<th>{$column->COLUMN_DISPLAY}</th>";
 		return $field_body;
     }
 	
