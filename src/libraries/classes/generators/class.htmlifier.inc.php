@@ -76,7 +76,7 @@ class htmlifier implements bodyfier
 		// <div>{$column->COLUMN_NAME}</div>
 		#print_r($column); die();
         // #__LISTED_ROWS__
-        $field_body = "\t\t<td>{{record.{$column->COLUMN_DISPLAY}}}</td>";
+        $field_body = "\t\t<td>{{record.{$column->COLUMN_NAME}}}</td>";
 		return $field_body;
     }
 
@@ -94,9 +94,9 @@ class htmlifier implements bodyfier
         }
 
         $field_body = "
-    <div>
-        <div>{$column->COLUMN_DISPLAY}</div>
-        <div>{{record.{$column->COLUMN_NAME}}}</div>
+    <div class=\"w3-container field\">
+        <div class=\"w3-text-blue item\">{$column->COLUMN_DISPLAY}</div>
+        <div class=\"value\">{{#__CLASS_NAME__.record.{$column->COLUMN_NAME}}}</div>
     </div>
         ";
         
@@ -104,7 +104,8 @@ class htmlifier implements bodyfier
     }
 
     /**
-     * HTML Edit
+     * HTML Edit field
+	 * @todo If long field, show text area rather
      *
      * @param fields $column
      * @return string
@@ -119,9 +120,9 @@ class htmlifier implements bodyfier
         $class = $this->field_class($column);
 
 		$field_body = "
-    <div class='field'>
+    <div class=\"field\">
         <label>{$column->COLUMN_DISPLAY}</label>
-        <div><input class=\"w3-input {$class}\"  type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder='' /></div>
+        <div><input class=\"w3-input {$class}\"  type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
         <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
     </div>
         ";

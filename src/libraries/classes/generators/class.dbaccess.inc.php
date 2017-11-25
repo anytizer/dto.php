@@ -5,6 +5,7 @@ namespace generators;
  * @todo Uses \generators\FIELDS within PDO
  */
 namespace generators;
+use backend\capitalizer;
 use parsers\parser;
 use setups\business_entity;
 use structures\field;
@@ -206,7 +207,9 @@ ORDER BY
          */
         //$caser = new caser();
         //$COLUMN_NAME = $caser->wordify($column->COLUMN_NAME);
-        $column->COLUMN_DISPLAY = implode(" ", $names);
+		$capitalizer = new capitalizer();
+        $column->COLUMN_DISPLAY = $capitalizer->capitalize($column->COLUMN_NAME);
+        //$column->COLUMN_DISPLAY = implode(" ", $names);
 
         // @todo Patch properly
         $column->isPrivate = $column->COLUMN_KEY == "MUL" || $column->COLUMN_KEY == "PRI";

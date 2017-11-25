@@ -125,6 +125,7 @@ class html_parser implements  parser
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
+        $method_body = str_replace($from, $to, $method_body);
 
         $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/html/details.html");
         return $method_body;

@@ -55,9 +55,10 @@ $template_reader->write($template_reader->read("libraries/backend/class.spl_incl
 # .htaccess
 # .htpassw
 
-#print_r($entities); #die();
 foreach ($entities as $business)
 {
+	#print_r($entities); die();
+	
     # CLI Options
     # business dto user
     # business business user -- entity
