@@ -37,7 +37,7 @@ class htmlifier implements bodyfier
     }
     
 	/**
-     * HTML List
+     * Column Heads
      *
      * @param fields $column
      * @return string
@@ -55,7 +55,7 @@ class htmlifier implements bodyfier
     }
 	
     /**
-     * HTML List
+     * Column Body
      *
      * @param fields $column
      * @return string

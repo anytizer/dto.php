@@ -114,7 +114,7 @@ foreach ($entities as $business)
     $angular_parser->generate($business);
 
     /**
-     * HTML, CSS and static javascripts Resources
+     * HTML, CSS and static JavaScripts Resources
      * Selenium Resources
      */
     $html_parser = new html_parser();
