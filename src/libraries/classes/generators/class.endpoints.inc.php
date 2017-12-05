@@ -20,6 +20,10 @@ class endpoints extends generator implements bodyfier
         $parameters = $method->parameters;
         $return_type = $method->return_type;
 
+        // @todo Handle even if there are no parameters
+		// @todo Support using class names as parameter descriptors
+        //print_r($method); die();
+
         $method_body = "
     /**
      * {$method->description}

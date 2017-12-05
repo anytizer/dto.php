@@ -1,9 +1,9 @@
 # DTO Generator
 
  - php -f business.php
- - php -f generate.php
+
  - dto table_name
- - Define features first
+ - Define features first (PHPUnit)
  - Write tests
  - Write codes
 
