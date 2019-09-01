@@ -9,3 +9,6 @@ src/docs-output/
 /docs-output
 /definitions
 /templates/scss/.sass-cache
+/docs
+/vendor
+/src/nbproject

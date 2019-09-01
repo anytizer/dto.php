@@ -1,3 +1,45 @@
+Remove JS auto CRUD functions.
+
+Write model body with column names pre-populated.
+
+ID field missing full name in CS.DTO:
+	public string ID { get; set; }
+
+$hidden fields for Laravel ORM.
+
+Faker database for all tables.
+
+add, edit, list, flag orm: pass $parameter.
+Move emails/ into templates API.
+
+Make UI Router compatible URLs.
+eg. edit({}) for /#!/edit...
+
+templateUrl: template("AddContacts"), => add-contacts.html
+
+column_display() appears twice...
+
+.HTML ending
+Loading: http://localhost/angular/libraries/dto.php/output/public_html/entities/WorldMaps/Countries/html/EditCountry
+Countries-routes.js:11:3
+Loading: http://localhost/angular/libraries/dto.php/output/public_html/entities/WorldMaps/Countries/html/Flag
+/entities/MyDirectory/Contacts/html/DeleteContacts => html/delete-contacts.html
+
+Solidarity; in .ts files at templates\public_html\entities\js\angularjs
+
+dto database hostname username password datatabase > config.db
+dto output /tmp/
+dto phpunit
+dto apiunit
+dto api
+dto angularjs
+dto css
+
+composer require anytizer/capitalizer.php:dev-master
+composer require anytizer/guid.php:dev-master
+composer require anytizer/includer.php:dev-master
+
+
 List page column names are wrong.
 
 Method Name is wrong in method descriptor.
@@ -67,11 +109,10 @@ controller file write js has php tags
 
 
 produce all fields
-produce all fields
 run phpunit tests to pass
 produce endpoint handlers
 see records in the database
-attach the angular js files in the HTMLs
+attatch the angular js files in the HTMLs
 add crud into the menus somewhere else
 do the acl for user groups
 in business assign, read list of users only from available list

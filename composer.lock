@@ -1,0 +1,125 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "09da9551a18d64b6abb598acf7b8b410",
+    "packages": [
+        {
+            "name": "anytizer/capitalizer.php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anytizer/capitalizer.php.git",
+                "reference": "54f8bcfa240e2ed8c80e7cdbf4aff26239c7d9c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anytizer/capitalizer.php/zipball/54f8bcfa240e2ed8c80e7cdbf4aff26239c7d9c5",
+                "reference": "54f8bcfa240e2ed8c80e7cdbf4aff26239c7d9c5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/libraries/classes/common/class.capitalizer.inc.php"
+                ],
+                "psr-4": {
+                    "capitalizer\\": "src/libraries/classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Capitalize a word",
+            "keywords": [
+                "capitalizer",
+                "case conversion",
+                "lowercase",
+                "uppercase"
+            ],
+            "time": "2018-01-06T20:21:57+00:00"
+        },
+        {
+            "name": "anytizer/guid.php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anytizer/guid.php.git",
+                "reference": "b22e8bb7f563401d30886a1bbffb3976be465025"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anytizer/guid.php/zipball/b22e8bb7f563401d30886a1bbffb3976be465025",
+                "reference": "b22e8bb7f563401d30886a1bbffb3976be465025",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/libraries/classes/backend/class.guid.inc.php"
+                ],
+                "psr-4": {
+                    "\\backend\\": "src/libraries/classes/backend"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "GUID Generator for PHP",
+            "keywords": [
+                "Unique ID",
+                "guid",
+                "uuid"
+            ],
+            "time": "2017-12-22T22:28:54+00:00"
+        },
+        {
+            "name": "anytizer/includer.php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anytizer/includer.php.git",
+                "reference": "5e58dbbd787738dc9287fcffa020b7d874909c93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anytizer/includer.php/zipball/5e58dbbd787738dc9287fcffa020b7d874909c93",
+                "reference": "5e58dbbd787738dc9287fcffa020b7d874909c93",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/libraries/classes/anytizer/class.includer.inc.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Custom SPL autoload registration",
+            "keywords": [
+                "autoload",
+                "includer",
+                "spl"
+            ],
+            "time": "2018-02-02T16:10:02+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "anytizer/capitalizer.php": 20,
+        "anytizer/guid.php": 20,
+        "anytizer/includer.php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

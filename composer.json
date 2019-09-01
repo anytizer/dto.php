@@ -1,0 +1,7 @@
+{
+    "require": {
+        "anytizer/capitalizer.php": "dev-master",
+        "anytizer/guid.php": "dev-master",
+        "anytizer/includer.php": "dev-master"
+    }
+}
