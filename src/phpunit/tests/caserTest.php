@@ -40,8 +40,6 @@ class caserTest extends TestCase
      */
 	public function testPsr0()
     {
-        #$this->markTestIncomplete();
-		
         $name = "a quick brown fox";
         $caser = new caser();
         $name = $caser->psr0($name);

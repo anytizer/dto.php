@@ -10,12 +10,16 @@ namespace setups;
 //     prospects, guardians, parents, students, bus driver, canteen
 //     public relations,
 
+/**
+ * Class roles
+ * @package setups
+ */
 class roles
 {
     /**
      * @var bool
      */
-    private $active;
+    private $active = null;
 
 /*
 public $SUPER_ADMIN = 1;
@@ -26,6 +30,9 @@ public $FINANCE = 5;
 public $MEMBER = 6;
 public $VISITOR = 7;
 public $ALL = 8;
+public $CUSTOMER = 20;
+ * STUDENT
+ * MENTOR
  */
 
     public function __construct()
@@ -68,6 +75,21 @@ public $ALL = 8;
     }
 
     public function VISITOR(): roles
+    {
+        return $this;
+    }
+
+    public function CUSTOMER(): roles
+    {
+        return $this;
+    }
+    
+    public function STUDENT(): roles
+    {
+        return $this;
+    }
+    
+    public function MENTOR(): roles
     {
         return $this;
     }

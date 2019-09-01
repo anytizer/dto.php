@@ -1,4 +1,5 @@
 <?php
+
 namespace generators;
 
 /**
@@ -8,43 +9,42 @@ namespace generators;
  *
  * @package generators
  */
-class caser
-{
+class caser {
+
     /**
-	 * All lower case, joined with underscore
-	 *
+     * All lower case, joined with underscore
+     *
      * eg. zend_mail()
      * @example a_quick_brown_fox
      *
      * @param string $descriptive_name
      * @return string
      */
-    public function snake_case(string $descriptive_name): string
-    {
+    public function snake_case(string $descriptive_name): string {
         $name = strtolower($descriptive_name);
         $name = preg_replace("/[^a-z0-9]+/is", "_", $name);
 
         return $name;
     }
+    
 
     /**
-	 * All capitals, joined together
-	 *
+     * All capitals, joined together
+     *
      * @example ZendMail()
      * @example AQuickBrownFox
      *
      * @param string $descriptive_name
      * @return string
      */
-    public function psr4(string $descriptive_name): string
-    {
+    public function psr4(string $descriptive_name): string {
         $name = strtolower($descriptive_name);
 
         $names = preg_split("/[^a-z0-9]+/is", $name);
         $names = array_map("ucfirst", $names);
 
-        $name = implode("", $names);
-        return $name;
+        $name_output = implode("", $names);
+        return $name_output;
     }
 
     /**
@@ -56,13 +56,12 @@ class caser
      * @return string
      * @throws \Exception
      */
-    public function psr0(string $descriptive_name): string
-    {
+    public function psr0(string $descriptive_name): string {
         $name = $this->wordify($descriptive_name); // works
         $words = explode(" ", $name); // works
 
-        $name = implode("_", $words);
-		return $name;
+        $name_output = implode("_", $words);
+        return $name_output;
     }
 
     /**
@@ -71,22 +70,21 @@ class caser
      * @param string $title
      * @return string
      */
-    public function wordify($title="")
-    {
-        $title = strtolower($title);
+    public function wordify($title = "") {
+        #$title = strtolower($title);
 
-        $words = preg_split("/[^a-z0-9]/is", $title);
+        $words = preg_split("/[^a-z0-9]+/is", $title);
         $words = array_map("trim", $words);
         $words = array_map("ucfirst", $words);
         $words = array_filter($words);
 
-        $name = implode(" ", $words);
-        return $name;
+        $name_output = implode(" ", $words);
+        return $name_output;
     }
 
     /**
      * Converts a word into a property name for PHP Class
-	 * @todo Remove the usage and replace with one of the method earlier.
+     * @todo Remove the usage and replace with one of the method earlier.
      *
      * @param string $name
      * @param bool $remove_prefix
@@ -94,23 +92,20 @@ class caser
      * @param string $glue
      * @return string
      */
-    public function namify(string $name, bool $remove_prefix, bool $ucfirst, string $glue): string
-    {
+    public function namify(string $name, bool $remove_prefix, bool $ucfirst, string $glue): string {
         $words = preg_split("/[\\s|\\_]/is", strtolower($name));
-        if(count($words) >= 2)
-        {
-            if($remove_prefix===true)
-            {
+        if (count($words) >= 2) {
+            if ($remove_prefix === true) {
                 unset($words[0]);
             }
 
-            if($ucfirst===true)
-            {
+            if ($ucfirst === true) {
                 $words = array_map("ucfirst", $words); // UpperCasedName
             }
         }
 
-        $name = implode($glue, $words);
-        return $name;
+        $name_output = implode($glue, $words);
+        return $name_output;
     }
+
 }

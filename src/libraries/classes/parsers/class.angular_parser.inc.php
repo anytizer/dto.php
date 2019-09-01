@@ -49,6 +49,7 @@ class angular_parser implements parser
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
         );
+        
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -80,6 +81,7 @@ class angular_parser implements parser
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
             "#__PUBLIC_URL__" => __PUBLIC_URL__,
         );
+        
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -110,6 +112,7 @@ class angular_parser implements parser
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
         );
+        
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -141,7 +144,9 @@ class angular_parser implements parser
             "#__ANGULAR_SERVICES__" => implode("\r\n\t", $methods),
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
+            "#__ENDPOINT_URL__" => __ENDPOINT_URL__,
         );
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -172,6 +177,7 @@ class angular_parser implements parser
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
         );
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);

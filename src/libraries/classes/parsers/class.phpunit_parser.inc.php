@@ -9,7 +9,6 @@ class phpunit_parser implements  parser
 {
     public function generate(business_entity $business)
     {
-
         $this->generate_phpunits($business);
         $this->apiunit($business); // GET/POST
         $this->api_business($business); // GET/POST
@@ -28,7 +27,14 @@ class phpunit_parser implements  parser
          */
         $phpunitifier = new phpunitifier();
         $methods = array_map(array($phpunitifier, "methodify"), $business->methods_list());
+
+        $methods = preg_replace_callback_array(array(
+            "/\@ISSUE_ID\@/is" => $GLOBALS["F_ISSUE_ID"]
+        ), $methods);
         $features = array_map(array($phpunitifier, "feature_test"), $business->features_list());
+        $features =  preg_replace_callback_array(array(
+            "/\@ISSUE_ID\@/is" => $GLOBALS["F_ISSUE_ID"]
+        ), $features);
         #$methods = array_merge($methods, $features);
 
         $replace = array(
@@ -40,8 +46,12 @@ class phpunit_parser implements  parser
         $from = array_keys($replace);
         $to = array_values($replace);
 
+        // twice replacements
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
+        $method_body =  preg_replace_callback_array(array(
+            "/\@ISSUE_ID\@/is" => $GLOBALS["F_ISSUE_ID"]
+        ), $method_body);
         #print_r($replace); die();
         #die($method_body);
 
@@ -85,6 +95,9 @@ class phpunit_parser implements  parser
 
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
+        $method_body =  preg_replace_callback_array(array(
+            "/\@ISSUE_ID\@/is" => $GLOBALS["F_ISSUE_ID"]
+        ), $method_body);
         #print_r($replace); die();
         #die($method_body);
 

@@ -1,13 +1,14 @@
 <?php
+
 namespace generators;
+
 use backend\capitalizer;
 use setups\method_descriptor;
 use structures\fields;
 
-class htmlifier implements bodyfier
-{
-    public function generate(): string
-    {
+class htmlifier implements bodyfier {
+
+    public function generate(): string {
         //$method = new method_descriptor();
         //$this->htmlListify($method);
         //$this->htmlDetails($method);
@@ -25,57 +26,50 @@ class htmlifier implements bodyfier
      * @param fields $fields
      * @return string
      */
-    private function field_class(fields $fields)
-    {
-        $classes = array();
-        if($fields->isDate)
-        {
+    private function field_class(fields $fields) {
+        $classes = [];
+        if ($fields->isDate) {
             $classes[] = "datepicker";
         }
 
         return implode(" ", $classes);
     }
-    
-	/**
+
+    /**
      * Column Heads
      *
      * @param fields $column
      * @return string
      */
-    public function htmlColumnify(fields $column): string
-    {
-        if($column->isLong || $column->isPrivate)
-        {
+    public function htmlColumnify(fields $column): string {
+        if ($column->isLong || $column->isPrivate) {
             return "";
         }
 
-		#print_r($column); die();
-		$field_body = "\t\t<th>{$column->COLUMN_DISPLAY}</th>";
-		return $field_body;
+        #print_r($column); die();
+        $field_body = "\t\t<th>{$column->COLUMN_DISPLAY}</th>";
+        return $field_body;
     }
-	
+
     /**
      * Column Body
      *
      * @param fields $column
      * @return string
      */
-    public function htmlListify(fields $column): string
-    {
-        if($column->isLong || $column->isPrivate)
-        {
+    public function htmlListify(fields $column): string {
+        if ($column->isLong || $column->isPrivate) {
             return "";
         }
 
         /**
          * @todo Hide flag dates but show other dates
          */
-
-		// <div>{$column->COLUMN_NAME}</div>
-		#print_r($column); die();
+        // <div>{$column->COLUMN_NAME}</div>
+        #print_r($column); die();
         // #__LISTED_ROWS__
         $field_body = "\t\t<td>{{record.{$column->COLUMN_NAME}}}</td>";
-		return $field_body;
+        return $field_body;
     }
 
     /**
@@ -84,10 +78,8 @@ class htmlifier implements bodyfier
      * @param fields $column
      * @return string
      */
-    public function htmlDetails(fields $column): string
-    {
-        if($column->isLong)
-        {
+    public function htmlDetails(fields $column): string {
+        if ($column->isLong) {
             return "";
         }
 
@@ -97,35 +89,33 @@ class htmlifier implements bodyfier
         <div class=\"value\">{{#__CLASS_NAME__.record.{$column->COLUMN_NAME}}}</div>
     </div>
         ";
-        
-		return $field_body;
+
+        return $field_body;
     }
 
     /**
      * HTML Edit field
-	 * @todo If long field, show text area rather
+     * @todo If long field, show text area rather
      *
      * @param fields $column
      * @return string
      */
-    public function htmlEdit(fields $column): string
-    {
-        if($column->isPrivate)
-        {
+    public function htmlEdit(fields $column): string {
+        if ($column->isPrivate) {
             return "";
         }
 
         $class = $this->field_class($column);
 
-		$field_body = "
+        $field_body = "
     <div class=\"field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div><input class=\"w3-input {$class}\"  type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
         <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
     </div>
         ";
-        
-		return $field_body;
+
+        return $field_body;
     }
 
     /**
@@ -134,13 +124,12 @@ class htmlifier implements bodyfier
      * @param fields $column
      * @return string
      */
-    public function htmlFlag(fields $column): string
-    {
+    public function htmlFlag(fields $column): string {
         $field_body = "
 <!-- Flagged -->
         ";
-        
-		return $field_body;
+
+        return $field_body;
     }
 
     /**
@@ -149,13 +138,12 @@ class htmlifier implements bodyfier
      * @param fields $column
      * @return string
      */
-    public function htmlDelete(fields $column): string
-    {
+    public function htmlDelete(fields $column): string {
         $field_body = "
 Deleted
 ";
-		
-		return $field_body;
+
+        return $field_body;
     }
 
     /**
@@ -164,23 +152,22 @@ Deleted
      * @param fields $column
      * @return string
      */
-    public function htmlAdd(fields $column): string
-    {
-        if($column->isPrivate)
-        {
+    public function htmlAdd(fields $column): string {
+        if ($column->isPrivate) {
             return "";
         }
 
         $class = $this->field_class($column);
 
         $field_body = "
-    <div class='field'>
+    <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div><input type=\"text\" class=\"w3-input {$class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder='' /></div>
         <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
     </div>
         ";
-        
-		return $field_body;
+
+        return $field_body;
     }
+
 }

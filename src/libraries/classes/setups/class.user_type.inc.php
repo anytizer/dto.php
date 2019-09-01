@@ -3,7 +3,10 @@ namespace setups;
 
 class user_type
 {
-    public function can(array $methods){}
+    public function can(array $methods)
+    {
+
+    }
 }
 
 // roles

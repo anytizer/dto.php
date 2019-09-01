@@ -15,14 +15,24 @@ tests\module
  [x] Dto name
  [x] Orm name
  [x] Module name
+ [x] Column name
 
 tests\namify
+ [x] Namify
+ [x] Namify
+ [x] Namify
  [x] Namify
  [x] Namify 1 remove prefix
  [x] Namify 2 remove prefix
  [x] Namify 3 remove prefix
  [x] Namify 4 remove prefix
  [x] Namify 5 remove prefix
+
+tests\prefixes
+ [x] Remove prefix from database 1
+ [x] Remove prefix from database 2
+ [x] Remove prefix from database 3
+ [x] Remove prefix from database 4
 
 tests\returnType
  [x] Return type 1

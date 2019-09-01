@@ -1,6 +1,7 @@
 <?php
 namespace generators;
 use setups\method_descriptor;
+use anytizer\capitalizer;
 
 /**
  * Converts words into proper names
@@ -25,7 +26,8 @@ class namifier
     {
         # eg. Tailing: measurements ==> Tailoring
         $name = preg_replace("/\\:.*?$/", "", $name);
-        return $this->caser->wordify($name);
+        //return $this->caser->wordify($name);
+        return strtolower($this->caser->wordify($name));
     }
 
     /**
@@ -36,6 +38,7 @@ class namifier
      */
     public function class_name(string $class_name): string
     {
+        # Agents_actions becomes: AgentsActionsDTO
         /**
          * Trim if separated by : as "Module: Class"
          */
@@ -43,9 +46,12 @@ class namifier
         $class_name = preg_replace("/^(.*?\\:)/is", "", $class_name);
 
         #$class_name = $this->caser->snake_case($class_name);
+        #die("Looking: ".$class_name);
         $class_name = $this->caser->psr4($class_name);
+        #die("Setting class name: ".$class_name);
 
-        return $class_name;
+        //return $class_name;
+        return strtolower($class_name);
     }
 
     /**
@@ -60,7 +66,8 @@ class namifier
         $class_name = $this->caser->psr4($class_name);
         $class_name .= "Business";
 
-        return $class_name;
+        //return $class_name;
+        return strtolower($class_name);
     }
 
     /**
@@ -75,6 +82,33 @@ class namifier
 
         $dto_name = $caser->wordify($dto_name);
         $dto_name .= "DTO";
+        #die("DTO Choosing: ".$dto_name);
+
+        return $dto_name;
+    }
+    
+    public function model_name(string $dto_name): string
+    {
+        $caser = new caser();
+
+        $model_name = $caser->wordify($dto_name);
+        $model_name .= "Model";
+
+        return $model_name;
+    }
+
+    /**
+     * Gets a column name
+     *
+     * @param string $dto_name
+     * @return string
+     */
+    public function dto_name_cs(string $dto_name): string
+    {
+        $caser = new caser();
+
+        $dto_name = $caser->wordify($dto_name);
+        $dto_name .= "DTO";
 
         return $dto_name;
     }
@@ -82,7 +116,6 @@ class namifier
     /**
      * PHP Method names
      *
-     * @see $this->method()
      * @param string $name
      * @return string
      */
@@ -100,7 +133,6 @@ class namifier
     /**
      * Method title
      *
-     * @see $this->method()
      * @param string $name
      * @return string
      */
@@ -118,7 +150,6 @@ class namifier
     /**
      * Extract parameters from method definition
      *
-     * @see $this->method()
      * @param $name
      * @return array
      */
@@ -129,9 +160,9 @@ class namifier
         // prepend dollar sign
         // namify variables
         // implode with ,
-        $parameters = array();
+        $parameters = [];
 
-        $matches = array();
+        $matches = [];
         if(preg_match("/\\((.*?)\\)/", $name, $matches))
         {
             $parameters = preg_split("/,/", $matches[1]);
@@ -189,9 +220,30 @@ class namifier
         // date long table
         // define single row
         // return null;
-        $caser = new caser();
-        $column_name = $caser->snake_case($column_name);
+    
+        $names = explode("_", $column_name);
+        unset($names[0]);
+        $column_name = implode(" ", $names);
 
+        $capitalizer = new capitalizer();
+        $column_name = $capitalizer->capitalize($column_name);
+        return $column_name;
+    }
+    
+    public function column_name_cs(string $column_name): string
+    {
+        // hide id,
+        // hide flags
+        // date long table
+        // define single row
+        // return null;
+    
+        $names = explode("_", $column_name);
+        unset($names[0]);
+        $column_name = implode(" ", $names);
+
+        $capitalizer = new capitalizer();
+        $column_name = $capitalizer->capitalize($column_name);
         return $column_name;
     }
 }

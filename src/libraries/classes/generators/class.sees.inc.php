@@ -7,7 +7,7 @@ namespace generators;
 class sees
 {
         public $logo;
-        public $pages = array();
+        public $pages = [];
 
         public function logo(string $logo)
         {
@@ -21,7 +21,7 @@ class sees
                  */
                 if(!isset($this->pages[$page]))
                 {
-                        $this->pages[$page] = array();
+                        $this->pages[$page] = [];
                 }
 
                 #$this->pages[$page] = array_merge($this->pages[$page], array_values($links));
@@ -30,7 +30,7 @@ class sees
 
         public function index()
         {
-                $this->index = array();
+                $this->index = [];
                 foreach($this->pages as $index => $page)
                 {
                         $this->index[] = $index;

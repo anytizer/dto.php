@@ -28,7 +28,7 @@ class ormifier // implements bodyfier
      */
     {$accessor} function {$method_name}({$parameters}): {$return_type}
     {
-        \$#__ORM_NAME__= new #__ORM_NAME__();
+        \$#__ORM_NAME__ = new #__ORM_NAME__();
         
         #\$#__ORM_NAME__->name = \$parameters->name;
         #\$#__ORM_NAME__->value = \$parameters->value;

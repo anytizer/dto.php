@@ -1,6 +1,7 @@
 <?php
 namespace tests;
 use generators\caser;
+use generators\namifier;
 use setups\business_entity;
 use PHPUnit\Framework\TestCase;
 
@@ -53,6 +54,18 @@ class moduleTest extends TestCase
         $be = (new business_entity())->business("water bills", "payment", "");
         $name = $be->class_name();
 
+        $this->assertEquals($expect, $name);
+    }
+    
+    public function testColumnName()
+    {
+        $expect = "ID";
+
+        $name = "contact_id";
+
+        $namifier = new namifier();
+        $name = $namifier->column_name($name);
+        
         $this->assertEquals($expect, $name);
     }
 }

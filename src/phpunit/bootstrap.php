@@ -5,6 +5,8 @@ declare(strict_types=1);
 
 require_once("../libraries/inc.config.php");
 
-use backend\spl_include;
-
-spl_autoload_register(array(new spl_include(__LIBRARIES_DIR__."/classes"), "namespaced_inc_dot"));
+/**
+ * Auto include class files
+ */
+#use anytizer\includer;
+#spl_autoload_register(array(new includer(__LIBRARIES_DIR__."/classes"), "namespaced_inc_dot"));

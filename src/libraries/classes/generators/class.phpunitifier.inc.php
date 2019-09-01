@@ -55,7 +55,7 @@ class phpunitifier extends generator implements bodyfier
     /**
      * {$method_description}
      * {$method_comments}
-     * @issue #000000
+     * @issue #@ISSUE_ID@
      * {$timestamp}
      */
     public function test{$testMethodName}()

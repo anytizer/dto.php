@@ -1,11 +1,22 @@
 <?php
+
 namespace setups;
+
 use generators\namifier;
 use generators\caser;
-use backend\guid;
+use anytizer\guid;
 
-class business_entity
-{
+/**
+ * Class business_entity
+ * @package setups
+ */
+class business_entity {
+
+    /**
+     * @var bool If write a definition?
+     */
+    private $enabled;
+
     /**
      * @var string
      */
@@ -15,6 +26,11 @@ class business_entity
      * @var string
      */
     private $class_name;
+
+    /**
+     * @var string Business Name
+     */
+    private $business_name;
 
     /**
      * @var method_descriptor[]
@@ -34,14 +50,27 @@ class business_entity
     /**
      * @var array User defined tests
      */
-    private $features_to_test = array();
+    private $features_to_test = [];
 
-    public function __construct()
-    {
+    /**
+     * business_entity constructor.
+     * @param bool $enabled
+     */
+    public function __construct($enabled = false) {
+        $this->enabled = $enabled === true;
+
         $this->package = "";
         $this->table_name = "";
         $this->class_name = "";
-        $this->methods = array();
+        $this->methods = [];
+    }
+
+    /**
+     * If we can produce the code for these business definitions
+     * @return bool
+     */
+    public function enabled(): bool {
+        return $this->enabled;
     }
 
     /**
@@ -57,8 +86,7 @@ class business_entity
      * @param string $table_name
      * @return business_entity
      */
-    public function business(string $package_name, string $class_name, string $table_name): business_entity
-    {
+    public function business(string $package_name, string $class_name, string $table_name): business_entity {
         $namifier = new namifier();
 
         $this->package = $namifier->package_name($package_name);
@@ -66,7 +94,7 @@ class business_entity
         $this->business_name = $namifier->business_name($class_name);
 
         /**
-         * Check validity for table existing
+         * @todo Check validity for table if existing
          */
         $this->table_name = $table_name;
 
@@ -77,13 +105,12 @@ class business_entity
      * @param roles $role
      * @return business_entity
      */
-    public function user(roles $role): business_entity
-    {
+    public function user(roles $role): business_entity {
         $this->users[] = $role;
 
         # Register this
         $guid = guid::NewGuid();
-        $sql="INSERT IGNORE INTO acl_objects VALUES ('{$guid}', '{$this->package}');\r\n";
+        $sql = "INSERT IGNORE INTO acl_objects VALUES ('{$guid}', '{$this->package}');\r\n";
         file_put_contents("d:/acl.log", $sql, FILE_APPEND);
         # SELECT UUID();
 
@@ -94,15 +121,13 @@ class business_entity
      * @param array $methods
      * @return business_entity
      */
-    public function methods(array $methods): business_entity
-    {
+    public function methods(array $methods): business_entity {
         $namifier = new namifier();
         $this->methods = array_map(array($namifier, "method"), $methods);
 
         # Pre-register ACL into the database at the time of creation
-        foreach($methods as $method)
-        {
-            $sql="INSERT IGNORE INTO acl_objects_methods VALUES (UUID(), '', '{$method}');\r\n";
+        foreach ($methods as $method) {
+            $sql = "INSERT IGNORE INTO acl_objects_methods VALUES (UUID(), '', '{$method}');\r\n";
             file_put_contents("d:/acl.log", $sql, FILE_APPEND);
         }
 
@@ -116,13 +141,11 @@ class business_entity
      * @param string $feature
      * @return $this
      */
-    public function feature(string $feature)
-    {
+    public function feature(string $feature) {
         /**
          * Do NOT accept blank names
          */
-        if($feature)
-        {
+        if ($feature) {
             $this->features_to_test[] = $feature;
         }
 
@@ -136,8 +159,7 @@ class business_entity
      * @param $package_name
      * @return business_entity
      */
-    public function import(string $package_name): business_entity
-    {
+    public function import(string $package_name): business_entity {
         // setup with other modules
         return $this;
     }
@@ -145,73 +167,88 @@ class business_entity
     /**
      * Public interactions
      */
-
-    public function package_name(): string
-    {
+    public function package_name(): string {
         $caser = new caser();
         $package = $caser->psr4($this->package);
 
-        return $package;
+        return strtolower($package);
     }
 
     /**
      * @return string
      */
-    public function table_name(): string
-    {
+    public function table_name(): string {
         return $this->table_name;
     }
 
     /**
      * Also used in producing file names
-     * Class name as appears inside php scripts
+     * Class name as appears inside PHP scripts
      * @return mixed
      */
-    public function dto_name(): string
-    {
+    public function dto_name(): string {
         $namifier = new namifier();
         $dto_name = $namifier->dto_name($this->class_name);
 
-        return $dto_name;
+        return strtolower($dto_name);
+    }
+    
+    /**
+     * Also used in producing file names
+     * Class name as appears inside PHP scripts
+     * @return mixed
+     */
+    public function model_name(): string {
+        $namifier = new namifier();
+        $model_name = $namifier->model_name($this->class_name);
+
+        return strtolower($model_name);
     }
 
     /**
      * Also used in producing file names
-     * Class name as appears inside php scripts
+     * Class name as appears inside PHP scripts
      * @return mixed
      */
-    public function business_name(): string
-    {
+    public function dto_name_cs(): string {
+        $namifier = new namifier();
+        $dto_name_cs = $namifier->dto_name_cs($this->class_name);
+
+        return strtolower($dto_name_cs);
+    }
+
+    /**
+     * Also used in producing file names
+     * Class name as appears inside PHP scripts
+     * @return mixed
+     */
+    public function business_name(): string {
         $business_name = $this->class_name();
-        $business_name .= "Business";
+        $business_name .= "_Business";
 
-        return $business_name;
+        return strtolower($business_name);
     }
 
     /**
      * Also used in producing file names
-     * Class name as appears inside php scripts
+     * Class name as appears inside PHP scripts
      * @return mixed
      */
-    public function class_name(): string
-    {
+    public function class_name(): string {
         return $this->class_name;
     }
 
-    public function orm_name(): string
-    {
+    public function orm_name(): string {
         $name = $this->class_name();
-        $name  .= "ORM";
+        $name .= "_ORM";
 
-        return $name;
+        return strtolower($name);
     }
-
 
     /**
      * @return method_descriptor[]
      */
-    public function methods_list(): array
-    {
+    public function methods_list(): array {
         return $this->methods;
     }
 
@@ -220,8 +257,8 @@ class business_entity
      * Additional features described in one line each
      * @return array
      */
-    public function features_list(): array
-    {
+    public function features_list(): array {
         return $this->features_to_test;
     }
+
 }

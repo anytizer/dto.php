@@ -5,7 +5,7 @@ namespace generators;
  * @todo Uses \generators\FIELDS within PDO
  */
 namespace generators;
-use backend\capitalizer;
+use anytizer\capitalizer;
 use parsers\parser;
 use setups\business_entity;
 use structures\field;
@@ -45,13 +45,14 @@ class dbaccess
         $field_definition = "";
         //if(!$this->is_flag($field->COLUMN_NAME)) // @todo Column Name is null
         {
-            $column_name = $namifier->column_name($field->COLUMN_NAME);
+            //$column_name = $namifier->column_name($field->COLUMN_NAME);
+            $variable_name = $namifier->variable($field->COLUMN_NAME);
             if($produce_comments) {
                 $field_definition = "
     /**
      * @datatype {$field->DATA_TYPE}
      */
-    public \${$column_name};
+    public {$variable_name};
 ";
             }
             //else
@@ -64,24 +65,105 @@ class dbaccess
         return $field_definition;
     }
 
-    /**
-     * Checks if a column name is for a flag purpose.
-     * @param string $column_name
-     * @return bool
-     */
-    private function is_flag(string $column_name): bool
+    public function dto_rows_cs(fields $field): string
     {
-        /**
-         * Flag starting as is_...
-         */
-        $is_flag = preg_match("/^is_/is", $column_name);
+        $produce_comments = true; // false: for live modes
 
-        /**
-         * Flag ending with on, by, ...
-         */
-        $others_flag = preg_match("/_(on|by)$/is", $column_name);
+        $namifier = new namifier();
+        $field_definition = "";
+        //if(!$this->is_flag($field->COLUMN_NAME)) // @todo Column Name is null
+        {
+            $datatype = "string";
+            switch(strtolower($field->DATA_TYPE))
+            {
+                case "bit":
+                case "bool":
+                case "boolean":
+                    $datatype = "bool";
+                    break;
+                case "tinyint":
+                    $datatype = "int32";
+                    break;
+                case "binary":
+                case "bigint":
+                case "date":
+                case "datetime":
+                case "timestamp":
+                case "time":
+                case "year":
+                    $datatype = "DateTime";
+                    break;
+                case "decimal":
+                case "double":
+                case "float":
+                case "int":
+                case "real":
+                case "numeric":
+                case "smallint":
+                    $datatype = "int";
+                    break;
+                case "enum":
+                    $datatype = "string";
+                    break;
+                case "blob":
+                case "char":
+                case "longblob":
+                case "longtext":
+                case "mediumblob":
+                case "mediumtext":
+                case "text":
+                case "tinyblob":
+                case "tinytext":
+                case "varbinary":
+                case "varchar":
+                    $datatype = "string";
+                    break;
+                case "set":
+                    $datatype = "string";
+                    break;
+                default:
+                    break;
+            }
 
-        return $is_flag||$others_flag;
+            /**
+             * CS compatible column names, eg. AddressID for address_id
+             * @todo Prefix IDs are removed. replace. eg. ID for ..._id.
+             */
+            $column_name = $namifier->column_name($field->COLUMN_NAME);
+            $column_name = str_replace(" ", "", $column_name);
+            
+            if($produce_comments) {
+                $field_definition = "
+        /**
+         * @datatype {$field->DATA_TYPE}
+         */
+        public {$datatype} {$column_name} { get; set; }
+";
+            }
+        }
+
+        // define single row
+        return $field_definition;
+    }
+    
+    public function dto_fillable_rows_laravel(fields $field): string
+    {
+        $field_definition = "";
+        if(!$this->is_flag($field->COLUMN_NAME) && !$this->is_autoid($field))
+        {
+            $field_definition = "\"{$field->COLUMN_NAME}\"";
+        }
+        return $field_definition;
+    }
+    
+    public function dto_guarded_rows_laravel(fields $field): string
+    {
+        $field_definition = "";
+        if($this->is_flag($field->COLUMN_NAME) || $this->is_autoid($field))
+        {
+            $field_definition = "\"{$field->COLUMN_NAME}\"";
+        }
+        return $field_definition;
     }
 
     /**
@@ -96,6 +178,40 @@ class dbaccess
         $long_flag = preg_match("/_(description|text|body|html)$/is", $column->COLUMN_NAME);
 
         return $long_flag;
+    }
+
+    /**
+     * Checks if a column name is for a flag purpose.
+     * @param string $column_name
+     * @return bool
+     */
+    private function is_flag(string $column_name): bool
+    {
+        /**
+         * Flag starting as is_...
+         */
+        $is_flag = preg_match("/^(is|in)_/is", $column_name);
+
+        /**
+         * Flag ending with on, by, ...
+         */
+        $others_flag = preg_match("/_(on|by)$/is", $column_name);
+
+        return $is_flag||$others_flag;
+    }
+
+
+    /**
+     * Auto fillable IDs
+     *
+     * @param fields $column
+     * @return bool
+     */
+    private function is_autoid(fields $column): bool
+    {
+        $auto_id = preg_match("/_(id)$/is", $column->COLUMN_NAME);
+
+        return $auto_id;
     }
 
     /**
@@ -135,7 +251,7 @@ ORDER BY
         #$result = array_map(array($this, "filter_columns"), $result);
         //$result = array_map(array($this, "rows"), $result);
         #print_r($result);
-        $commands = array();
+        $commands = [];
         foreach($result as $row)
         {
             $row = (array)$row;
@@ -201,15 +317,21 @@ ORDER BY
         $names = preg_split("/\_/is", $column->COLUMN_NAME);
         $names = array_map("strtolower", $names);
         $names = array_map("ucfirst", $names);
+        
+        /**
+         * Remove prefixed word
+         */
+        if(count($names)>=2)
+        {
+            unset($names[0]);
+        }
 
         /**
-         * Capitalise special names like ID, etc...
+         * Capitalize special names like ID, etc...
          */
-        //$caser = new caser();
-        //$COLUMN_NAME = $caser->wordify($column->COLUMN_NAME);
-		$capitalizer = new capitalizer();
-        $column->COLUMN_DISPLAY = $capitalizer->capitalize($column->COLUMN_NAME);
-        //$column->COLUMN_DISPLAY = implode(" ", $names);
+        $capitalizer = new capitalizer();
+        //$column->COLUMN_DISPLAY = $capitalizer->capitalize($column->COLUMN_NAME);
+        $column->COLUMN_DISPLAY = $capitalizer->capitalize(implode(" ", $names));
 
         // @todo Patch properly
         $column->isPrivate = $column->COLUMN_KEY == "MUL" || $column->COLUMN_KEY == "PRI";
