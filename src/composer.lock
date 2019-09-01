@@ -1,0 +1,53 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "fc2f3fe5e0eba1d401862cf159760f21",
+    "packages": [
+        {
+            "name": "anytizer/capitalizer.php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anytizer/capitalizer.php.git",
+                "reference": "07ab719b59dee839718d0ead03fe19d428b69ed3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anytizer/capitalizer.php/zipball/07ab719b59dee839718d0ead03fe19d428b69ed3",
+                "reference": "07ab719b59dee839718d0ead03fe19d428b69ed3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "anytizer\\": "src/anytizer"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Capitalize a word",
+            "keywords": [
+                "capitalizer",
+                "case conversion",
+                "lowercase",
+                "uppercase"
+            ],
+            "time": "2018-04-16T23:46:38+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "anytizer/capitalizer.php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
