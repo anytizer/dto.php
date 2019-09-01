@@ -10,7 +10,8 @@
         var fetch = function(urlpart, dataJSON)
         {
             //var APIURL = "http://access.example.com:9090/api-v0.0.1";
-            var APIURL = "http://localhost/angular/application/access/public_html//api-v0.0.1";
+            var APIURL = "#__ENDPOINT_URL__";
+			// "http://localhost/angular/application/access/public_html/v1";
             var url = APIURL+"/#__PACKAGE_NAME__/#__CLASS_NAME__/"+urlpart;
 
             return $http({

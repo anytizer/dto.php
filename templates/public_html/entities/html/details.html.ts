@@ -3,7 +3,7 @@
 <div class="details">
 	#__DETAILS_FIELDS__
 	
-	<div class="w3-right">
+	<div>
 		<a class="w3-btn w3-purple" href="#!/#__CLASS_NAME__/edit" ng-click="#__CLASS_NAME__.edit(record)">
 			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 			Edit

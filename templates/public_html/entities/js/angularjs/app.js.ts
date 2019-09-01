@@ -5,6 +5,6 @@
 "use strict";
 
 // @todo ng bind html, ng sanitize
-var #__CLASS_NAME__App = angular.module("#__CLASS_NAME__App", ["ngRoute", "ui.router"]);
+var #__CLASS_NAME__App = angular.module("#__CLASS_NAME__App", ["ui.router", "ngCookies"]);
 
 // $locationProvider.html5Mode(true); //Remove the '#' from URL.

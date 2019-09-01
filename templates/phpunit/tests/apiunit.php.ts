@@ -10,18 +10,18 @@ class #__CLASS_NAME__APITest extends TestCase
     /**
      * @var #__CLASS_NAME__API
      */
-	private $#__CLASS_NAME__API;
-	private $#__CLASS_NAME__Business;
+    private $#__CLASS_NAME__API;
+    private $#__CLASS_NAME__Business;
 
-	public function setup()
-	{
-		$this->#__CLASS_NAME__API = new #__CLASS_NAME__API();
-		$this->#__CLASS_NAME__Business = new #__CLASS_NAME__Business();
-	}
-	
-	/**
-	 * Featured public methods
-	 */
+    public function setup()
+    {
+        $this->#__CLASS_NAME__API = new #__CLASS_NAME__API();
+        $this->#__CLASS_NAME__Business = new #__CLASS_NAME__Business();
+    }
 
-	#__PUBLIC_METHODS__
+    /**
+     * Featured public methods
+     */
+
+    #__PUBLIC_METHODS__
 }
