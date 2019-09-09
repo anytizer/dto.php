@@ -19,19 +19,20 @@ use Illuminate\Database\Eloquent\Model as Model;
 $capsule = new Capsule;
 
 $capsule->addConnection([
-    "driver"    => "mysql",
-    "host"      => "localhost",
-    "database"  => "test",
-    "username"  => "root",
-    "password"  => "",
-    "charset"   => "utf8mb4",
+    "driver" => "mysql",
+    "host" => "localhost",
+    "database" => "test",
+    "username" => "root",
+    "password" => "",
+    "charset" => "utf8mb4",
     "collation" => "utf8mb4_general_ci",
-    "prefix"    => "",
+    "prefix" => "",
 ]);
 
 // Set the event dispatcher used by Eloquent business... (optional)
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
+
 $capsule->setEventDispatcher(new Dispatcher(new Container));
 
 // Make this Capsule instance available globally via static methods... (optional)
@@ -44,7 +45,8 @@ $users = Capsule::table("users")->where("votes", ">", 100)->get();
 $results = Capsule::select("SELECT * FROM users WHERE id = ?", array(1));
 
 // https://laravel.com/docs/5.6/eloquent
-class User extends Model {
+class User extends Model
+{
     protected $table = "users";
     protected $primaryKey = "id";
     public $timestamps = false;

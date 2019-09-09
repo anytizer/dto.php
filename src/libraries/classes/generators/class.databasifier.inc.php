@@ -2,7 +2,7 @@
 
 namespace generators;
 
-use method_descriptor;
+use setups\method_descriptor;
 
 class databasifer implements bodyfier
 {
