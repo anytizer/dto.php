@@ -61,7 +61,7 @@ class endpoints extends generator implements bodyfier
     public function methodify_model(method_descriptor $method): string
     {
         $accessor = $method->accessor;
-        $parameters = $method->parameters;
+        $parameters = "\$data=array()"; // $method->parameters;
         $return_type = "array"; // $method->return_type;
 
         $method_body = "
@@ -74,7 +74,7 @@ class endpoints extends generator implements bodyfier
         \$statement = \$this->pdo->prepare(\$sql);
         \$params = [];
         \$statement->execute(\$params);
-        \$result = \$statement->fetchAll(PDO::FETCH_ASSOC);
+        \$result = \$statement->fetch(PDO::FETCH_ASSOC); // fetchAll
         return \$result;
     }
 ";

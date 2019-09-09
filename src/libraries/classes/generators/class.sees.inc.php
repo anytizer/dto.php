@@ -8,6 +8,7 @@ class sees
 {
         public $logo;
         public $pages = [];
+        public $index = [];
 
         public function logo(string $logo)
         {

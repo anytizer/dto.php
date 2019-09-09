@@ -6,6 +6,7 @@ namespace generators;
  */
 namespace generators;
 use anytizer\capitalizer;
+use anytizer\namifier;
 use parsers\parser;
 use setups\business_entity;
 use structures\field;

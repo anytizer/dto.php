@@ -1,6 +1,7 @@
 <?php
 namespace generators;
 use setups\method_descriptor;
+use anytizer\caser;
 
 abstract class generator
 {

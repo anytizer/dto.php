@@ -2,8 +2,8 @@
 
 namespace setups;
 
-use generators\namifier;
-use generators\caser;
+use anytizer\namifier;
+use anytizer\caser;
 use anytizer\guid;
 
 /**
@@ -33,7 +33,7 @@ class business_entity {
     private $business_name;
 
     /**
-     * @var method_descriptor[]
+     * @var array method_descriptor[]
      */
     private $methods;
 
