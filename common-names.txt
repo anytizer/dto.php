@@ -1,0 +1,8 @@
+/**
+ * Common names -
+ *  - CRUD: Create, Read, Update, Delete
+ *  - MADS: Modify, Add, Delete, Show
+ *  - BREAD: Browse, Read, Edit, Add, Delete
+ *  - DAVE: Delete, Add, View, Edit
+ *  - CRAP: Create, Retrieve, Alter, Purge
+ */

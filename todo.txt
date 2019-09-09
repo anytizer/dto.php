@@ -1,3 +1,9 @@
+http://192.168.1.76/tutor/web/mantis/public_html/view.php?id=37
+
+in methodifier, portion of depends on non-composer class.
+
+Caser - project split into its own to provide test cases
+
 Remove JS auto CRUD functions.
 
 Write model body with column names pre-populated.
@@ -27,7 +33,7 @@ Loading: http://localhost/angular/libraries/dto.php/output/public_html/entities/
 
 Solidarity; in .ts files at templates\public_html\entities\js\angularjs
 
-dto database hostname username password datatabase > config.db
+dto database hostname username password database > config.db
 dto output /tmp/
 dto phpunit
 dto apiunit
@@ -51,7 +57,7 @@ Writing template file is a separate logic
 
 Register role, method to the database at the time of generation
 Generate endpoints inside proper namespace
-Geberate test units inside proper namespace
+Generate test units inside proper namespace
 Generate API Classes inside proper namespace
 Break into packages, modules, functions for Unit Tests
 Unit tests can repeat by their class names.
@@ -112,7 +118,7 @@ produce all fields
 run phpunit tests to pass
 produce endpoint handlers
 see records in the database
-attatch the angular js files in the HTMLs
+attach the angular js files in the HTMLs
 add crud into the menus somewhere else
 do the acl for user groups
 in business assign, read list of users only from available list

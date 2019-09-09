@@ -12,3 +12,5 @@ src/docs-output/
 /docs
 /vendor
 /src/nbproject
+/nbproject/
+/out

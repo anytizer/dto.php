@@ -33,15 +33,6 @@ $F_ISSUE_ID = function()
     return sprintf("%06s", ++$issue_id);
 };
 
-/**
- * Common names -
- *  - CRUD: Create, Read, Update, Delete
- *  - MADS: Modify, Add, Delete, Show
- *  - BREAD: Browse, Read, Edit, Add, Delete
- *  - DAVE: Delete, Add, View, Edit
- *  - CRAP: Create, Retrieve, Alter, Purge
- */
-
 # for each entities, define business rules (methods)
 // business = entity, model
 // database = orm

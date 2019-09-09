@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diagram>
   <ID>PHP</ID>
-  <OriginalElement>\generators\caser</OriginalElement>
+  <OriginalElement />
   <nodes>
-    <node x="0.0" y="222.0">\generators\caser</node>
-    <node x="127.0" y="74.0">\generators\bodyfier</node>
-    <node x="121.0" y="148.0">\generators\finalized</node>
-    <node x="0.0" y="148.0">\generators\namifier</node>
+    <node x="0.0" y="71.0">\generators\bodyfier</node>
+    <node x="0.0" y="0.0">\generators\finalized</node>
   </nodes>
   <notes />
   <edges />
   <settings layout="Hierarchic Group" zoom="1.0" x="102.0" y="126.0" />
   <SelectedNodes>
-    <node>\generators\caser</node>
+    <node>\generators\bodyfier</node>
   </SelectedNodes>
   <Categories />
   <VISIBILITY>private</VISIBILITY>
