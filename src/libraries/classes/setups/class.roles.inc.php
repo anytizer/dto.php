@@ -1,4 +1,5 @@
 <?php
+
 namespace setups;
 
 // SELECT CONCAT('public $', UPPER(role_name), ' = ', role_id, ';') roles FROM account_roles;
@@ -21,19 +22,19 @@ class roles
      */
     private $active = null;
 
-/*
-public $SUPER_ADMIN = 1;
-public $ADMIN = 2;
-public $ACCOUNTS = 3;
-public $HUMAN_RESOURCE = 4;
-public $FINANCE = 5;
-public $MEMBER = 6;
-public $VISITOR = 7;
-public $ALL = 8;
-public $CUSTOMER = 20;
- * STUDENT
- * MENTOR
- */
+    /*
+    public $SUPER_ADMIN = 1;
+    public $ADMIN = 2;
+    public $ACCOUNTS = 3;
+    public $HUMAN_RESOURCE = 4;
+    public $FINANCE = 5;
+    public $MEMBER = 6;
+    public $VISITOR = 7;
+    public $ALL = 8;
+    public $CUSTOMER = 20;
+     * STUDENT
+     * MENTOR
+     */
 
     public function __construct()
     {
@@ -83,12 +84,12 @@ public $CUSTOMER = 20;
     {
         return $this;
     }
-    
+
     public function STUDENT(): roles
     {
         return $this;
     }
-    
+
     public function MENTOR(): roles
     {
         return $this;

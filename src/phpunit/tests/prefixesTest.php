@@ -1,4 +1,5 @@
 <?php
+
 namespace tests;
 
 use generators\namifier;
@@ -19,7 +20,7 @@ class prefixesTest extends TestCase
         $name = "contact_guid";
         $namifier = new namifier();
         $name = $namifier->column_name($name);
-        
+
         $this->assertEquals("GUID", $name);
     }
 
@@ -28,7 +29,7 @@ class prefixesTest extends TestCase
         $name = "contact_id";
         $namifier = new namifier();
         $name = $namifier->column_name($name);
-        
+
         $this->assertEquals("ID", $name);
     }
 
@@ -37,7 +38,7 @@ class prefixesTest extends TestCase
         $name = "contact_address";
         $namifier = new namifier();
         $name = $namifier->column_name($name);
-        
+
         $this->assertEquals("Address", $name);
     }
 
@@ -46,7 +47,7 @@ class prefixesTest extends TestCase
         $name = "contact_url";
         $namifier = new namifier();
         $name = $namifier->column_name($name);
-        
+
         $this->assertEquals("URL", $name);
     }
 }

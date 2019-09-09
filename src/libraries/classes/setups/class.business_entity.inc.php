@@ -10,7 +10,8 @@ use anytizer\guid;
  * Class business_entity
  * @package setups
  */
-class business_entity {
+class business_entity
+{
 
     /**
      * @var bool If write a definition?
@@ -56,7 +57,8 @@ class business_entity {
      * business_entity constructor.
      * @param bool $enabled
      */
-    public function __construct($enabled = false) {
+    public function __construct($enabled = false)
+    {
         $this->enabled = $enabled === true;
 
         $this->package = "";
@@ -69,7 +71,8 @@ class business_entity {
      * If we can produce the code for these business definitions
      * @return bool
      */
-    public function enabled(): bool {
+    public function enabled(): bool
+    {
         return $this->enabled;
     }
 
@@ -79,14 +82,15 @@ class business_entity {
      */
 
     /**
-     * @todo The added business has to be unique
-     *
      * @param string $package_name
      * @param string $class_name
      * @param string $table_name
      * @return business_entity
+     * @todo The added business has to be unique
+     *
      */
-    public function business(string $package_name, string $class_name, string $table_name): business_entity {
+    public function business(string $package_name, string $class_name, string $table_name): business_entity
+    {
         $namifier = new namifier();
 
         $this->package = $namifier->package_name($package_name);
@@ -105,7 +109,8 @@ class business_entity {
      * @param roles $role
      * @return business_entity
      */
-    public function user(roles $role): business_entity {
+    public function user(roles $role): business_entity
+    {
         $this->users[] = $role;
 
         # Register this
@@ -121,7 +126,8 @@ class business_entity {
      * @param array $methods
      * @return business_entity
      */
-    public function methods(array $methods): business_entity {
+    public function methods(array $methods): business_entity
+    {
         $namifier = new namifier();
         $this->methods = array_map(array($namifier, "method"), $methods);
 
@@ -135,13 +141,14 @@ class business_entity {
     }
 
     /**
+     * @param string $feature
+     * @return $this
      * @todo Additional tests not covered in function calls
      * These features are NOT available for programming API calls but only for test purpose
      *
-     * @param string $feature
-     * @return $this
      */
-    public function feature(string $feature) {
+    public function feature(string $feature)
+    {
         /**
          * Do NOT accept blank names
          */
@@ -154,12 +161,13 @@ class business_entity {
 
     /**
      * Dependency management
-     * @todo Import feature
-     *
      * @param $package_name
      * @return business_entity
+     * @todo Import feature
+     *
      */
-    public function import(string $package_name): business_entity {
+    public function import(string $package_name): business_entity
+    {
         // setup with other modules
         return $this;
     }
@@ -167,7 +175,8 @@ class business_entity {
     /**
      * Public interactions
      */
-    public function package_name(): string {
+    public function package_name(): string
+    {
         $caser = new caser();
         $package = $caser->psr4($this->package);
 
@@ -177,7 +186,8 @@ class business_entity {
     /**
      * @return string
      */
-    public function table_name(): string {
+    public function table_name(): string
+    {
         return $this->table_name;
     }
 
@@ -186,19 +196,21 @@ class business_entity {
      * Class name as appears inside PHP scripts
      * @return mixed
      */
-    public function dto_name(): string {
+    public function dto_name(): string
+    {
         $namifier = new namifier();
         $dto_name = $namifier->dto_name($this->class_name);
 
         return strtolower($dto_name);
     }
-    
+
     /**
      * Also used in producing file names
      * Class name as appears inside PHP scripts
      * @return mixed
      */
-    public function model_name(): string {
+    public function model_name(): string
+    {
         $namifier = new namifier();
         $model_name = $namifier->model_name($this->class_name);
 
@@ -210,7 +222,8 @@ class business_entity {
      * Class name as appears inside PHP scripts
      * @return mixed
      */
-    public function dto_name_cs(): string {
+    public function dto_name_cs(): string
+    {
         $namifier = new namifier();
         $dto_name_cs = $namifier->dto_name_cs($this->class_name);
 
@@ -222,7 +235,8 @@ class business_entity {
      * Class name as appears inside PHP scripts
      * @return mixed
      */
-    public function business_name(): string {
+    public function business_name(): string
+    {
         $business_name = $this->class_name();
         $business_name .= "_Business";
 
@@ -234,11 +248,13 @@ class business_entity {
      * Class name as appears inside PHP scripts
      * @return mixed
      */
-    public function class_name(): string {
+    public function class_name(): string
+    {
         return $this->class_name;
     }
 
-    public function orm_name(): string {
+    public function orm_name(): string
+    {
         $name = $this->class_name();
         $name .= "_ORM";
 
@@ -248,7 +264,8 @@ class business_entity {
     /**
      * @return method_descriptor[]
      */
-    public function methods_list(): array {
+    public function methods_list(): array
+    {
         return $this->methods;
     }
 
@@ -257,7 +274,8 @@ class business_entity {
      * Additional features described in one line each
      * @return array
      */
-    public function features_list(): array {
+    public function features_list(): array
+    {
         return $this->features_to_test;
     }
 

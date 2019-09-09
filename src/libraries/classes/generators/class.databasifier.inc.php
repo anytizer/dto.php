@@ -1,8 +1,11 @@
 <?php
+
 namespace generators;
+
 use method_descriptor;
 
-class databasifer implements  bodyfier {
+class databasifer implements bodyfier
+{
     public function generate(): string
     {
         $this->databasify();

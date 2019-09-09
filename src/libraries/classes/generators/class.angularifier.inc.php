@@ -1,5 +1,7 @@
 <?php
+
 namespace generators;
+
 use setups\method_descriptor;
 use anytizer\caser;
 
@@ -8,7 +10,7 @@ use anytizer\caser;
  * AngularJS Templates
  * @todo Update for Angular 4.0
  */
-class angularifier implements  bodyfier
+class angularifier implements bodyfier
 {
     /**
      * @return string

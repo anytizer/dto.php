@@ -1,8 +1,10 @@
 <?php
+
 namespace generators;
+
 use setups\method_descriptor;
 
-class businessifier implements  bodyfier
+class businessifier implements bodyfier
 {
     public function generate(): string
     {

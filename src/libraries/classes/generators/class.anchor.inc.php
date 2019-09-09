@@ -1,4 +1,5 @@
 <?php
+
 namespace generators;
 
 class anchor

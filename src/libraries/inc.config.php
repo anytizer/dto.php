@@ -7,13 +7,7 @@ use anytizer\includer;
 /**
  * PHP (php.ini) pre-configured with this include path (global composer)
  */
-# composer global require anytizer/guid.php:dev-master
-# composer global require anytizer/includer.php:dev-master
-$paths = explode(PATH_SEPARATOR, get_include_path());
-$paths[] = "C:/Users/dev_2/AppData/Roaming/Composer";
-$paths[] = "C:/Users/dev_2/AppData/Roaming/Composer/vendor/anytizer";
-set_include_path(implode(PATH_SEPARATOR, $paths));
-require_once "vendor/autoload.php";
+require_once "../vendor/autoload.php";
 
 /**
  * @todo Read from configurations set from CLI
@@ -49,5 +43,5 @@ $connection = new PDO("mysql:host={$hostname};dbname={$orm_name};charset=utf8mb4
 /**
  * Auto include class files
  */
-spl_autoload_register(array(new includer(__LIBRARIES_DIR__."/classes"), "namespaced_inc_dot"));
+spl_autoload_register(array(new includer(__LIBRARIES_DIR__ . "/classes"), "namespaced_inc_dot"));
 #die(__LIBRARIES_DIR__);

@@ -1,6 +1,6 @@
 <?php
 $entities = [];
-$setup_files = glob(__BUSINESS_DEFINITIONS__."/passport/define.*.php");
+$setup_files = glob(__BUSINESS_DEFINITIONS__ . "/passport/define.*.php");
 #$setup_files = glob(__BUSINESS_DEFINITIONS__."/passport/define.plans.php");
 
 #print_r($setups); die();

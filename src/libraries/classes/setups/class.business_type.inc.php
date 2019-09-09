@@ -1,4 +1,5 @@
 <?php
+
 namespace setups;
 
 /**
@@ -7,9 +8,9 @@ namespace setups;
  */
 class business_type
 {
-	/**
-	 * @param array $user_roles
-	 */
+    /**
+     * @param array $user_roles
+     */
     public function users(array $user_roles)
     {
 

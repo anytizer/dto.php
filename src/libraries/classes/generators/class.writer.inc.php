@@ -1,4 +1,5 @@
 <?php
+
 namespace generators;
 
 class writer
@@ -9,8 +10,7 @@ class writer
      */
     private function mkdir_target(string $dir): bool
     {
-        if(!is_dir($dir))
-        {
+        if (!is_dir($dir)) {
             mkdir($dir, 0777, true);
         }
 
@@ -33,14 +33,14 @@ class writer
         #die($file_contents);
         print_r($replacement["__ADD_FIELDS__"]); #die("dd");
 
-        $file_contents = str_replace("#__CLASS_NAME__",      $replacement["__CLASS_NAME__"], $file_contents);
+        $file_contents = str_replace("#__CLASS_NAME__", $replacement["__CLASS_NAME__"], $file_contents);
         $file_contents = str_replace("#__DETAILS_FIELDS__", implode("\r\n", $replacement["__DETAILS_FIELDS__"]), $file_contents);
-        $file_contents = str_replace("#__ADD_FIELDS__",     implode("\r\n", $replacement["__ADD_FIELDS__"]),   $file_contents);
-        $file_contents = str_replace("#__LISTED_ROWS__",    implode("\r\n", $replacement["__LISTED_ROWS__"]),  $file_contents);
-        $file_contents = str_replace("#__FLAG_FIELDS__",    implode("\r\n", $replacement["__FLAG_FIELDS__"]),  $file_contents);
-        $file_contents = str_replace("#__EDIT_FIELDS__",    implode("\r\n", $replacement["__EDIT_FIELDS__"]),  $file_contents);
-        $file_contents = str_replace("#__COLUMN_NAMES__",   implode("\r\n", $replacement["__COLUMN_NAMES__"]), $file_contents);
-        $file_contents = str_replace("#_COLUMN_HEADS__",    implode("\r\n", $replacement["__COLUMN_HEADS__"]), $file_contents);
+        $file_contents = str_replace("#__ADD_FIELDS__", implode("\r\n", $replacement["__ADD_FIELDS__"]), $file_contents);
+        $file_contents = str_replace("#__LISTED_ROWS__", implode("\r\n", $replacement["__LISTED_ROWS__"]), $file_contents);
+        $file_contents = str_replace("#__FLAG_FIELDS__", implode("\r\n", $replacement["__FLAG_FIELDS__"]), $file_contents);
+        $file_contents = str_replace("#__EDIT_FIELDS__", implode("\r\n", $replacement["__EDIT_FIELDS__"]), $file_contents);
+        $file_contents = str_replace("#__COLUMN_NAMES__", implode("\r\n", $replacement["__COLUMN_NAMES__"]), $file_contents);
+        $file_contents = str_replace("#_COLUMN_HEADS__", implode("\r\n", $replacement["__COLUMN_HEADS__"]), $file_contents);
 
         # Others
         #$file_contents = str_replace("// #__PUBLIC_METHODS__",    "", $file_contents);
@@ -68,21 +68,15 @@ class writer
          * Save the file if the user modified it
          */
         $DO_NOT_OVERWRITE = false; // only good if the phpunit methods were produced in different files
-        if(is_file($filepath))
-        {
-            if(!$DO_NOT_OVERWRITE)
-            {
+        if (is_file($filepath)) {
+            if (!$DO_NOT_OVERWRITE) {
                 $total = file_put_contents($filepath, $body);
                 echo "\r\nWriting: ", $filepath;
-            }
-            else
-            {
+            } else {
                 # Do NOT write
                 echo "\r\nDid not overwrite: ", $filepath;
             }
-        }
-        else
-        {
+        } else {
             // Copied first block above
             $total = file_put_contents($filepath, $body);
             echo "\r\nWriting: ", $filepath;

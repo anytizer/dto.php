@@ -1,4 +1,5 @@
 <?php
+
 namespace setups;
 
 class method_descriptor

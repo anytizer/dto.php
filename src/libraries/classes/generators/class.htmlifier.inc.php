@@ -6,9 +6,11 @@ use backend\capitalizer;
 use setups\method_descriptor;
 use structures\fields;
 
-class htmlifier implements bodyfier {
+class htmlifier implements bodyfier
+{
 
-    public function generate(): string {
+    public function generate(): string
+    {
         //$method = new method_descriptor();
         //$this->htmlListify($method);
         //$this->htmlDetails($method);
@@ -26,7 +28,8 @@ class htmlifier implements bodyfier {
      * @param fields $fields
      * @return string
      */
-    private function field_class(fields $fields) {
+    private function field_class(fields $fields)
+    {
         $classes = [];
         if ($fields->isDate) {
             $classes[] = "datepicker";
@@ -41,7 +44,8 @@ class htmlifier implements bodyfier {
      * @param fields $column
      * @return string
      */
-    public function htmlColumnify(fields $column): string {
+    public function htmlColumnify(fields $column): string
+    {
         if ($column->isLong || $column->isPrivate) {
             return "";
         }
@@ -57,7 +61,8 @@ class htmlifier implements bodyfier {
      * @param fields $column
      * @return string
      */
-    public function htmlListify(fields $column): string {
+    public function htmlListify(fields $column): string
+    {
         if ($column->isLong || $column->isPrivate) {
             return "";
         }
@@ -78,7 +83,8 @@ class htmlifier implements bodyfier {
      * @param fields $column
      * @return string
      */
-    public function htmlDetails(fields $column): string {
+    public function htmlDetails(fields $column): string
+    {
         if ($column->isLong) {
             return "";
         }
@@ -95,12 +101,13 @@ class htmlifier implements bodyfier {
 
     /**
      * HTML Edit field
-     * @todo If long field, show text area rather
-     *
      * @param fields $column
      * @return string
+     * @todo If long field, show text area rather
+     *
      */
-    public function htmlEdit(fields $column): string {
+    public function htmlEdit(fields $column): string
+    {
         if ($column->isPrivate) {
             return "";
         }
@@ -124,7 +131,8 @@ class htmlifier implements bodyfier {
      * @param fields $column
      * @return string
      */
-    public function htmlFlag(fields $column): string {
+    public function htmlFlag(fields $column): string
+    {
         $field_body = "
 <!-- Flagged -->
         ";
@@ -138,7 +146,8 @@ class htmlifier implements bodyfier {
      * @param fields $column
      * @return string
      */
-    public function htmlDelete(fields $column): string {
+    public function htmlDelete(fields $column): string
+    {
         $field_body = "
 Deleted
 ";
@@ -152,7 +161,8 @@ Deleted
      * @param fields $column
      * @return string
      */
-    public function htmlAdd(fields $column): string {
+    public function htmlAdd(fields $column): string
+    {
         if ($column->isPrivate) {
             return "";
         }

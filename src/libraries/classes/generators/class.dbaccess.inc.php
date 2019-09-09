@@ -1,10 +1,13 @@
 <?php
+
 namespace generators;
 
 /**
  * @todo Uses \generators\FIELDS within PDO
  */
+
 namespace generators;
+
 use anytizer\capitalizer;
 use anytizer\namifier;
 use parsers\parser;
@@ -22,10 +25,10 @@ class dbaccess
 {
     /**
      * Identifies good and bad field names to be filtered
-     * @todo unused
-     *
      * @param fields $field
      * @return string
+     * @todo unused
+     *
      */
     // function filter_columns(fields $field)
     // {
@@ -48,7 +51,7 @@ class dbaccess
         {
             //$column_name = $namifier->column_name($field->COLUMN_NAME);
             $variable_name = $namifier->variable($field->COLUMN_NAME);
-            if($produce_comments) {
+            if ($produce_comments) {
                 $field_definition = "
     /**
      * @datatype {$field->DATA_TYPE}
@@ -75,8 +78,7 @@ class dbaccess
         //if(!$this->is_flag($field->COLUMN_NAME)) // @todo Column Name is null
         {
             $datatype = "string";
-            switch(strtolower($field->DATA_TYPE))
-            {
+            switch (strtolower($field->DATA_TYPE)) {
                 case "bit":
                 case "bool":
                 case "boolean":
@@ -132,8 +134,8 @@ class dbaccess
              */
             $column_name = $namifier->column_name($field->COLUMN_NAME);
             $column_name = str_replace(" ", "", $column_name);
-            
-            if($produce_comments) {
+
+            if ($produce_comments) {
                 $field_definition = "
         /**
          * @datatype {$field->DATA_TYPE}
@@ -146,22 +148,20 @@ class dbaccess
         // define single row
         return $field_definition;
     }
-    
+
     public function dto_fillable_rows_laravel(fields $field): string
     {
         $field_definition = "";
-        if(!$this->is_flag($field->COLUMN_NAME) && !$this->is_autoid($field))
-        {
+        if (!$this->is_flag($field->COLUMN_NAME) && !$this->is_autoid($field)) {
             $field_definition = "\"{$field->COLUMN_NAME}\"";
         }
         return $field_definition;
     }
-    
+
     public function dto_guarded_rows_laravel(fields $field): string
     {
         $field_definition = "";
-        if($this->is_flag($field->COLUMN_NAME) || $this->is_autoid($field))
-        {
+        if ($this->is_flag($field->COLUMN_NAME) || $this->is_autoid($field)) {
             $field_definition = "\"{$field->COLUMN_NAME}\"";
         }
         return $field_definition;
@@ -169,10 +169,10 @@ class dbaccess
 
     /**
      * Determines if the field is too long text
-     * @todo Use field types as well
-     *
      * @param fields $column
      * @return bool
+     * @todo Use field types as well
+     *
      */
     private function is_long(fields $column): bool
     {
@@ -198,7 +198,7 @@ class dbaccess
          */
         $others_flag = preg_match("/_(on|by)$/is", $column_name);
 
-        return $is_flag||$others_flag;
+        return $is_flag || $others_flag;
     }
 
 
@@ -244,8 +244,7 @@ ORDER BY
         //$result = $statement->fetchAll();
         $result = $statement->fetchAll(\PDO::FETCH_CLASS, "field");
         #print_r($result);
-        if(!count($result))
-        {
+        if (!count($result)) {
             // n-columns to be listed
             return ("# Invalid table name");
         }
@@ -253,8 +252,7 @@ ORDER BY
         //$result = array_map(array($this, "rows"), $result);
         #print_r($result);
         $commands = [];
-        foreach($result as $row)
-        {
+        foreach ($result as $row) {
             $row = (array)$row;
             $class_name = $this->class_name($row['TABLE_NAME']);
             $commands[] = "php -f __generate.php {$row['TABLE_NAME']} > dtos\\class.{$class_name}.inc.php";
@@ -283,8 +281,7 @@ ORDER BY
      */
     private function replace(string $body): string
     {
-        $replace = array(
-        );
+        $replace = array();
 
         $from = array_keys($replace);
         $to = array_values($replace);
@@ -318,12 +315,11 @@ ORDER BY
         $names = preg_split("/\_/is", $column->COLUMN_NAME);
         $names = array_map("strtolower", $names);
         $names = array_map("ucfirst", $names);
-        
+
         /**
          * Remove prefixed word
          */
-        if(count($names)>=2)
-        {
+        if (count($names) >= 2) {
             unset($names[0]);
         }
 

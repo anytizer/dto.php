@@ -1,4 +1,5 @@
 <?php
+
 namespace generators;
 
 /**
@@ -13,17 +14,17 @@ class finalized
     {
     }
 
-    public function __get(string $name="")
+    public function __get(string $name = "")
     {
         return null;
     }
 
-    public function __set(string $name="", $value="")
+    public function __set(string $name = "", $value = "")
     {
         // TODO: Implement __set() method. Raise exceptions.
     }
 
-    public function __call($name, $arguments=[])
+    public function __call($name, $arguments = [])
     {
         // TODO: Implement __call() method. Raise exceptions.
     }

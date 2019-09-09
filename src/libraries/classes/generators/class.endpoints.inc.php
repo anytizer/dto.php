@@ -1,5 +1,7 @@
 <?php
+
 namespace generators;
+
 use setups\method_descriptor;
 
 class endpoints extends generator implements bodyfier
@@ -12,7 +14,7 @@ class endpoints extends generator implements bodyfier
 
     /**
      * Generate controller
-     * 
+     *
      * @param method_descriptor $method
      * @return string
      */
@@ -27,7 +29,7 @@ class endpoints extends generator implements bodyfier
         $return_type = "array"; // $method->return_type;
 
         // @todo Handle even if there are no parameters
-		// @todo Support using class names as parameter descriptors
+        // @todo Support using class names as parameter descriptors
         //print_r($method); die();
 
         $method_body = "
@@ -51,10 +53,10 @@ class endpoints extends generator implements bodyfier
 ";
         return $method_body;
     }
-    
+
     /**
      * Generate model
-     * 
+     *
      * @param method_descriptor $method
      * @return string
      */

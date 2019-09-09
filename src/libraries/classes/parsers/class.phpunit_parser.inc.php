@@ -1,11 +1,13 @@
 <?php
+
 namespace parsers;
+
 use generators\caser;
 use setups\business_entity;
 use generators\template_reader;
 use generators\phpunitifier;
 
-class phpunit_parser implements  parser
+class phpunit_parser implements parser
 {
     public function generate(business_entity $business)
     {
@@ -32,7 +34,7 @@ class phpunit_parser implements  parser
             "/\@ISSUE_ID\@/is" => $GLOBALS["F_ISSUE_ID"]
         ), $methods);
         $features = array_map(array($phpunitifier, "feature_test"), $business->features_list());
-        $features =  preg_replace_callback_array(array(
+        $features = preg_replace_callback_array(array(
             "/\@ISSUE_ID\@/is" => $GLOBALS["F_ISSUE_ID"]
         ), $features);
         #$methods = array_merge($methods, $features);
@@ -49,7 +51,7 @@ class phpunit_parser implements  parser
         // twice replacements
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
-        $method_body =  preg_replace_callback_array(array(
+        $method_body = preg_replace_callback_array(array(
             "/\@ISSUE_ID\@/is" => $GLOBALS["F_ISSUE_ID"]
         ), $method_body);
         #print_r($replace); die();
@@ -95,7 +97,7 @@ class phpunit_parser implements  parser
 
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
-        $method_body =  preg_replace_callback_array(array(
+        $method_body = preg_replace_callback_array(array(
             "/\@ISSUE_ID\@/is" => $GLOBALS["F_ISSUE_ID"]
         ), $method_body);
         #print_r($replace); die();

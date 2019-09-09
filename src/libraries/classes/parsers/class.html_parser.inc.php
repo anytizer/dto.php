@@ -1,11 +1,13 @@
 <?php
+
 namespace parsers;
+
 use setups\business_entity;
 use generators\htmlifier;
 use generators\template_reader;
 use generators\dbaccess;
 
-class html_parser implements  parser
+class html_parser implements parser
 {
     public function generate(business_entity $business)
     {
@@ -122,7 +124,7 @@ class html_parser implements  parser
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__DETAILS_FIELDS__" => implode("\r\n\t", $methods),
         );
-        
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -152,7 +154,7 @@ class html_parser implements  parser
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__EDIT_FIELDS__" => implode("\r\n\t", $methods),
         );
-        
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -180,7 +182,7 @@ class html_parser implements  parser
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
         );
-        
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -208,7 +210,7 @@ class html_parser implements  parser
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__DELETE_FIELDS__" => implode("\r\n\t", $methods),
         );
-       
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -236,7 +238,7 @@ class html_parser implements  parser
             "#__CLASS_NAME__" => $business->class_name(),
             "#__ADD_FIELDS__" => implode("\r\n\t", $methods),
         );
-        
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);

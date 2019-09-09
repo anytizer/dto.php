@@ -1,5 +1,7 @@
 <?php
+
 namespace generators;
+
 use setups\business_entity;
 use setups\method_descriptor;
 

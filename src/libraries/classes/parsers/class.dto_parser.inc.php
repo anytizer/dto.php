@@ -1,4 +1,5 @@
 <?php
+
 namespace parsers;
 
 use setups\business_entity;
@@ -26,8 +27,7 @@ class dto_parser implements parser
         $result = $dbaccess->_get_columns($table_name);
         #print_r($dbaccess);
         # print_r($result); die("Count: ".count($result));
-        if(!count($result))
-        {
+        if (!count($result)) {
             echo sprintf("\r\nERROR: DTO table NOT found [%s]", $table_name);
             return "# Table missing: {$table_name}";
         }
@@ -46,7 +46,7 @@ class dto_parser implements parser
         $class_body = str_replace("#__DTO_NAME__", $business->dto_name(), $class_body);
         $class_body = str_replace("#__CLASS_NAME__", $class_name, $class_body);
         $class_body = str_replace("#__TABLE_NAME__", $table_name, $class_body);
-        $class_body = str_replace("#__FIELDS__",    $fields, $class_body);
+        $class_body = str_replace("#__FIELDS__", $fields, $class_body);
 
         // @todo rename to class.DTONAMEDDTO.inc.php
         $template_reader->write($class_body, "libraries/dtos/{$business->package_name()}/class.{$business->dto_name()}.inc.php");
@@ -65,8 +65,7 @@ class dto_parser implements parser
         $result = $dbaccess->_get_columns($table_name);
         #print_r($dbaccess);
         # print_r($result); die("Count: ".count($result));
-        if(!count($result))
-        {
+        if (!count($result)) {
             // n-columns to be listed
             return "# Invalid table name: [{$table_name}]";
         }
@@ -84,7 +83,7 @@ class dto_parser implements parser
         $class_body = str_replace("#__PACKAGE_NAME__", $business->package_name(), $class_body);
         $class_body = str_replace("#__CLASS_NAME__", $class_name, $class_body);
         $class_body = str_replace("#__TABLE_NAME__", $table_name, $class_body);
-        $class_body = str_replace("#__FIELDS__",    $fields, $class_body);
+        $class_body = str_replace("#__FIELDS__", $fields, $class_body);
 
         $template_reader->write($class_body, "libraries/dtos/class.dto.inc.php");
         return $class_body;
@@ -102,8 +101,7 @@ class dto_parser implements parser
         $result = $dbaccess->_get_columns($table_name);
         #print_r($dbaccess);
         # print_r($result); die("Count: ".count($result));
-        if(!count($result))
-        {
+        if (!count($result)) {
             // n-columns to be listed
             return "# Invalid table name: [{$table_name}]";
         }
@@ -121,7 +119,7 @@ class dto_parser implements parser
         $class_body = str_replace("#__PACKAGE_NAME__", $business->package_name(), $class_body);
         $class_body = str_replace("#__CLASS_NAME__", $class_name, $class_body);
         $class_body = str_replace("#__TABLE_NAME__", $table_name, $class_body);
-        $class_body = str_replace("#__FIELDS__",    $fields, $class_body);
+        $class_body = str_replace("#__FIELDS__", $fields, $class_body);
 
         // @todo rename to class.DTONAMEDTO.inc.php
         $template_reader->write($class_body, "libraries/asis/{$business->package_name()}/class.{$business->dto_name()}.inc.php");
@@ -142,8 +140,7 @@ class dto_parser implements parser
 
         $dbaccess = new dbaccess();
         $result = $dbaccess->_get_columns($table_name);
-        if(count($result))
-        {
+        if (count($result)) {
             $result = array_map(array($dbaccess, "dto_rows_cs"), $result);
             $result = array_filter($result);
             $fields = implode("\r\n        ", $result);
@@ -155,10 +152,8 @@ class dto_parser implements parser
             $class_body = str_replace("#__DTO_NAME__", $business->dto_name(), $class_body);
             $class_body = str_replace("#__CLASS_NAME__", $class_name, $class_body);
             $class_body = str_replace("#__TABLE_NAME__", $table_name, $class_body);
-            $class_body = str_replace("#__FIELDS__",    $fields, $class_body);
-        }
-        else
-        {
+            $class_body = str_replace("#__FIELDS__", $fields, $class_body);
+        } else {
             die("Not enough tables listed.");
         }
 
@@ -166,7 +161,7 @@ class dto_parser implements parser
         $template_reader->write($class_body, "libraries/dtos.cs/{$business->package_name()}/{$business->dto_name()}.cs");
         return $class_body;
     }
-    
+
     /**
      * Alike generate(), but for laravel only
      * @param business_entity $business
@@ -182,26 +177,23 @@ class dto_parser implements parser
         $dbaccess = new dbaccess();
         $result = $dbaccess->_get_columns($table_name);
         #print_r($result); die();
-        if(count($result))
-        {
+        if (count($result)) {
             $fields = array_map(array($dbaccess, "dto_rows"), $result);
             $fields = array_filter($fields);
             $fields = implode("\r\n\t", $fields);
-            
+
             $fields_fillable = array_map(array($dbaccess, "dto_fillable_rows_laravel"), $result);
             $fields_fillable = array_filter($fields_fillable);
             $fields_fillable = implode(",\r\n		", $fields_fillable);
-            
+
             $fields_guarded = array_map(array($dbaccess, "dto_guarded_rows_laravel"), $result);
             $fields_guarded = array_filter($fields_guarded);
             $fields_guarded = implode(",\r\n		", $fields_guarded);
-            
+
             #print_r($result); die();
             $primary_key = "_id";
-            foreach($result as $c => $COLUMN)
-            {
-                if($COLUMN->COLUMN_KEY=="PRI")
-                {
+            foreach ($result as $c => $COLUMN) {
+                if ($COLUMN->COLUMN_KEY == "PRI") {
                     $primary_key = $COLUMN->COLUMN_NAME;
                 }
             }
@@ -217,9 +209,7 @@ class dto_parser implements parser
             $class_body = str_replace("#__FILLABLE_COLUMNS__", $fields_fillable, $class_body);
             $class_body = str_replace("#__GUARDED_COLUMNS__", $fields_guarded, $class_body);
             $class_body = str_replace("#__PRIMARY_KEY__", $primary_key, $class_body);
-        }
-        else
-        {
+        } else {
             die("Not enough tables listed.");
         }
 

@@ -18,15 +18,13 @@ use setups\configs;
 
 /**
  * Used in tracing Issue ID for test cases for PHPUnit
- * @see libraries/classes/parsers/class.phpunit_parser.inc.php
  * @return string
+ * @see libraries/classes/parsers/class.phpunit_parser.inc.php
  */
-$F_ISSUE_ID = function()
-{
+$F_ISSUE_ID = function () {
     static $issue_id = 0;
 
-    if(!$issue_id)
-    {
+    if (!$issue_id) {
         $issue_id = 0;
     }
 
@@ -43,10 +41,9 @@ $F_ISSUE_ID = function()
 $configs = new configs();
 
 $template_reader = new template_reader();
-if($configs->templates)
-{
+if ($configs->templates) {
     echo sprintf("\r\nProcessing static file copy...");
-    
+
     // @todo Use media.cdn or parallel subdomain
     $template_reader->write($template_reader->read("public_html/css/w3.css"), "public_html/css/w3.css");
     $template_reader->write($template_reader->read("public_html/css/styles.css"), "public_html/css/styles.css"); // from scss
@@ -63,10 +60,8 @@ if($configs->templates)
 # .htaccess
 # .htpass
 
-foreach ($entities as $business)
-{
-    if(!$business->enabled())
-    {
+foreach ($entities as $business) {
+    if (!$business->enabled()) {
         continue;
     }
     #print_r($entities); die();
@@ -86,8 +81,7 @@ foreach ($entities as $business)
     /**
      * Data Transfer Objects
      */
-    if($configs->dto)
-    {
+    if ($configs->dto) {
         $dto_parser = new dto_parser();
         $dto_body = $dto_parser->generate($business);
         $dto_body = $dto_parser->laravel($business);
@@ -101,8 +95,7 @@ foreach ($entities as $business)
     /**
      * ORM/Database Layer
      */
-    if($configs->orm)
-    {
+    if ($configs->orm) {
         $orm_parser = new orm_parser();
         $orm_body = $orm_parser->generate($business);
         $orm_body = $orm_parser->generate_orm($business);
@@ -113,8 +106,7 @@ foreach ($entities as $business)
     /**
      * Business Logic Layer
      */
-    if($configs->business)
-    {
+    if ($configs->business) {
         $business_parser = new business_parser();
         $business_body = $business_parser->copy_files($business);
         $business_body = $business_parser->generate($business);
@@ -123,8 +115,7 @@ foreach ($entities as $business)
     /**
      * PHPUnit Templates
      */
-    if($configs->phpunit)
-    {
+    if ($configs->phpunit) {
         $phpunit_parser = new phpunit_parser();
         $phpunit_parser->generate($business);
     }
@@ -132,8 +123,7 @@ foreach ($entities as $business)
     /**
      * API Endpoints
      */
-    if($configs->endpoints)
-    {
+    if ($configs->endpoints) {
         $endpoints_parser = new endpoints_parser();
         // actual api with direct database access
         $endpoints_body = $endpoints_parser->generate($business);
@@ -143,8 +133,7 @@ foreach ($entities as $business)
     /**
      * AngularJS Resources
      */
-    if($configs->angular)
-    {
+    if ($configs->angular) {
         $angular_parser = new angular_parser();
         $angular_parser->generate($business);
     }
@@ -153,8 +142,7 @@ foreach ($entities as $business)
      * HTML, CSS and static JavaScripts Resources
      * Selenium Resources
      */
-    if($configs->html)
-    {
+    if ($configs->html) {
         $html_parser = new html_parser();
         $html_parser->generate($business);
     }

@@ -6,9 +6,11 @@ namespace generators;
  * Class methodifier
  * @package generators
  */
-class methodifier implements bodyfier {
+class methodifier implements bodyfier
+{
 
-    public function generate(): string {
+    public function generate(): string
+    {
         $this->methodify();
     }
 
@@ -16,7 +18,8 @@ class methodifier implements bodyfier {
      * @param string $method_descriptive
      * @return string
      */
-    public function accessor(string $method_descriptive): string {
+    public function accessor(string $method_descriptive): string
+    {
         $accessor = "public";
         if (preg_match("/^_/is", $method_descriptive)) {
             $accessor = "private";
@@ -32,7 +35,8 @@ class methodifier implements bodyfier {
      * @param string $method_descriptive
      * @return string
      */
-    public function return_type(string $method_descriptive): string {
+    public function return_type(string $method_descriptive): string
+    {
         /**
          * If return type is defined, grab it
          */
@@ -52,7 +56,8 @@ class methodifier implements bodyfier {
      * @param string $method_descriptive
      * @return string
      */
-    public function methodify(string $method_descriptive): string {
+    public function methodify(string $method_descriptive): string
+    {
         $accessor = $this->accessor($method_descriptive);
 
         // "_is private"

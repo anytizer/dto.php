@@ -1,5 +1,7 @@
 <?php
+
 namespace tests;
+
 use generators\methodifier;
 use PHPUnit\Framework\TestCase;
 

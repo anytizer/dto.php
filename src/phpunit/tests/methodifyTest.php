@@ -1,5 +1,7 @@
 <?php
+
 namespace tests;
+
 use generators\methodifier;
 use PHPUnit\Framework\TestCase;
 
@@ -31,13 +33,13 @@ class methodifyTest extends TestCase
     public function testMethodifyPrivateFunction()
     {
         $name = ":is valid";
-		$remove_prefix = false;
-		$ucfirst = false;
-		$glue = "";
+        $remove_prefix = false;
+        $ucfirst = false;
+        $glue = "";
 
         $methodifier = new methodifier();
         $method_body = $methodifier->methodify($name, $remove_prefix, $ucfirst, $glue);
-        
+
         $this->assertContains("private function is_valid(): bool", $method_body);
     }
 }

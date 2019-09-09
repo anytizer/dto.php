@@ -1,5 +1,7 @@
 <?php
+
 namespace parsers;
+
 use setups\business_entity;
 use generators\template_reader;
 use generators\endpoints;
@@ -10,7 +12,7 @@ use generators\endpoints;
  *
  * @see https://developer.github.com/v3/
  */
-class endpoints_parser implements  parser
+class endpoints_parser implements parser
 {
     public function generate(business_entity $business)
     {
@@ -47,7 +49,7 @@ class endpoints_parser implements  parser
         $template_reader->write($method_body, "api/{$replace['#__PACKAGE_NAME__']}/controllers/class.controller_{$replace['#__CLASS_NAME__']}.inc.php");
         return $method_body;
     }
-    
+
     /**
      * @param $business
      * @return mixed|string
@@ -74,7 +76,7 @@ class endpoints_parser implements  parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        
+
         $template_reader->write($method_body, "api/{$replace['#__PACKAGE_NAME__']}/models/class.model_{$replace['#__CLASS_NAME__']}.inc.php");
         return $method_body;
     }

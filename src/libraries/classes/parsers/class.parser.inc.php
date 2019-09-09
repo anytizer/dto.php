@@ -1,5 +1,7 @@
 <?php
+
 namespace parsers;
+
 use setups\business_entity;
 
 interface parser

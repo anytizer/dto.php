@@ -1,4 +1,5 @@
 <?php
+
 namespace generators;
 
 class template_reader
@@ -20,12 +21,9 @@ class template_reader
         $filename = "{$templates_lookup_dir}/{$filename}"; // @todo clean file name patterns
 
         $template = "<?php /** invalid file was read: {$filename} */";
-        if(is_file($filename))
-        {
+        if (is_file($filename)) {
             $template = file_get_contents($filename);
-        }
-        else
-        {
+        } else {
             echo "\r\nInvalid template file to read: {$filename}";
             die();
         }
@@ -43,6 +41,6 @@ class template_reader
     public function write(string $body, string $target_file)
     {
         $writer = new writer();
-        $writer->write_scripts(__OUTPUT__."/{$target_file}", $body); // works
+        $writer->write_scripts(__OUTPUT__ . "/{$target_file}", $body); // works
     }
 }

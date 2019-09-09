@@ -1,5 +1,7 @@
 <?php
+
 namespace generators;
+
 use setups\method_descriptor;
 
 class phpunitifier extends generator implements bodyfier

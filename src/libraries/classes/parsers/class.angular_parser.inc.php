@@ -1,5 +1,7 @@
 <?php
+
 namespace parsers;
+
 use setups\business_entity;
 use generators\template_reader;
 use generators\angularifier;
@@ -49,7 +51,7 @@ class angular_parser implements parser
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
         );
-        
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -81,7 +83,7 @@ class angular_parser implements parser
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
             "#__PUBLIC_URL__" => __PUBLIC_URL__,
         );
-        
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
@@ -112,7 +114,7 @@ class angular_parser implements parser
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
         );
-        
+
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
