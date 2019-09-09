@@ -13,7 +13,7 @@ class #__CLASS_NAME__APITest extends TestCase
     private $#__CLASS_NAME__API;
     private $#__CLASS_NAME__Business;
 
-    public function setup()
+    public function setup(): void
     {
         $this->#__CLASS_NAME__API = new #__CLASS_NAME__API();
         $this->#__CLASS_NAME__Business = new #__CLASS_NAME__Business();

@@ -11,7 +11,7 @@ class #__CLASS_NAME__Test extends TestCase
      */
     private $#__CLASS_NAME__Business;
 
-    public function setup()
+    public function setup(): void
     {
         $this->#__CLASS_NAME__Business = new #__CLASS_NAME__Business();
     }
