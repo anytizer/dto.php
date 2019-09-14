@@ -7,12 +7,13 @@
 #__CLASS_NAME__App
     .service("#__CLASS_NAME__Service", ["$http", function($http)
     {
-        var fetch = function(urlpart, dataJSON)
+        let fetch = function(urlpart, dataJSON)
         {
-            //var APIURL = "http://access.example.com:9090/api-v0.0.1";
-            var APIURL = "#__ENDPOINT_URL__";
-			// "http://localhost/angular/application/access/public_html/v1";
-            var url = APIURL+"/#__PACKAGE_NAME__/#__CLASS_NAME__/"+urlpart;
+            /**
+             * Link to api.php project's src/ path
+             */
+            const APIURL = "#__ENDPOINT_URL__"; // "../api.php/src"
+            const url = APIURL+"/#__PACKAGE_NAME__/#__CLASS_NAME__/"+urlpart;
 
             return $http({
                 method: "POST",
@@ -20,7 +21,7 @@
                 data: dataJSON,
                 headers: {
                     "X-Protection-Token": "",
-                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Content-Type": "application/json", // x-www-form-urlencoded
                 }
             });
         };

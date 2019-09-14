@@ -2,13 +2,15 @@
  * routes.js #__CLASS_NAME__
  */
 "use strict";
+let #__CLASS_NAME__App = myApp;
 #__CLASS_NAME__App.config(function($stateProvider, $urlRouterProvider)
 {
-	var template = function _template(path)
+	let template = function _template(path)
 	{
-		var TEMPLATES_PATH = "#__PUBLIC_URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/html";
-		var TEMPLATES_URL = TEMPLATES_PATH+"/"+path;
-		console.log("Loading: "+TEMPLATES_URL);
+		// #__PUBLIC_URL__/
+		const TEMPLATES_PATH = "entities/#__PACKAGE_NAME__/#__CLASS_NAME__/html";
+		const TEMPLATES_URL = TEMPLATES_PATH+"/"+path;
+		console.log("Loading Template: "+TEMPLATES_URL);
 		return TEMPLATES_URL;
 	};
 
@@ -39,7 +41,7 @@
 		})
 
 		.state("#__CLASS_NAME__.edit", {
-			url: "/edit",
+			url: "/edit/:#__PRIMARY_KEY__",
 			templateUrl: template("edit.html"),
 			controller: "#__CLASS_NAME__EditController",
 		})

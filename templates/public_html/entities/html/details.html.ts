@@ -1,4 +1,6 @@
-<h1>#__CLASS_NAME__ Details</h1>
+<div class="w3-container w3-teal">
+	<h1>#__CLASS_NAME__ Details</h1>
+</div>
 
 <div class="details">
 	#__DETAILS_FIELDS__
@@ -12,6 +14,7 @@
 			<i class="fa fa-trash-o" aria-hidden="true"></i>
 			Delete
 		</a>
+		<a class="w3-btn w3-purple" href="#" ui-sref="#__CLASS_NAME__.list({})">Back</a>
 	</div>
 </div>
 

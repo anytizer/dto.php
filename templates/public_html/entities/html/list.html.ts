@@ -1,4 +1,6 @@
-<h1>List #__CLASS_NAME__</h1>
+<div class="w3-container w3-teal">
+	<h1>List #__CLASS_NAME__</h1>
+</div>
 
 <table class="list">
     <thead>
@@ -14,7 +16,7 @@
 				{{r+1}}
 			</td>
 			#__LISTED_ROWS__
-			<td><a href="#!{{#__CLASS_NAME__}}/edit/:{{record.id}}" ng-click="#__CLASS_NAME__.edit(record)">Edit</a></td>
+			<td><a href="#" ui-sref="#__CLASS_NAME__.edit(record)">Edit</a></td>
 		</tr>
     </tbody>
 </table>

@@ -1,4 +1,6 @@
-<h1>Add #__CLASS_NAME__</h1>
+<div class="w3-container w3-teal">
+	<h1>Add #__CLASS_NAME__</h1>
+</div>
 
 <div>
 <form name="add-#__CLASS_NAME__" class="add add-#__CLASS_NAME__">
@@ -8,6 +10,10 @@
 	<a href="#" class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.add(record)">
 		<i class="fa fa-plus" aria-hidden="true"></i>
 		Add
+	</a>
+	<a href="#" ui-sref="#__CLASS_NAME__.list({})">
+		<i class="fa fa-list" aria-hidden="true"></i>
+		List
 	</a>
 </form>
 </div>

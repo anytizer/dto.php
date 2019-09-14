@@ -13,6 +13,9 @@
 	<link rel=stylesheet href="css/w3.css" type="text/css" media="screen, print" />
 	<link rel=stylesheet href="css/styles.css" type="text/css" media="screen, print" />
 	<link rel=stylesheet href="#__CSS_URL__/style.css" type="text/css" media="screen, print" />
+
+	<!--live account-->
+	<script src="https://kit.fontawesome.com/f825c3d96c.js"></script>
 </head>
 <body class="w3-teal">
 
@@ -21,6 +24,7 @@
 		<h1 class="application-name">#__CLASS_NAME__</h1>
 		<div>
 			<ul class="entity-menus">
+				<!-- @todo Convert to UI Sref -->
 				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__">Welcome</a></li>
 				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/list">List</a></li>
 				<li><a class="w3-btn w3-indigo" href="#!/#__CLASS_NAME__/add">Add</a></li>

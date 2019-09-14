@@ -70,11 +70,19 @@
 	};
 }]);
 
-#__CLASS_NAME__App.controller("#__CLASS_NAME__EditController", ["$scope", "#__CLASS_NAME__Service", function($scope, #__CLASS_NAME__Service)
+#__CLASS_NAME__App.controller("#__CLASS_NAME__EditController", ["$scope", "$stateParams", "#__CLASS_NAME__Service", function($scope, $stateParams, #__CLASS_NAME__Service)
 {
 	$scope.#__CLASS_NAME__ = {
 		"error": "",
 		"record": {},
+		"details": function (id) {
+			#__CLASS_NAME__Service.#__CLASS_NAME__.details({"id": id})
+				.then(function (response) {
+					$scope.record = response.data;
+				}, function (error) {
+					// error
+				});
+		},
 		"edit": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.edit(record)
 			.then(function (response) {
@@ -85,6 +93,8 @@
 			});
 		},
 	};
+
+	$scope.NiUsers.details($stateParams.id);
 }]);
 
 #__CLASS_NAME__App.controller("#__CLASS_NAME__DeleteController", ["$scope", "#__CLASS_NAME__Service", function($scope, #__CLASS_NAME__Service)

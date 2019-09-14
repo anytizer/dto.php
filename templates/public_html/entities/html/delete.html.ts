@@ -1,4 +1,6 @@
-<h1>Delete #__CLASS_NAME__</h1>
+<div class="w3-container w3-teal">
+	<h1>Delete #__CLASS_NAME__</h1>
+</div>
 
 <div>
 
@@ -8,7 +10,7 @@
 	</div>
 
 	<div>
-		<a class="w3-btn w3-purple" href="#!/#__CLASS_NAME__/list">Back</a>
+		<a class="w3-btn w3-purple" href="#" ui-sref="#__CLASS_NAME__.list({})">Back</a>
 	</div>
 
 </div>

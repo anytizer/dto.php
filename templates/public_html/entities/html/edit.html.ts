@@ -1,4 +1,6 @@
-<h1>Edit #__CLASS_NAME__</h1>
+<div class="w3-container w3-teal">
+	<h1>Edit #__CLASS_NAME__</h1>
+</div>
 
 <div>
 <form name="edit-#__CLASS_NAME__" class="edit edit-#__CLASS_NAME__">
@@ -8,6 +10,12 @@
 		<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 		Edit
 	</a>
+
+	<a href="#" ui-sref="#__CLASS_NAME__.list({})">
+		<i class="fa fa-list" aria-hidden="true"></i>
+		Cancel
+	</a>
+
 </form>
 </div>
 
