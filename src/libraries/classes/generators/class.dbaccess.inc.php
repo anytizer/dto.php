@@ -244,6 +244,19 @@ ORDER BY
         return implode("\r\n", $commands);
     }
 
+    public function _get_primary_key($table_name="")
+    {
+        $result = $this->_get_columns($table_name);
+        $primary_key = "_id";
+        foreach ($result as $c => $COLUMN) {
+            if ($COLUMN->COLUMN_KEY == "PRI") {
+                $primary_key = $COLUMN->COLUMN_NAME;
+            }
+        }
+
+        return $primary_key;
+    }
+
     /**
      * Get a filtered list of columns
      *

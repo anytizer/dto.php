@@ -60,14 +60,12 @@ class html_parser implements parser
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
         $columns = $dbaccess->_get_columns($table_name);
+        $primary_key = $dbaccess->_get_primary_key($table_name);
         #print_r($columns);
 
         $htmlifier = new htmlifier();
         $column_heads = array_filter(array_map(array($htmlifier, "htmlColumnify"), $columns));
         $records = array_filter(array_map(array($htmlifier, "htmlListify"), $columns));
-
-        #print_r($column_heads); die("Listify");
-        #print_r($records); die("Listify");
 
         # "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         $replace = array(
@@ -75,6 +73,7 @@ class html_parser implements parser
             "#__CLASS_NAME__" => $business->class_name(),
             "#__COLUMN_NAMES__" => implode("\r\n\t", $column_heads),
             "#__LISTED_ROWS__" => implode("\r\n\t", $records),
+            "#__PRIMARY_KEY__" => $primary_key,
         );
 
         $from = array_keys($replace);
@@ -98,7 +97,7 @@ class html_parser implements parser
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
         $columns = $dbaccess->_get_columns($table_name);
-        #print_r($columns);
+        $primary_key = $dbaccess->_get_primary_key($table_name);
 
         $htmlifier = new htmlifier();
         $methods = array_map(array($htmlifier, "htmlDetails"), $columns);
@@ -107,6 +106,7 @@ class html_parser implements parser
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__DETAILS_FIELDS__" => implode("\r\n\t", $methods),
+            "#__PRIMARY_KEY__" => $primary_key,
         );
 
         $from = array_keys($replace);
@@ -156,6 +156,7 @@ class html_parser implements parser
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
         $columns = $dbaccess->_get_columns($table_name);
+        $primary_key = $dbaccess->_get_primary_key($table_name);
         #print_r($columns);
 
         $htmlifier = new htmlifier();
@@ -165,6 +166,7 @@ class html_parser implements parser
             "#__CLASS_NAME__" => $business->class_name(),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
+            "#__PRIMARY_KEY__" => $primary_key,
         );
 
         $from = array_keys($replace);

@@ -78,13 +78,7 @@ class angular_parser implements parser
 
         $dbaccess = new dbaccess();
         $table_name = $business->table_name();
-        $result = $dbaccess->_get_columns($table_name);
-        $primary_key = "_id";
-        foreach ($result as $c => $COLUMN) {
-            if ($COLUMN->COLUMN_KEY == "PRI") {
-                $primary_key = $COLUMN->COLUMN_NAME;
-            }
-        }
+        $primary_key = $dbaccess->_get_primary_key($table_name);
 
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
@@ -93,7 +87,6 @@ class angular_parser implements parser
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
             "#__PUBLIC_URL__" => __PUBLIC_URL__,
-
             "#__PRIMARY_KEY__" => $primary_key,
         );
 
