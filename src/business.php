@@ -5,7 +5,6 @@ require_once("libraries/inc.config.php");
 require_once("inc.generate.php");
 
 use generators\template_reader;
-
 use parsers\angular_parser;
 use parsers\business_parser;
 use parsers\dto_parser;
@@ -13,7 +12,6 @@ use parsers\endpoints_parser;
 use parsers\html_parser;
 use parsers\orm_parser;
 use parsers\phpunit_parser;
-
 use setups\configs;
 
 /**
@@ -72,7 +70,7 @@ foreach ($entities as $business) {
     # business business user -- entity
     # business app.js.ts user
     # business routes.js.ts user
-    # business controller.js.ts user
+    # business controllers.js.ts user
     # business services.js.ts user
     # business endpoints user
     # business orm user -- business
