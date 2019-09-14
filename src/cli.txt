@@ -1,9 +1,0 @@
-php -f business.php
-
-dto csharp
-config HOSTNAME USERNAME PASSWORD DATABASE
-dto TABLENAME
-angularjs TABLENAME
-controller TABLEMAME
-phpunit TABLENAME
-api TABLENAME
