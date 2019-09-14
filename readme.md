@@ -3,6 +3,7 @@
 
 ## Usage
 
+    cd src
     php -f business.php
 
 This is **not a general purpose software**. It helps developers to produce raw full stack source code from MySQL Database. It ambitiously covers:
@@ -33,6 +34,30 @@ The following sub-projects are necessary:
  * [API.php](https://github.com/anytizer/api.php) project for backend APIs
  * This project itself.
  * MySQL Database Connection shared between these projects.
+
+
+## Installation
+
+Checkout the required project.
+
+    git clone https://github.com/anytizer/definitions.business.git
+    git clone https://github.com/anytizer/business.definitions.git
+    git clone https://github.com/anytizer/dto.php.git
+
+    cd dto.php
+    composer update
+
+Edit: `inc.config.php` for:
+
+ * MySQL Database Connection details
+ * Path to business definition files
+
+ 
+     cd src
+     php -f business.php
+
+     
+See files output directory.
 
 
 ## ATTN

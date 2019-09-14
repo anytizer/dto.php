@@ -1,6 +1,6 @@
 <?php
 
-namespace setups;
+namespace anytizer;
 
 // SELECT CONCAT('public $', UPPER(role_name), ' = ', role_id, ';') roles FROM account_roles;
 // SELECT CONCAT('public $', UPPER(REPLACE(role_name, ' ', '_')), ' = ', role_id, ';') roles FROM account_roles;
@@ -13,7 +13,7 @@ namespace setups;
 
 /**
  * Class roles
- * @package setups
+ * @package anytizer
  */
 class roles
 {

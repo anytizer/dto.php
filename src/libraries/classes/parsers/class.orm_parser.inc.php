@@ -4,7 +4,7 @@ namespace parsers;
 
 use generators\ormifier;
 use generators\template_reader;
-use setups\business_entity;
+use anytizer\business_entity;
 
 class orm_parser implements parser
 {

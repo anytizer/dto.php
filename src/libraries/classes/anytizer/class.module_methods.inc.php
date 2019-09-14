@@ -1,6 +1,6 @@
 <?php
 
-namespace setups;
+namespace anytizer;
 /*
 class module_methods
 {

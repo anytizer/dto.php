@@ -4,7 +4,7 @@ namespace parsers;
 
 use generators\businessifier;
 use generators\template_reader;
-use setups\business_entity;
+use anytizer\business_entity;
 
 class business_parser implements parser
 {

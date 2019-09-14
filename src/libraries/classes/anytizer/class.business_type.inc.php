@@ -1,10 +1,10 @@
 <?php
 
-namespace setups;
+namespace anytizer;
 
 /**
  * Class business_type
- * @package setups
+ * @package anytizer
  */
 class business_type
 {

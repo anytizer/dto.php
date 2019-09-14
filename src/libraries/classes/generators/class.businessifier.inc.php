@@ -2,7 +2,7 @@
 
 namespace generators;
 
-use setups\method_descriptor;
+use anytizer\method_descriptor;
 
 class businessifier implements bodyfier
 {

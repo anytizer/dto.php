@@ -5,7 +5,7 @@ namespace parsers;
 use generators\angularifier;
 use generators\dbaccess;
 use generators\template_reader;
-use setups\business_entity;
+use anytizer\business_entity;
 
 class angular_parser implements parser
 {

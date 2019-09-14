@@ -4,7 +4,7 @@ namespace parsers;
 
 use generators\dbaccess;
 use generators\template_reader;
-use setups\business_entity;
+use anytizer\business_entity;
 
 class dto_parser implements parser
 {

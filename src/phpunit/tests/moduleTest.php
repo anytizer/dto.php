@@ -5,7 +5,7 @@ namespace tests;
 use generators\caser;
 use generators\namifier;
 use PHPUnit\Framework\TestCase;
-use setups\business_entity;
+use anytizer\business_entity;
 
 class moduleTest extends TestCase
 {

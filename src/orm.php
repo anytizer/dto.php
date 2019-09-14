@@ -11,5 +11,5 @@ foreach ($entities as $business) {
     $orm_body = $orm_parser->generate_database($business);
     echo $orm_body;
 
-    die();
+    //die();
 }

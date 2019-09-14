@@ -1,6 +1,6 @@
 <?php
 
-namespace setups;
+namespace anytizer;
 
 use anytizer\caser;
 use anytizer\guid;
@@ -8,7 +8,7 @@ use anytizer\namifier;
 
 /**
  * Class business_entity
- * @package setups
+ * @package anytizer
  */
 class business_entity
 {

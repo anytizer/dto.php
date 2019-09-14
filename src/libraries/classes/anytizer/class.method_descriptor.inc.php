@@ -1,6 +1,6 @@
 <?php
 
-namespace setups;
+namespace anytizer;
 
 class method_descriptor
 {

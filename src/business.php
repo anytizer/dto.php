@@ -1,8 +1,5 @@
 <?php
-header("Content-Type: text/plain");
-
-require_once("libraries/inc.config.php");
-require_once("inc.generate.php");
+require_once("inc.config.php");
 
 use generators\template_reader;
 use parsers\angular_parser;
@@ -12,7 +9,7 @@ use parsers\endpoints_parser;
 use parsers\html_parser;
 use parsers\orm_parser;
 use parsers\phpunit_parser;
-use setups\configs;
+use anytizer\configs;
 
 /**
  * Used in tracing Issue ID for test cases for PHPUnit
@@ -42,7 +39,7 @@ $template_reader = new template_reader();
 if ($configs->templates) {
     echo sprintf("\r\nProcessing static file copy...");
 
-    // @todo Use media.cdn or parallel subdomain
+    // @todo Rather, use media.cdn or parallel subdomain
     $template_reader->write($template_reader->read("public_html/css/w3.css"), "public_html/css/w3.css");
     $template_reader->write($template_reader->read("public_html/css/styles.css"), "public_html/css/styles.css"); // from scss
     $template_reader->write($template_reader->read("public_html/js/jquery/jquery-3.4.1.min.js"), "public_html/js/jquery/jquery-3.4.1.min.js");

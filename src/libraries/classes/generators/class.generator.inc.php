@@ -3,7 +3,7 @@
 namespace generators;
 
 use anytizer\caser;
-use setups\method_descriptor;
+use anytizer\method_descriptor;
 
 abstract class generator
 {

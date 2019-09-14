@@ -4,7 +4,7 @@ namespace parsers;
 
 use generators\endpoints;
 use generators\template_reader;
-use setups\business_entity;
+use anytizer\business_entity;
 
 /**
  * Class endpoints_parser

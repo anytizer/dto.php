@@ -1,6 +1,6 @@
 <?php
 
-namespace setups;
+namespace anytizer;
 
 /**
  * Determines modules to generate source code for.

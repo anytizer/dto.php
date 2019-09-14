@@ -2,7 +2,7 @@
 
 namespace parsers;
 
-use setups\business_entity;
+use anytizer\business_entity;
 
 interface parser
 {

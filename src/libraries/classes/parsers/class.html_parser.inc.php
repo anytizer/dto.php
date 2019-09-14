@@ -5,7 +5,7 @@ namespace parsers;
 use generators\dbaccess;
 use generators\htmlifier;
 use generators\template_reader;
-use setups\business_entity;
+use anytizer\business_entity;
 
 class html_parser implements parser
 {
