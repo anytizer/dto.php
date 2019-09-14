@@ -14,3 +14,4 @@ src/docs-output/
 /src/nbproject
 /nbproject/
 /out
+/src/*.lnk
