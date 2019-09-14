@@ -1,10 +1,40 @@
+Append .html to Search, Flag, ... when loading templates.
+
+List controller to contain flag method.
+details controller to contain delete method.
+#__PRIMARY_KEY__ not replaced in angular controller.
+PHPUnit LogIncomplete...
+
+Flags seem to appear in CRUD Templates:
+    Visible
+    Active
+    _By
+    _On
+    _On
+
+templates\phpunit\tests\apiunit.phpunit - remove business.
+
+Edit controller to have prefetching details.
+services.js:
+    const APIURL = "../api.php/src";
+    let url = APIURL + "/inventory/NiWarehouses/" + urlpart;
+Do not crud for AngularJS Components, if defaulted.
+Remove JS auto CRUD functions.
+
+Edit -> Link back to cancel/list.
+var NiCyclesApp = myApp; == in router.js
+    - router
+    - directives
+    - services
+    - controller
+replace var with const or let.
+rename controller -> controllers
+
 http://192.168.1.76/tutor/web/mantis/public_html/view.php?id=37
 
 in methodifier, portion of depends on non-composer class.
 
 Caser - project split into its own to provide test cases
-
-Remove JS auto CRUD functions.
 
 Write model body with column names pre-populated.
 
@@ -74,7 +104,6 @@ Buzz words
 	Permissions
 	Management
 	Login
-
 
 OF
 	- entire writeup can be grouped inside the application
