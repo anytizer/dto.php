@@ -3,7 +3,6 @@
 namespace tests;
 
 use generators\caser;
-use setups\business_entity;
 use PHPUnit\Framework\TestCase;
 
 class caserTest extends TestCase

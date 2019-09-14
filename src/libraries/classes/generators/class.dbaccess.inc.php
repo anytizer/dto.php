@@ -10,9 +10,7 @@ namespace generators;
 
 use anytizer\capitalizer;
 use anytizer\namifier;
-use parsers\parser;
-use setups\business_entity;
-use structures\field;
+use PDO;
 use structures\fields;
 
 /**
@@ -158,29 +156,6 @@ class dbaccess
         return $field_definition;
     }
 
-    public function dto_guarded_rows_laravel(fields $field): string
-    {
-        $field_definition = "";
-        if ($this->is_flag($field->COLUMN_NAME) || $this->is_autoid($field)) {
-            $field_definition = "\"{$field->COLUMN_NAME}\"";
-        }
-        return $field_definition;
-    }
-
-    /**
-     * Determines if the field is too long text
-     * @param fields $column
-     * @return bool
-     * @todo Use field types as well
-     *
-     */
-    private function is_long(fields $column): bool
-    {
-        $long_flag = preg_match("/_(description|text|body|html)$/is", $column->COLUMN_NAME);
-
-        return $long_flag;
-    }
-
     /**
      * Checks if a column name is for a flag purpose.
      * @param string $column_name
@@ -201,7 +176,6 @@ class dbaccess
         return $is_flag || $others_flag;
     }
 
-
     /**
      * Auto fillable IDs
      *
@@ -213,6 +187,15 @@ class dbaccess
         $auto_id = preg_match("/_(id)$/is", $column->COLUMN_NAME);
 
         return $auto_id;
+    }
+
+    public function dto_guarded_rows_laravel(fields $field): string
+    {
+        $field_definition = "";
+        if ($this->is_flag($field->COLUMN_NAME) || $this->is_autoid($field)) {
+            $field_definition = "\"{$field->COLUMN_NAME}\"";
+        }
+        return $field_definition;
     }
 
     /**
@@ -242,7 +225,7 @@ ORDER BY
         $statement->bindParam(":DATABASE_NAME", $orm_name);
         $statement->execute();
         //$result = $statement->fetchAll();
-        $result = $statement->fetchAll(\PDO::FETCH_CLASS, "field");
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "field");
         #print_r($result);
         if (!count($result)) {
             // n-columns to be listed
@@ -262,15 +245,79 @@ ORDER BY
     }
 
     /**
-     * If a field is of date/time, may need to install a date picker
-     * @param fields $field
-     * @return bool
+     * Get a filtered list of columns
+     *
+     * @param string $TABLE_NAME
+     * @return array
      */
-    private function is_date(fields $field): bool
+    public function _get_columns(string $TABLE_NAME)
     {
-        $is_date = (boolean)preg_match("/\_(on|date)$/is", $field->COLUMN_NAME);
-        $this->isDate = $is_date;
-        return $is_date;
+        $result = $this->_get_all_columns($TABLE_NAME);
+        $result = array_map(array($this, "column_display"), $result);
+        #print_r($result); die();
+
+        return $result;
+    }
+
+    /**
+     * Get all columns
+     * @param string $TABLE_NAME
+     * @return array
+     */
+    private function _get_all_columns(string $TABLE_NAME)
+    {
+        global $connection;
+        global $orm_name;
+
+        $columns_sql = "
+SELECT
+	c.TABLE_NAME,
+	c.COLUMN_NAME,
+	c.DATA_TYPE,
+	c.COLUMN_COMMENT,
+	c.COLUMN_DEFAULT,
+	c.COLUMN_KEY
+FROM INFORMATION_SCHEMA.COLUMNS c
+WHERE
+	c.TABLE_SCHEMA=:orm_name
+	AND c.TABLE_NAME=:TABLE_NAME
+ORDER BY
+	c.ORDINAL_POSITION
+;";
+        #echo $columns_sql;
+        $statement = $connection->prepare($columns_sql);
+        $statement->bindParam(":orm_name", $orm_name);
+        $statement->bindParam(":TABLE_NAME", $TABLE_NAME);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "\\structures\\fields");
+        return $result;
+    }
+
+    public function class_businessentity(string $entity, array $methods): string
+    {
+        /**
+         * For each methods
+         *   get method name
+         *   build body and comments
+         *   define return types
+         */
+        $template_reader = new template_reader();
+        $method_body = $template_reader->read("libraries/business/others.php");
+
+        $methodifier = new methodifier();
+
+        $methods = array_map(array($methodifier, "methodify"), $methods);
+        $replaces = array(
+            "#__CLASS_NAME__" => $entity,
+            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)
+        );
+        $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
+
+        // replace again
+        $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
+
+        return $method_body;
     }
 
     /**
@@ -288,21 +335,6 @@ ORDER BY
         $replaced = str_replace($from, $to, $body);
 
         return $replaced;
-    }
-
-    /**
-     * Get a filtered list of columns
-     *
-     * @param string $TABLE_NAME
-     * @return array
-     */
-    public function _get_columns(string $TABLE_NAME)
-    {
-        $result = $this->_get_all_columns($TABLE_NAME);
-        $result = array_map(array($this, "column_display"), $result);
-        #print_r($result); die();
-
-        return $result;
     }
 
     /**
@@ -341,63 +373,28 @@ ORDER BY
     }
 
     /**
-     * Get all columns
-     * @param string $TABLE_NAME
-     * @return array
+     * If a field is of date/time, may need to install a date picker
+     * @param fields $field
+     * @return bool
      */
-    private function _get_all_columns(string $TABLE_NAME)
+    private function is_date(fields $field): bool
     {
-        global $connection;
-        global $orm_name;
-
-        $columns_sql = "
-SELECT
-	c.TABLE_NAME,
-	c.COLUMN_NAME,
-	c.DATA_TYPE,
-	c.COLUMN_COMMENT,
-	c.COLUMN_DEFAULT,
-	c.COLUMN_KEY
-FROM INFORMATION_SCHEMA.COLUMNS c
-WHERE
-	c.TABLE_SCHEMA=:orm_name
-	AND c.TABLE_NAME=:TABLE_NAME
-ORDER BY
-	c.ORDINAL_POSITION
-;";
-        #echo $columns_sql;
-        $statement = $connection->prepare($columns_sql);
-        $statement->bindParam(":orm_name", $orm_name);
-        $statement->bindParam(":TABLE_NAME", $TABLE_NAME);
-        $statement->execute();
-
-        $result = $statement->fetchAll(\PDO::FETCH_CLASS, "\\structures\\fields");
-        return $result;
+        $is_date = (boolean)preg_match("/\_(on|date)$/is", $field->COLUMN_NAME);
+        $this->isDate = $is_date;
+        return $is_date;
     }
 
-    public function class_businessentity(string $entity, array $methods): string
+    /**
+     * Determines if the field is too long text
+     * @param fields $column
+     * @return bool
+     * @todo Use field types as well
+     *
+     */
+    private function is_long(fields $column): bool
     {
-        /**
-         * For each methods
-         *   get method name
-         *   build body and comments
-         *   define return types
-         */
-        $template_reader = new template_reader();
-        $method_body = $template_reader->read("libraries/business/others.php");
+        $long_flag = preg_match("/_(description|text|body|html)$/is", $column->COLUMN_NAME);
 
-        $methodifier = new methodifier();
-
-        $methods = array_map(array($methodifier, "methodify"), $methods);
-        $replaces = array(
-            "#__CLASS_NAME__" => $entity,
-            "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods)
-        );
-        $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
-
-        // replace again
-        $method_body = str_replace(array_keys($replaces), array_values($replaces), $method_body);
-
-        return $method_body;
+        return $long_flag;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace parsers;
 
-use setups\business_entity;
+use generators\dbaccess;
 use generators\htmlifier;
 use generators\template_reader;
-use generators\dbaccess;
+use setups\business_entity;
 
 class html_parser implements parser
 {
@@ -49,22 +49,6 @@ class html_parser implements parser
         $this->import_css($business);
 
         $this->generate_selenium($business);
-    }
-
-    private function get_replaces(business_entity $business)
-    {
-        $replace = array(
-            "#__PACKAGE_NAME__" => $business->package_name(),
-            "#__CLASS_NAME__" => $business->class_name(),
-            "#__ANGULAR_APP_NAME__" => $business->class_name(),
-
-            "#__MEDIA_URL__" => __MEDIA_URL__,
-            "#__JS_URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js",
-            "#__CSS_URL__" => "entities/{$business->package_name()}/{$business->class_name()}/css",
-            "#__PUBLIC_URL__" => __PUBLIC_URL__,
-        );
-
-        return $replace;
     }
 
     private function generate_list(business_entity $business)
@@ -266,6 +250,22 @@ class html_parser implements parser
         $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/html/index.html");
 
         return $method_body;
+    }
+
+    private function get_replaces(business_entity $business)
+    {
+        $replace = array(
+            "#__PACKAGE_NAME__" => $business->package_name(),
+            "#__CLASS_NAME__" => $business->class_name(),
+            "#__ANGULAR_APP_NAME__" => $business->class_name(),
+
+            "#__MEDIA_URL__" => __MEDIA_URL__,
+            "#__JS_URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js",
+            "#__CSS_URL__" => "entities/{$business->package_name()}/{$business->class_name()}/css",
+            "#__PUBLIC_URL__" => __PUBLIC_URL__,
+        );
+
+        return $replace;
     }
 
     /**

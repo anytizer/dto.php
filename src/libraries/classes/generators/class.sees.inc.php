@@ -44,6 +44,20 @@ class sees
         return $menus;
     }
 
+    public function __tostring(): string
+    {
+        # convert to html
+        $html = $this->_html();
+        return "###";
+    }
+
+    private function _html()
+    {
+        $dashboard = array_map(array($this, "_link"), $this->pages);
+        #return implode("\r\n", $dashboard);
+        return "<ul>" . implode("\r\n", array_map("li", $dashboard)) . "</ul>";
+    }
+
     private function _link(anchor $object)
     {
         $html = $object->html();
@@ -54,19 +68,5 @@ class sees
     {
         $html = "<li>{$link}</li>";
         return $html;
-    }
-
-    private function _html()
-    {
-        $dashboard = array_map(array($this, "_link"), $this->pages);
-        #return implode("\r\n", $dashboard);
-        return "<ul>" . implode("\r\n", array_map("li", $dashboard)) . "</ul>";
-    }
-
-    public function __tostring(): string
-    {
-        # convert to html
-        $html = $this->_html();
-        return "###";
     }
 }

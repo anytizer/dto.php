@@ -5,19 +5,6 @@ namespace generators;
 class writer
 {
     /**
-     * @param string $dir
-     * @return bool
-     */
-    private function mkdir_target(string $dir): bool
-    {
-        if (!is_dir($dir)) {
-            mkdir($dir, 0777, true);
-        }
-
-        return true;
-    }
-
-    /**
      * @param array $replacement
      * @param string $source
      * @param string $target
@@ -46,6 +33,19 @@ class writer
         #$file_contents = str_replace("// #__PUBLIC_METHODS__",    "", $file_contents);
 
         file_put_contents($target, $file_contents);
+        return true;
+    }
+
+    /**
+     * @param string $dir
+     * @return bool
+     */
+    private function mkdir_target(string $dir): bool
+    {
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
+
         return true;
     }
 

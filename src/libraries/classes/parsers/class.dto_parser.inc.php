@@ -2,9 +2,9 @@
 
 namespace parsers;
 
-use setups\business_entity;
 use generators\dbaccess;
 use generators\template_reader;
+use setups\business_entity;
 
 class dto_parser implements parser
 {
@@ -210,7 +210,7 @@ class dto_parser implements parser
             $class_body = str_replace("#__GUARDED_COLUMNS__", $fields_guarded, $class_body);
             $class_body = str_replace("#__PRIMARY_KEY__", $primary_key, $class_body);
         } else {
-            die("Not enough tables listed.");
+            die("Not enough tables were listed.");
         }
 
         // @todo rename to class.DTONAMEDDTO.inc.php

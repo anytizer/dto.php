@@ -2,13 +2,13 @@
 
 namespace generators;
 
-use setups\method_descriptor;
 use anytizer\caser;
+use setups\method_descriptor;
 
 /**
  * Class angularifier
  * AngularJS Templates
- * @todo Update for Angular 4.0
+ * @todo Update for Angular 8.0
  */
 class angularifier implements bodyfier
 {

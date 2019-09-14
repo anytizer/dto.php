@@ -15,42 +15,6 @@ class methodifier implements bodyfier
     }
 
     /**
-     * @param string $method_descriptive
-     * @return string
-     */
-    public function accessor(string $method_descriptive): string
-    {
-        $accessor = "public";
-        if (preg_match("/^_/is", $method_descriptive)) {
-            $accessor = "private";
-        }
-        if (preg_match("/^\\:/is", $method_descriptive)) {
-            $accessor = "private";
-        }
-
-        return $accessor;
-    }
-
-    /**
-     * @param string $method_descriptive
-     * @return string
-     */
-    public function return_type(string $method_descriptive): string
-    {
-        /**
-         * If return type is defined, grab it
-         */
-        if (preg_match("/\:\s?\w/is", $method_descriptive)) {
-            $return_type = preg_replace("/^.*?\:\s?+/", "", $method_descriptive);
-            $return_type = trim($return_type);
-        } else {
-            $return_type = "bool";
-        }
-
-        return $return_type;
-    }
-
-    /**
      * Converts a word into PHP Class method
      *
      * @param string $method_descriptive
@@ -95,6 +59,42 @@ class methodifier implements bodyfier
     }
 ";
         return $method_body;
+    }
+
+    /**
+     * @param string $method_descriptive
+     * @return string
+     */
+    public function accessor(string $method_descriptive): string
+    {
+        $accessor = "public";
+        if (preg_match("/^_/is", $method_descriptive)) {
+            $accessor = "private";
+        }
+        if (preg_match("/^\\:/is", $method_descriptive)) {
+            $accessor = "private";
+        }
+
+        return $accessor;
+    }
+
+    /**
+     * @param string $method_descriptive
+     * @return string
+     */
+    public function return_type(string $method_descriptive): string
+    {
+        /**
+         * If return type is defined, grab it
+         */
+        if (preg_match("/\:\s?\w/is", $method_descriptive)) {
+            $return_type = preg_replace("/^.*?\:\s?+/", "", $method_descriptive);
+            $return_type = trim($return_type);
+        } else {
+            $return_type = "bool";
+        }
+
+        return $return_type;
     }
 
 }

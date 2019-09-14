@@ -31,6 +31,6 @@
 <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/app.js"></script>
 <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/routes.js"></script>
 <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/services.js"></script>
-<script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/controller.js"></script>
+<script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/controllers.js"></script>
 </body>
 </html>

@@ -3,7 +3,6 @@
 namespace tests;
 
 use generators\namifier;
-use setups\business_entity;
 use PHPUnit\Framework\TestCase;
 
 class prefixesTest extends TestCase

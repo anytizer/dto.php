@@ -3,8 +3,8 @@
 namespace parsers;
 
 use generators\businessifier;
-use setups\business_entity;
 use generators\template_reader;
+use setups\business_entity;
 
 class business_parser implements parser
 {

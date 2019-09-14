@@ -1,81 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diagram>
   <ID>PHP</ID>
-  <OriginalElement>D:/Program Files/JetBrains/PhpStorm 2019.2.1/jbr/bin</OriginalElement>
-  <nodes>
-    <node x="318.0" y="157.0">\generators\dbaccess</node>
-    <node x="580.0" y="157.0">\generators\anchor</node>
-    <node x="529.0" y="86.0">\generators\htmlifier</node>
-    <node x="449.0" y="157.0">\generators\ormifier</node>
-    <node x="0.0" y="228.0">\generators\sees</node>
-    <node x="0.0" y="86.0">\generators\methodifier</node>
-    <node x="697.0" y="157.0">\generators\writer</node>
-    <node x="739.234126984127" y="0.0">\generators\generator</node>
-    <node x="127.0" y="86.0">\generators\businessifier</node>
-    <node x="409.0" y="0.0">\generators\bodyfier</node>
-    <node x="755.0" y="86.0">\generators\phpunitifier</node>
-    <node x="0.0" y="157.0">\generators\template_reader</node>
-    <node x="180.0" y="157.0">\generators\finalized</node>
-    <node x="268.0" y="86.0">\generators\databasifer</node>
-    <node x="642.0" y="86.0">\generators\endpoints</node>
-    <node x="395.0" y="86.0">\generators\angularifier</node>
-  </nodes>
+  <OriginalElement />
+  <nodes />
   <notes />
-  <edges>
-    <edge source="\generators\businessifier" target="\generators\bodyfier">
-      <point x="0.0" y="-13.0" />
-      <point x="187.5" y="56.0" />
-      <point x="427.42857142857144" y="56.0" />
-      <point x="-24.571428571428577" y="13.0" />
-    </edge>
-    <edge source="\generators\databasifer" target="\generators\bodyfier">
-      <point x="0.0" y="-13.0" />
-      <point x="321.5" y="66.0" />
-      <point x="439.7142857142857" y="66.0" />
-      <point x="-12.285714285714292" y="13.0" />
-    </edge>
-    <edge source="\generators\endpoints" target="\generators\generator">
-      <point x="23.25" y="-13.0" />
-      <point x="711.75" y="66.0" />
-      <point x="762.484126984127" y="66.0" />
-      <point x="-23.25" y="13.0" />
-    </edge>
-    <edge source="\generators\phpunitifier" target="\generators\generator">
-      <point x="28.5" y="-13.0" />
-      <point x="840.5" y="66.0" />
-      <point x="808.984126984127" y="66.0" />
-      <point x="23.25" y="13.0" />
-    </edge>
-    <edge source="\generators\methodifier" target="\generators\bodyfier">
-      <point x="0.0" y="-13.0" />
-      <point x="53.5" y="46.0" />
-      <point x="415.1428571428571" y="46.0" />
-      <point x="-36.85714285714286" y="13.0" />
-    </edge>
-    <edge source="\generators\angularifier" target="\generators\bodyfier">
-      <point x="0.0" y="-13.0" />
-      <point x="-7.105427357601002E-15" y="13.0" />
-    </edge>
-    <edge source="\generators\htmlifier" target="\generators\bodyfier">
-      <point x="0.0" y="-13.0" />
-      <point x="575.5" y="66.0" />
-      <point x="464.2857142857143" y="66.0" />
-      <point x="12.285714285714278" y="13.0" />
-    </edge>
-    <edge source="\generators\endpoints" target="\generators\bodyfier">
-      <point x="-23.25" y="-13.0" />
-      <point x="665.25" y="56.0" />
-      <point x="476.57142857142856" y="56.0" />
-      <point x="24.57142857142857" y="13.0" />
-    </edge>
-    <edge source="\generators\phpunitifier" target="\generators\bodyfier">
-      <point x="-28.5" y="-13.0" />
-      <point x="783.5" y="46.0" />
-      <point x="488.8571428571429" y="46.0" />
-      <point x="36.85714285714286" y="13.0" />
-    </edge>
-  </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="102.0" y="126.0" />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.5" x="776.0" y="319.3333333333333" />
   <SelectedNodes />
   <Categories />
   <VISIBILITY>private</VISIBILITY>

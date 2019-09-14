@@ -2,9 +2,10 @@
 
 namespace parsers;
 
-use setups\business_entity;
-use generators\template_reader;
 use generators\angularifier;
+use generators\dbaccess;
+use generators\template_reader;
+use setups\business_entity;
 
 class angular_parser implements parser
 {
@@ -75,6 +76,16 @@ class angular_parser implements parser
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_router"), $business->methods_list());
 
+        $dbaccess = new dbaccess();
+        $table_name = $business->table_name();
+        $result = $dbaccess->_get_columns($table_name);
+        $primary_key = "_id";
+        foreach ($result as $c => $COLUMN) {
+            if ($COLUMN->COLUMN_KEY == "PRI") {
+                $primary_key = $COLUMN->COLUMN_NAME;
+            }
+        }
+
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
@@ -82,6 +93,8 @@ class angular_parser implements parser
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
             "#__PUBLIC_URL__" => __PUBLIC_URL__,
+
+            "#__PRIMARY_KEY__" => $primary_key,
         );
 
         $from = array_keys($replace);
@@ -167,10 +180,22 @@ class angular_parser implements parser
     private function angular_controller_js(business_entity $business): string
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/js/angularjs/controller.js.ts");
+        $method_body = $template_reader->read("public_html/entities/js/angularjs/controllers.js.ts");
 
         $angularifier = new angularifier();
         $methods = array_map(array($angularifier, "angular_controller"), $business->methods_list());
+
+        // @todo Code repeated to calculate primary key
+        $dbaccess = new dbaccess();
+        $table_name = $business->table_name();
+        $result = $dbaccess->_get_columns($table_name);
+        $primary_key = "_id";
+        foreach ($result as $c => $COLUMN) {
+            if ($COLUMN->COLUMN_KEY == "PRI") {
+                $primary_key = $COLUMN->COLUMN_NAME;
+            }
+        }
+        #die("Table name: ".$table_name.", Primary key: ".$primary_key);
 
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
@@ -178,6 +203,9 @@ class angular_parser implements parser
             "#__ANGULAR_CONTROLLERS__" => implode("\r\n\t", $methods),
             "#__MEDIA_URL__" => __MEDIA_URL__,
             "#__URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}",
+
+            // @todo Find and replace correctly
+            "#__PRIMARY_KEY__" => $primary_key,
         );
 
         $from = array_keys($replace);
@@ -185,7 +213,7 @@ class angular_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-controller.js");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/js/{$business->class_name()}-controllers.js");
         return $method_body;
     }
 }

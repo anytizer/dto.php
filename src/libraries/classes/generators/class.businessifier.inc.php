@@ -26,7 +26,7 @@ class businessifier implements bodyfier
         $return_type = $method->return_type;
 
         /**
-         * @todo Load ORM fields dynamically
+         * @todo Load all ORM fields dynamically
          */
         $method_body = "
     /**

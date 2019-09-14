@@ -1,6 +1,9 @@
 <?php
 $entities = [];
-$setup_files = glob(__BUSINESS_DEFINITIONS__ . "/passport/define.*.php");
+#$setup_files = glob(__BUSINESS_DEFINITIONS__ . "/passport/define.*.php");
+#$setup_files = glob(__BUSINESS_DEFINITIONS__ . "/ubuild/define.*.php");
+#$setup_files = glob(__BUSINESS_DEFINITIONS__ . "/inventory/define.*.php");
+$setup_files = glob(__BUSINESS_DEFINITIONS__ . "/inventory/define.ni_units.php");
 #$setup_files = glob(__BUSINESS_DEFINITIONS__."/passport/define.plans.php");
 
 #print_r($setups); die();

@@ -2,10 +2,9 @@
 
 namespace parsers;
 
-use generators\caser;
-use setups\business_entity;
-use generators\template_reader;
 use generators\phpunitifier;
+use generators\template_reader;
+use setups\business_entity;
 
 class phpunit_parser implements parser
 {

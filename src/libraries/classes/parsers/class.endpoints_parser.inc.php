@@ -2,9 +2,9 @@
 
 namespace parsers;
 
-use setups\business_entity;
-use generators\template_reader;
 use generators\endpoints;
+use generators\template_reader;
+use setups\business_entity;
 
 /**
  * Class endpoints_parser
@@ -75,7 +75,6 @@ class endpoints_parser implements parser
         // twice replacements
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
-
 
         $template_reader->write($method_body, "api/{$replace['#__PACKAGE_NAME__']}/models/class.model_{$replace['#__CLASS_NAME__']}.inc.php");
         return $method_body;

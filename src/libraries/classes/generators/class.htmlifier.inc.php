@@ -3,7 +3,6 @@
 namespace generators;
 
 use backend\capitalizer;
-use setups\method_descriptor;
 use structures\fields;
 
 class htmlifier implements bodyfier
@@ -20,22 +19,6 @@ class htmlifier implements bodyfier
         //$this->htmlAdd($method);
 
         return "";
-    }
-
-    /**
-     * Determines which CSS to apply in the selected field
-     *
-     * @param fields $fields
-     * @return string
-     */
-    private function field_class(fields $fields)
-    {
-        $classes = [];
-        if ($fields->isDate) {
-            $classes[] = "datepicker";
-        }
-
-        return implode(" ", $classes);
     }
 
     /**
@@ -126,6 +109,22 @@ class htmlifier implements bodyfier
     }
 
     /**
+     * Determines which CSS to apply in the selected field
+     *
+     * @param fields $fields
+     * @return string
+     */
+    private function field_class(fields $fields)
+    {
+        $classes = [];
+        if ($fields->isDate) {
+            $classes[] = "datepicker";
+        }
+
+        return implode(" ", $classes);
+    }
+
+    /**
      * HTML Flag
      *
      * @param fields $column
@@ -167,12 +166,12 @@ Deleted
             return "";
         }
 
-        $class = $this->field_class($column);
+        $field_class = $this->field_class($column);
 
         $field_body = "
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
-        <div><input type=\"text\" class=\"w3-input {$class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder='' /></div>
+        <div><input type=\"text\" class=\"w3-input {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
         <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
     </div>
         ";

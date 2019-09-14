@@ -2,8 +2,8 @@
 
 namespace generators;
 
-use setups\method_descriptor;
 use anytizer\caser;
+use setups\method_descriptor;
 
 abstract class generator
 {

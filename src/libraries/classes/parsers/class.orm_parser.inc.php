@@ -2,9 +2,9 @@
 
 namespace parsers;
 
-use setups\business_entity;
 use generators\ormifier;
 use generators\template_reader;
+use setups\business_entity;
 
 class orm_parser implements parser
 {

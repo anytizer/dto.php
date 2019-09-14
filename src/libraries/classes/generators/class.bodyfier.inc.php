@@ -2,9 +2,6 @@
 
 namespace generators;
 
-use setups\business_entity;
-use setups\method_descriptor;
-
 /**
  * Class bodyfier
  * PHP Class body template maker
