@@ -29,7 +29,7 @@ let #__CLASS_NAME__App = myApp;
 		})
 
 		.state("#__CLASS_NAME__.details", {
-			url: "/details",
+			url: "/details/:#__PRIMARY_KEY__",
 			templateUrl: template("details.html"),
 			controller: "#__CLASS_NAME__DetailsController",
 		})

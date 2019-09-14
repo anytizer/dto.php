@@ -40,10 +40,18 @@
 		"details": function(id){
 			#__CLASS_NAME__Service.#__CLASS_NAME__.details({"#__PRIMARY_KEY__": id})
 			.then(function(response){
-				$scope.record = response.data;
+				$scope.#__CLASS_NAME__.record = response.data;
 			}, function(error){
 				// error
 			});
+		},
+		"flag": function (record) {
+			#__CLASS_NAME__Service.#__CLASS_NAME__.flag(record)
+				.then(function (response) {
+					$scope.#__CLASS_NAME__.init();
+				}, function (error) {
+					// error
+				});
 		},
 		"init": function()
 		{
@@ -61,7 +69,7 @@
 		"add": function(record){
 			#__CLASS_NAME__Service.#__CLASS_NAME__.add(record)
 			.then(function(response){
-				$scope.record = response.data;
+				$scope.#__CLASS_NAME__.record = response.data;
 			}, function(error){
 				// error
 			});
@@ -77,7 +85,7 @@
 		"details": function (id) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.details({"#__PRIMARY_KEY__": id})
 				.then(function (response) {
-					$scope.record = response.data;
+					$scope.#__CLASS_NAME__.record = response.data;
 				}, function (error) {
 					// error
 				});
@@ -85,7 +93,7 @@
 		"edit": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.edit(record)
 			.then(function (response) {
-				$scope.record = response.data;
+				$scope.#__CLASS_NAME__.record = response.data;
 				$state.go("#__CLASS_NAME__.list", ({}));
 			},
 			function (error) {
@@ -105,7 +113,7 @@
 		"delete": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.delete(record)
 			.then(function (response) {
-				$scope.record = response.data;
+				$scope.#__CLASS_NAME__.record = response.data;
 			}, function (error) {
 				// error
 			});
@@ -121,7 +129,7 @@
 		"flag": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.flag(record)
 			.then(function (response) {
-				$scope.record = response.data;
+				$scope.#__CLASS_NAME__.record = response.data;
 			}, function (error) {
 				// error
 			});

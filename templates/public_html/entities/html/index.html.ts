@@ -49,7 +49,6 @@
 <script type="text/javascript" src="#__MEDIA_URL__/angular.min.js"></script>
 <script type="text/javascript" src="#__MEDIA_URL__/angular-cookies.min.js"></script>
 <script type="text/javascript" src="#__MEDIA_URL__/angular-route.min.js"></script>
-<!-- @todo Use JS Linker -->
 <script type="text/javascript" src="#__PUBLIC_URL__/js/ui-router/angular-ui-router.min.js"></script>
 
 <script type="text/javascript" src="#__JS_URL__/#__CLASS_NAME__-app.js"></script>

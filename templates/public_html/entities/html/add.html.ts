@@ -13,7 +13,7 @@
 	</a>
 	<a href="#" ui-sref="#__CLASS_NAME__.list({})">
 		<i class="fa fa-list" aria-hidden="true"></i>
-		List
+		Cancel
 	</a>
 </form>
 </div>
