@@ -4,6 +4,7 @@
     "anytizer/guid.php": "dev-master",
     "anytizer/includer.php": "dev-master",
     "anytizer/caser.php": "dev-master",
-    "anytizer/namifier.php": "dev-master"
+    "anytizer/namifier.php": "dev-master",
+    "anytizer/linter": "dev-master"
   }
 }
