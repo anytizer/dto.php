@@ -39,10 +39,11 @@ The following sub-projects are necessary:
 
 ## Installation
 
-Checkout the required project.
+Checkout the required project under your web root.
 
-    mkdir [PUBLIC_HTML]/project
+    mkdir [HTDOCS]/project
     cd project
+    mkdir public_html
     
     git clone https://github.com/anytizer/definitions.business.git
     git clone https://github.com/anytizer/business.definitions.git
@@ -59,9 +60,9 @@ Checkout the required project.
     composer update
 
     cd src
-    cp inc.config-sample inc.config.php
+    cp inc.config-sample.php inc.config.php
 
-Edit: `inc.config.php` for:
+Edit: your `inc.config.php` for:
 
  * MySQL Database Connection details
  * Path to business definition files

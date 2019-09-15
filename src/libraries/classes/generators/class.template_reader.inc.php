@@ -15,9 +15,8 @@ class template_reader
     public function read(string $filename): string
     {
         $this->current_template = $filename;
-
-        //$lookup_dir = realpath(__LIBRARIES_DIR__."/../templates");
-        $templates_lookup_dir = "D:/htdocs/angular/libraries/dto.php/dto.php/templates";
+        
+        $templates_lookup_dir = __LIBRARIES_DIR__."/../../templates";
         $filename = "{$templates_lookup_dir}/{$filename}"; // @todo clean file name patterns
 
         $template = "<?php /** invalid file was read: {$filename} */";

@@ -5,6 +5,7 @@
     "anytizer/includer.php": "dev-master",
     "anytizer/caser.php": "dev-master",
     "anytizer/namifier.php": "dev-master",
-    "anytizer/linter": "dev-master"
+    "anytizer/linter": "dev-master",
+    "ext-pdo": "*"
   }
 }
