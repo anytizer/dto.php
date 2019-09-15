@@ -1,6 +1,5 @@
 <?php
-require_once("libraries/inc.config.php");
-require_once("inc.generate.php");
+require_once("inc.config.php");
 
 use parsers\html_parser;
 

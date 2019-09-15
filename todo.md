@@ -1,3 +1,7 @@
+Auto Truncate flag columns for display.
+    - in tabular form
+    - in edit forms
+    - in details pages
 Append .html to Search, Flag, ... when loading templates.
 
 List controller to contain flag method.

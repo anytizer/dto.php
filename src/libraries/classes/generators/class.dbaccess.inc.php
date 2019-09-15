@@ -104,9 +104,7 @@ class dbaccess
                     $datatype = "int";
                     break;
                 case "enum":
-                    $datatype = "string";
-                    break;
-                case "blob":
+                 case "blob":
                 case "char":
                 case "longblob":
                 case "longtext":
@@ -117,8 +115,6 @@ class dbaccess
                 case "tinytext":
                 case "varbinary":
                 case "varchar":
-                    $datatype = "string";
-                    break;
                 case "set":
                     $datatype = "string";
                     break;
@@ -166,14 +162,14 @@ class dbaccess
         /**
          * Flag starting as is_...
          */
-        $is_flag = preg_match("/^(is|in)_/is", $column_name);
+        $is_prefix_flag = preg_match("/^(is|in)_/is", $column_name);
 
         /**
          * Flag ending with on, by, ...
          */
-        $others_flag = preg_match("/_(on|by)$/is", $column_name);
+        $is_suffix_flag = preg_match("/_(on|by)$/is", $column_name);
 
-        return $is_flag || $others_flag;
+        return $is_prefix_flag || $is_suffix_flag;
     }
 
     /**
@@ -237,6 +233,7 @@ ORDER BY
         $commands = [];
         foreach ($result as $row) {
             $row = (array)$row;
+            // @todo Classname not found as method below: Important
             $class_name = $this->class_name($row['TABLE_NAME']);
             $commands[] = "php -f __generate.php {$row['TABLE_NAME']} > dtos\\class.{$class_name}.inc.php";
         }
@@ -267,7 +264,6 @@ ORDER BY
     {
         $result = $this->_get_all_columns($TABLE_NAME);
         $result = array_map(array($this, "column_display"), $result);
-        #print_r($result); die();
 
         return $result;
     }
@@ -350,6 +346,17 @@ ORDER BY
         return $replaced;
     }
 
+    public function _noflags($name="")
+    {
+        $return = $name;
+        if($this->is_flag($name))
+        {
+            return "";
+        }
+
+        return $return;
+    }
+
     /**
      * Convert a column name into display text
      * @param fields $column
@@ -359,7 +366,10 @@ ORDER BY
     {
         $names = preg_split("/\_/is", $column->COLUMN_NAME);
         $names = array_map("strtolower", $names);
+        $names = array_map(array($this, "_noflags"), $names);
+        $names = array_filter($names);
         $names = array_map("ucfirst", $names);
+        #print_r($names); die();
 
         /**
          * Remove prefixed word

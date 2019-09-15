@@ -18,4 +18,5 @@ class configs
     // api
     // apiunit
     // cs
+    // laravel model
 }

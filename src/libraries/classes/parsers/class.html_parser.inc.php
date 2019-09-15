@@ -60,6 +60,10 @@ class html_parser implements parser
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
         $columns = $dbaccess->_get_columns($table_name);
+
+        /**
+         * @todo Filter long fields and flags
+         */
         $primary_key = $dbaccess->_get_primary_key($table_name);
         #print_r($columns);
 
