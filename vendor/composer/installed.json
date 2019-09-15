@@ -1,0 +1,214 @@
+[
+    {
+        "name": "anytizer/capitalizer.php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/anytizer/capitalizer.php.git",
+            "reference": "0a8ae7950e7f23e0527099796144cfb5f1802d7b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/anytizer/capitalizer.php/zipball/0a8ae7950e7f23e0527099796144cfb5f1802d7b",
+            "reference": "0a8ae7950e7f23e0527099796144cfb5f1802d7b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.0"
+        },
+        "time": "2019-09-14T16:30:15+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "anytizer\\": "src/anytizer"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "Capitalize a word",
+        "keywords": [
+            "capitalizer",
+            "case conversion",
+            "lowercase",
+            "uppercase"
+        ]
+    },
+    {
+        "name": "anytizer/caser.php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/anytizer/caser.php.git",
+            "reference": "6281ed04046ced504f6cd4144b0a3d60f65ccd80"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/anytizer/caser.php/zipball/6281ed04046ced504f6cd4144b0a3d60f65ccd80",
+            "reference": "6281ed04046ced504f6cd4144b0a3d60f65ccd80",
+            "shasum": ""
+        },
+        "time": "2019-09-09T05:44:11+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "anytizer\\": "src/anytizer"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "anytizer"
+            }
+        ],
+        "description": "Name cases"
+    },
+    {
+        "name": "anytizer/guid.php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/anytizer/guid.php.git",
+            "reference": "9a41b44f19ea22e7a0b0d4314ad45dcc454f44ad"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/anytizer/guid.php/zipball/9a41b44f19ea22e7a0b0d4314ad45dcc454f44ad",
+            "reference": "9a41b44f19ea22e7a0b0d4314ad45dcc454f44ad",
+            "shasum": ""
+        },
+        "time": "2019-09-14T20:19:34+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "anytizer\\": "src/anytizer"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "anytizer",
+                "role": "Developer"
+            }
+        ],
+        "description": "GUID Generator for PHP",
+        "keywords": [
+            "Unique ID",
+            "globally unique id",
+            "guid",
+            "uuid"
+        ]
+    },
+    {
+        "name": "anytizer/includer.php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/anytizer/includer.php.git",
+            "reference": "702119bad847e6c6b029a0db79e70d5bfcc8e19d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/anytizer/includer.php/zipball/702119bad847e6c6b029a0db79e70d5bfcc8e19d",
+            "reference": "702119bad847e6c6b029a0db79e70d5bfcc8e19d",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.0"
+        },
+        "time": "2019-09-09T05:55:37+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "anytizer\\": "src/anytizer"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Developer",
+                "role": "Developer"
+            }
+        ],
+        "description": "SPL autoload registration for custom paths",
+        "keywords": [
+            "autoload",
+            "includer",
+            "spl"
+        ]
+    },
+    {
+        "name": "anytizer/linter",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/anytizer/linter.php.git",
+            "reference": "b2fa6ee1ff885d63dedf1f05e78c7beaf723496a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/anytizer/linter.php/zipball/b2fa6ee1ff885d63dedf1f05e78c7beaf723496a",
+            "reference": "b2fa6ee1ff885d63dedf1f05e78c7beaf723496a",
+            "shasum": ""
+        },
+        "time": "2019-09-14T20:36:25+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "Syntax checker for PHP",
+        "keywords": [
+            "syntax"
+        ]
+    },
+    {
+        "name": "anytizer/namifier.php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/anytizer/namifier.php.git",
+            "reference": "b45e2783cebbe986e362274b470e220dbbaf8410"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/anytizer/namifier.php/zipball/b45e2783cebbe986e362274b470e220dbbaf8410",
+            "reference": "b45e2783cebbe986e362274b470e220dbbaf8410",
+            "shasum": ""
+        },
+        "require": {
+            "anytizer/capitalizer.php": "dev-master",
+            "anytizer/caser.php": "dev-master"
+        },
+        "time": "2019-09-09T05:44:48+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "anytizer\\": "src/anytizer"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "anytizer"
+            }
+        ],
+        "description": "Namify different cases"
+    }
+]
