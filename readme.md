@@ -62,6 +62,7 @@ Checkout the required project under your web root.
     cd src
     cp inc.config-sample.php inc.config.php
 
+
 Edit: your `inc.config.php` for:
 
  * MySQL Database Connection details
