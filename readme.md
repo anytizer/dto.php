@@ -41,15 +41,23 @@ The following sub-projects are necessary:
 
 Checkout the required project.
 
+    mkdir [PUBLIC_HTML]/project
+    cd project
+    
     git clone https://github.com/anytizer/definitions.business.git
     git clone https://github.com/anytizer/business.definitions.git
-    git clone https://github.com/anytizer/api.php.git
     git clone https://github.com/anytizer/boilerplate.angularjs.git
-    git clone https://github.com/anytizer/dto.php.git
+    git clone https://github.com/anytizer/relay.php.git
+    
+    git clone https://github.com/anytizer/api.php.git
+    cd api.php
+    composer update
+    cd ..
 
+    git clone https://github.com/anytizer/dto.php.git
     cd dto.php
     composer update
-    
+
     cd src
     cp inc.config-sample inc.config.php
 
@@ -64,7 +72,7 @@ Edit: `inc.config.php` for:
     php -f business.php
 
      
-Then see output directory.
+Then see the output directory.
 
 
 ## ATTN
