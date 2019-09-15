@@ -13,7 +13,7 @@ This is **not a general purpose software**. It helps developers to produce raw f
  - ORM
  - HTML files
 
-Output of this product is useful as a backbone of starting a new web project.
+Output of this product is useful as a backbone for starting a new web project (CRUD).
 
 
 ## Requirements:
@@ -77,13 +77,14 @@ Edit: your `inc.config.php` for:
 Then see the output directory.
 
 
-## ATTN
+## ATTN:
 
 This project may be broken due to several reasons:
  - requirement of full paths in configurations
  - composer modules
  - dependent project files
  - not tested in other environments
+ - incomplete documentation
  - work in progress
 
-The source code is available for a reference only.
+**The source code is available for a reference only.**

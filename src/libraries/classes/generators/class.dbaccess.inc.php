@@ -15,24 +15,12 @@ use structures\fields;
 
 /**
  * Class dbaccess
+ * @todo Split DBAccess into core db access and property accessors
  *
  * @package generators
  */
-//class dbaccess extends finalized implements parser
 class dbaccess
 {
-    /**
-     * Identifies good and bad field names to be filtered
-     * @param fields $field
-     * @return string
-     * @todo unused
-     *
-     */
-    // function filter_columns(fields $field)
-    // {
-    //     return "public \${$column_name};"; // // {$field->COLUMN_DEFAULT}";
-    // }
-
     /**
      * Converts Database table into PHP Class properties - DTO
      *
@@ -57,10 +45,6 @@ class dbaccess
     public {$variable_name};
 ";
             }
-            //else
-            //{
-            //    $field_definition = "public \${$column_name};";
-            //}
         }
 
         // define single row
@@ -104,7 +88,7 @@ class dbaccess
                     $datatype = "int";
                     break;
                 case "enum":
-                 case "blob":
+                case "blob":
                 case "char":
                 case "longblob":
                 case "longtext":
@@ -146,7 +130,7 @@ class dbaccess
     public function dto_fillable_rows_laravel(fields $field): string
     {
         $field_definition = "";
-        if (!$this->is_flag($field->COLUMN_NAME) && !$this->is_autoid($field)) {
+        if (!$this->is_flag($field) && !$this->is_autoid($field)) {
             $field_definition = "\"{$field->COLUMN_NAME}\"";
         }
         return $field_definition;
@@ -154,11 +138,12 @@ class dbaccess
 
     /**
      * Checks if a column name is for a flag purpose.
-     * @param string $column_name
+     * @param fields $column
      * @return bool
      */
-    private function is_flag(string $column_name): bool
+    private function is_flag(fields $column): bool
     {
+        $column_name = $column->COLUMN_NAME;
         /**
          * Flag starting as is_...
          */
@@ -188,7 +173,7 @@ class dbaccess
     public function dto_guarded_rows_laravel(fields $field): string
     {
         $field_definition = "";
-        if ($this->is_flag($field->COLUMN_NAME) || $this->is_autoid($field)) {
+        if ($this->is_flag($field) || $this->is_autoid($field)) {
             $field_definition = "\"{$field->COLUMN_NAME}\"";
         }
         return $field_definition;
@@ -233,7 +218,9 @@ ORDER BY
         $commands = [];
         foreach ($result as $row) {
             $row = (array)$row;
-            // @todo Classname not found as method below: Important
+            /**
+             * @todo Classname not found as method below: Important
+             */
             $class_name = $this->class_name($row['TABLE_NAME']);
             $commands[] = "php -f __generate.php {$row['TABLE_NAME']} > dtos\\class.{$class_name}.inc.php";
         }
@@ -262,10 +249,17 @@ ORDER BY
      */
     public function _get_columns(string $TABLE_NAME)
     {
-        $result = $this->_get_all_columns($TABLE_NAME);
-        $result = array_map(array($this, "column_display"), $result);
+        $columns = $this->_get_all_columns($TABLE_NAME);
+        foreach($columns as $c => $column)
+        {
+            if($this->is_flag($column)) unset($columns[$c]);
+            if($this->is_date($column)) unset($columns[$c]);
+            if($this->is_long($column)) unset($columns[$c]);
+            if($this->is_autoid($column)) unset($columns[$c]);
+        }
+        $columns = array_map(array($this, "column_display"), $columns);
 
-        return $result;
+        return $columns;
     }
 
     /**
@@ -346,17 +340,6 @@ ORDER BY
         return $replaced;
     }
 
-    public function _noflags($name="")
-    {
-        $return = $name;
-        if($this->is_flag($name))
-        {
-            return "";
-        }
-
-        return $return;
-    }
-
     /**
      * Convert a column name into display text
      * @param fields $column
@@ -366,8 +349,6 @@ ORDER BY
     {
         $names = preg_split("/\_/is", $column->COLUMN_NAME);
         $names = array_map("strtolower", $names);
-        $names = array_map(array($this, "_noflags"), $names);
-        $names = array_filter($names);
         $names = array_map("ucfirst", $names);
         #print_r($names); die();
 
@@ -375,6 +356,8 @@ ORDER BY
          * Remove prefixed word
          */
         if (count($names) >= 2) {
+            // if singular of table prefix matches
+            // Group Of, Pack Of
             unset($names[0]);
         }
 
@@ -382,7 +365,6 @@ ORDER BY
          * Capitalize special names like ID, etc...
          */
         $capitalizer = new capitalizer();
-        //$column->COLUMN_DISPLAY = $capitalizer->capitalize($column->COLUMN_NAME);
         $column->COLUMN_DISPLAY = $capitalizer->capitalize(implode(" ", $names));
 
         // @todo Patch properly

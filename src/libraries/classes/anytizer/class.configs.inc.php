@@ -15,6 +15,7 @@ class configs
     public $endpoints = !false;
     public $angular = !false;
     public $html = !false;
+    public $react = false;
     // api
     // apiunit
     // cs
