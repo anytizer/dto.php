@@ -15,3 +15,4 @@ src/docs-output/
 /nbproject/
 /out
 /src/*.lnk
+/src/inc.config.php

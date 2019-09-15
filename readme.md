@@ -49,15 +49,18 @@ Checkout the required project.
 
     cd dto.php
     composer update
+    
+    cd src
+    cp inc.config-sample inc.config.php
 
 Edit: `inc.config.php` for:
 
  * MySQL Database Connection details
  * Path to business definition files
- * Output location
+ * Relative URL path to [api.php](https://github.com/anytizer/api.php) project.
+ * Output/Export location
 
 
-    cd src
     php -f business.php
 
      
