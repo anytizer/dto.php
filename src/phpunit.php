@@ -1,5 +1,6 @@
 <?php
 require_once("inc.config.php");
+require_once("inc.settings.php");
 
 use parsers\phpunit_parser;
 

@@ -1,5 +1,6 @@
 <?php
 require_once("inc.config.php");
+require_once("inc.settings.php");
 
 use generators\template_reader;
 use parsers\angular_parser;
@@ -79,6 +80,8 @@ foreach ($entities as $business) {
     if ($configs->dto) {
         $dto_parser = new dto_parser();
         $dto_body = $dto_parser->generate($business);
+
+        // @todo Must have columns available
         $dto_body = $dto_parser->laravel($business);
         $dto_body = $dto_parser->cs($business);
 

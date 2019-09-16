@@ -267,7 +267,7 @@ ORDER BY
      * @param string $TABLE_NAME
      * @return array
      */
-    private function _get_all_columns(string $TABLE_NAME)
+    public function _get_all_columns(string $TABLE_NAME)
     {
         global $connection;
         global $orm_name;

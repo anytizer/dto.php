@@ -139,14 +139,14 @@ class dto_parser implements parser
         $table_name = $business->table_name();
 
         $dbaccess = new dbaccess();
-        $result = $dbaccess->_get_columns($table_name);
+        $result = $dbaccess->_get_all_columns($table_name);
         if (count($result)) {
             $result = array_map(array($dbaccess, "dto_rows_cs"), $result);
             $result = array_filter($result);
             $fields = implode("\r\n        ", $result);
 
             $class_name = $business->class_name();
-            $dto_name = $business->dto_name_cs($class_name);
+            $dto_name_cs = $business->dto_name_cs($class_name);
 
             $class_body = str_replace("#__PACKAGE_NAME__", $business->package_name(), $class_body);
             $class_body = str_replace("#__DTO_NAME__", $business->dto_name(), $class_body);
@@ -154,7 +154,7 @@ class dto_parser implements parser
             $class_body = str_replace("#__TABLE_NAME__", $table_name, $class_body);
             $class_body = str_replace("#__FIELDS__", $fields, $class_body);
         } else {
-            die("Not enough tables listed.");
+            die("Not enough tables listed for CS.");
         }
 
         // @todo rename to class.DTONAMEDDTO.inc.php
@@ -175,7 +175,7 @@ class dto_parser implements parser
         $table_name = $business->table_name();
 
         $dbaccess = new dbaccess();
-        $result = $dbaccess->_get_columns($table_name);
+        $result = $dbaccess->_get_all_columns($table_name);
         #print_r($result); die();
         if (count($result)) {
             $fields = array_map(array($dbaccess, "dto_rows"), $result);
@@ -210,7 +210,7 @@ class dto_parser implements parser
             $class_body = str_replace("#__GUARDED_COLUMNS__", $fields_guarded, $class_body);
             $class_body = str_replace("#__PRIMARY_KEY__", $primary_key, $class_body);
         } else {
-            die("Not enough tables were listed.");
+            die("Not enough tables were listed for laravel.");
         }
 
         // @todo rename to class.DTONAMEDDTO.inc.php
