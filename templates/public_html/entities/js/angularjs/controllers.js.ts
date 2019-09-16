@@ -61,6 +61,14 @@
 				// error
 			});
 		},
+		"delete": function (record) {
+			#__CLASS_NAME__Service.#__CLASS_NAME__.Delete(record)
+				.then(function (response) {
+					$scope.#__CLASS_NAME__.init()
+				}, function (error) {
+					// error
+				});
+		},
 		"flag": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.Flag(record)
 				.then(function (response) {

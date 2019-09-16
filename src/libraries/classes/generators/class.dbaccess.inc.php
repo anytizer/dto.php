@@ -230,7 +230,7 @@ ORDER BY
 
     public function _get_primary_key($table_name="")
     {
-        $result = $this->_get_columns($table_name);
+        $result = $this->_get_all_columns($table_name);
         $primary_key = "_id";
         foreach ($result as $c => $COLUMN) {
             if ($COLUMN->COLUMN_KEY == "PRI") {

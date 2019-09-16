@@ -65,7 +65,7 @@ class html_parser implements parser
          * @todo Filter long fields and flags
          */
         $primary_key = $dbaccess->_get_primary_key($table_name);
-        #print_r($columns);
+        #print_r($columns); die("Primary key :". $primary_key.", ".$table_name);
 
         $htmlifier = new htmlifier();
         $column_heads = array_filter(array_map(array($htmlifier, "htmlColumnify"), $columns));

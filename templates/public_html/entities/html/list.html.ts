@@ -16,8 +16,8 @@
 		<tr ng-repeat="(r, record) in #__CLASS_NAME__.records">
 			<td>{{r+1}}</td>
 			#__LISTED_ROWS__
-			<td><a href="#" ui-sref="#__CLASS_NAME__.details({'#__PRIMARY_KEY__': record.#__PRIMARY_KEY__})">Details</a></td>
-			<td><a href="#" ui-sref="#__CLASS_NAME__.edit(record)">Edit</a></td>
+			<td><a href="#" ui-sref="#__CLASS_NAME__.Details({'#__PRIMARY_KEY__': record.#__PRIMARY_KEY__})">Details</a></td>
+			<td><a href="#" ui-sref="#__CLASS_NAME__.Edit({'#__PRIMARY_KEY__': record.#__PRIMARY_KEY__})">Edit</a></td>
 		</tr>
     </tbody>
 </table>
