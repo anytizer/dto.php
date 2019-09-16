@@ -22,40 +22,28 @@ let #__CLASS_NAME__App = myApp;
 			templateUrl: template("welcome.html"),
 		})
 
-		.state("#__CLASS_NAME__.list", {
+		.state("#__CLASS_NAME__.List", {
 			url: "/list",
 			templateUrl: template("list.html"),
 			controller: "#__CLASS_NAME__ListController",
 		})
 
-		.state("#__CLASS_NAME__.details", {
+		.state("#__CLASS_NAME__.Details", {
 			url: "/details/:#__PRIMARY_KEY__",
 			templateUrl: template("details.html"),
 			controller: "#__CLASS_NAME__DetailsController",
 		})
 
-		.state("#__CLASS_NAME__.add", {
+		.state("#__CLASS_NAME__.Add", {
 			url: "/add",
 			templateUrl: template("add.html"),
 			controller: "#__CLASS_NAME__AddController",
 		})
 
-		.state("#__CLASS_NAME__.edit", {
+		.state("#__CLASS_NAME__.Edit", {
 			url: "/edit/:#__PRIMARY_KEY__",
 			templateUrl: template("edit.html"),
 			controller: "#__CLASS_NAME__EditController",
-		})
-
-		.state("#__CLASS_NAME__.delete", {
-			url: "/delete",
-			templateUrl: template("delete.html"),
-			controller: "#__CLASS_NAME__DeleteController",
-		})
-
-		.state("#__CLASS_NAME__.flag", {
-			url: "/flag",
-			templateUrl: template("flag.html"),
-			controller: "#__CLASS_NAME__FlagController",
 		})
 
         #__ANGULAR_ROUTES__
