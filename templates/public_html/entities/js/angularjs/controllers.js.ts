@@ -24,6 +24,22 @@
 				// error
 			});
 		},
+		"flag": function (record) {
+			#__CLASS_NAME__Service.#__CLASS_NAME__.flag(record)
+				.then(function (response) {
+					$scope.#__CLASS_NAME__.init()
+				}, function (error) {
+					// error
+				});
+		},
+		"delete": function (record) {
+			#__CLASS_NAME__Service.#__CLASS_NAME__.delete(record)
+				.then(function (response) {
+					$scope.#__CLASS_NAME__.init()
+				}, function (error) {
+					// error
+				});
+		},
 		"init": function()
 		{
 			$scope.#__CLASS_NAME__.list();
@@ -103,38 +119,6 @@
 	};
 
 	$scope.#__CLASS_NAME__.details($stateParams.#__PRIMARY_KEY__);
-}]);
-
-#__CLASS_NAME__App.controller("#__CLASS_NAME__DeleteController", ["$scope", "$state", "$stateParams", "#__CLASS_NAME__Service", function($scope, $state, $stateParams, #__CLASS_NAME__Service)
-{
-	$scope.#__CLASS_NAME__ = {
-		"error": "",
-		"record": {},
-		"delete": function (record) {
-			#__CLASS_NAME__Service.#__CLASS_NAME__.delete(record)
-			.then(function (response) {
-				$scope.#__CLASS_NAME__.record = response.data;
-			}, function (error) {
-				// error
-			});
-		},
-	};
-}]);
-
-#__CLASS_NAME__App.controller("#__CLASS_NAME__FlagController", ["$scope", "$state", "$stateParams", "#__CLASS_NAME__Service", function($scope, $state, $stateParams, #__CLASS_NAME__Service)
-{
-	$scope.#__CLASS_NAME__ = {
-		"error": "",
-		"record": {},
-		"flag": function (record) {
-			#__CLASS_NAME__Service.#__CLASS_NAME__.flag(record)
-			.then(function (response) {
-				$scope.#__CLASS_NAME__.record = response.data;
-			}, function (error) {
-				// error
-			});
-		},
-	};
 }]);
 
 #__ANGULAR_CONTROLLERS__
