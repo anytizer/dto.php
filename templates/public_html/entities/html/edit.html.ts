@@ -11,7 +11,7 @@
 		Edit
 	</a>
 
-	<a href="#" ui-sref="#__CLASS_NAME__.list({})">
+	<a href="#" ui-sref="#__CLASS_NAME__.details(record)">
 		<i class="fa fa-list" aria-hidden="true"></i>
 		Cancel
 	</a>
