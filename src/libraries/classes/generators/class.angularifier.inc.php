@@ -46,9 +46,10 @@ class angularifier implements bodyfier
     {
         $caser = new caser();
         $method = $caser->psr4($method->method_name);
+        $template = strtolower($method.".html");
         return "
                 \"{$method}\": function (data) {
-                    return fetch(\"{$method}\", data);
+                    return fetch(\"{$template}\", data);
                 },
 ";
     }
@@ -61,6 +62,16 @@ class angularifier implements bodyfier
     {
         $caser = new caser();
         $method = $caser->psr4($method->method_name);
+
+        /**
+         * Pre-implemented featured do not need a template
+         * If any other was requested, proceed.
+         */
+        if(in_array($method, ["List", "Details", "Add", "Edit", "Delete", "Search", "Flag"]))
+        {
+            return "";
+        }
+
         $method_body = "
 #__CLASS_NAME__App.controller(\"{$method}Controller\", [\"\$scope\", function(\$scope)
 {

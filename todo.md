@@ -1,3 +1,6 @@
+urlpart.html: lowercase template lookup
+
+For cs/dto, use full column names.
 Auto Truncate flag columns for display.
     - in tabular form
     - in edit forms
