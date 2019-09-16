@@ -28,11 +28,21 @@ class angularifier implements bodyfier
     {
         $caser = new caser();
         $method = $caser->psr4($method->method_name);
+        $template = strtolower($method.".html");
+
+        /**
+         * Pre-implemented featured do not need a template
+         * If any other was requested, proceed.
+         */
+        if(in_array($method, ["List", "Details", "Add", "Edit", "Delete", "Search", "Flag"]))
+        {
+            return "";
+        }
 
         return "
         .state(\"#__CLASS_NAME__.{$method}\", {
 			url: \"/{$method}\",
-			templateUrl: template(\"{$method}\"),
+			templateUrl: template(\"{$template}\"),
 			controller: \"#__CLASS_NAME__{$method}Controller\",
 		})
 ";
