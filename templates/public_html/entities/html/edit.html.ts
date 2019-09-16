@@ -1,5 +1,5 @@
 <div class="w3-container w3-teal entity-action">
-	<h2>Edit <!-- #__CLASS_NAME__ --></h2>
+	<h2>Edit | <a href="#" ui-sref="#__CLASS_NAME__.List({})">List</a></h2>
 </div>
 
 <div>
@@ -12,7 +12,7 @@
 		Edit
 	</a>
 
-	<a href="#" ui-sref="#__CLASS_NAME__.details(record)">
+	<a href="#" ui-sref="#__CLASS_NAME__.List()">
 		<i class="fa fa-list" aria-hidden="true"></i>
 		Cancel
 	</a>

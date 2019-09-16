@@ -22,14 +22,6 @@ Flags seem to appear in CRUD Templates:
     _On
 
 templates\phpunit\tests\apiunit.phpunit - remove business.
-
-Edit controller to have prefetching details.
-services.js:
-    const APIURL = "../api.php/src";
-    let url = APIURL + "/inventory/NiWarehouses/" + urlpart;
-Do not crud for AngularJS Components, if defaulted.
-Remove JS auto CRUD functions.
-
 Edit -> Link back to cancel/list.
 var NiCyclesApp = myApp; == in router.js
     - router

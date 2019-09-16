@@ -1,5 +1,6 @@
 <div class="w3-container w3-teal entity-action">
-	<h2>List <!-- #__CLASS_NAME__  --></h2>
+	<h2>List | <a ui-sref="#__CLASS_NAME__.Add({})">Add</a>
+	</h2>
 </div>
 
 <table class="list">

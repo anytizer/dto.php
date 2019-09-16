@@ -33,7 +33,7 @@
 				});
 		},
 		"delete": function (record) {
-			#__CLASS_NAME__Service.#__CLASS_NAME__.delete(record)
+			#__CLASS_NAME__Service.#__CLASS_NAME__.Delete(record)
 				.then(function (response) {
 					$scope.#__CLASS_NAME__.init()
 				}, function (error) {
@@ -54,7 +54,7 @@
 	$scope.#__CLASS_NAME__ = {
 		"record": {},
 		"details": function(id){
-			#__CLASS_NAME__Service.#__CLASS_NAME__.details({"#__PRIMARY_KEY__": id})
+			#__CLASS_NAME__Service.#__CLASS_NAME__.Details({"#__PRIMARY_KEY__": id})
 			.then(function(response){
 				$scope.#__CLASS_NAME__.record = response.data;
 			}, function(error){
@@ -62,7 +62,7 @@
 			});
 		},
 		"flag": function (record) {
-			#__CLASS_NAME__Service.#__CLASS_NAME__.flag(record)
+			#__CLASS_NAME__Service.#__CLASS_NAME__.Flag(record)
 				.then(function (response) {
 					$scope.#__CLASS_NAME__.init();
 				}, function (error) {
@@ -83,7 +83,7 @@
 	$scope.#__CLASS_NAME__ = {
 		"record": {},
 		"add": function(record){
-			#__CLASS_NAME__Service.#__CLASS_NAME__.add(record)
+			#__CLASS_NAME__Service.#__CLASS_NAME__.Add(record)
 			.then(function(response){
 				$scope.#__CLASS_NAME__.record = response.data;
 			}, function(error){
@@ -99,7 +99,7 @@
 		"error": "",
 		"record": {},
 		"details": function (id) {
-			#__CLASS_NAME__Service.#__CLASS_NAME__.details({"#__PRIMARY_KEY__": id})
+			#__CLASS_NAME__Service.#__CLASS_NAME__.Details({"#__PRIMARY_KEY__": id})
 				.then(function (response) {
 					$scope.#__CLASS_NAME__.record = response.data;
 				}, function (error) {
@@ -107,7 +107,7 @@
 				});
 		},
 		"edit": function (record) {
-			#__CLASS_NAME__Service.#__CLASS_NAME__.edit(record)
+			#__CLASS_NAME__Service.#__CLASS_NAME__.Edit(record)
 			.then(function (response) {
 				$scope.#__CLASS_NAME__.record = response.data;
 				$state.go("#__CLASS_NAME__.list", ({}));

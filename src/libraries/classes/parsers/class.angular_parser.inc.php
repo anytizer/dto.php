@@ -181,7 +181,7 @@ class angular_parser implements parser
         // @todo Code repeated to calculate primary key
         $dbaccess = new dbaccess();
         $table_name = $business->table_name();
-        $primary_key = "_id";$dbaccess->_get_primary_key($table_name);
+        $primary_key = $dbaccess->_get_primary_key($table_name);
 
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),

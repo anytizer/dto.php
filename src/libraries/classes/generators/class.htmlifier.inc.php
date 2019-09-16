@@ -98,10 +98,12 @@ class htmlifier implements bodyfier
         $class = $this->field_class($column);
 
         $field_body = "
-    <div class=\"field\">
+    <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
-        <div><input class=\"w3-input {$class}\"  type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
-        <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+        <div>
+            <div><input class=\"w3-input {$class}\"  type=\"text\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
+            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+        </div>
     </div>
         ";
 
@@ -171,8 +173,10 @@ Deleted
         $field_body = "
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
-        <div><input type=\"text\" class=\"w3-input {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
-        <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+        <div>
+            <div><input type=\"text\" class=\"w3-input {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
+            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+        </div>
     </div>
         ";
 
