@@ -190,13 +190,8 @@ class dto_parser implements parser
             $fields_guarded = array_filter($fields_guarded);
             $fields_guarded = implode(",\r\n		", $fields_guarded);
 
-            #print_r($result); die();
-            $primary_key = "_id";
-            foreach ($result as $c => $COLUMN) {
-                if ($COLUMN->COLUMN_KEY == "PRI") {
-                    $primary_key = $COLUMN->COLUMN_NAME;
-                }
-            }
+
+            $primary_key = $dbaccess->_get_primary_key($table_name);
 
             $class_name = $business->class_name();
             $dto_name = $business->dto_name($class_name);
