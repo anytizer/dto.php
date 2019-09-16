@@ -266,6 +266,7 @@ class html_parser implements parser
             "#__ANGULAR_APP_NAME__" => $business->class_name(),
 
             "#__MEDIA_URL__" => __MEDIA_URL__,
+            "#__CDN__" => __MEDIA_URL__,
             "#__JS_URL__" => "entities/{$business->package_name()}/{$business->class_name()}/js",
             "#__CSS_URL__" => "entities/{$business->package_name()}/{$business->class_name()}/css",
             "#__PUBLIC_URL__" => __PUBLIC_URL__,

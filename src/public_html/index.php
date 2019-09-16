@@ -23,10 +23,11 @@
 
     </div>
 </div>
-<script src="http://media.example.com:9090/js/angular.min.js"></script>
-<script src="http://media.example.com:9090/js/angular-route.min.js"></script>
-<script src="http://media.example.com:9090/js/angular-ui-router.min.js"></script>
-<script src="http://media.example.com:9090/js/angular-cookies.min.js"></script>
+<script src="#__CDN__/js/angularjs.angular.min.js"></script>
+<script src="#__CDN__/js/angularjs/angular-route.min.js"></script>
+<script src="#__CDN__/js/angularjs/angular-cookies.min.js"></script>
+<script src="#__CDN__/js/ui-router/stateEvents.min.js"></script>
+<script src="#__CDN__/js/ui-router/angular-ui-router.min.js"></script>
 
 <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/app.js"></script>
 <script src="#__URL__/entities/#__PACKAGE_NAME__/#__CLASS_NAME__/js/routes.js"></script>
