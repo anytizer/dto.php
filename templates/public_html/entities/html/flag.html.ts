@@ -1,5 +1,5 @@
-<div class="w3-container w3-teal">
-	<h1>Flag #__CLASS_NAME__</h1>
+<div class="w3-container w3-teal entity-action">
+	<h2>Flag <!-- #__CLASS_NAME__ --></h2>
 </div>
 
 <div>

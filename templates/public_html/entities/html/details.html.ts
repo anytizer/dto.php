@@ -1,5 +1,5 @@
-<div class="w3-container w3-teal">
-	<h1>#__CLASS_NAME__ Details</h1>
+<div class="w3-container w3-teal entity-action">
+	<h2>#__CLASS_NAME__ Details</h2>
 </div>
 
 <div class="details">

@@ -17,7 +17,7 @@
 	$scope.#__CLASS_NAME__ = {
 		"records": {},
 		"list": function () {
-			#__CLASS_NAME__Service.#__CLASS_NAME__.list()
+			#__CLASS_NAME__Service.#__CLASS_NAME__.List()
 			.then(function (response) {
 				$scope.#__CLASS_NAME__.records = response.data;
 			}, function (error) {
@@ -25,7 +25,7 @@
 			});
 		},
 		"flag": function (record) {
-			#__CLASS_NAME__Service.#__CLASS_NAME__.flag(record)
+			#__CLASS_NAME__Service.#__CLASS_NAME__.Flag(record)
 				.then(function (response) {
 					$scope.#__CLASS_NAME__.init()
 				}, function (error) {

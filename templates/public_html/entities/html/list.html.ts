@@ -1,5 +1,5 @@
-<div class="w3-container w3-teal">
-	<h1>List #__CLASS_NAME__</h1>
+<div class="w3-container w3-teal entity-action">
+	<h2>List <!-- #__CLASS_NAME__  --></h2>
 </div>
 
 <table class="list">

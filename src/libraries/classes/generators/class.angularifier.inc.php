@@ -56,10 +56,10 @@ class angularifier implements bodyfier
     {
         $caser = new caser();
         $method = $caser->psr4($method->method_name);
-        $template = strtolower($method.".html");
+        $api = strtolower($method);
         return "
                 \"{$method}\": function (data) {
-                    return fetch(\"{$template}\", data);
+                    return fetch(\"{$api}\", data);
                 },
 ";
     }

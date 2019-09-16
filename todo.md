@@ -1,3 +1,5 @@
+AngularJS Services should not have .html
+index page auto listing crud entities
 urlpart.html: lowercase template lookup
 
 For cs/dto, use full column names.
@@ -68,24 +70,8 @@ Countries-routes.js:11:3
 Loading: http://localhost/angular/libraries/dto.php/output/public_html/entities/WorldMaps/Countries/html/Flag
 /entities/MyDirectory/Contacts/html/DeleteContacts => html/delete-contacts.html
 
-Solidarity; in .ts files at templates\public_html\entities\js\angularjs
-
 dto database hostname username password database > config.db
-dto output /tmp/
-dto phpunit
-dto apiunit
-dto api
-dto angularjs
-dto css
 
-composer require anytizer/capitalizer.php:dev-master
-composer require anytizer/guid.php:dev-master
-composer require anytizer/includer.php:dev-master
-
-
-List page column names are wrong.
-
-Method Name is wrong in method descriptor.
 DTO Fields to have comments
 Featured test does not need API, phpunit test only
 DTO name to support multi words
@@ -117,14 +103,6 @@ OF
 	- bunches of DTOs grouped together
 	- eg. treat one defined as a unit
 
-Generate
-	- HTML Menu
-	- HTML Linking
-
-Function return ype support
-	- get last crawled on: date
-
-
 Should read from database rows for the models and HTMLs.
 
 Use of "global" variables to be discouraged.
@@ -142,19 +120,14 @@ not all models require full crud
 		read only: eg configs
 		flags: delete, flag, activate, suspended
 
-parameterize
-	add(,,) - to take 2 arguments
-
 do not include flag columns in dto
 synchronized test case and method names - via PSR/Snake Case
 controller file write js has php tags
 
 
-produce all fields
 run phpunit tests to pass
 produce endpoint handlers
 see records in the database
-attach the angular js files in the HTMLs
 add crud into the menus somewhere else
 do the acl for user groups
 in business assign, read list of users only from available list

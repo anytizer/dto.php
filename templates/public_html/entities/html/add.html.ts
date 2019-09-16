@@ -1,5 +1,5 @@
-<div class="w3-container w3-teal">
-	<h1>Add #__CLASS_NAME__</h1>
+<div class="w3-container w3-teal entity-action">
+	<h2>Add <!-- #__CLASS_NAME__ --></h2>
 </div>
 
 <div>
@@ -11,10 +11,12 @@
 		<i class="fa fa-plus" aria-hidden="true"></i>
 		Add
 	</a>
+
 	<a href="#" ui-sref="#__CLASS_NAME__.list({})">
 		<i class="fa fa-list" aria-hidden="true"></i>
 		Cancel
 	</a>
+
 </form>
 </div>
 
