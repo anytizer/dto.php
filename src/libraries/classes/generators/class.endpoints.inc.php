@@ -32,12 +32,17 @@ class endpoints extends generator implements bodyfier
         // @todo Support using class names as parameter descriptors
         //print_r($method); die();
 
+        /**
+         * @todo add phpDocComments in produced output
+         */
         $method_body = "
     /**
      * {$method->description}
      *
      * @see #__ENDPOINT_URL__
      * @url {{url}}/#__PACKAGE_NAME__/#__CLASS_NAME__/{$url_snippet}
+     * @param {$parameters}
+     * @return {$return_type}
      */
     {$accessor} function post_{$method->method_name}({$parameters}): {$return_type}
     {
@@ -72,11 +77,11 @@ class endpoints extends generator implements bodyfier
      */
     {$accessor} function {$method->method_name}({$parameters}): {$return_type}
     {
-        \$sql = \"SELECT NOW() n;\";
+        \$sql = \"SELECT * FROM `#__TABLE_NAME__` LIMIT 10;\";
         \$statement = \$this->pdo->prepare(\$sql);
         \$params = [];
         \$statement->execute(\$params);
-        \$result = \$statement->fetch(PDO::FETCH_ASSOC); // fetchAll
+        \$result = \$statement->fetchAll(PDO::FETCH_ASSOC);
         return \$result;
     }
 ";

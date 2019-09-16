@@ -126,6 +126,7 @@ class html_parser implements parser
     {
         $template_reader = new template_reader();
         $method_body = $template_reader->read("public_html/entities/html/edit.html.ts");
+        #die($method_body);
 
         # print_r($business);
         $table_name = $business->table_name();
@@ -145,6 +146,7 @@ class html_parser implements parser
 
         $from = array_keys($replace);
         $to = array_values($replace);
+        $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
         $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/html/edit.html");

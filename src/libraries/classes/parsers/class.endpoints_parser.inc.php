@@ -16,8 +16,32 @@ class endpoints_parser implements parser
 {
     public function generate(business_entity $business)
     {
+        # $template_reader->write($template_reader->read("libraries/dtos/package/class.CustomEloquentModel.inc.ts"), "libraries/dtos/package/class.CustomEloquentModel.inc.php");
+        $this->generate_eloquent($business);
         $this->generate_controller($business);
         $this->generate_model($business);
+    }
+
+    /**
+     * @param $business
+     * @return mixed|string
+     */
+    private function generate_eloquent(business_entity $business): string
+    {
+        $template_reader = new template_reader();
+        $method_body = $template_reader->read("libraries/dtos/package/class.CustomEloquentModel.inc.ts");
+
+        $replace = [
+            "#__PACKAGE_NAME__" => strtolower($business->package_name()),
+            "#__CLASS_NAME__" => strtolower($business->class_name()),
+        ];
+        $from = array_keys($replace);
+        $to = array_values($replace);
+
+        $method_body = str_replace($from, $to, $method_body);
+
+        $template_reader->write($method_body, "api/{$replace['#__PACKAGE_NAME__']}/models/class.CustomEloquentModel.inc.php");
+        return $method_body;
     }
 
     /**
@@ -65,6 +89,7 @@ class endpoints_parser implements parser
         $replace = [
             "#__PACKAGE_NAME__" => strtolower($business->package_name()),
             "#__CLASS_NAME__" => strtolower($business->class_name()),
+            "#__TABLE_NAME__" => strtolower($business->table_name()),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
             "#__ENDPOINT_URL__" => __ENDPOINT_URL__,

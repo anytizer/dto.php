@@ -1,5 +1,5 @@
 <?php
-namespace dtos\#__PACKAGE_NAME__;
+namespace #__PACKAGE_NAME__\models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

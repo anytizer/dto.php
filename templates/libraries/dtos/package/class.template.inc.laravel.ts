@@ -1,5 +1,5 @@
 <?php
-namespace dtos\#__PACKAGE_NAME__;
+amespace #__PACKAGE_NAME__\models;
 
 use Illuminate\Database\Eloquent\Model;
 

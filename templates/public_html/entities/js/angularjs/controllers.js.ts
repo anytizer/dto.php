@@ -94,6 +94,7 @@
 			#__CLASS_NAME__Service.#__CLASS_NAME__.Add(record)
 			.then(function(response){
 				$scope.#__CLASS_NAME__.record = response.data;
+				$state.go("#__CLASS_NAME__.List", {});
 			}, function(error){
 				// error
 			});
@@ -118,7 +119,7 @@
 			#__CLASS_NAME__Service.#__CLASS_NAME__.Edit(record)
 			.then(function (response) {
 				$scope.#__CLASS_NAME__.record = response.data;
-				$state.go("#__CLASS_NAME__.list", ({}));
+				$state.go("#__CLASS_NAME__.List", {});
 			},
 			function (error) {
 				// error

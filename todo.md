@@ -1,18 +1,14 @@
-AngularJS Services should not have .html
-index page auto listing crud entities
-urlpart.html: lowercase template lookup
+CustomEloquentModel - produce once per generation, not per entity.
 
-For cs/dto, use full column names.
-Auto Truncate flag columns for display.
-    - in tabular form
-    - in edit forms
-    - in details pages
-Append .html to Search, Flag, ... when loading templates.
+API Edit() to return details() or boolean.
+
+Edit to have full columns in record.
+index page auto listing crud entities
+
+For cs/dto, use all column names.
 
 List controller to contain flag method.
 details controller to contain delete method.
-#__PRIMARY_KEY__ not replaced in angular controller.
-PHPUnit LogIncomplete...
 
 Flags seem to appear in CRUD Templates:
     Visible
@@ -21,21 +17,13 @@ Flags seem to appear in CRUD Templates:
     _On
     _On
 
-templates\phpunit\tests\apiunit.phpunit - remove business.
+templates\phpunit\tests\apiunit.phpunit - split business.
 Edit -> Link back to cancel/list.
-var NiCyclesApp = myApp; == in router.js
-    - router
-    - directives
-    - services
-    - controller
-replace var with const or let.
-rename controller -> controllers
 
+pre-register: mantis bug id
 http://192.168.1.76/tutor/web/mantis/public_html/view.php?id=37
 
 in methodifier, portion of depends on non-composer class.
-
-Caser - project split into its own to provide test cases
 
 Write model body with column names pre-populated.
 
@@ -81,21 +69,12 @@ Verify that
 	- table name passed exists - business()
 
 Buzz words
-	Account
-	Profile
-	Users
-	Credentials
 	Access control list
 	Permissions
-	Management
 	Login
 
 OF
 	- entire writeup can be grouped inside the application
-	- bunches of DTOs grouped together
-	- eg. treat one defined as a unit
-
-Should read from database rows for the models and HTMLs.
 
 Use of "global" variables to be discouraged.
 Produce PHP Unit Tests scripts as well.
@@ -124,7 +103,8 @@ add crud into the menus somewhere else
 do the acl for user groups
 in business assign, read list of users only from available list
 
-acl, model ==
+== acl, model ==
+
 https://code.tutsplus.com/tutorials/a-better-login-system--net-3461
 http://stackoverflow.com/questions/32060581/simple-php-mysql-acl-system
 http://www.developer.com/lang/php/creating-a-custom-acl-in-php.html
