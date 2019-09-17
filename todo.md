@@ -1,6 +1,9 @@
+Apply search on visible columns when in list mode.
+Validate data at controller level.
+Keep log when something is updated.
 When delete, confirm no, redirects to /units. fix.
 
-Hash check write of files: do not overwrite files modified by hand.
+Hash check write of files (html, api, js): do not overwrite files modified by hand.
 No print css for action columns in listing page.
 uniform general.css, styles.css - use one
 Generate: generate_selenium()
@@ -29,27 +32,10 @@ Write model body with column names pre-populated.
 ID field missing full name in CS.DTO:
 	public string ID { get; set; }
 
-$hidden fields for Laravel ORM.
-
 Faker database for all tables.
 
 add, edit, list, flag orm: pass $parameter.
 Move emails/ into templates API.
-
-Make UI Router compatible URLs.
-eg. edit({}) for /#!/edit...
-
-templateUrl: template("AddContacts"), => add-contacts.html
-
-column_display() appears twice...
-
-.HTML ending
-Loading: http://localhost/angular/libraries/dto.php/output/public_html/entities/WorldMaps/Countries/html/EditCountry
-Countries-routes.js:11:3
-Loading: http://localhost/angular/libraries/dto.php/output/public_html/entities/WorldMaps/Countries/html/Flag
-/entities/MyDirectory/Contacts/html/DeleteContacts => html/delete-contacts.html
-
-dto database hostname username password database > config.db
 
 DTO Fields to have comments
 Featured test does not need API, phpunit test only
@@ -60,12 +46,8 @@ Writing template file is a separate logic
 Register role, method to the database at the time of generation
 Generate endpoints inside proper namespace
 Generate test units inside proper namespace
-Generate API Classes inside proper namespace
 Break into packages, modules, functions for Unit Tests
 Unit tests can repeat by their class names.
-PHPUnit methods and class methods appear as interfaces only
-Verify that
-	- table name passed exists - business()
 
 Buzz words
 	Access control list
@@ -78,11 +60,6 @@ OF
 Use of "global" variables to be discouraged.
 Produce PHP Unit Tests scripts as well.
 non-repeating replacement management for templates and units
-produce html files
-write api endpoints
-do not continue for models without table names.
-do not allow repeated table names
-do not allow repeated model names (managed)
 
 not all models require full crud
 	crud = add, edit, delete, details, lists, flag
@@ -90,13 +67,11 @@ not all models require full crud
 		read only: eg configs
 		flags: delete, flag, activate, suspended
 
-do not include flag columns in dto
 synchronized test case and method names - via PSR/Snake Case
-controller file write js has php tags
 
 add crud into the menus somewhere else
-do the acl for user groups
-in business assign, read list of users only from available list
+do the acl for user groups, not per user
+in business: assign, read list of users only from available list
 
 == acl, model ==
 
