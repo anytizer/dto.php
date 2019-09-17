@@ -6,7 +6,7 @@
 <table class="list">
     <thead>
 		<tr>
-			<th>SN</th>
+			<th>S.N.</th>
 			#__COLUMN_NAMES__
 			<th>Details</th>
 			<th>Edit</th>

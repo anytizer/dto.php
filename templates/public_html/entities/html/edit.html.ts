@@ -7,7 +7,7 @@
 
 	#__EDIT_FIELDS__
 
-	<a href="#" class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.edit(#__CLASS_NAME__.record)">
+	<a href="#" class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.Edit(#__CLASS_NAME__.record)">
 		<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 		Edit
 	</a>

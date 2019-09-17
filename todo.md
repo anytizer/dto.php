@@ -1,14 +1,10 @@
+uniform general.css, styles.css - use one
+
+Produce relay.php test scripts for API
 CustomEloquentModel - produce once per generation, not per entity.
-
 API Edit() to return details() or boolean.
-
 Edit to have full columns in record.
-index page auto listing crud entities
-
 For cs/dto, use all column names.
-
-List controller to contain flag method.
-details controller to contain delete method.
 
 Flags seem to appear in CRUD Templates:
     Visible
@@ -20,7 +16,7 @@ Flags seem to appear in CRUD Templates:
 templates\phpunit\tests\apiunit.phpunit - split business.
 Edit -> Link back to cancel/list.
 
-pre-register: mantis bug id
+pre-registered mantis bug id
 http://192.168.1.76/tutor/web/mantis/public_html/view.php?id=37
 
 in methodifier, portion of depends on non-composer class.

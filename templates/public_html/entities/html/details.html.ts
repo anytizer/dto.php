@@ -7,7 +7,7 @@
 	
 	<div>
 		<!-- Flag -->
-		<span class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.Flag(record)">
+		<span class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.Flag(#__CLASS_NAME__.record)">
 			<i class="fa fa-flag" aria-hidden="true"></i>
 			Flag
 		</span>
@@ -19,7 +19,7 @@
 		</a>
 
 		<!-- Delete -->
-		<a class="w3-btn w3-red" href="#" ng-click="#__CLASS_NAME__.Delete(record)">
+		<a class="w3-btn w3-red" href="#" ng-click="#__CLASS_NAME__.Delete(#__CLASS_NAME__.record)">
 			<i class="fa fa-trash-o" aria-hidden="true"></i>
 			Delete
 		</a>

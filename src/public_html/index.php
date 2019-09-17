@@ -14,6 +14,7 @@
         <div ng-controller="WelcomeController">
             <h1>{{config.appname}}</h1>
             <div class="w3-deep-purple w3-padding">
+                <!-- @todo Convert to UI-SREF -->
                 <a class="w3-btn w3-hover-orange w3-red" href="#!/welcome">Welcome</a>
                 <a class="w3-btn w3-hover-orange w3-red" href="#!/#__CLASS_NAME__/list">#__CLASS_NAME__</a>
             </div>
