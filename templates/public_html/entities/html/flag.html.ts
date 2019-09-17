@@ -10,7 +10,7 @@
 	</div>
 
 	<div>
-		<a class="w3-btn w3-purple" href="#" ui-sref="#__CLASS_NAME__.list({})">Back</a>
+		<a class="w3-btn w3-teal" href="#" ui-sref="#__CLASS_NAME__.list({})">Back</a>
 	</div>
 
 </div>

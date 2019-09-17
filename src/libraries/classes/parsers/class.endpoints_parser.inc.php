@@ -101,7 +101,8 @@ class endpoints_parser implements parser
                 continue;
 
             $keyvalues[] = "`{$column->COLUMN_NAME}`=:{$column->COLUMN_NAME}";
-            $params[] = "\"{$column->COLUMN_NAME}\" => \$data[\"{$column->COLUMN_NAME}\"]";
+            //$params[] = "\"{$column->COLUMN_NAME}\" => \$data[\"{$column->COLUMN_NAME}\"]";
+            $params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]))->text";
         }
         #print_r($columns); die(implode(", ", $keyvalues));
 

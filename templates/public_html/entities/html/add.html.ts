@@ -5,18 +5,22 @@
 <div>
 <form name="add-#__CLASS_NAME__" class="add add-#__CLASS_NAME__">
 
-	#__ADD_FIELDS__
+	<div class="w3-card-4 w3-margin">
+		#__ADD_FIELDS__
+	</div>
 
-	<a href="#" class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.add(record)">
-		<i class="fa fa-plus" aria-hidden="true"></i>
-		Add
-	</a>
+	<div class="w3-card-4 w3-margin w3-padding">
 
-	<a href="#" ui-sref="#__CLASS_NAME__.List({})">
-		<i class="fa fa-list" aria-hidden="true"></i>
-		Cancel
-	</a>
+		<a href="#" class="w3-btn w3-teal" ng-click="#__CLASS_NAME__.add(record)">
+			<i class="fa fa-plus" aria-hidden="true"></i>
+			Add
+		</a>
 
+		<a href="#" ui-sref="#__CLASS_NAME__.List({})">
+			<i class="fa fa-list" aria-hidden="true"></i>
+			Cancel
+		</a>
+	</div>
 </form>
 </div>
 

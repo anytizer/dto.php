@@ -27,7 +27,7 @@ http://192.168.1.76/tutor/web/mantis/public_html/view.php?id=37
 
 in methodifier, portion of depends on non-composer class.
 
-Write model body with column names pre-populated.
+Write controller body with column names pre-validated.
 
 ID field missing full name in CS.DTO:
 	public string ID { get; set; }

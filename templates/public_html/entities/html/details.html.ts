@@ -3,17 +3,19 @@
 </div>
 
 <div class="details">
-	#__DETAILS_FIELDS__
-	
-	<div>
+
+	<div class="w3-card-4 w3-margin w3-padding">
+		#__DETAILS_FIELDS__
+	</div>
+	<div class="w3-card-4 w3-margin w3-padding">
 		<!-- Flag -->
-		<span class="w3-btn w3-purple" ng-click="#__CLASS_NAME__.Flag(#__CLASS_NAME__.record)">
+		<span class="w3-btn w3-teal" ng-click="#__CLASS_NAME__.Flag(#__CLASS_NAME__.record)">
 			<i class="fa fa-flag" aria-hidden="true"></i>
 			Flag
 		</span>
 
 		<!-- Edit -->
-		<a class="w3-btn w3-purple" href="#" ui-sref="#__CLASS_NAME__.Edit({'#__PRIMARY_KEY__': #__CLASS_NAME__.record.#__PRIMARY_KEY__})">
+		<a class="w3-btn w3-teal" href="#" ui-sref="#__CLASS_NAME__.Edit({'#__PRIMARY_KEY__': #__CLASS_NAME__.record.#__PRIMARY_KEY__})">
 			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 			Edit
 		</a>

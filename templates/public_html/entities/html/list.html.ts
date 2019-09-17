@@ -3,9 +3,10 @@
 	</h2>
 </div>
 
-<table class="w3-table w3-bordered w3-striped w3-border w3-hoverable list">
+<!-- w3-hoverable -->
+<table class="w3-table w3-bordered w3-striped w3-border list">
     <thead>
-		<tr class="w3-sand">
+		<tr class="w3-pale-blue">
 			<th>S.N.</th>
 			#__COLUMN_NAMES__
 			<th class="no-print">Details</th>
