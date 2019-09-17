@@ -141,3 +141,9 @@ form {
         border-bottom: 1px solid #EEE;
     }
 }
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}

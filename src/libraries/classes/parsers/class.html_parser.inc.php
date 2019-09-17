@@ -307,14 +307,14 @@ class html_parser implements parser
     private function import_css(business_entity $business)
     {
         $template_reader = new template_reader();
-        $method_body = $template_reader->read("public_html/entities/css/style.css.ts");
+        $method_body = $template_reader->read("public_html/entities/css/styles.css.ts");
 
         $replace = $this->get_replaces($business);
         $from = array_keys($replace);
         $to = array_values($replace);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/css/style.css");
+        $template_reader->write($method_body, "public_html/entities/{$business->package_name()}/{$business->class_name()}/css/styles.css");
 
         return $method_body;
     }

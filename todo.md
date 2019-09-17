@@ -1,9 +1,7 @@
 uniform general.css, styles.css - use one
-
-Produce relay.php test scripts for API
+Generate: generate_selenium()
+Generate: relay.php test scripts for API
 CustomEloquentModel - produce once per generation, not per entity.
-API Edit() to return details() or boolean.
-Edit to have full columns in record.
 For cs/dto, use all column names.
 
 Flags seem to appear in CRUD Templates:
@@ -91,10 +89,6 @@ do not include flag columns in dto
 synchronized test case and method names - via PSR/Snake Case
 controller file write js has php tags
 
-
-run phpunit tests to pass
-produce endpoint handlers
-see records in the database
 add crud into the menus somewhere else
 do the acl for user groups
 in business assign, read list of users only from available list
