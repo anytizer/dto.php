@@ -1,3 +1,6 @@
+When delete, confirm no, redirects to /units. fix.
+
+Hash check write of files: do not overwrite files modified by hand.
 No print css for action columns in listing page.
 uniform general.css, styles.css - use one
 Generate: generate_selenium()
@@ -11,6 +14,7 @@ Flags seem to appear in CRUD Templates:
     _By
     _On
     _On
+    _Of
 
 templates\phpunit\tests\apiunit.phpunit - split business.
 Edit -> Link back to cancel/list.

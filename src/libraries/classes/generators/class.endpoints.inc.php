@@ -67,7 +67,7 @@ class endpoints extends generator implements bodyfier
      */
     public function methodify_model(method_descriptor $method): string
     {
-        if(in_array($method->method_name, ["list", "details"]))
+        if(in_array($method->method_name, ["list", "details", "delete", "flag", "edit"]))
         {
             return "";
         }

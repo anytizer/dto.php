@@ -1,5 +1,5 @@
 <div class="w3-container w3-teal entity-action">
-	<h2>List | <a ui-sref="#__CLASS_NAME__.Add({})">Add</a>
+	<h2><a class="disabled" href="#"><i class="fas fa-list"></i> List</a> | <a class="enabled" ui-sref="#__CLASS_NAME__.Add({})"><i class="far fa-plus-square"></i> Add</a>
 	</h2>
 </div>
 
@@ -16,8 +16,8 @@
 		<tr ng-repeat="(r, record) in #__CLASS_NAME__.records">
 			<td>{{r+1}}</td>
 			#__LISTED_ROWS__
-			<td><a class="w3-text-green" href="#" ui-sref="#__CLASS_NAME__.Details({'#__PRIMARY_KEY__': record.#__PRIMARY_KEY__})">Details</a></td>
-			<td><a class="w3-text-green" href="#" ui-sref="#__CLASS_NAME__.Edit({'#__PRIMARY_KEY__': record.#__PRIMARY_KEY__})">Edit</a></td>
+			<td><a class="action" href="#" ui-sref="#__CLASS_NAME__.Details({'#__PRIMARY_KEY__': record.#__PRIMARY_KEY__})">Details</a></td>
+			<td><a class="action" href="#" ui-sref="#__CLASS_NAME__.Edit({'#__PRIMARY_KEY__': record.#__PRIMARY_KEY__})">Edit</a></td>
 		</tr>
     </tbody>
 </table>

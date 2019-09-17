@@ -88,16 +88,34 @@ class endpoints_parser implements parser
         $methods = array_map(array($endpoints, "methodify_model"), $business->methods_list());
 
         $dbaccess = new dbaccess();
-        $primary_key = $dbaccess->_get_primary_key($business->table_name());
+        $table_name = $business->table_name();
+        $primary_key = $dbaccess->_get_primary_key($table_name);
+
+        $keyvalues = [];
+        $params = [];
+        $columns = $dbaccess->_get_all_columns($table_name);
+        foreach($columns as $column)
+        {
+            # Do not include primary key
+            if($column->COLUMN_NAME == $primary_key)
+                continue;
+
+            $keyvalues[] = "`{$column->COLUMN_NAME}`=:{$column->COLUMN_NAME}";
+            $params[] = "\"{$column->COLUMN_NAME}\" => \$data[\"{$column->COLUMN_NAME}\"]";
+        }
+        #print_r($columns); die(implode(", ", $keyvalues));
 
         $replace = [
             "#__PACKAGE_NAME__" => strtolower($business->package_name()),
             "#__CLASS_NAME__" => strtolower($business->class_name()),
-            "#__TABLE_NAME__" => strtolower($business->table_name()),
+            "#__TABLE_NAME__" => strtolower($table_name),
             "#__PRIMARY_KEY__" => $primary_key,
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
             "#__ENDPOINT_URL__" => __ENDPOINT_URL__,
+
+            "#__KEYVALUE_PAIR__" => implode(",\r\n            ", $keyvalues),
+            "#__PARAMS__" => implode(",\r\n            ", $params),
         ];
         $from = array_keys($replace);
         $to = array_values($replace);

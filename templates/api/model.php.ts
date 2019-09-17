@@ -39,7 +39,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      */
     public function list($data=array()): array
     {
-        $sql = "SELECT * FROM `#__TABLE_NAME__` LIMIT 1000;";
+        $sql = "SELECT * FROM `#__TABLE_NAME__` WHERE is_active='Y' LIMIT 1000;";
         $statement = $this->pdo->prepare($sql);
         $params = [];
         $statement->execute($params);
@@ -63,6 +63,64 @@ class model_#__CLASS_NAME__ extends model_abstracts
         $statement->execute($params);
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
+    }
+
+
+    /**
+     * Delete
+     *
+     * @param $data
+     */
+    public function delete($data=array()): array
+    {
+        $sql = "UPDATE `#__TABLE_NAME__` SET is_active='N' WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
+        $statement = $this->pdo->prepare($sql);
+        $params = [
+            "#__PRIMARY_KEY__" => $data["#__PRIMARY_KEY__"],
+        ];
+        $statement->execute($params);
+        $success = $statement->execute($params);
+        return ["success" => $success];
+    }
+
+
+    /**
+     * Flag
+     * @todo Flag column should be is_flagged, not is_approved
+     * @param $data
+     */
+    public function flag($data=array()): array
+    {
+        $sql = "UPDATE `#__TABLE_NAME__` SET is_approved=IF(is_approved='Y', 'N', 'Y') WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
+        $statement = $this->pdo->prepare($sql);
+        $params = [
+            "#__PRIMARY_KEY__" => $data["#__PRIMARY_KEY__"],
+        ];
+        $success = $statement->execute($params);
+        return ["success" => $success];
+    }
+
+
+    /**
+     * Edit
+     * @param $data
+     */
+    public function edit($data=array()): array
+    {
+        /**
+         * #__KEYVALUE_PAIR__
+         */
+        $sql = "UPDATE `#__TABLE_NAME__` SET
+            #__KEYVALUE_PAIR__
+        WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
+        $statement = $this->pdo->prepare($sql);
+        $params = [
+            #__PARAMS__,
+
+            "#__PRIMARY_KEY__" => $data["#__PRIMARY_KEY__"],
+        ];
+        $success = $statement->execute($params);
+        return ["success" => $success];
     }
 
 

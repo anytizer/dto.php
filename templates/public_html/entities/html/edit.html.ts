@@ -1,5 +1,5 @@
 <div class="w3-container w3-teal entity-action">
-	<h2>Edit | <a href="#" ui-sref="#__CLASS_NAME__.List({})">List</a></h2>
+	<h2><a class="disabled" href="#"><i class="fas fa-book"></i> Edit</a> | <a class="enabled" href="#" ui-sref="#__CLASS_NAME__.List({})"><i class="fas fa-list"></i> List</a></h2>
 </div>
 
 <div>

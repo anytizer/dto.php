@@ -24,7 +24,7 @@
 				// error
 			});
 		},
-		"flag": function (record) {
+		"Flag": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.Flag(record)
 				.then(function (response) {
 					$scope.#__CLASS_NAME__.init();
@@ -32,7 +32,7 @@
 					// error
 				});
 		},
-		"delete": function (record) {
+		"Delete": function (record) {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.Delete(record)
 				.then(function (response) {
 					$scope.#__CLASS_NAME__.init();
@@ -62,7 +62,7 @@
 			});
 		},
 		"Delete": function (record) {
-			console.log(record);
+			if(!window.confirm("Are you sure?")) return;
 			#__CLASS_NAME__Service.#__CLASS_NAME__.Delete(record)
 				.then(function (response) {
 					$scope.#__CLASS_NAME__.init();
@@ -75,7 +75,7 @@
 			#__CLASS_NAME__Service.#__CLASS_NAME__.Flag(record)
 				.then(function (response) {
 					$scope.#__CLASS_NAME__.init();
-					// $state.go("#__CLASS_NAME__.List", {});
+					$state.go("#__CLASS_NAME__.List", {});
 				}, function (error) {
 					// error
 				});
