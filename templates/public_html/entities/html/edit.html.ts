@@ -20,7 +20,7 @@
 </form>
 </div>
 
-{{#__CLASS_NAME__.record}}
+<!--{{#__CLASS_NAME__.record}}-->
 
 <script type="text/javascript">reinstall_resources();</script>
 

@@ -107,9 +107,6 @@ class model_#__CLASS_NAME__ extends model_abstracts
      */
     public function edit($data=array()): array
     {
-        /**
-         * #__KEYVALUE_PAIR__
-         */
         $sql = "UPDATE `#__TABLE_NAME__` SET
             #__KEYVALUE_PAIR__
         WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
