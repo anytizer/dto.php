@@ -2,6 +2,7 @@
 namespace #__PACKAGE_NAME__\models;
 
 use anytizer\sanitize;
+use anytizer\guid;
 use system\abstracts\model_abstracts;
 use \PDO;
 
@@ -98,6 +99,31 @@ class model_#__CLASS_NAME__ extends model_abstracts
 
             "#__PRIMARY_KEY__" => $data["#__PRIMARY_KEY__"],
         ];
+        $success = $statement->execute($params);
+        return ["success" => $success];
+    }
+
+
+    /**
+     * Add #__TABLE_NAME__ by: #__PRIMARY_KEY__
+     * @param $data
+     *
+     * @see https://github.com/anytizer/guid.php
+     */
+    public function add($data=array()): array
+    {
+        $sql = "
+INSERT INTO `#__TABLE_NAME__` (
+    #__INSERTS_COLUMNS__
+) VALUES (
+    #__INSERTS_VALUES__
+);";
+        $statement = $this->pdo->prepare($sql);
+        $params = [
+            "#__PRIMARY_KEY__" => (new Guid())->NewGuid(),
+
+            #__INSERTS_PARAMS__,
+         ];
         $success = $statement->execute($params);
         return ["success" => $success];
     }

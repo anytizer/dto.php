@@ -24,7 +24,7 @@
 </form>
 </div>
 
-{{record}}
+<!--{{record}}-->
 
 <script type="text/javascript">reinstall_resources();</script>
 

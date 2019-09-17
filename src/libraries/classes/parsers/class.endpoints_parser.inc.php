@@ -91,8 +91,15 @@ class endpoints_parser implements parser
         $table_name = $business->table_name();
         $primary_key = $dbaccess->_get_primary_key($table_name);
 
+        # For edits
         $keyvalues = [];
         $params = [];
+
+        # for inserts
+        $inserts_values = [":{$primary_key}"];
+        $inserts_columns = ["`{$primary_key}`"];
+        $inserts_params = [];
+
         $columns = $dbaccess->_get_all_columns($table_name);
         foreach($columns as $column)
         {
@@ -103,8 +110,13 @@ class endpoints_parser implements parser
             $keyvalues[] = "`{$column->COLUMN_NAME}`=:{$column->COLUMN_NAME}";
             //$params[] = "\"{$column->COLUMN_NAME}\" => \$data[\"{$column->COLUMN_NAME}\"]";
             $params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]))->text";
+
+            $inserts_values[] = ":{$column->COLUMN_NAME}";
+            $inserts_columns[] = "`{$column->COLUMN_NAME}`";
+            $inserts_params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]??null))->text";
         }
         #print_r($columns); die(implode(", ", $keyvalues));
+        #print_r($inserts_columns); print_r($inserts_values); die('');
 
         $replace = [
             "#__PACKAGE_NAME__" => strtolower($business->package_name()),
@@ -115,8 +127,14 @@ class endpoints_parser implements parser
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
             "#__ENDPOINT_URL__" => __ENDPOINT_URL__,
 
+            // For EDIT mode
             "#__KEYVALUE_PAIR__" => implode(",\r\n            ", $keyvalues),
             "#__PARAMS__" => implode(",\r\n            ", $params),
+
+            // for ADD mode
+            "#__INSERTS_COLUMNS__" => implode(",\r\n    ", $inserts_columns),
+            "#__INSERTS_VALUES__" => implode(",\r\n    ", $inserts_values),
+            "#__INSERTS_PARAMS__" => implode(",\r\n            ", $inserts_params),
         ];
         $from = array_keys($replace);
         $to = array_values($replace);
