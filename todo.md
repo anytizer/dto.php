@@ -1,3 +1,4 @@
+No print css for action columns in listing page.
 uniform general.css, styles.css - use one
 Generate: generate_selenium()
 Generate: relay.php test scripts for API

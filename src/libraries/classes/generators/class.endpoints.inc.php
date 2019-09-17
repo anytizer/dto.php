@@ -50,7 +50,7 @@ class endpoints extends generator implements bodyfier
         //if(\$this->APIUser->can(\$this->role->method(\"{$method->method_name}\")))
         {
             \$m = new model_#__CLASS_NAME__();
-            \$response = \$m->{$method->method_name}(\$data);
+            \$response = \$m->{$method->method_name}(\$_POST); // @todo fix super global
         }
         
         return \$response;
@@ -67,6 +67,11 @@ class endpoints extends generator implements bodyfier
      */
     public function methodify_model(method_descriptor $method): string
     {
+        if(in_array($method->method_name, ["list", "details"]))
+        {
+            return "";
+        }
+
         $accessor = $method->accessor;
         $parameters = "\$data=array()"; // $method->parameters;
         $return_type = "array"; // $method->return_type;

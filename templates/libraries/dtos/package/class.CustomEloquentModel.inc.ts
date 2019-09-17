@@ -3,13 +3,28 @@ namespace #__PACKAGE_NAME__\models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+$capsule = new Capsule;
+$capsule->addConnection([
+    "driver" => "mysql",
+    "host" => "localhost",
+    "database" => "inventory",
+    "username" => "root",
+    "password" => ""
+]);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
 /**
  * @see https://laravel.com/docs/6.x/eloquent-mutators
+ * @see https://laravel.com/docs/master/eloquent-serialization
  */
-abstract CustomEloquentModel
+abstract class CustomEloquentModel extends Model
 {
-    protected $incrementing = false;
+    protected $table = null;
+    protected $primaryKey = null;
     protected $keyType = "string";
+    public $incrementing = false;
 
     public $timestamps = false;
     protected $dateFormat = "Y-m-d H:i:s";

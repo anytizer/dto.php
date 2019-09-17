@@ -2,6 +2,7 @@
 
 namespace parsers;
 
+use generators\dbaccess;
 use generators\endpoints;
 use generators\template_reader;
 use anytizer\business_entity;
@@ -86,10 +87,14 @@ class endpoints_parser implements parser
         $endpoints = new endpoints();
         $methods = array_map(array($endpoints, "methodify_model"), $business->methods_list());
 
+        $dbaccess = new dbaccess();
+        $primary_key = $dbaccess->_get_primary_key($business->table_name());
+
         $replace = [
             "#__PACKAGE_NAME__" => strtolower($business->package_name()),
             "#__CLASS_NAME__" => strtolower($business->class_name()),
             "#__TABLE_NAME__" => strtolower($business->table_name()),
+            "#__PRIMARY_KEY__" => $primary_key,
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
             "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
             "#__ENDPOINT_URL__" => __ENDPOINT_URL__,
