@@ -391,7 +391,7 @@ ORDER BY
      */
     private function is_date(fields $field): bool
     {
-        $is_date = (boolean)preg_match("/\_(on|date)$/is", $field->COLUMN_NAME);
+        $is_date = (boolean)preg_match("/\_(at|on|date)$/is", $field->COLUMN_NAME);
         $this->isDate = $is_date;
         return $is_date;
     }

@@ -23,6 +23,8 @@ $orm_name = "inventory";
 $configurations = [
     /**
      * path to definitions.business/definitions
+     * @see https://github.com/anytizer/definitions.business == generator
+     * @see https://github.com/anytizer/business.definitions == output
      */
     "definitions_located_at" => "../../business.definitions",
 
@@ -47,12 +49,14 @@ $configurations = [
 
     /**
      * Where is API.php located at? full URL.
+     * @see https://github.com/anytizer/api.php
      */
     "api_url" => "../api.php/src",
 
     /**
      * public_html of media.cdn project path
-     * example: "http://media.example.com:9090",
+     * example: "http://media.example.com:9090"
+     * @see https://github.com/anytizer/media.cdn
      */
     "cdn" => "http://localhost/media.cdn/public_html",
 ];

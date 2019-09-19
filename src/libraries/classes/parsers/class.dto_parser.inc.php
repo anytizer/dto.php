@@ -154,7 +154,7 @@ class dto_parser implements parser
             $class_body = str_replace("#__TABLE_NAME__", $table_name, $class_body);
             $class_body = str_replace("#__FIELDS__", $fields, $class_body);
         } else {
-            die("Not enough tables listed for CS.");
+            echo "Not enough tables listed for CS.";
         }
 
         // @todo rename to class.DTONAMEDDTO.inc.php
@@ -190,7 +190,6 @@ class dto_parser implements parser
             $fields_guarded = array_filter($fields_guarded);
             $fields_guarded = implode(",\r\n		", $fields_guarded);
 
-
             $primary_key = $dbaccess->_get_primary_key($table_name);
 
             $class_name = $business->class_name();
@@ -205,7 +204,7 @@ class dto_parser implements parser
             $class_body = str_replace("#__GUARDED_COLUMNS__", $fields_guarded, $class_body);
             $class_body = str_replace("#__PRIMARY_KEY__", $primary_key, $class_body);
         } else {
-            die("Not enough tables were listed for laravel.");
+            echo "Not enough tables were listed for laravel.";
         }
 
         // @todo rename to class.DTONAMEDDTO.inc.php

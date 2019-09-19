@@ -34,7 +34,7 @@ class htmlifier implements bodyfier
         }
 
         #print_r($column); die();
-        $field_body = "\t\t<th>{$column->COLUMN_DISPLAY}</th>";
+        $field_body = "<th>{$column->COLUMN_DISPLAY}</th>";
         return $field_body;
     }
 
@@ -56,7 +56,7 @@ class htmlifier implements bodyfier
         // <div>{$column->COLUMN_NAME}</div>
         #print_r($column); die();
         // #__LISTED_ROWS__
-        $field_body = "\t\t<td>{{record.{$column->COLUMN_NAME}}}</td>";
+        $field_body = "<td>{{record.{$column->COLUMN_NAME}}}</td>";
         return $field_body;
     }
 
@@ -68,6 +68,10 @@ class htmlifier implements bodyfier
      */
     public function htmQuickies(fields $column): string
     {
+        if ($column->isLong || $column->isPrivate) {
+            return "";
+        }
+
         return "<td><input class='w3-input' type='text' ng-model='quickies.{$column->COLUMN_NAME}' placeholder='' /></td>";
     }
 
@@ -107,8 +111,45 @@ class htmlifier implements bodyfier
         }
 
         $class = $this->field_class($column);
+        // @see https://www.w3schools.com/html/html_form_input_types.asp
+        // if date, date field
+        // long: text area
+        // enum: radio
 
-        $field_body = "
+        $field_body = "";
+
+        if($column->isDate && $field_body=="")
+        {
+            $field_body = "
+    <div class=\"w3-padding field\">
+        <label>{$column->COLUMN_DISPLAY}</label>
+        <div>
+            <div><input class=\"w3-input {$class}\"  type=\"datetime-local\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
+            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+        </div>
+    </div>
+        ";
+        }
+
+        if($column->isLong && $field_body=="")
+        {
+            $field_body = "
+    <div class=\"w3-padding field\">
+        <label>{$column->COLUMN_DISPLAY}</label>
+        <div>
+            <div><textarea class=\"w3-input {$class}\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" placeholder=\"\"></textarea></div>
+            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+        </div>
+    </div>
+        ";
+        }
+
+        /**
+         * If nobody selected, a default style
+         */
+        if($field_body == "")
+        {
+            $field_body = "
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
@@ -117,6 +158,8 @@ class htmlifier implements bodyfier
         </div>
     </div>
         ";
+        }
+
 
         return $field_body;
     }
