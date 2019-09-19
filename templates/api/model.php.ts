@@ -18,7 +18,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * @param $data
      * @return array
      */
-    public function list($data=array()): array
+    public function list($data=[]): array
     {
         $sql = "SELECT * FROM `#__TABLE_NAME__` WHERE is_active='Y' LIMIT 1000;";
         $statement = $this->pdo->prepare($sql);
@@ -35,7 +35,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * @param $data
      * @return array
      */
-    public function details($data=array()): array
+    public function details($data=[]): array
     {
         $sql = "SELECT * FROM `#__TABLE_NAME__` WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
         $statement = $this->pdo->prepare($sql);
@@ -54,7 +54,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * @param $data
      * @return array
      */
-    public function delete($data=array()): array
+    public function delete($data=[]): array
     {
         $sql = "UPDATE `#__TABLE_NAME__` SET is_active='N' WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
         $statement = $this->pdo->prepare($sql);
@@ -73,7 +73,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * @param $data
      * @return array
      */
-    public function flag($data=array()): array
+    public function flag($data=[]): array
     {
         $sql = "UPDATE `#__TABLE_NAME__` SET is_approved=IF(is_approved='Y', 'N', 'Y') WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
         $statement = $this->pdo->prepare($sql);
@@ -93,7 +93,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * @todo Sanitize the data properly.
      * @see https://github.com/anytizer/anytizer.php
      */
-    public function edit($data=array()): array
+    public function edit($data=[]): array
     {
         $sql = "UPDATE `#__TABLE_NAME__` SET
             #__KEYVALUE_PAIR__
@@ -116,7 +116,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      *
      * @see https://github.com/anytizer/guid.php
      */
-    public function add($data=array()): array
+    public function add($data=[]): array
     {
         $sql = "
 INSERT INTO `#__TABLE_NAME__` (

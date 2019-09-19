@@ -29,7 +29,7 @@ class endpoints extends generator implements bodyfier
         $url_snippet = preg_replace("/\\_/is", "-", $method->method_name);
 
         $accessor = $method->accessor;
-        $parameters = "\$data=array()"; // $method->parameters;
+        $parameters = "\$data=[]"; // $method->parameters;
         $return_type = "array"; // $method->return_type;
 
         // @todo Handle even if there are no parameters
@@ -77,7 +77,7 @@ class endpoints extends generator implements bodyfier
         }
 
         $accessor = $method->accessor;
-        $parameters = "\$data=array()"; // $method->parameters;
+        $parameters = "\$data=[]"; // $method->parameters;
         $return_type = "array"; // $method->return_type??"void";
 
         $method_body = "

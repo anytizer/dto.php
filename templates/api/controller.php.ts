@@ -26,10 +26,10 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
      *
      * @see ../api.php/src
      * @url {{url}}/#__PACKAGE_NAME__/#__CLASS_NAME__/add
-     * @param $data=array()
+     * @param $data=[]
      * @return array
      */
-    public function post_add($data=array()): array
+    public function post_add($data=[]): array
     {
         $response = null;
 

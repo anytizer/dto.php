@@ -334,7 +334,7 @@ ORDER BY
      */
     private function replace(string $body): string
     {
-        $replace = array();
+        $replace = [];
 
         $from = array_keys($replace);
         $to = array_values($replace);
