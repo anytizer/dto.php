@@ -15,7 +15,8 @@
 #__CLASS_NAME__App.controller("#__CLASS_NAME__ListController", ["$scope", "$state", "$stateParams", "#__CLASS_NAME__Service", function($scope, $state, $stateParams, #__CLASS_NAME__Service)
 {
 	$scope.#__CLASS_NAME__ = {
-		"records": {},
+		"quickies": {},
+		"records": [],
 		"List": function () {
 			#__CLASS_NAME__Service.#__CLASS_NAME__.List()
 			.then(function (response) {
