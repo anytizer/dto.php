@@ -1,7 +1,7 @@
 <div class="w3-container w3-teal entity-action">
 	<h2>
-		<a class="disabled" href="#"><i class="fas fa-list"></i> List</a>
-		<span class="no-print">| <a class="enabled" ui-sref="#__CLASS_NAME__.Add({})"><i class="far fa-plus-square"></i> Add</a></span>
+		<span class="disabled"><i class="fas fa-list"></i> List</span>
+		<span class="no-print">| <a class="enabled" ui-sref="#__CLASS_NAME__.Add({})"><i class="fas fa-plus"></i> Add</a></span>
 	</h2>
 </div>
 
@@ -9,7 +9,7 @@
 <table class="w3-table w3-bordered w3-striped w3-border list">
 	<tbody class="no-print">
 		<tr class="w3-pale-yellow">
-			<td><i class="fas fa-search w3-text-green" ng-click="quickies={}"></i></i></td>
+			<td><i class="fas fa-search w3-text-green"></i></i></td>
 			#__COLUMN_NAMES_QUICKIES__
 			<td><i class="fas fa-times w3-btn w3-green" ng-click="quickies={}"></i></i></td>
 			<td>&nbsp;</td>

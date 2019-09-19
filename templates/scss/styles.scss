@@ -143,9 +143,9 @@ form {
 }
 
 /** w3-text-green */
-a.action { color: #4caf50; } /** in list table */
-a.enabled { color: white; }
-a.disabled { color: gray; }
+.action { color: #4caf50; } /** in list table */
+.enabled { color: white; }
+.disabled { color: gray; }
 
 @media print {
     .no-print {

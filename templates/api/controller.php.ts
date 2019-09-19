@@ -40,7 +40,7 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
             ];
 
             $m = new model_#__CLASS_NAME__();
-            $response = $m->add($data); // @todo fix super global
+            $response = $m->add($data);
         }
 
         return $response;

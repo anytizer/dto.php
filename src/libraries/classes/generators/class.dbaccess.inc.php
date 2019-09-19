@@ -250,13 +250,15 @@ ORDER BY
     public function _get_columns(string $TABLE_NAME)
     {
         $columns = $this->_get_all_columns($TABLE_NAME);
-        // $primary_key = $this->_get_primary_key($TABLE_NAME); // get table prefix here to remove other prefixes
+        $primary_key = $this->_get_primary_key($TABLE_NAME); // get table prefix here to remove other prefixes
+        #$prefix = preg_split("/_/is", $primary_key)[0];
         foreach($columns as $c => $column)
         {
             if($this->is_flag($column)) unset($columns[$c]);
             if($this->is_date($column)) unset($columns[$c]);
             if($this->is_long($column)) unset($columns[$c]);
             if($this->is_autoid($column)) unset($columns[$c]);
+            #$column->prefix = $prefix;
         }
         $columns = array_map(array($this, "column_display"), $columns);
 
@@ -351,7 +353,7 @@ ORDER BY
         $names = preg_split("/\_/is", $column->COLUMN_NAME);
         $names = array_map("strtolower", $names);
         $names = array_map("ucfirst", $names);
-        #print_r($names); die();
+        #print_r($names); print_r($column); die();
 
         /**
          * Remove prefixed word
@@ -360,7 +362,10 @@ ORDER BY
         if (count($names) >= 2) {
             // if singular of table prefix matches
             // Group Of, Pack Of
-            unset($names[0]);
+            # if($column->prefix!="" && $column->prefix == $names[0])
+            {
+                unset($names[0]);
+            }
         }
 
         /**

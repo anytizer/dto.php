@@ -1,6 +1,6 @@
 <div class="w3-container w3-teal entity-action">
 	<h2>
-		<a class="disabled" href="#"><i class="fas fa-book-open"></i> Details</a>
+		<span class="disabled" href="#"><i class="fas fa-book-open"></i> Details</span>
 		<span class="no-print">| <a class="enabled" href="#" ui-sref="#__CLASS_NAME__.List({})"><i class="fas fa-list"></i> List</a></span>
 	</h2>
 </div>
