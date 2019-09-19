@@ -18,7 +18,7 @@ class endpoints_parser implements parser
     public function generate(business_entity $business)
     {
         # $template_reader->write($template_reader->read("libraries/dtos/package/class.CustomEloquentModel.inc.ts"), "libraries/dtos/package/class.CustomEloquentModel.inc.php");
-        $this->generate_eloquent($business);
+        $this->generate_eloquent($business); // not used currently
         $this->generate_controller($business);
         $this->generate_model($business);
     }
@@ -57,12 +57,29 @@ class endpoints_parser implements parser
         $endpoints = new endpoints();
         $methods = array_map(array($endpoints, "methodify"), $business->methods_list());
 
+        $dbaccess = new dbaccess();
+        $table_name = $business->table_name();
+        $primary_key = $dbaccess->_get_primary_key($table_name);
+        $columns = $dbaccess->_get_columns($table_name); // not all columns!
+        $inserts_params = [];
+        foreach($columns as $column)
+        {
+            # Do not include primary key
+            if($column->COLUMN_NAME == $primary_key)
+                continue;
+
+            $default = $column->COLUMN_DEFAULT?"\"{$column->COLUMN_DEFAULT}\"":"null"; // PHP NULL or value wrapped in double quotes
+            $inserts_params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$_POST[\"{$column->COLUMN_NAME}\"]??{$default}))->text";
+        }
+
         $replace = [
             "#__PACKAGE_NAME__" => strtolower($business->package_name()),
             "#__CLASS_NAME__" => strtolower($business->class_name()),
             "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
-            "#__FLAG_FIELDS__" => implode("\r\n\t", $methods),
+            "#__FLAG_FIELDS__" => implode("\r\n\t", $methods), // @todo repeated: flag fields alike public methods
             "#__ENDPOINT_URL__" => __ENDPOINT_URL__,
+
+            "#__INSERTS_SELECTED_PARAMS__" => implode(",\r\n                ", $inserts_params),
         ];
         $from = array_keys($replace);
         $to = array_values($replace);
@@ -108,12 +125,14 @@ class endpoints_parser implements parser
                 continue;
 
             $keyvalues[] = "`{$column->COLUMN_NAME}`=:{$column->COLUMN_NAME}";
-            //$params[] = "\"{$column->COLUMN_NAME}\" => \$data[\"{$column->COLUMN_NAME}\"]";
-            $params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]))->text";
+            //$params[] = "\"{$column->COLUMN_NAME}\" => \$data[\"{$column->COLUMN_NAME}\"]"; // raw
+            $params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]))->text"; // validated
 
             $inserts_values[] = ":{$column->COLUMN_NAME}";
             $inserts_columns[] = "`{$column->COLUMN_NAME}`";
-            $inserts_params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]??null))->text";
+
+            $default = $column->COLUMN_DEFAULT?"\"{$column->COLUMN_DEFAULT}\"":"null"; // PHP NULL or value wrapped in double quotes
+            $inserts_params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]??{$default}))->text";
         }
         #print_r($columns); die(implode(", ", $keyvalues));
         #print_r($inserts_columns); print_r($inserts_values); die('');

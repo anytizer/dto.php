@@ -250,6 +250,7 @@ ORDER BY
     public function _get_columns(string $TABLE_NAME)
     {
         $columns = $this->_get_all_columns($TABLE_NAME);
+        // $primary_key = $this->_get_primary_key($TABLE_NAME); // get table prefix here to remove other prefixes
         foreach($columns as $c => $column)
         {
             if($this->is_flag($column)) unset($columns[$c]);
@@ -354,6 +355,7 @@ ORDER BY
 
         /**
          * Remove prefixed word
+         * @todo if it matches with primary id's prefix only
          */
         if (count($names) >= 2) {
             // if singular of table prefix matches

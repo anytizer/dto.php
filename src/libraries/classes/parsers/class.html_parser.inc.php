@@ -70,13 +70,15 @@ class html_parser implements parser
         $htmlifier = new htmlifier();
         $column_heads = array_filter(array_map(array($htmlifier, "htmlColumnify"), $columns));
         $records = array_filter(array_map(array($htmlifier, "htmlListify"), $columns));
+        $quickies = array_filter(array_map(array($htmlifier, "htmQuickies"), $columns));
 
         # "#__PUBLIC_METHODS__" => implode("\r\n\t", $methods),
         $replace = array(
             "#__PACKAGE_NAME__" => $business->package_name(),
             "#__CLASS_NAME__" => $business->class_name(),
-            "#__COLUMN_NAMES__" => implode("\r\n\t", $column_heads),
-            "#__LISTED_ROWS__" => implode("\r\n\t", $records),
+            "#__COLUMN_NAMES__" => implode("\r\n    ", $column_heads),
+            "#__COLUMN_NAMES_QUICKIES__" => implode("\r\n            ", $quickies),
+            "#__LISTED_ROWS__" => implode("\r\n    ", $records),
             "#__PRIMARY_KEY__" => $primary_key,
         );
 

@@ -16,6 +16,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * List
      *
      * @param $data
+     * @return array
      */
     public function list($data=array()): array
     {
@@ -32,6 +33,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * Details
      *
      * @param $data
+     * @return array
      */
     public function details($data=array()): array
     {
@@ -47,9 +49,10 @@ class model_#__CLASS_NAME__ extends model_abstracts
 
 
     /**
-     * Delete
+     * Soft Delete
      *
      * @param $data
+     * @return array
      */
     public function delete($data=array()): array
     {
@@ -68,6 +71,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * Flag
      * @todo Flag column should be is_flagged, not is_approved
      * @param $data
+     * @return array
      */
     public function flag($data=array()): array
     {
@@ -84,6 +88,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
     /**
      * Edit #__TABLE_NAME__ by: #__PRIMARY_KEY__
      * @param $data
+     * @return array
      *
      * @todo Sanitize the data properly.
      * @see https://github.com/anytizer/anytizer.php
@@ -107,6 +112,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
     /**
      * Add #__TABLE_NAME__ by: #__PRIMARY_KEY__
      * @param $data
+     * @return array
      *
      * @see https://github.com/anytizer/guid.php
      */

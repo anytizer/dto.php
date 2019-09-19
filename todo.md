@@ -1,5 +1,10 @@
+No print - additional menus to hide from printer
+When updated, set modified on field.
+Item's code: not edited.
+Slice table prefix only if it matches that with primary key: column_display()
+Column default value set to null for zero ("0").
 Apply search on visible columns when in list mode.
-Validate data at controller level.
+Validate data at controller level too. Dual validation may set: loss of info.
 Keep log when something is updated.
 When delete, confirm no, redirects to /units. fix.
 
@@ -10,14 +15,6 @@ Generate: generate_selenium()
 Generate: relay.php test scripts for API
 CustomEloquentModel - produce once per generation, not per entity.
 For cs/dto, use all column names.
-
-Flags seem to appear in CRUD Templates:
-    Visible
-    Active
-    _By
-    _On
-    _On
-    _Of
 
 templates\phpunit\tests\apiunit.phpunit - split business.
 Edit -> Link back to cancel/list.

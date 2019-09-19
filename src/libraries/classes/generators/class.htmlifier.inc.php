@@ -61,6 +61,17 @@ class htmlifier implements bodyfier
     }
 
     /**
+     * HTML Quickies used as search head or quick add
+     *
+     * @param fields $column
+     * @return string
+     */
+    public function htmQuickies(fields $column): string
+    {
+        return "<td><input class='w3-input' type='text' ng-model='quickies.{$column->COLUMN_NAME}' placeholder='' /></td>";
+    }
+
+    /**
      * HTML Details
      *
      * @param fields $column
@@ -74,7 +85,7 @@ class htmlifier implements bodyfier
 
         $field_body = "
     <div class=\"w3-container field\">
-        <div class=\"w3-text-blue item\">{$column->COLUMN_DISPLAY}</div>
+        <div class=\"item\">{$column->COLUMN_DISPLAY}</div>
         <div class=\"value\">{{#__CLASS_NAME__.record.{$column->COLUMN_NAME}}}</div>
     </div>
         ";

@@ -20,6 +20,10 @@ class endpoints extends generator implements bodyfier
      */
     public function methodify(method_descriptor $method): string
     {
+        if(in_array(strtolower($method->method_name), ["add"]))
+        {
+            return "";
+        }
         // only for public methods
         // URLs fix
         $url_snippet = preg_replace("/\\_/is", "-", $method->method_name);
@@ -67,18 +71,20 @@ class endpoints extends generator implements bodyfier
      */
     public function methodify_model(method_descriptor $method): string
     {
-        if(in_array($method->method_name, ["list", "details", "delete", "flag", "edit", "add"]))
+        if(in_array(strtolower($method->method_name), ["list", "details", "delete", "flag", "edit", "add"]))
         {
             return "";
         }
 
         $accessor = $method->accessor;
         $parameters = "\$data=array()"; // $method->parameters;
-        $return_type = "array"; // $method->return_type;
+        $return_type = "array"; // $method->return_type??"void";
 
         $method_body = "
     /**
      * {$method->description}
+     * @param {$parameters}
+     * @return array
      */
     {$accessor} function {$method->method_name}({$parameters}): {$return_type}
     {
