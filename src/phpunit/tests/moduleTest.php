@@ -9,7 +9,7 @@ use anytizer\business_entity;
 
 class moduleTest extends TestCase
 {
-    public function setup()
+    public function setup(): void
     {
     }
 

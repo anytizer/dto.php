@@ -2,12 +2,12 @@
 
 namespace tests;
 
-use generators\caser;
+use anytizer\caser;
 use PHPUnit\Framework\TestCase;
 
 class caserTest extends TestCase
 {
-    public function setup()
+    public function setup(): void
     {
     }
 
@@ -37,6 +37,7 @@ class caserTest extends TestCase
 
     /**
      * PSR-0
+     * @throws \Exception
      * @todo Incomplete
      */
     public function testPsr0()

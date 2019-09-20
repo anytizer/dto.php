@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class returnTypeTest extends TestCase
 {
-    public function setup()
+    public function setup(): void
     {
     }
 
