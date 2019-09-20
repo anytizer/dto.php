@@ -9,7 +9,7 @@ define("__LIBRARIES_DIR__", realpath(dirname(__FILE__))."/libraries");
 define("__CDN__", $configurations['cdn']);
 define("__MEDIA_URL__", "{$configurations['write_url']}/public_html/js/angular");
 define("__PUBLIC_URL__", "{$configurations['write_url']}/public_html");
-define("__ENDPOINT_URL__", $configurations["api_url"]); // path to API.php/src, @todo Use write_url
+define("__ENDPOINT_URL__", $configurations["api_url"]); // path to API.php/src
 
 /**
  * Auto include class files

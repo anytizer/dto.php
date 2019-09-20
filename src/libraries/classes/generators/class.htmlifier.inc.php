@@ -83,6 +83,7 @@ class htmlifier implements bodyfier
      */
     public function htmlDetails(fields $column): string
     {
+        // @todo Include long columns in details viewing mode
         if ($column->isLong) {
             return "";
         }
@@ -124,7 +125,7 @@ class htmlifier implements bodyfier
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><input class=\"w3-input {$class}\"  type=\"datetime-local\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
+            <div><input class=\"w3-input datepicker {$class}\" type=\"date\" format=\"YYYY-MM-DD\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\" /></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
@@ -137,7 +138,7 @@ class htmlifier implements bodyfier
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><textarea class=\"w3-input {$class}\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" placeholder=\"\"></textarea></div>
+            <div><textarea class=\"w3-input {$class}\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\"></textarea></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
@@ -153,7 +154,7 @@ class htmlifier implements bodyfier
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><input class=\"w3-input {$class}\"  type=\"text\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
+            <div><input class=\"w3-input {$class}\" type=\"text\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\" /></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
@@ -167,16 +168,17 @@ class htmlifier implements bodyfier
     /**
      * Determines which CSS to apply in the selected field
      *
-     * @param fields $fields
+     * @param fields $column
      * @return string
      */
-    private function field_class(fields $fields)
+    private function field_class(fields $column)
     {
         $classes = [];
-        if ($fields->isDate) {
+        if ($column->isDate) {
             $classes[] = "datepicker";
         }
 
+        // class="ng-valid ng-touched ng-dirty ng-valid-parse ng-empty"
         return implode(" ", $classes);
     }
 
@@ -203,9 +205,7 @@ class htmlifier implements bodyfier
      */
     public function htmlDelete(fields $column): string
     {
-        $field_body = "
-Deleted
-";
+        $field_body = "Deleted";
 
         return $field_body;
     }

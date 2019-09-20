@@ -1,4 +1,6 @@
 <?php
+die("Locked to protect overwriting. Use individual writer...");
+
 require_once("inc.config.php");
 require_once("inc.settings.php");
 

@@ -133,6 +133,7 @@ class dbaccess
         if (!$this->is_flag($field) && !$this->is_autoid($field)) {
             $field_definition = "\"{$field->COLUMN_NAME}\"";
         }
+
         return $field_definition;
     }
 
@@ -176,6 +177,7 @@ class dbaccess
         if ($this->is_flag($field) || $this->is_autoid($field)) {
             $field_definition = "\"{$field->COLUMN_NAME}\"";
         }
+
         return $field_definition;
     }
 
@@ -381,6 +383,8 @@ ORDER BY
         // @todo Patch properly
         $column->isLong = $this->is_long($column);
 
+        $column->isFlag = $this->is_flag($column);
+
         return $column;
     }
 
@@ -388,6 +392,8 @@ ORDER BY
      * If a field is of date/time, may need to install a date picker
      * @param fields $field
      * @return bool
+     *
+     * @todo When date needs to be visible, eg. cycle_start, start_from, dob, ...
      */
     private function is_date(fields $field): bool
     {
@@ -405,7 +411,7 @@ ORDER BY
      */
     private function is_long(fields $column): bool
     {
-        $long_flag = preg_match("/_(description|text|body|html)$/is", $column->COLUMN_NAME);
+        $long_flag = preg_match("/_(description|text|body|html|notes|comments|excerpt)$/is", $column->COLUMN_NAME);
 
         return $long_flag;
     }

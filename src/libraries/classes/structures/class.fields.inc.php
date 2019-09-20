@@ -11,6 +11,7 @@ class fields
 {
     /**
      * Fields generated from the database properties
+     * DO NOT change
      */
     public $TABLE_NAME;
     public $COLUMN_NAME;
@@ -23,11 +24,12 @@ class fields
      * Filled after generating info from the database
      */
     public $COLUMN_DISPLAY = "";
-    public $isLong = false; // do not appear in listing, eg. TextArea
+
+    /**
+     * @var bool flags
+     */
+    public $isLong = false; // do not appear in listing, eg. textarea
     public $isPrivate = false; // do not appear in anywhere, PRI, MUL keys
     public $isDate = false;
-
-    // @todo Is Primary Key? // do not show
-    // @todo Display in list?
-    // @todo Display in forms?
+    public $isFlag = false;
 }

@@ -1,3 +1,8 @@
+Stemmer to be used in column names.
+eg. sacs_of becomes sacs of
+eg. book_id becomes book_id
+
+Edit form: click enter to submit.
 Show selected date fields in add, edit, details pages
 package name needs to be readable in html files, eg. Purchase Orders for PurchaseOrder
 Synchronize inactive icons: book open, book closed, add, list, cancel
@@ -34,13 +39,6 @@ Common output folder from all write template calls
 Register role, method to the database at the time of generation
 Generate test units inside proper namespace
 Break into packages, modules, functions for Unit Tests
-
-Buzz words
-	Access control list
-	Permissions
-	Login
-
-synchronized test case and method names - via PSR/Snake Case
 
 add crud into the menus somewhere else
 do the acl for user groups, not per user

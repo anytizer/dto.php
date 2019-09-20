@@ -9,17 +9,11 @@
  *  MySQL connections
  */
 
-/**
- * @todo Match with business definition project
- */
 $hostname = "localhost";
 $username = "root";
 $password = "";
 $orm_name = "inventory";
 
-/**
- * @todo minimize configurations
- */
 $configurations = [
     /**
      * path to definitions.business/definitions
@@ -35,7 +29,7 @@ $configurations = [
      * "/inventory/define.*.php"
      * "/inventory/define.ni_items.php"
      */
-    "business_glob" => "/inventory/define.*.php",
+    "business_glob" => "/inventory/define.STOPPED*.php",
 
     /**
      * produce files at this physical path
