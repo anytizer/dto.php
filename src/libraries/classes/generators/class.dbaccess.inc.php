@@ -366,7 +366,19 @@ ORDER BY
             // Group Of, Pack Of
             # if($column->prefix!="" && $column->prefix == $names[0])
             {
-                unset($names[0]);
+                /**
+                 * Stemming: If the remaining work is becoming orphan, do not unset.
+                 * Generally this problem is solved by using a global table prefix.
+                 * @todo Tests required on stemming
+                 * @see https://en.wikipedia.org/wiki/Stemming
+                 *
+                 * book_id becomes ID.
+                 * sac_of becomes Sacs Of
+                 */
+                if(!in_array($names[1], ["of", "on", "by"]))
+                {
+                    unset($names[0]);
+                }
             }
         }
 

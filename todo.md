@@ -1,3 +1,4 @@
+
 Stemmer to be used in column names.
 eg. sacs_of becomes sacs of
 eg. book_id becomes book_id
