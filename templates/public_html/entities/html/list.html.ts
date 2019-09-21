@@ -8,7 +8,7 @@
 <!-- w3-hoverable -->
 <table class="w3-table w3-bordered w3-striped w3-border list">
 	<tbody class="no-print">
-		<tr class="w3-pale-yellow">
+		<tr class="w3-brown">
 			<td><i class="fas fa-search w3-text-green"></i></td>
 			#__COLUMN_NAMES_QUICKIES__
 			<td><span class="w3-btn w3-green" ng-click="quickies={}"><i class="fas fa-times"></i></span></td>

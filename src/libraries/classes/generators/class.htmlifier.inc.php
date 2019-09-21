@@ -72,7 +72,7 @@ class htmlifier implements bodyfier
             return "";
         }
 
-        return "<td><input class='w3-input' type='text' ng-model='quickies.{$column->COLUMN_NAME}' placeholder='' /></td>";
+        return "<td><input class='w3-input w3-light-grey' type='text' ng-model='quickies.{$column->COLUMN_NAME}' placeholder='' /></td>";
     }
 
     /**
