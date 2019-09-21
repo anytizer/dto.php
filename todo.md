@@ -1,5 +1,12 @@
+Do not produce APIs, HTML for actions/logs.
+    - Do not produce menus.
+
+Use sematext.com?
+
+??null: Should be something else in controller/models.
 Model->list: Limit the columns to visible names only for listing purpose.
 Model->edit: Bring the details here to check what columns are modified.
+    - Find out the differences and log
 
 Selenium compatible data listing
 Clicks with IDs

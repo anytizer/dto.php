@@ -18,7 +18,7 @@ class writer
         $file_contents = file_get_contents($source);
 
         #die($file_contents);
-        print_r($replacement["__ADD_FIELDS__"]); #die("dd");
+        #print_r($replacement["__ADD_FIELDS__"]); #die("dd");
 
         $file_contents = str_replace("#__CLASS_NAME__", $replacement["__CLASS_NAME__"], $file_contents);
         $file_contents = str_replace("#__DETAILS_FIELDS__", implode("\r\n", $replacement["__DETAILS_FIELDS__"]), $file_contents);
