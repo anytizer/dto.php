@@ -155,7 +155,13 @@ class dbaccess
          */
         $is_suffix_flag = preg_match("/_(on|by)$/is", $column_name);
 
-        return $is_prefix_flag || $is_suffix_flag;
+        /**
+         * Sensitive information
+         * Token added to protect sensitive data
+         */
+        $is_sensitive_flag = preg_match("/_(salt|key|token)$/is", $column_name);
+
+        return $is_prefix_flag || $is_suffix_flag || $is_sensitive_flag;
     }
 
     /**
@@ -363,15 +369,18 @@ ORDER BY
          */
         if (count($names) >= 2) {
             /**
-             * Stemming: If the remaining work is becoming orphan, do not unset.
+             * Stemming: If the remaining work is becoming an orphan word, do not unset.
              * Generally this problem is solved by using a global table prefix.
              * @todo Tests required on stemming
              * @see https://en.wikipedia.org/wiki/Stemming
              *
+             * The listed columns do not need a global prefix.
+             *
              * book_id becomes Book ID.
              * groups_of becomes Groups Of.
              */
-            if(!in_array($names[1], ["of", "on", "by", "id"]))
+            $wishful_words = ["ip"];
+            if(!in_array(strtolower($names[1]), ["number", "code", "days", "of", "on", "by", "id", "ip", "salt", "name", "enabled", "key", "software", "token", "fees", "percentage", "date"]))
             {
                 unset($names[0]);
             }
@@ -414,8 +423,12 @@ ORDER BY
      */
     private function is_long(fields $column): bool
     {
+        /**
+         * @todo Make the URL appear in editor field, details field
+         */
+        $is_sensitive = preg_match("/^(url)_/is", $column->COLUMN_NAME);
         $long_flag = preg_match("/_(description|text|body|html|notes|comments|excerpt)$/is", $column->COLUMN_NAME);
 
-        return $long_flag;
+        return $is_sensitive || $long_flag;
     }
 }

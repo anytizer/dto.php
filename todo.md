@@ -1,5 +1,14 @@
+From quickies search to quickie add in listing page.
+CRUD for MUL columns with a dropdown of datalist.
+Database concept redesigned generally.
+    - added on, modified on, is_active, is_approved flags moved away?
+    - search() method to limit active records only.
+    - hide special columns: _key, _salt, _token, ...
+    - is_active, is_approved to be 'Y' by default; db will have 'N'
+
 Do not produce APIs, HTML for actions/logs.
     - Do not produce menus.
+    - check lcfirst==strtolower only: single word
 
 Use sematext.com?
 

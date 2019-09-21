@@ -134,7 +134,7 @@ class html_parser implements parser
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
         $columns = $dbaccess->_get_columns($table_name);
-        #print_r($columns);
+        // @todo Use get all columns. But the field name is missing in edit forms.
 
         $htmlifier = new htmlifier();
         //$methods = array_map(array($htmlifier, "htmlEdit"), $business->methods_list());

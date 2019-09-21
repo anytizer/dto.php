@@ -111,6 +111,11 @@ class htmlifier implements bodyfier
             return "";
         }
 
+        // @todo Fix here
+//        if ($column->isFlag) {
+//            return "";
+//        }
+
         $class = $this->field_class($column);
         // @see https://www.w3schools.com/html/html_form_input_types.asp
         // if date, date field
@@ -160,7 +165,6 @@ class htmlifier implements bodyfier
     </div>
         ";
         }
-
 
         return $field_body;
     }

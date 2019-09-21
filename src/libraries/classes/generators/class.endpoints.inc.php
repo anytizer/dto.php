@@ -71,6 +71,9 @@ class endpoints extends generator implements bodyfier
      */
     public function methodify_model(method_descriptor $method): string
     {
+        /**
+         * The following methods have been coded manually
+         */
         if(in_array(strtolower($method->method_name), ["list", "details", "delete", "flag", "edit", "add"]))
         {
             return "";
@@ -80,6 +83,13 @@ class endpoints extends generator implements bodyfier
         $parameters = "\$data=[]"; // $method->parameters;
         $return_type = "array"; // $method->return_type??"void";
 
+        /**
+         * @todo Introduce business model for common ORM, so that there is no need to write queries manually.
+         * e.g. $list = $business_orm->get_list();
+         * e.g. $details = $business_orm->details('id');
+         * e.g. $success = $business_orm->flag('id');
+         * e.g. $success = $business_orm->delete('id');
+         */
         $method_body = "
     /**
      * {$method->description}
@@ -88,7 +98,7 @@ class endpoints extends generator implements bodyfier
      */
     {$accessor} function {$method->method_name}({$parameters}): {$return_type}
     {
-        \$sql = \"SELECT * FROM `#__TABLE_NAME__` LIMIT 10;\";
+        \$sql = \"SELECT * FROM `#__TABLE_NAME__` WHERE is_active='Y' LIMIT 10;\";
         \$statement = \$this->pdo->prepare(\$sql);
         \$params = [];
         \$statement->execute(\$params);

@@ -61,9 +61,11 @@ class endpoints_parser implements parser
         $table_name = $business->table_name();
         $primary_key = $dbaccess->_get_primary_key($table_name);
         $columns = $dbaccess->_get_columns($table_name); // not all columns!
+        // @todo WHen in edit mode, display the long columns marked as is_long, as well.
         $inserts_params = [];
         foreach($columns as $column)
         {
+
             # Do not include primary key
             if($column->COLUMN_NAME == $primary_key)
                 continue;
@@ -131,6 +133,13 @@ class endpoints_parser implements parser
             $inserts_values[] = ":{$column->COLUMN_NAME}";
             $inserts_columns[] = "`{$column->COLUMN_NAME}`";
 
+            /**
+             * @todo For is_active, is_approved; set to Y
+              */
+            if(in_array($column->COLUMN_NAME, ["is_active", "is_approved"]))
+            {
+                $column->COLUMN_DEFAULT = "Y"; // @todo Check if rules avoided
+            }
             $default = $column->COLUMN_DEFAULT?"\"{$column->COLUMN_DEFAULT}\"":"null"; // PHP NULL or value wrapped in double quotes
             $inserts_params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]??{$default}))->text";
         }
