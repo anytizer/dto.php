@@ -9,9 +9,9 @@
 <table class="w3-table w3-bordered w3-striped w3-border list">
 	<tbody class="no-print">
 		<tr class="w3-pale-yellow">
-			<td><i class="fas fa-search w3-text-green"></i></i></td>
+			<td><i class="fas fa-search w3-text-green"></i></td>
 			#__COLUMN_NAMES_QUICKIES__
-			<td><i class="fas fa-times w3-btn w3-green" ng-click="quickies={}"></i></i></td>
+			<td><i class="fas fa-times w3-btn w3-green" ng-click="quickies={}"></i></td>
 			<td>&nbsp;</td>
 		</tr>
 	</tbody>
