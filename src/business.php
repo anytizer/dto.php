@@ -1,5 +1,5 @@
 <?php
-die("Locked to protect overwriting. Use individual writer...");
+#die("DTO CRUDer Locked to protect overwriting. Use individual writer...");
 
 require_once("inc.config.php");
 require_once("inc.settings.php");
@@ -26,7 +26,7 @@ $F_ISSUE_ID = function () {
         $issue_id = 0;
     }
 
-    return sprintf("%06s", ++$issue_id);
+        return sprintf("%06s", ++$issue_id);
 };
 
 # for each entities, define business rules (methods)
@@ -47,12 +47,19 @@ if ($configs->templates) {
     $template_reader->write($template_reader->read("public_html/css/styles.css"), "public_html/css/styles.css"); // from scss
     $template_reader->write($template_reader->read("public_html/js/jquery/jquery-3.4.1.min.js"), "public_html/js/jquery/jquery-3.4.1.min.js");
     $template_reader->write($template_reader->read("public_html/js/general.js"), "public_html/js/general.js");
+
     $template_reader->write($template_reader->read("phpunit/bootstrap.php.ts"), "phpunit/bootstrap.php");
     $template_reader->write($template_reader->read("phpunit/phpunit.cmd.ts"), "phpunit/phpunit.cmd");
     $template_reader->write($template_reader->read("phpunit/phpunit.xml.ts"), "phpunit/phpunit.xml");
     $template_reader->write($template_reader->read("phpunit/readme.txt"), "phpunit/readme.txt");
-    #$template_reader->write($template_reader->read("libraries/backend/class.spl_include.inc.php.ts"), "libraries/backend/class.spl_include.inc.php.ts");
+
+    $template_reader->write($template_reader->read("public_html/js/angularjs/angular.min.js"), "public_html/js/angularjs/angular.min.js");
+    $template_reader->write($template_reader->read("public_html/js/angularjs/angular-sanitize.min.js"), "public_html/js/angularjs/angular-sanitize.min.js");
+    $template_reader->write($template_reader->read("public_html/js/ui-router/angular-ui-router.min.js"), "public_html/js/ui-router/angular-ui-router.min.js");
+    $template_reader->write($template_reader->read("public_html/js/ui-router/stateEvents.min.js"), "public_html/js/ui-router/stateEvents.min.js");
+    $template_reader->write($template_reader->read("public_html/js/app.js"), "public_html/js/app.js");
 }
+
 #die("Static templates done!");
 // @todo Package name to be replaced
 # .htaccess
@@ -62,19 +69,10 @@ foreach ($entities as $business) {
     if (!$business->enabled()) {
         continue;
     }
-    #print_r($entities); die();
-    #print_r($business); die();
 
     # CLI Options
-    # business dto user
-    # business business user -- entity
-    # business app.js.ts user
-    # business routes.js.ts user
-    # business controllers.js.ts user
-    # business services.js.ts user
-    # business endpoints user
-    # business orm user -- business
-    echo sprintf("\r\n\r\nProcessing: Package [%s] at Class [%s].", $business->package_name(), $business->class_name());
+    #echo sprintf("\r\nProcessing: Package [%s] at Class [%s].", $business->package_name(), $business->class_name());
+    #continue;
 
     /**
      * Data Transfer Objects
@@ -149,6 +147,49 @@ foreach ($entities as $business) {
 
     #die(sprintf("\r\n\r\nLoop stopped for now. Re-Enable me at line #%d.\r\n", __LINE__));
 }
+
+/**
+ * CRUDed information
+ */
+
+$angularjses = [];
+$menus = [];
+
+foreach ($entities as $business) {
+    if (!$business->enabled()) {
+        continue;
+    }
+
+    $package_name = $business->package_name();
+    $class_name = $business->class_name();
+
+    if(preg_match("/Actions$/is", $class_name))
+    {
+        continue;
+    }
+
+    $angularjses[] = "
+    <script type=\"text/javascript\" src=\"entities/{$package_name}/{$class_name}/js/{$class_name}-routes.js\"></script>
+    <script type=\"text/javascript\" src=\"entities/{$package_name}/{$class_name}/js/{$class_name}-directives.js\"></script>
+    <script type=\"text/javascript\" src=\"entities/{$package_name}/{$class_name}/js/{$class_name}-services.js\"></script>
+    <script type=\"text/javascript\" src=\"entities/{$package_name}/{$class_name}/js/{$class_name}-controllers.js\"></script>
+";
+
+    // if two worded, do not menu
+    if(lcfirst($class_name) == strtolower($class_name))
+    {
+        $menus[] = "
+        <a class=\"w3-btn\" ui-sref=\"{$class_name}.List({})\" ui-sref-active=\"w3-teal\">
+            <i class=\"fas fa-users\"></i>
+            {$class_name}
+        </a>
+";
+    }
+}
+$index_html = $template_reader->read("public_html/index.html.ts");
+$index_html = str_replace("<!--ANGULAR-JS-COMPONENTS-MARKER-->", implode("", $angularjses), $index_html);
+$index_html = str_replace("<!--MENU-REGISTRATION-MARKER-->", implode("", $menus), $index_html);
+$template_reader->write($index_html, "public_html/index.html");
 
 echo "\r\n", sprintf("%sItems generated: #%s.", "\r\n", count($entities));
 #print_r($entities);
