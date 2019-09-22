@@ -1,3 +1,5 @@
+Readonly output, no edit forms. No api to edit.
+
 From quickies search to quickie add in listing page.
 CRUD for MUL columns with a dropdown of datalist.
 Database concept redesigned generally.
@@ -56,6 +58,7 @@ Faker database for all tables.
 
 add, edit, list, flag orm: pass $parameter.
 Move emails/ into templates API, separate project
+Design cron works support
 
 Featured test does not need API, phpunit test case only
 DTO name to support multi words
@@ -65,7 +68,6 @@ Register role, method to the database at the time of generation
 Generate test units inside proper namespace
 Break into packages, modules, functions for Unit Tests
 
-add crud into the menus somewhere else
 do the acl for user groups, not per user
 in business: assign, read list of users only from available list
 

@@ -15,12 +15,12 @@
 	<div class="w3-card-4 w3-margin w3-padding">
 
 		<a href="#" class="w3-btn w3-teal" ng-click="#__CLASS_NAME__.add(record)">
-			<i class="fa fa-plus" aria-hidden="true"></i>
+			<i class="fa fa-plus"></i>
 			Add
 		</a>
 
 		<a href="#" ui-sref="#__CLASS_NAME__.List({})">
-			<i class="fa fa-list" aria-hidden="true"></i>
+			<i class="fa fa-list"></i>
 			Cancel
 		</a>
 	</div>

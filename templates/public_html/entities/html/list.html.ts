@@ -11,7 +11,7 @@
 		<tr class="w3-brown">
 			<td><i class="fas fa-search w3-text-green"></i></td>
 			#__COLUMN_NAMES_QUICKIES__
-			<td><span class="w3-btn w3-green" ng-click="quickies={}"><i class="fas fa-times"></i></span></td>
+			<td><span class="w3-btn w3-yellow" ng-click="quickies={}"><i class="fas fa-times"></i></span></td>
 			<td>&nbsp;</td>
 		</tr>
 	</tbody>
