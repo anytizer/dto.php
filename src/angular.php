@@ -8,7 +8,7 @@ foreach ($entities as $business) {
     /**
      * AngularJS Resources
      */
-    if ($configs->angular) {
+    if ($configs->angularjs) {
         $angular_parser = new angular_parser();
         $angular_parser->generate($business);
     }

@@ -13,9 +13,12 @@ class configs
     public $business = !false;
     public $phpunit = !false;
     public $endpoints = !false;
-    public $angular = !false;
+    public $angularjs = !false;
     public $html = !false;
+
+    // future research
     public $react = false;
+    public $angular = false;
     // api
     // apiunit
     // cs
