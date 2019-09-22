@@ -1,4 +1,5 @@
 Readonly output, no edit forms. No api to edit.
+Try to guess FA menus.
 
 From quickies search to quickie add in listing page.
 CRUD for MUL columns with a dropdown of datalist.

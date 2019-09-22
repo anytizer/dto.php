@@ -4,6 +4,7 @@
 require_once("inc.config.php");
 require_once("inc.settings.php");
 
+use anytizer\capitalizer;
 use generators\template_reader;
 use parsers\angular_parser;
 use parsers\business_parser;
@@ -131,7 +132,7 @@ foreach ($entities as $business) {
     /**
      * AngularJS Resources
      */
-    if ($configs->angular) {
+    if ($configs->angularjs) {
         $angular_parser = new angular_parser();
         $angular_parser->generate($business);
     }
@@ -162,6 +163,8 @@ foreach ($entities as $business) {
 
     $package_name = $business->package_name();
     $class_name = $business->class_name();
+    $capitalizer = new capitalizer();
+    $class_name_html = $capitalizer->capitalize($class_name);
 
     if(preg_match("/Actions$/is", $class_name))
     {
@@ -175,16 +178,19 @@ foreach ($entities as $business) {
     <script type=\"text/javascript\" src=\"entities/{$package_name}/{$class_name}/js/{$class_name}-controllers.js\"></script>
 ";
 
-    // if two worded, do not menu
-    if(lcfirst($class_name) == strtolower($class_name))
+    // if two+ worded, do not include in main menu
+    // rather use a submenu
+    // @see https://www.w3schools.com/w3css/w3css_navigation.asp
+    if(lcfirst($class_name) != strtolower($class_name))
     {
-        $menus[] = "
-        <a class=\"w3-btn\" ui-sref=\"{$class_name}.List({})\" ui-sref-active=\"w3-teal\">
-            <i class=\"fas fa-users\"></i>
-            {$class_name}
-        </a>
-";
+       # continue;
     }
+    $menus[] = "
+    <a class=\"w3-bar-item w3-btn\" ui-sref=\"{$class_name}.List({})\" ui-sref-active=\"w3-teal\">
+        <i class=\"fas fa-users\"></i>
+        {$class_name_html}
+    </a>
+";
 }
 $index_html = $template_reader->read("public_html/index.html.ts");
 $index_html = str_replace("<!--ANGULAR-JS-COMPONENTS-MARKER-->", implode("", $angularjses), $index_html);

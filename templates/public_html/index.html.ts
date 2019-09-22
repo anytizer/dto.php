@@ -29,10 +29,10 @@
 <body ng-app="myApp" class="w3-sand">
 
 <div class="wrapper">
-    <div class="w3-black no-print menus">
+    <div class="w3-bar w3-black no-print menus">
         <!--MENU-REGISTRATION-MARKER-->
         <!--
-        <a class="w3-btn" ui-sref="#__CLASS_NAME__.List({})" ui-sref-active="w3-teal">
+        <a class="w3-bar-item w3-btn" ui-sref="#__CLASS_NAME__.List({})" ui-sref-active="w3-teal">
             <i class="fas fa-users"></i>
             #__CLASS_NAME__
         </a>
