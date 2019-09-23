@@ -2,9 +2,6 @@
 
 namespace anytizer;
 
-// SELECT CONCAT('public $', UPPER(role_name), ' = ', role_id, ';') roles FROM account_roles;
-// SELECT CONCAT('public $', UPPER(REPLACE(role_name, ' ', '_')), ' = ', role_id, ';') roles FROM account_roles;
-
 // roles are organization dependent; let organization create their own roles for their users
 // eg, at school:
 //     principal, teacher, laboratory, library, accounts, computers, examination

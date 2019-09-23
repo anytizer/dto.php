@@ -202,5 +202,5 @@ $index_html = str_replace("<!--ANGULAR-JS-COMPONENTS-MARKER-->", implode("", $an
 $index_html = str_replace("<!--MENU-REGISTRATION-MARKER-->", implode("", $menus), $index_html);
 $template_reader->write($index_html, "public_html/index.html");
 
-echo "\r\n", sprintf("%sItems generated: #%s.", "\r\n", count($entities));
+echo "\r\n", sprintf("%sItems generated: #%s.\r\nCheck /tmp/acl.log.", "\r\n", count($entities));
 #print_r($entities);

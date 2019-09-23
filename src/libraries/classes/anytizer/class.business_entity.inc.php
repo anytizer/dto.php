@@ -54,6 +54,11 @@ class business_entity
     private $features_to_test = [];
 
     /**
+     * @var $package_id guid
+     */
+    private $package_id;
+
+    /**
      * business_entity constructor.
      * @param bool $enabled
      */
@@ -115,8 +120,9 @@ class business_entity
 
         # Register this
         $guid = guid::NewGuid();
-        $sql = "INSERT IGNORE INTO acl_objects VALUES ('{$guid}', '{$this->package}');\r\n";
-        file_put_contents("d:/acl.log", $sql, FILE_APPEND);
+        $this->package_id = $guid; // @todo non-standard field
+        $sql = "INSERT IGNORE INTO acl_packages VALUES ('{$guid}', '{$this->package}');\r\n";
+        file_put_contents("/tmp/acl.log", $sql, FILE_APPEND);
         # SELECT UUID();
 
         return $this;
@@ -130,12 +136,38 @@ class business_entity
     {
         $namifier = new namifier();
         $this->methods = array_map(array($namifier, "method"), $methods);
+        #print_r($this->methods); die();
 
+        $g = new guid();
+        $entity_guid = $g->NewGuid();
+
+        /**
+         * @todo Bring from live database or user defined configs
+         */
+        // SELECT * FROM pp_roles WHERE role_code='SUPERADMIN';
+        $superadmin_role_code = "SUPERADMIN";
+        $superadmin_role_id = "0BC7C10D-EBDF-4D77-9642-A3C8AB0B01E3";
+
+        $acl_entities_sql = "INSERT IGNORE INTO acl_entities VALUES ('{$entity_guid}', '{$this->package_id}', '{$this->class_name}', '{$this->package}::{$this->class_name}');\r\n";
+        //file_put_contents("/tmp/acl.log", $acl_entities_sql, FILE_APPEND);
+        $acl_methods_sqls=[];
+        $acl_permissions_sqls = [];
         # Pre-register ACL into the database at the time of creation
-        foreach ($methods as $method) {
-            $sql = "INSERT IGNORE INTO acl_objects_methods VALUES (UUID(), '', '{$method}');\r\n";
-            file_put_contents("d:/acl.log", $sql, FILE_APPEND);
+        foreach ($this->methods as $method) {
+            #print_r($method); die();
+            $method_guid = $g->NewGuid();
+            $acl_methods_sql = "INSERT IGNORE INTO acl_methods VALUES ('{$method_guid}', '{$entity_guid}', '{$method->method_name}', '{$this->package}::{$this->class_name}:{$method->method_name}()');";
+            $acl_methods_sqls[]=$acl_methods_sql;
+
+            $permission_id = $g->NewGuid();
+            $acl_permissions_sqls[] = "INSERT INTO acl_permissions VALUES('{$permission_id}', '{$superadmin_role_id}', '{$method_guid}', '[{$superadmin_role_code}]{$this->package}::{$this->class_name}->{$method->method_name}()');";
         }
+
+        file_put_contents("/tmp/acl.log",  $acl_entities_sql, FILE_APPEND);
+        file_put_contents("/tmp/acl.log", implode("\r\n", $acl_methods_sqls), FILE_APPEND);
+        file_put_contents("/tmp/acl.log", implode("\r\n", $acl_permissions_sqls), FILE_APPEND);
+
+
 
         return $this;
     }

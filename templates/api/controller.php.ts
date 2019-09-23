@@ -31,17 +31,31 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
      */
     public function post_add($data=[]): array
     {
-        $response = [];
+        $response = [
+            "success" => false,
+            "message" => "",
+        ];
 
         // $this->role->method("add")
         if($this->APIUser()->can("#__PACKAGE_NAME__", "#__CLASS_NAME__", "add"))
         {
+            /**
+            $business = new business();
+            if($business->save("#__PACKAGE_NAME__", "#__CLASS_NAME__", "add"))
+             {
+                $business->notify();
+             }
+             // send email
+             // format message
+             // generate database error log message with error code
+             // call to apis, and notification urls
+            */
             $data=[
                 #__INSERTS_SELECTED_PARAMS__
             ];
 
             $m = new model_#__CLASS_NAME__();
-            $response = $m->add($data);
+            $response["success"] = $m->add($data);
         }
 
         return $response;

@@ -20,7 +20,7 @@ class endpoints extends generator implements bodyfier
      */
     public function methodify(method_descriptor $method): string
     {
-        if(in_array(strtolower($method->method_name), ["add"]))
+        if(in_array(strtolower($method->method_name), ["add",]))
         {
             return "";
         }
@@ -57,7 +57,7 @@ class endpoints extends generator implements bodyfier
             \$m = new model_#__CLASS_NAME__();
             \$response = \$m->{$method->method_name}(\$_POST); // @todo fix super global
         }
-        
+
         return \$response;
     }
 ";
@@ -98,14 +98,14 @@ class endpoints extends generator implements bodyfier
     /**
      * {$method->description}
      * @param {$parameters}
-     * @return array
+     * @return bool
      */
-    {$accessor} function {$method->method_name}({$parameters}): array
+    {$accessor} function {$method->method_name}({$parameters}): bool
     {
         \$sql = \"SELECT * FROM `#__TABLE_NAME__` WHERE is_active='Y' ORDER BY RAND() LIMIT 10;\";
         \$params = [];
         \$success = \$this->query(\$sql, \$params);
-        return [\"success\" => \$success];
+        return \$success;
     }
 ";
         return $method_body;

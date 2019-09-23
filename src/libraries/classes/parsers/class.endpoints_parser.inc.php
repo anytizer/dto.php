@@ -134,11 +134,11 @@ class endpoints_parser implements parser
             $params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]))->text"; // validated
 
             $inserts_values[] = ":{$column->COLUMN_NAME}";
-            $inserts_columns[] = "\`{$column->COLUMN_NAME}\`";
+            $inserts_columns[] = "`{$column->COLUMN_NAME}`";
 
-//            /**
-//             * @todo For is_active, is_approved; set to Y
-//              */
+            /**
+             * @todo For is_active, is_approved; set to Y
+              */
 //            if(in_array($column->COLUMN_NAME, ["is_active", "is_approved"]))
 //            {
 //                $column->COLUMN_DEFAULT = "Y"; // @todo Check if rules avoided: Value taken from default

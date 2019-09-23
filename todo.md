@@ -1,3 +1,16 @@
+When user edits a data, it should appear immediately with is_active='Y" flag.
+
+Implement business service layer
+https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff649690(v=pandp.10)?redirectedfrom=MSDN
+
+Add test feature also into the ACL.
+package > entity > method
+permission => group > user > 
+
+Form edit, delete a value to get ng-dirty, AngularJS marking red;
+These fields are not submitted to the server.
+Solution: keep or replace required="" attribute.
+
 API to view deleted items - for super admin user only.
 Listing page: Draw selected columns only, not *.
 

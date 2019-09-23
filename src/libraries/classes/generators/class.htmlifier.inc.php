@@ -139,7 +139,7 @@ class htmlifier implements bodyfier
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><input class=\"w3-input datepicker {$class}\" type=\"date\" format=\"YYYY-MM-DD\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\" /></div>
+            <div><input class=\"w3-input w3-border datepicker {$class}\" type=\"date\" format=\"YYYY-MM-DD\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\" /></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
@@ -152,7 +152,7 @@ class htmlifier implements bodyfier
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><textarea class=\"w3-input {$class}\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\"></textarea></div>
+            <div><textarea class=\"w3-input w3-border {$class}\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\"></textarea></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
@@ -168,7 +168,7 @@ class htmlifier implements bodyfier
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><input class=\"w3-input {$class}\" type=\"text\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\" /></div>
+            <div><input class=\"w3-input w3-border {$class}\" type=\"text\" ng-model=\"#__CLASS_NAME__.record.{$column->COLUMN_NAME}\" required=\"\" placeholder=\"\" /></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
@@ -246,7 +246,7 @@ class htmlifier implements bodyfier
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><textarea class=\"w3-input {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\"></textarea></div>
+            <div><textarea class=\"w3-input w3-border {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\"></textarea></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
@@ -259,7 +259,7 @@ class htmlifier implements bodyfier
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><input type=\"text\" class=\"w3-input {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
+            <div><input type=\"text\" class=\"w3-input w3-border {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\" /></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
