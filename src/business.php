@@ -1,5 +1,5 @@
 <?php
-#die("DTO CRUDer Locked to protect overwriting. Use individual writer...");
+#die("DTO CRUDer Locked to protect overwriting existing output. Use individual writer...");
 
 require_once("inc.config.php");
 require_once("inc.settings.php");
@@ -164,6 +164,10 @@ foreach ($entities as $business) {
     $package_name = $business->package_name();
     $class_name = $business->class_name();
     $capitalizer = new capitalizer();
+
+    /**
+     * More readable name
+     */
     $class_name_html = $capitalizer->capitalize($class_name);
 
     if(preg_match("/Actions$/is", $class_name))
@@ -178,13 +182,14 @@ foreach ($entities as $business) {
     <script type=\"text/javascript\" src=\"entities/{$package_name}/{$class_name}/js/{$class_name}-controllers.js\"></script>
 ";
 
-    // if two+ worded, do not include in main menu
+    // if 2 or 2+ worded, do not include in main menu
     // rather use a submenu
     // @see https://www.w3schools.com/w3css/w3css_navigation.asp
     if(lcfirst($class_name) != strtolower($class_name))
     {
        # continue;
     }
+
     $menus[] = "
     <a class=\"w3-bar-item w3-btn\" ui-sref=\"{$class_name}.List({})\" ui-sref-active=\"w3-teal\">
         <i class=\"fas fa-users\"></i>

@@ -31,9 +31,10 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
      */
     public function post_add($data=[]): array
     {
-        $response = null;
+        $response = [];
 
-        //if($this->APIUser->can($this->role->method("add")))
+        // $this->role->method("add")
+        if($this->APIUser()->can("#__PACKAGE_NAME__", "#__CLASS_NAME__", "add"))
         {
             $data=[
                 #__INSERTS_SELECTED_PARAMS__

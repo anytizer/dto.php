@@ -1,5 +1,19 @@
+API to view deleted items - for super admin user only.
+Listing page: Draw selected columns only, not *.
+
+Print help linking to the database documentation from each given add/edit windows.
+Print screen ID for the windows.
+
+_json is long, like _text.
+Return without flags (incomplete fields) in search, details, because full content may contain sensitive info eg. Consumer key
+Apply true, false flags to all __get_columns(false, false);
+
+Include CSS files per model. eg. Person.* use person.scss
+Long fields should appear on add, edit, details.
+IP Address should not appear in add, edit forms.
+_ip should not appear in add.
 Readonly output, no edit forms. No api to edit.
-Try to guess FA menus.
+Try to guess FA icons for menus.
 
 From quickies search to quickie add in listing page.
 CRUD for MUL columns with a dropdown of datalist.
@@ -61,9 +75,7 @@ add, edit, list, flag orm: pass $parameter.
 Move emails/ into templates API, separate project
 Design cron works support
 
-Featured test does not need API, phpunit test case only
-DTO name to support multi words
-Common output folder from all write template calls
+Featured test probably does not need API, phpunit test case only
 
 Register role, method to the database at the time of generation
 Generate test units inside proper namespace
@@ -73,6 +85,10 @@ do the acl for user groups, not per user
 in business: assign, read list of users only from available list
 
 == acl, model ==
+Register CRUDed model in the database.
+Register methods in the database.
+Create a role and assign all methods - super admin
+Create another role and assign readonly apis - reader
 
 https://code.tutsplus.com/tutorials/a-better-login-system--net-3461
 http://stackoverflow.com/questions/32060581/simple-php-mysql-acl-system

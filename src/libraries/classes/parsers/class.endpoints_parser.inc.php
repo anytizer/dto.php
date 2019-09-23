@@ -116,10 +116,13 @@ class endpoints_parser implements parser
 
         # for inserts
         $inserts_values = [":{$primary_key}"];
-        $inserts_columns = ["`{$primary_key}`"];
+        $inserts_columns = ["`{$primary_key}`"]; // array with primary key name
         $inserts_params = [];
 
-        $columns = $dbaccess->_get_all_columns($table_name);
+        # for list()
+        $list_column_heads = ["`{$primary_key}`"];
+
+        $columns = $dbaccess->_get_columns($table_name);
         foreach($columns as $column)
         {
             # Do not include primary key
@@ -131,18 +134,27 @@ class endpoints_parser implements parser
             $params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]))->text"; // validated
 
             $inserts_values[] = ":{$column->COLUMN_NAME}";
-            $inserts_columns[] = "`{$column->COLUMN_NAME}`";
+            $inserts_columns[] = "\`{$column->COLUMN_NAME}\`";
 
-            /**
-             * @todo For is_active, is_approved; set to Y
-              */
-            if(in_array($column->COLUMN_NAME, ["is_active", "is_approved"]))
-            {
-                $column->COLUMN_DEFAULT = "Y"; // @todo Check if rules avoided
-            }
+//            /**
+//             * @todo For is_active, is_approved; set to Y
+//              */
+//            if(in_array($column->COLUMN_NAME, ["is_active", "is_approved"]))
+//            {
+//                $column->COLUMN_DEFAULT = "Y"; // @todo Check if rules avoided: Value taken from default
+//            }
             $default = $column->COLUMN_DEFAULT?"\"{$column->COLUMN_DEFAULT}\"":"null"; // PHP NULL or value wrapped in double quotes
             $inserts_params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]??{$default}))->text";
+
+            /**
+             * For selected fields only
+             */
+            if(!$column->isFlag)
+            {
+                $list_column_heads[] = "`{$column->COLUMN_NAME}`";
+            }
         }
+       # print_r($list_column_heads); die();
         #print_r($columns); die(implode(", ", $keyvalues));
         #print_r($inserts_columns); print_r($inserts_values); die('');
 
@@ -163,6 +175,9 @@ class endpoints_parser implements parser
             "#__INSERTS_COLUMNS__" => implode(",\r\n    ", $inserts_columns),
             "#__INSERTS_VALUES__" => implode(",\r\n    ", $inserts_values),
             "#__INSERTS_PARAMS__" => implode(",\r\n            ", $inserts_params),
+
+            // @todo For list mode, name all the valid columns
+            "#__LIST_COLUMN_HEADS__" => implode(", ", $list_column_heads),
         ];
         $from = array_keys($replace);
         $to = array_values($replace);

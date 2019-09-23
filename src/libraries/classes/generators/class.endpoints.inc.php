@@ -50,8 +50,9 @@ class endpoints extends generator implements bodyfier
      */
     {$accessor} function post_{$method->method_name}({$parameters}): {$return_type}
     {
-        \$response = null;
-        //if(\$this->APIUser->can(\$this->role->method(\"{$method->method_name}\")))
+        \$response = [];
+        
+        if(\$this->APIUser()->can(\"#__PACKAGE_NAME__\", \"#__CLASS_NAME__\", \"{$method->method_name}\"))
         {
             \$m = new model_#__CLASS_NAME__();
             \$response = \$m->{$method->method_name}(\$_POST); // @todo fix super global
@@ -91,20 +92,20 @@ class endpoints extends generator implements bodyfier
          * e.g. $success = $business_orm->flag('id');
          * e.g. $success = $business_orm->delete('id');
          */
+
+        //  /** {$return_type} */
         $method_body = "
     /**
      * {$method->description}
      * @param {$parameters}
      * @return array
      */
-    {$accessor} function {$method->method_name}({$parameters}): {$return_type}
+    {$accessor} function {$method->method_name}({$parameters}): array
     {
         \$sql = \"SELECT * FROM `#__TABLE_NAME__` WHERE is_active='Y' ORDER BY RAND() LIMIT 10;\";
-        \$statement = \$this->pdo->prepare(\$sql);
         \$params = [];
-        \$statement->execute(\$params);
-        \$result = \$statement->fetchAll(PDO::FETCH_ASSOC);
-        return \$result;
+        \$success = \$this->query(\$sql, \$params);
+        return [\"success\" => \$success];
     }
 ";
         return $method_body;

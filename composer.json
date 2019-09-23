@@ -6,7 +6,6 @@
     "anytizer/caser.php": "dev-master",
     "anytizer/namifier.php": "dev-master",
     "anytizer/linter": "dev-master",
-    "phpunit/phpunit": "^8.3",
     "ext-pdo": "*"
   }
 }

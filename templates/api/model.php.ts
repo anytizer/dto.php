@@ -20,11 +20,11 @@ class model_#__CLASS_NAME__ extends model_abstracts
      */
     public function list($data=[]): array
     {
-        $sql = "SELECT * FROM `#__TABLE_NAME__` WHERE is_active='Y' LIMIT 1000;";
-        $statement = $this->pdo->prepare($sql);
-        $params = [];
-        $statement->execute($params);
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $list_sql = "SELECT #__LIST_COLUMN_HEADS__ FROM `#__TABLE_NAME__` WHERE is_active=:is_active ORDER BY added_on DESC LIMIT 1000;";
+        $params = [
+            "is_active" => "Y",
+        ];
+        $result = $this->rows($list_sql, $params);
         return $result;
     }
 
@@ -37,32 +37,30 @@ class model_#__CLASS_NAME__ extends model_abstracts
      */
     public function details($data=[]): array
     {
-        $sql = "SELECT * FROM `#__TABLE_NAME__` WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
-        $statement = $this->pdo->prepare($sql);
+        $details_sql = "SELECT * FROM `#__TABLE_NAME__` WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
         $params = [
             "#__PRIMARY_KEY__" => $data["#__PRIMARY_KEY__"],
         ];
-        $statement->execute($params);
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-        return $result;
+        $row = $this->single($details_sql, $params);
+        return $row;
     }
 
 
     /**
      * Soft Delete
+     * @todo Return success class instead of php array.
      *
      * @param $data
      * @return array
      */
     public function delete($data=[]): array
     {
-        $sql = "UPDATE `#__TABLE_NAME__` SET is_active='N' WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
-        $statement = $this->pdo->prepare($sql);
+        $delete_sql = "UPDATE `#__TABLE_NAME__` SET is_active=:is_active WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
         $params = [
+            "is_active" => "N",
             "#__PRIMARY_KEY__" => $data["#__PRIMARY_KEY__"],
         ];
-        $statement->execute($params);
-        $success = $statement->execute($params);
+        $success = $this->query($delete_sql, $params);
         return ["success" => $success];
     }
 
@@ -75,12 +73,11 @@ class model_#__CLASS_NAME__ extends model_abstracts
      */
     public function flag($data=[]): array
     {
-        $sql = "UPDATE `#__TABLE_NAME__` SET is_approved=IF(is_approved='Y', 'N', 'Y') WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
-        $statement = $this->pdo->prepare($sql);
+        $flag_sql = "UPDATE `#__TABLE_NAME__` SET is_approved=IF(is_approved='Y', 'N', 'Y') WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
         $params = [
             "#__PRIMARY_KEY__" => $data["#__PRIMARY_KEY__"],
         ];
-        $success = $statement->execute($params);
+        $success = $this->query($flag_sql, $params);
         return ["success" => $success];
     }
 
@@ -95,16 +92,15 @@ class model_#__CLASS_NAME__ extends model_abstracts
      */
     public function edit($data=[]): array
     {
-        $sql = "UPDATE `#__TABLE_NAME__` SET
+        $edit_sql = "UPDATE `#__TABLE_NAME__` SET
             #__KEYVALUE_PAIR__
         WHERE `#__PRIMARY_KEY__`=:#__PRIMARY_KEY__ LIMIT 1;";
-        $statement = $this->pdo->prepare($sql);
         $params = [
             #__PARAMS__,
 
             "#__PRIMARY_KEY__" => $data["#__PRIMARY_KEY__"],
         ];
-        $success = $statement->execute($params);
+        $success = $this->query($edit_sql, $params);
         return ["success" => $success];
     }
 
@@ -118,19 +114,18 @@ class model_#__CLASS_NAME__ extends model_abstracts
      */
     public function add($data=[]): array
     {
-        $sql = "
+        $add_sql = "
 INSERT INTO `#__TABLE_NAME__` (
     #__INSERTS_COLUMNS__
 ) VALUES (
     #__INSERTS_VALUES__
 );";
-        $statement = $this->pdo->prepare($sql);
         $params = [
             "#__PRIMARY_KEY__" => (new Guid())->NewGuid(),
 
             #__INSERTS_PARAMS__,
          ];
-        $success = $statement->execute($params);
+        $success = $this->query($add_sql, $params);
         return ["success" => $success];
     }
 

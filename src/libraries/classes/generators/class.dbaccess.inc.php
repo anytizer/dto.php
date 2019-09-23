@@ -340,7 +340,7 @@ ORDER BY
     }
 
     /**
-     * Replace method
+     * @todo Deprecated: Replace method
      *
      * @param string $body
      * @return string
@@ -432,7 +432,8 @@ ORDER BY
          * @todo Make the URL appear in editor field, details field
          */
         $is_sensitive = preg_match("/^(url)_/is", $column->COLUMN_NAME);
-        // "_notes": left to be varchar
+
+        // "_notes": left to be varchar, visible in listing
         $long_flag = preg_match("/_(description|text|body|html|json|comments|excerpt)$/is", $column->COLUMN_NAME);
 
         return $is_sensitive || $long_flag;

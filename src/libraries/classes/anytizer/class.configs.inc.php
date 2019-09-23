@@ -3,7 +3,7 @@
 namespace anytizer;
 
 /**
- * Determines modules to generate source code for.
+ * Determines which modules to generate source code for.
  */
 class configs
 {
