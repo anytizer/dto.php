@@ -84,6 +84,15 @@ class htmlifier implements bodyfier
     public function htmlDetails(fields $column): string
     {
         // @todo Include long columns in details viewing mode
+        if ($column->isFlag) {
+            return "";
+        }
+
+        // enum, datetime
+        if ($column->isFlag) {
+            return "";
+        }
+
         if ($column->isLong) {
             return "";
         }
@@ -228,7 +237,25 @@ class htmlifier implements bodyfier
 
         $field_class = $this->field_class($column);
 
-        $field_body = "
+        $field_body = "";
+
+        if($column->isLong)
+        {
+            // textarea
+            $field_body = "
+    <div class=\"w3-padding field\">
+        <label>{$column->COLUMN_DISPLAY}</label>
+        <div>
+            <div><textarea class=\"w3-input {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\"></textarea></div>
+            <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
+        </div>
+    </div>
+        ";
+        }
+
+        if($field_body == "")
+        {
+            $field_body = "
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
@@ -237,6 +264,7 @@ class htmlifier implements bodyfier
         </div>
     </div>
         ";
+        }
 
         return $field_body;
     }

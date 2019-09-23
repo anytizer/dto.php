@@ -253,18 +253,20 @@ ORDER BY
      * Get a filtered list of columns
      *
      * @param string $TABLE_NAME
+     * @param bool $exclude_flag
+     * @param bool $exclude_long
      * @return array
      */
-    public function _get_columns(string $TABLE_NAME)
+    public function _get_columns(string $TABLE_NAME, $exclude_flag=true, $exclude_long=true)
     {
         $columns = $this->_get_all_columns($TABLE_NAME);
         $primary_key = $this->_get_primary_key($TABLE_NAME); // get table prefix here to remove other prefixes
         #$prefix = preg_split("/_/is", $primary_key)[0];
         foreach($columns as $c => $column)
         {
-            if($this->is_flag($column)) unset($columns[$c]);
+            if($exclude_flag && $this->is_flag($column)) unset($columns[$c]);
+            if($exclude_long && $this->is_long($column)) unset($columns[$c]);
             if($this->is_date($column)) unset($columns[$c]);
-            if($this->is_long($column)) unset($columns[$c]);
             if($this->is_autoid($column)) unset($columns[$c]);
             #$column->prefix = $prefix;
         }
@@ -275,10 +277,13 @@ ORDER BY
 
     /**
      * Get all columns
+     * @todo Make it private function.
+     * @see laravel DTO generation.
+     *
      * @param string $TABLE_NAME
      * @return array
      */
-    public function _get_all_columns(string $TABLE_NAME)
+    public function _get_all_columns(string $TABLE_NAME): array
     {
         global $connection;
         global $orm_name;
@@ -380,7 +385,7 @@ ORDER BY
              * groups_of becomes Groups Of.
              */
             $wishful_words = ["ip"];
-            if(!in_array(strtolower($names[1]), ["number", "code", "days", "of", "on", "by", "id", "ip", "salt", "name", "enabled", "key", "software", "token", "fees", "percentage", "date"]))
+            if(!in_array(strtolower($names[1]), ["number", "code", "days", "of", "on", "by", "id", "ip", "salt", "name", "enabled", "key", "software", "token", "fees", "percentage", "date", "text"]))
             {
                 unset($names[0]);
             }
@@ -427,7 +432,8 @@ ORDER BY
          * @todo Make the URL appear in editor field, details field
          */
         $is_sensitive = preg_match("/^(url)_/is", $column->COLUMN_NAME);
-        $long_flag = preg_match("/_(description|text|body|html|notes|comments|excerpt)$/is", $column->COLUMN_NAME);
+        // "_notes": left to be varchar
+        $long_flag = preg_match("/_(description|text|body|html|json|comments|excerpt)$/is", $column->COLUMN_NAME);
 
         return $is_sensitive || $long_flag;
     }

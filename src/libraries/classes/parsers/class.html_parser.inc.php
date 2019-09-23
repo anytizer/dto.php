@@ -59,7 +59,7 @@ class html_parser implements parser
         # print_r($business);
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
-        $columns = $dbaccess->_get_columns($table_name);
+        $columns = $dbaccess->_get_columns($table_name, true, true);
 
         /**
          * @todo Filter long fields and flags
@@ -102,7 +102,7 @@ class html_parser implements parser
         # print_r($business);
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
-        $columns = $dbaccess->_get_columns($table_name);
+        $columns = $dbaccess->_get_columns($table_name, true, false);
         $primary_key = $dbaccess->_get_primary_key($table_name);
 
         $htmlifier = new htmlifier();
@@ -133,7 +133,7 @@ class html_parser implements parser
         # print_r($business);
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
-        $columns = $dbaccess->_get_columns($table_name);
+        $columns = $dbaccess->_get_columns($table_name, true, false);
         // @todo Use get all columns. But the field name is missing in edit forms.
 
         $htmlifier = new htmlifier();
@@ -155,6 +155,12 @@ class html_parser implements parser
         return $method_body;
     }
 
+    /**
+     * @todo Flag generation does not require this much of code. Recheck.
+     *
+     * @param business_entity $business
+     * @return mixed|string
+     */
     private function generate_flag(business_entity $business)
     {
         $template_reader = new template_reader();
@@ -221,7 +227,7 @@ class html_parser implements parser
         # print_r($business);
         $table_name = $business->table_name();
         $dbaccess = new dbaccess();
-        $columns = $dbaccess->_get_columns($table_name);
+        $columns = $dbaccess->_get_columns($table_name, true, false);
         #print_r($columns);
 
         $htmlifier = new htmlifier();

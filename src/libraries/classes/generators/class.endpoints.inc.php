@@ -72,7 +72,8 @@ class endpoints extends generator implements bodyfier
     public function methodify_model(method_descriptor $method): string
     {
         /**
-         * The following methods have been coded manually
+         * The following methods have been coded manually.
+         * @see templates/api/model.php.ts
          */
         if(in_array(strtolower($method->method_name), ["list", "details", "delete", "flag", "edit", "add"]))
         {
@@ -98,7 +99,7 @@ class endpoints extends generator implements bodyfier
      */
     {$accessor} function {$method->method_name}({$parameters}): {$return_type}
     {
-        \$sql = \"SELECT * FROM `#__TABLE_NAME__` WHERE is_active='Y' LIMIT 10;\";
+        \$sql = \"SELECT * FROM `#__TABLE_NAME__` WHERE is_active='Y' ORDER BY RAND() LIMIT 10;\";
         \$statement = \$this->pdo->prepare(\$sql);
         \$params = [];
         \$statement->execute(\$params);
