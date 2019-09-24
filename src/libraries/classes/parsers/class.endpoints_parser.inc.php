@@ -122,7 +122,7 @@ class endpoints_parser implements parser
         # for list()
         $list_column_heads = ["`{$primary_key}`"];
 
-        $columns = $dbaccess->_get_columns($table_name);
+        $columns = $dbaccess->_get_all_columns($table_name);
         foreach($columns as $column)
         {
             # Do not include primary key
@@ -136,15 +136,22 @@ class endpoints_parser implements parser
             $inserts_values[] = ":{$column->COLUMN_NAME}";
             $inserts_columns[] = "`{$column->COLUMN_NAME}`";
 
-            /**
-             * @todo For is_active, is_approved; set to Y
-              */
-//            if(in_array($column->COLUMN_NAME, ["is_active", "is_approved"]))
-//            {
-//                $column->COLUMN_DEFAULT = "Y"; // @todo Check if rules avoided: Value taken from default
-//            }
             $default = $column->COLUMN_DEFAULT?"\"{$column->COLUMN_DEFAULT}\"":"null"; // PHP NULL or value wrapped in double quotes
-            $inserts_params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]??{$default}))->text";
+
+            /**
+             * @see https://github.com/anytizer/anytizer.php/blob/master/src/anytizer/sanitize.php for rules
+             */
+            $datatype_rule = "text";
+            if(in_array($column->COLUMN_NAME, ["is_active", "is_approved"]))
+            {
+                $default = "\"Y\""; // in double quotes
+                $datatype_rule = "yn";
+            }
+            if(in_array($column->COLUMN_NAME, ["added_on", "modified_on"]))
+            {
+                $datatype_rule = "now";
+            }
+            $inserts_params[] = "\"{$column->COLUMN_NAME}\" => (new sanitize(\$data[\"{$column->COLUMN_NAME}\"]??{$default}))->{$datatype_rule}";
 
             /**
              * For selected fields only
@@ -154,7 +161,7 @@ class endpoints_parser implements parser
                 $list_column_heads[] = "`{$column->COLUMN_NAME}`";
             }
         }
-       # print_r($list_column_heads); die();
+        #print_r($list_column_heads); die();
         #print_r($columns); die(implode(", ", $keyvalues));
         #print_r($inserts_columns); print_r($inserts_values); die('');
 
@@ -182,7 +189,7 @@ class endpoints_parser implements parser
         $from = array_keys($replace);
         $to = array_values($replace);
 
-        // twice replacements
+        // twice replacements because the template may contain replaceable definitions.
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 

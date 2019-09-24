@@ -36,7 +36,6 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
             "message" => "",
         ];
 
-        // $this->role->method("add")
         if($this->APIUser()->can("#__PACKAGE_NAME__", "#__CLASS_NAME__", "add"))
         {
             /**

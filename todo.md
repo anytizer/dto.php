@@ -1,3 +1,12 @@
+Ensure all tables have:
+    is_active, is_approved
+    added_on, modified_on
+
+Add form not saving long fields. Check controller/model.
+Edit form not saving long fields. Check controller/model.
+Details template: Print long fields. Check HTML.
+Edit: Do not edit flags. use get_columns ony.
+
 When user edits a data, it should appear immediately with is_active='Y" flag.
 
 Implement business service layer

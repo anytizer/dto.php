@@ -241,12 +241,12 @@ class htmlifier implements bodyfier
 
         if($column->isLong)
         {
-            // textarea
+            // textarea, to be implemented at model layer
             $field_body = "
     <div class=\"w3-padding field\">
         <label>{$column->COLUMN_DISPLAY}</label>
         <div>
-            <div><textarea class=\"w3-input w3-border {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\"></textarea></div>
+            <div><textarea class=\"w3-input w3-pale-red w3-border {$field_class}\" ng-model=\"record.{$column->COLUMN_NAME}\" placeholder=\"\"></textarea></div>
             <div class=\"hints\">{$column->COLUMN_COMMENT}</div>
         </div>
     </div>
