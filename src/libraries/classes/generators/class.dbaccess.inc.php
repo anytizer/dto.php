@@ -159,7 +159,7 @@ class dbaccess
          * Sensitive information
          * Token added to protect sensitive data
          */
-        $is_sensitive_flag = preg_match("/_(salt|pepper|key|token)$/is", $column_name);
+        $is_sensitive_flag = preg_match("/_(salt|pepper|password|key|token)$/is", $column_name);
 
         return $is_prefix_flag || $is_suffix_flag || $is_sensitive_flag;
     }
