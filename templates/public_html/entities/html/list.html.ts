@@ -1,15 +1,17 @@
+<!--
 <div class="w3-container w3-teal entity-action">
 	<h2>
 		<span class="disabled"><i class="fas fa-list"></i> List</span>
 		<span class="no-print">| <a class="enabled" ui-sref="#__CLASS_NAME__.Add({})"><i class="fas fa-plus"></i> Add</a></span>
 	</h2>
 </div>
+-->
 
 <!-- w3-hoverable -->
 <table class="w3-table w3-bordered w3-striped w3-border list">
 	<tbody class="no-print">
-		<tr class="w3-brown">
-			<td><i class="fas fa-search w3-text-green"></i></td>
+		<tr>
+			<td><i class="fas fa-search"></i></td>
 			#__COLUMN_NAMES_QUICKIES__
 			<td><span class="w3-btn w3-yellow" ng-click="quickies={}"><i class="fas fa-times"></i></span></td>
 			<td>&nbsp;</td>

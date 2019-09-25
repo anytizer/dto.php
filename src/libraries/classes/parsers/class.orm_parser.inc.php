@@ -17,14 +17,14 @@ class orm_parser implements parser
         $methods = $business->methods_list();
         /*
         // overwrite
-        $methods = array(
+        $methods = [
             "list",
             "details",
             "add",
             "edit",
             "delete",
             "flag",
-        );*/
+        ];*/
 
         $ormifier = new ormifier();
         $methods = array_map(array($ormifier, "methodify"), $methods);

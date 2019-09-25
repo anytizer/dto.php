@@ -1,3 +1,9 @@
+Edit: Uncaught TypeError: Return value of \controllers\controller_::post_edit() must be of the type array,
+bool returned
+
+Submenus should be highlighted with ui-sref. Eg. users/edit to highlight users.
+Controller should open default index listing page.
+
 Ensure all tables have:
     is_active, is_approved
     added_on, modified_on
@@ -9,7 +15,7 @@ Edit: Do not edit flags. use get_columns ony.
 
 When user edits a data, it should appear immediately with is_active='Y" flag.
 
-Implement business service layer
+Implement business service layer and repository
 https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff649690(v=pandp.10)?redirectedfrom=MSDN
 
 Add test feature also into the ACL.

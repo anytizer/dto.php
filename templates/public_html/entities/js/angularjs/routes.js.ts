@@ -20,6 +20,7 @@ let #__CLASS_NAME__App = myApp;
 		.state("#__CLASS_NAME__", {
 			url: "/#__CLASS_NAME__",
 			templateUrl: template("welcome.html"),
+			controller: "#__CLASS_NAME__WelcomeController", // empty?
 		})
 
 		.state("#__CLASS_NAME__.List", {

@@ -39,6 +39,7 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
         if($this->APIUser()->can("#__PACKAGE_NAME__", "#__CLASS_NAME__", "add"))
         {
             /**
+             * Repository model or ...
             $business = new business();
             if($business->save("#__PACKAGE_NAME__", "#__CLASS_NAME__", "add"))
              {
@@ -46,7 +47,8 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
              }
              // send email
              // format message
-             // generate database error log message with error code
+             // log event: something is added
+             // generate database driven error log message with error code
              // call to apis, and notification urls
             */
             $data=[

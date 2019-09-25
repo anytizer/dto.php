@@ -4,11 +4,13 @@
 
 "use strict";
 
-#__CLASS_NAME__App.controller("#__CLASS_NAME__WelcomeController", ["$scope", "#__CLASS_NAME__Service", function($scope, #__CLASS_NAME__Service)
+#__CLASS_NAME__App.controller("#__CLASS_NAME__WelcomeController", ["$scope", "$state", "$stateParams", "#__CLASS_NAME__Service", function($scope, $state, $stateParams, #__CLASS_NAME__Service)
 {
 	$scope.welcome = {
 		"message": "Welcome to #__CLASS_NAME__!",
 	};
+
+	// $state.go("#__CLASS_NAME__.list");
 }]);
 
 // @todo: Bring flag, delete controllers here.

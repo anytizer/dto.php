@@ -121,7 +121,7 @@ class business_entity
         # Register this
         $guid = guid::NewGuid();
         $this->package_id = $guid; // @todo non-standard field
-        $sql = "INSERT IGNORE INTO acl_packages VALUES ('{$guid}', '{$this->package}');\r\n";
+        $sql = "INSERT IGNORE INTO acl_packages (package_id, package_name, is_active, is_approved, added_on, modified_on) VALUES ('{$guid}', '{$this->package}', 'Y', 'Y', NOW(), NOW());";
         file_put_contents("/tmp/acl.log", $sql, FILE_APPEND);
         # SELECT UUID();
 
@@ -148,7 +148,7 @@ class business_entity
         $superadmin_role_code = "SUPERADMIN";
         $superadmin_role_id = "0BC7C10D-EBDF-4D77-9642-A3C8AB0B01E3";
 
-        $acl_entities_sql = "INSERT IGNORE INTO acl_entities VALUES ('{$entity_guid}', '{$this->package_id}', '{$this->class_name}', '{$this->package}::{$this->class_name}');\r\n";
+        $acl_entities_sql = "INSERT IGNORE INTO acl_entities (entity_id, package_id, entity_name, entity_notes, is_active, is_approved, added_on, modified_on) VALUES ('{$entity_guid}', '{$this->package_id}', '{$this->class_name}', '{$this->package}::{$this->class_name}', 'Y', 'Y', NOW(), NOW());\r\n";
         //file_put_contents("/tmp/acl.log", $acl_entities_sql, FILE_APPEND);
         $acl_methods_sqls=[];
         $acl_permissions_sqls = [];
@@ -156,18 +156,16 @@ class business_entity
         foreach ($this->methods as $method) {
             #print_r($method); die();
             $method_guid = $g->NewGuid();
-            $acl_methods_sql = "INSERT IGNORE INTO acl_methods VALUES ('{$method_guid}', '{$entity_guid}', '{$method->method_name}', '{$this->package}::{$this->class_name}:{$method->method_name}()');";
+            $acl_methods_sql = "INSERT IGNORE INTO acl_methods VALUES ('{$method_guid}', '{$entity_guid}', '{$method->method_name}', '{$this->package}::{$this->class_name}:{$method->method_name}()', 'Y', 'Y', NOW(), NOW());";
             $acl_methods_sqls[]=$acl_methods_sql;
 
             $permission_id = $g->NewGuid();
-            $acl_permissions_sqls[] = "INSERT INTO acl_permissions VALUES('{$permission_id}', '{$superadmin_role_id}', '{$method_guid}', '[{$superadmin_role_code}]{$this->package}::{$this->class_name}->{$method->method_name}()');";
+            $acl_permissions_sqls[] = "INSERT INTO acl_permissions VALUES('{$permission_id}', '{$superadmin_role_id}', '{$method_guid}', '[{$superadmin_role_code}]{$this->package}::{$this->class_name}->{$method->method_name}()', 'Y', 'Y', NOW(), NOW());";
         }
 
         file_put_contents("/tmp/acl.log",  $acl_entities_sql, FILE_APPEND);
         file_put_contents("/tmp/acl.log", implode("\r\n", $acl_methods_sqls), FILE_APPEND);
         file_put_contents("/tmp/acl.log", implode("\r\n", $acl_permissions_sqls), FILE_APPEND);
-
-
 
         return $this;
     }
