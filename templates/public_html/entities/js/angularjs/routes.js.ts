@@ -14,7 +14,7 @@ let #__CLASS_NAME__App = myApp;
 		return TEMPLATES_URL;
 	};
 
-	$urlRouterProvider.otherwise("/#__CLASS_NAME__");
+	$urlRouterProvider.otherwise("/#__CLASS_NAME__.list");
 
 	$stateProvider
 		.state("#__CLASS_NAME__", {

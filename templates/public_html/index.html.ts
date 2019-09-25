@@ -37,6 +37,10 @@
             #__CLASS_NAME__
         </a>
         -->
+        <a class="w3-bar-item w3-btn w3-right" onclick="window.print();">
+            <i class="fas fa-print"></i>
+            Print
+        </a>
         <!--MENU-END-MARKER-->
     </div>
 

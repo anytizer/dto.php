@@ -51,7 +51,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      * @todo Return success class instead of php array.
      *
      * @param $data
-     * @return array
+     * @return bool
      */
     public function delete($data=[]): bool
     {
@@ -70,7 +70,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
      *
      * @todo Flag column should be is_flagged, not is_approved
      * @param $data
-     * @return array
+     * @return bool
      */
     public function flag($data=[]): bool
     {
@@ -86,7 +86,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
     /**
      * Edit #__TABLE_NAME__ by: #__PRIMARY_KEY__
      * @param $data
-     * @return array
+     * @return bool
      *
      * @todo Sanitize the data properly.
      * @see https://github.com/anytizer/anytizer.php
@@ -109,7 +109,7 @@ class model_#__CLASS_NAME__ extends model_abstracts
     /**
      * Add #__TABLE_NAME__ by: #__PRIMARY_KEY__
      * @param $data
-     * @return array
+     * @return bool
      *
      * @see https://github.com/anytizer/guid.php
      */

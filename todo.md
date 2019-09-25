@@ -1,3 +1,13 @@
+alias the sql select in listing page.
+
+Deep table 3+ words do not need: Edit, Details.
+eg. item > history
+
+Show print button.
+_password: Do not display in list, edit, details.
+
+List SQL: Do not load flags in the query.
+
 Edit: Uncaught TypeError: Return value of \controllers\controller_::post_edit() must be of the type array,
 bool returned
 
