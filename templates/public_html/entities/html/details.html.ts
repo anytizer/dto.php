@@ -9,7 +9,7 @@
 
 <div class="details">
 
-	<div class="w3-card-4 w3-margin w3-padding">
+	<div class="w3-card-4 w3-margin w3-padding" ng-class="{'w3-pale-red':#__CLASS_NAME__.record.is_approved!='Y'}">
 		#__DETAILS_FIELDS__
 	</div>
 	<div class="w3-card-4 w3-margin w3-padding">

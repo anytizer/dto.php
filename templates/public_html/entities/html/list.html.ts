@@ -26,7 +26,7 @@
 		</tr>
     </thead>
     <tbody>
-		<tr ng-repeat="(r, record) in #__CLASS_NAME__.records|filter:quickies">
+		<tr ng-repeat="(r, record) in #__CLASS_NAME__.records|filter:quickies" ng-class="{'w3-pale-red':record.is_approved=='N'}">
 			<td>{{r+1}}</td>
 			#__LISTED_ROWS__
 			<td class="no-print"><a class="action" href="#" ui-sref="#__CLASS_NAME__.Details({'#__PRIMARY_KEY__': record.#__PRIMARY_KEY__})">Details</a></td>

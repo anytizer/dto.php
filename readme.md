@@ -9,9 +9,11 @@
 This is **not a general purpose software**. It helps developers to produce raw full stack source code from MySQL Database. It ambitiously covers:
  - AngularJS Components
  - API Endpoints
- - Unit Tests
- - ORM
+ - PHPUnit Test Cases
+ - ~~ORM~~
  - HTML files
+ - JS Files
+ - Static content
 
 Output of this product is useful as a backbone for starting a new web project (CRUD).
 
@@ -65,15 +67,16 @@ Checkout the required project under your web root.
 
 Edit: your `inc.config.php` for:
 
- * MySQL Database Connection details
- * Path to business definition files
- * Relative URL path to [api.php](https://github.com/anytizer/api.php) project.
- * Output/Export location
+* MySQL Database Connection details
+* Path to business definition files
+* Relative URL path to [api.php](https://github.com/anytizer/api.php) project.
+* Output/Export location
 
 
     php -f business.php
 
-     
+Then, copy the output folder to htdocs, and fix.
+
 Then see the output directory.
 
 
