@@ -10,7 +10,7 @@
 		"message": "Welcome to #__CLASS_NAME__!",
 	};
 
-	// $state.go("#__CLASS_NAME__.list");
+	$state.go("#__CLASS_NAME__.List");
 }]);
 
 // @todo: Bring flag, delete controllers here.
