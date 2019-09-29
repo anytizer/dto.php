@@ -1,7 +1,15 @@
+Dropdown/selection-option for MUL fields.
+
+YN for edit fields also
+Daily schedule - database development required
+
+Sort tables by column heads.
+https://docs.angularjs.org/api/ng/filter/orderBy
+
 API to reject automatic requests and spams.
 
 ~~List SQL: Do not load flags in the query.~~
-Listing page - double click a row to mark as unapproved.
+Listing page - double click a row to mark as un/approved.
 
 Double click to highlight a row with perhaps new flag field.
 alias the sql select in listing page. See model.

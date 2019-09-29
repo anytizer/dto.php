@@ -11,7 +11,7 @@
 
 	<!-- @todo Merge all CSS -->
 	<link rel="stylesheet" href="css/w3.css" type="text/css" media="screen, print" />
-	<link rel="stylesheet"" href="css/styles.css" type="text/css" media="screen, print" />
+	<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen, print" />
 	<link rel="stylesheet" href="#__CSS_URL__/style.css" type="text/css" media="screen, print" />
 
 	<!--live account-->
