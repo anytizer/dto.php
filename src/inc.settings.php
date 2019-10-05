@@ -19,21 +19,34 @@ require_once "../vendor/autoload.php";
 use anytizer\includer;
 spl_autoload_register(array(new includer(__LIBRARIES_DIR__ . "/classes"), "namespaced_inc_dot"));
 
+$dsn = "mysql:host={$hostname};dbname={$orm_name};charset=utf8mb4;";
 $options = array(
+    PDO::ATTR_PERSISTENT => false,
     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4;",
     PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
 );
 
 /**
  * PDO Connection
  */
-$connection = new PDO("mysql:host={$hostname};dbname={$orm_name};charset=utf8mb4;", $username, $password, $options);
+$connection = new PDO($dsn, $username, $password, $options);
 
 /**
  * Where are your business definitions?
  */
 $entities = [];
 $setup_files = glob(__BUSINESS_DEFINITIONS__ . $configurations["business_glob"]);
+if(!count($setup_files))
+{
+    die("Not enough business definition files loaded from: ".__BUSINESS_DEFINITIONS__." and ".$configurations["business_glob"]);
+}
 foreach ($setup_files as $setup) {
     require_once $setup;
 }
+print("Seeking: ".__BUSINESS_DEFINITIONS__ . $configurations["business_glob"]);
+#print_r($setup_files);
+#print_r($entities);
+#$total = count($entities);
+#die("Ready to CRUD #{$total} item?");
