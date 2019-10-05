@@ -6,7 +6,7 @@ use anytizer\sanitize;
 use system\abstracts\api_abstracts;
 use system\abstracts\api_interface;
 
-use #__PACKAGE_NAME__\models\model_#__CLASS_NAME__;
+# use #__PACKAGE_NAME__\models\model_#__CLASS_NAME__;
 
 /**
  * Endpoints for landing #__CLASS_NAME__

@@ -1,3 +1,4 @@
+Remove flag, delete success pages.
 Dropdown/selection-option for MUL fields.
 
 YN for edit fields also
@@ -7,6 +8,7 @@ Sort tables by column heads.
 https://docs.angularjs.org/api/ng/filter/orderBy
 
 API to reject automatic requests and spams.
+Write api inside api.php, not api/, such that there is no need of symlinking.
 
 ~~List SQL: Do not load flags in the query.~~
 Listing page - double click a row to mark as un/approved.

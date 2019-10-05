@@ -149,9 +149,12 @@ form {
 .action { color: #4caf50; } /** in list table */
 .enabled { color: white; }
 .disabled { color: #CCCCCC; }
+a[disabled="disabled"] { color: #8bc34a; }
 
 @media print {
+	a.action { color: black; }
     .no-print {
         display: none !important;
     }
+	.page {page-break-after: always;}
 }
