@@ -17,7 +17,7 @@ Double click to highlight a row with perhaps new flag field.
 alias the sql select in listing page. See model.
 
 Deep table 3+ words do not need: Edit, Details.
-eg. item > history
+eg. prefix > item > history
 
 Show print button.
 _password: Do not display in list, edit, details.

@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anytizer/capitalizer.php.git",
-                "reference": "a656afd9012da08a2be901f429323031802aa615"
+                "reference": "5afedb0e35e229dd76c944efda370c864da1954e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anytizer/capitalizer.php/zipball/a656afd9012da08a2be901f429323031802aa615",
-                "reference": "a656afd9012da08a2be901f429323031802aa615",
+                "url": "https://api.github.com/repos/anytizer/capitalizer.php/zipball/5afedb0e35e229dd76c944efda370c864da1954e",
+                "reference": "5afedb0e35e229dd76c944efda370c864da1954e",
                 "shasum": ""
             },
             "require": {
@@ -38,7 +38,7 @@
                 "split words",
                 "uppercase"
             ],
-            "time": "2019-09-22T20:07:12+00:00"
+            "time": "2019-09-30T06:05:05+00:00"
         },
         {
             "name": "anytizer/caser.php",

@@ -11,9 +11,10 @@ This is **not a general purpose software**. It helps developers to produce raw f
  - API Endpoints
  - PHPUnit Test Cases
  - ~~ORM~~
+ - ~~Business Logic~~
  - HTML files
  - JS Files
- - Static content
+ - Static HTML/JS contents
 
 Output of this product is useful as a backbone for starting a new web project (CRUD).
 
@@ -75,7 +76,7 @@ Edit: your `inc.config.php` for:
 
     php -f business.php
 
-Then, copy the output folder to htdocs, and fix.
+Then, copy the output folder to htdocs/ or public_html/, and fix.
 
 Then see the output directory.
 
@@ -84,9 +85,9 @@ Then see the output directory.
 
 This project may be broken due to several reasons:
  - requirement of full paths in configurations
- - composer modules
+ - composer modules required
  - dependent project files
- - not tested in other environments
+ - not tested in other environments and paths
  - incomplete documentation
  - work in progress
 

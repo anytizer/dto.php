@@ -52,7 +52,7 @@ class endpoints extends generator implements bodyfier
     {
         \$response = [];
         
-        if(\$this->APIUser()->can(\"#__PACKAGE_NAME__\", \"#__CLASS_NAME__\", \"{$method->method_name}\"))
+        # if(\$this->APIUser()->can(\"#__PACKAGE_NAME__\", \"#__CLASS_NAME__\", \"{$method->method_name}\"))
         {
             \$m = new model_#__CLASS_NAME__();
             \$response = \$m->{$method->method_name}(\$_POST); // @todo fix super global

@@ -6,7 +6,7 @@ use anytizer\sanitize;
 use system\abstracts\api_abstracts;
 use system\abstracts\api_interface;
 
-# use #__PACKAGE_NAME__\models\model_#__CLASS_NAME__;
+use #__PACKAGE_NAME__\models\model_#__CLASS_NAME__;
 
 /**
  * Endpoints for landing #__CLASS_NAME__
@@ -15,8 +15,8 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
 {
     public function __construct()
     {
-        //$this->role = new role();
-        //$this->APIUser = new APIUser();
+        # $this->role = new role();
+        #$this->APIUser = new APIUser();
         
         //parent::__construct();
     }
@@ -36,7 +36,7 @@ class controller_#__CLASS_NAME__ extends api_abstracts implements api_interface
             "message" => "",
         ];
 
-        if($this->APIUser()->can("#__PACKAGE_NAME__", "#__CLASS_NAME__", "add"))
+        #if($this->APIUser()->can("#__PACKAGE_NAME__", "#__CLASS_NAME__", "add"))
         {
             /**
              * Repository model or ...

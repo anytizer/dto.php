@@ -41,7 +41,7 @@ class endpoints_parser implements parser
 
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "api/{$replace['#__PACKAGE_NAME__']}/models/class.CustomEloquentModel.inc.php");
+        $template_reader->write($method_body, "api.php/packages/{$replace['#__PACKAGE_NAME__']}/models/class.CustomEloquentModel.inc.php");
         return $method_body;
     }
 
@@ -90,7 +90,7 @@ class endpoints_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "api/{$replace['#__PACKAGE_NAME__']}/controllers/class.controller_{$replace['#__CLASS_NAME__']}.inc.php");
+        $template_reader->write($method_body, "api.php/packages/{$replace['#__PACKAGE_NAME__']}/controllers/class.controller_{$replace['#__CLASS_NAME__']}.inc.php");
         return $method_body;
     }
 
@@ -193,7 +193,7 @@ class endpoints_parser implements parser
         $method_body = str_replace($from, $to, $method_body);
         $method_body = str_replace($from, $to, $method_body);
 
-        $template_reader->write($method_body, "api/{$replace['#__PACKAGE_NAME__']}/models/class.model_{$replace['#__CLASS_NAME__']}.inc.php");
+        $template_reader->write($method_body, "api.php/packages/{$replace['#__PACKAGE_NAME__']}/models/class.model_{$replace['#__CLASS_NAME__']}.inc.php");
         return $method_body;
     }
 }
